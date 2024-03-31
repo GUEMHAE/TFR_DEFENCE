@@ -1,60 +1,40 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChampionShop : MonoBehaviour
+public class Buy_Unit : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject[] champion;
-    [SerializeField]
-    private List<Sprite> champimg = new List<Sprite>();
+    [SerializeField] private GameObject[] champion;
+    [SerializeField] private List<Sprite> champimg = new List<Sprite>();
     public SpriteRenderer[] wait;
     public Sprite img;
+
     // Start is called before the first frame update
     void Start()
     {
+        // Start 함수는 현재 비어있음
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        // Update 함수는 현재 비어있음
     }
 
-
+    // 챔피언 선택 시 호출되는 함수
     public void ClickChampion(int index)
     {
         Debug.Log(index + "눌림");
 
-        if (champimg.Count == 0)
+        // champimg 리스트에 img 추가
+        if (champimg.Count < wait.Length)
         {
-            champimg.Insert(0, img);
-            wait[0].sprite = champimg[0];
+            champimg.Insert(champimg.Count, img);
+            wait[champimg.Count - 1].sprite = champimg[champimg.Count - 1];
         }
-
-        else if (champimg.Count == 1)
+        else
         {
-            champimg.Insert(1, img);
-            wait[1].sprite = champimg[1];
-        }
-
-        else if(champimg.Count == 2)
-        {
-            champimg.Insert(2, img);
-            wait[2].sprite = champimg[2];
-        }
-
-        else if(champimg.Count == 3)
-        {
-            champimg.Insert(3, img);
-            wait[3].sprite = champimg[3];
-        }
-
-        else if(champimg.Count == 4)
-        {
-            champimg.Insert(4, img);
-            wait[4].sprite = champimg[4];
+            Debug.LogWarning("챔피언 선택창이 가득 찼습니다.");
         }
     }
 }

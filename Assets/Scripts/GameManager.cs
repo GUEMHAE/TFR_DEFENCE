@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     public Text scoreText;
     public GameObject gameoverUI;
 
-
     private int score = 0;
     void Awake()
     {
