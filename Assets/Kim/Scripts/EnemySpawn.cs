@@ -9,9 +9,9 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField]
     GameObject enemyPrefab;    //적 프리팹
     [SerializeField]
-    float spawnTime; //적 생성 주기
+    float spawnTime;  //적 생성 주기
     [SerializeField]
-    Transform[] wayPoints; //현재 스테이지의 이동 경로
+    Transform[] wayPoints;   //현재 스테이지의 이동 경로
 
     private void Awake()
     {
