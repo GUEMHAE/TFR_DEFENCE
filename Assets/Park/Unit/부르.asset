@@ -19,5 +19,7 @@ MonoBehaviour:
   ad: 40
   ap: 0
   attackSpeed: 1
-  synergy:
-  - "\uD669\uD63C"
+  type:
+  - {fileID: 11400000, guid: 474399af88a3da04e8b97ac5e5947a6e, type: 2}
+  attackProjectile: {fileID: 0}
+  attackRange: 0

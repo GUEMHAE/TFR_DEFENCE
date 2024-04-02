@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "UnitData", menuName = "Scriptable Object/UnitData", order = int.MaxValue)]
+[CreateAssetMenu(fileName = "UnitData", menuName = "Unit/UnitData", order = int.MaxValue)]
 public class UnitInfo : ScriptableObject
 {
     [SerializeField] private string unitName;
@@ -19,10 +19,13 @@ public class UnitInfo : ScriptableObject
     [SerializeField] private int ap;
     public int Ap { get { return ap; } }
 
-
     [SerializeField] private float attackSpeed;
     public float AttackSpeed { get { return attackSpeed; } }
 
-    [SerializeField] private string[] synergy;
-    public string[] Synergy { get { return synergy; } }
+    public UnitType[] type;
+
+
+    public GameObject attackProjectile;
+    [SerializeField] private float attackRange;
+    public float AttackRange { get { return attackRange; } }
 }

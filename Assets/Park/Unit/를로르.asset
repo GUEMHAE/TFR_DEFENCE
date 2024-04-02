@@ -19,6 +19,8 @@ MonoBehaviour:
   ad: 300
   ap: 0
   attackSpeed: 1.7
-  synergy:
-  - "\uC2E0\uC131"
-  - "\uD669\uD63C"
+  type:
+  - {fileID: 11400000, guid: 9add369b0b0a7ba4c8e70de2c57d9bf1, type: 2}
+  - {fileID: 11400000, guid: 474399af88a3da04e8b97ac5e5947a6e, type: 2}
+  attackProjectile: {fileID: 0}
+  attackRange: 0
