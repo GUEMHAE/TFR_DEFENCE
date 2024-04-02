@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
     public bool isGameOver = false;
     public Text scoreText;
     public GameObject gameoverUI;
-
-    Round round;
+    [SerializeField]
+    GameObject enemyPool; //적들이 들어 있는 부모 오브젝트를 등록하기 위한 GameObject
 
     private int score = 0;
     void Awake()
@@ -28,15 +28,21 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        round = GetComponent<Round>();
+       
     }
 
     void Update()
     {
-        if (isGameOver && Input.GetMouseButtonDown(0))
+        if (Round.instance.isRound == false)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            CheckGameOver();
         }
+
+        if (isGameOver)
+        {
+            gameoverUI.SetActive(true);
+        }
+
     }
     public void AddScore(int newScore)
     {
@@ -46,17 +52,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void OnPlayerDead()
-    {
-        isGameOver = true;
-        gameoverUI.SetActive(true);
-    }
-
     public void CheckGameOver()  //게임 오버 체크
     {
-        if(round.isRound==false)
+        if(enemyPool.transform.childCount>=1)
         {
-
+            isGameOver = true;
         }
     }
 }

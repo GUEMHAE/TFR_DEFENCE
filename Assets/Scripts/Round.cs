@@ -5,10 +5,24 @@ using UnityEngine.UI;
 
 public class Round : MonoBehaviour
 {
+    public static Round instance;
+
     public int totalRounds = 20; // 총 라운드 수
     public int currentRound = 1; // 현재 라운드
 
     public bool isRound;
+
+    void Awake()
+    {
+        if (instance == null) //싱글톤 패턴
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private async UniTaskVoid WaitRound()
     {
@@ -22,6 +36,7 @@ public class Round : MonoBehaviour
             Debug.Log("선택시간 종료");
 
             currentRound++;
+            EnemySpawnManager.instance.enemyCount = 0; //유닛 재 생성을 위해 EnemySpawnManager의 enemyCount를 0으로 초기화
         }
     }
 
