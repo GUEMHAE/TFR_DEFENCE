@@ -25,13 +25,16 @@ public class ChampionPool : MonoBehaviour
         championPool.Add(new Champion("다르밤"));
         championPool.Add(new Champion("애쉬"));
         championPool.Add(new Champion("부르"));
+
         championPool.Add(new Champion("피오나"));
         championPool.Add(new Champion("이르시그"));
         championPool.Add(new Champion("아서스"));
         championPool.Add(new Champion("아르테"));
+
         championPool.Add(new Champion("카뮴"));
         championPool.Add(new Champion("르로르"));
         championPool.Add(new Champion("일렉토"));
+
         championPool.Add(new Champion("링크"));
     }
 

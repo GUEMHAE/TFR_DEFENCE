@@ -44,46 +44,12 @@ public class GamePlayController : MonoBehaviour
 
     void Start()
     {
-        currentGameStage = GameStage.Preparation;
-
-        //ownChampionInventoryArray = new GameObject[Map.inventorySize];
-        //oponentChampionInventoryArray = new GameObject[Map.inventorySize];
-        //gridChampionsArray = new GameObject[Map.hexMapSizeX, Map.hexMapSizeZ / 2];
-
-
         uIController.UpdateUI();
     }
 
     void Update()
     {
-        //if (currentGameStage == GameStage.Preparation)
-        //{
-        //    timer += Time.deltaTime;
-
-        //    timerDisplay = (int)(PreparationStageDuration - timer);
-
-        //    uIController.UpdateTimerText();
-
-        //    if (timer > PreparationStageDuration)
-        //    {
-        //        timer = 0;
-
-        //        OnGameStageComplate();
-        //    }
-        //}
-        //else if (currentGameStage == GameStage.Combat)
-        //{
-        //    timer += Time.deltaTime;
-
-        //    timerDisplay = (int)timer;
-
-        //    if (timer > CombatStageDuration)
-        //    {
-        //        timer = 0;
-
-        //        OnGameStageComplate();
-        //    }
-        //}
+       
     }
 
 
@@ -106,23 +72,6 @@ public class GamePlayController : MonoBehaviour
             return false;
 
         GameObject championPrefab = Instantiate(champion.prefab);
-
-        //ChampionController championController = championPrefab.GetComponent<ChampionController>();
-
-        //championController.Init(champion, ChampionController.TEAMID_PLAYER);
-
-        //championController.SetGridPosition(Map.GRIDTYPE_OWN_INVENTORY, emptyIndex, -1);
-
-        //championController.SetWorldPosition();
-        //championController.SetWorldRotation();
-
-        //StoreChampionInArray(Map.GRIDTYPE_OWN_INVENTORY, map.ownTriggerArray[emptyIndex].gridX, -1, championPrefab);
-
-
-        //if (currentGameStage == GameStage.Preparation)
-        //    TryUpgradeChampion(champion);
-
-
         currentGold -= champion.cost;
 
         uIController.UpdateUI();
@@ -175,33 +124,36 @@ public class GamePlayController : MonoBehaviour
     // 플레이어 레벨을 증가시키는 메서드
     public void IncreasePlayerLevel()
     {
-        currentExp += 4;
-        if (currentExp == 2)
+        if(!playerLevel == 6)
         {
-            playerLevel = 2;
-            currentExp = 0;
+            currentExp += 4;
+            if (currentExp >= 2)
+            {
+                playerLevel = 2;
+                currentExp -= 2;
+            }
+            if (currentExp >= 6)
+            {
+                playerLevel = 3;
+                currentExp -= 6;
+            }
+            if (currentExp >= 12)
+            {
+                playerLevel = 4;
+                currentExp -= 12;
+            }
+            if (currentExp >= 18)
+            {
+                playerLevel = 5;
+                currentExp -= 18;
+            }
+            if (currentExp >= 28)
+            {
+                playerLevel = 6;
+                currentExp -= 28;
+            }
+            Debug.Log("Player level increased to: " + playerLevel);
         }
-        else if (currentExp == 6)
-        {
-            playerLevel = 3;
-            currentExp = 0;
-        }
-        else if (currentExp == 12)
-        {
-            playerLevel = 4;
-            currentExp = 0;
-        }
-        else if (currentExp == 18)
-        {
-            playerLevel = 5;
-            currentExp = 0;
-        }
-        else if (currentExp == 28)
-        {
-            playerLevel = 6;
-            currentExp = 0;
-        }
-        Debug.Log("Player level increased to: " + playerLevel);
     }
 
     public int GetPlayerLevel()

@@ -20,7 +20,7 @@ public class ChampionShop : MonoBehaviour
 
     void Update()
     {
-        //if (Roundwait)
+        //if (WaitRound)
         //{
         //    
         //    currentGold += 6;
@@ -79,30 +79,19 @@ public class ChampionShop : MonoBehaviour
         //Debug.Log("Champion: ", )
     }
 
-    // 챔피언 풀에서 랜덤하게 챔피언을 가져오는 메서드
-    private Champion GetRandomChampionWithProbability()
+    public void OnChampionFrameClicked(int index)
     {
-        // 챔피언 풀에서 사용 가능한 챔피언들을 가져옴
-        List<Champion> availableChampions = new List<Champion>();
+        // 상점에서 챔피언을 구매하고 성공하면 해당 챔피언 프레임 숨김
+        bool isSuccess = gamePlayController.BuyChampionFromShop(availableChampionArray[index]);
+        if (isSuccess)
+            uIController.HideChampionFrame(index);
+    }
 
-        foreach (Champion champion in championPoolScript.championPool)
-        {
-            if (!IsChampionMaxedOut(champion)) // 해당 챔피언이 최대 수에 도달하지 않았을 때만 추가
-            {
-                availableChampions.Add(champion);
-            }
-        }
-
-        // 챔피언 풀이 비어있다면 null 반환
-        if (availableChampions.Count == 0)
-        {
-            Debug.LogWarning("No available champions in the pool!");
-            return null;
-        }
-
-        // 챔피언들의 랜덤한 인덱스를 계산하여 반환
-        int randomIndex = Random.Range(0, availableChampions.Count);
-        return availableChampions[randomIndex];
+    // 플레이어 레벨에 따라 챔피언 수를 계산하는 메서드
+    private int CalculateChampionCount(int playerLevel)
+    {
+        // 플레이어 레벨 * 5를 반환
+        return playerLevel * 5;
     }
 
     // 해당 챔피언이 최대 수에 도달했는지 확인하는 메서드
@@ -135,18 +124,206 @@ public class ChampionShop : MonoBehaviour
         return currentCount >= maxCount;
     }
 
-    public void OnChampionFrameClicked(int index)
+    // 챔피언 풀에서 랜덤하게 챔피언을 가져오는 메서드
+    private Champion GetRandomChampionWithProbability(int playerLevel)
     {
-        // 상점에서 챔피언을 구매하고 성공하면 해당 챔피언 프레임 숨김
-        bool isSuccess = gamePlayController.BuyChampionFromShop(availableChampionArray[index]);
-        if (isSuccess)
-            uIController.HideChampionFrame(index);
+        //각 등급별 챔피언 리스트 초기화
+        List<Champion> commonChampions = new List<Champion>();
+        List<Champion> rareChampions = new List<Champion>();
+        List<Champion> epicChampions = new List<Champion>();
+        List<Champion> legendaryChampions = new List<Champion>();
+
+        //각 등급별로 챔피언을 그룹화
+        foreach (Champion champion in championPoolScript.championPool)
+        {
+            switch ( champion.rarity)
+            {
+                case ChampionRarity.Common:
+                    commonChampions.Add(champion);
+                    break;
+                case ChampionRarity.Rare:
+                    rareChampions.Add(champion);
+                    break;
+                case ChampionRarity.Epic:
+                    epicChampions.Add(champion);
+                    break;
+                case ChampionRarity.Legendary:
+                    legendaryChampions.Add(champion);
+                    break;
+                default:
+                    //Debug.Log
+                    break;
+            }
+        }
+
+        //플레이어 레벨에 따른 확률 설정
+        float commonChance = CalculateProbability(playerLevel, ChampionRarity.Common);
+        float rareChampions = CalculateProbability(playerLevel, ChampionRarity.Rare);
+        float epicChampions = CalculateProbability(playerLevel, ChampionRarity.Epic);
+        float legendaryChampions = CalculateProbability(playerLevel, ChampionRarity.Legendary);
+
+        // 랜덤으로 등급을 선택
+        float randomValue = Random.value;
+        float cumulativeChance = 0f;
+        ChampionRarity selectedRarity = ChampionRarity.Common;
+
+        if (randomValue < commonChance)
+            selectedRarity = ChampionRarity.Common;
+        else if (randomValue < commonChance + rareChance)
+            selectedRarity = ChampionRarity.Rare;
+        else if (randomValue < commonChance + rareChance + epicChance)
+            selectedRarity = ChampionRarity.Epic;
+        else
+            selectedRarity = ChampionRarity.Legendary;
+
+        // 선택된 등급에 따라 챔피언을 선택
+        List<Champion> selectedChampions;
+        switch (selectedRarity)
+        {
+            case ChampionRarity.Common:
+                selectedChampions = commonChampions;
+                break;
+            case ChampionRarity.Rare:
+                selectedChampions = rareChampions;
+                break;
+            case ChampionRarity.Epic:
+                selectedChampions = epicChampions;
+                break;
+            case ChampionRarity.Legendary:
+                selectedChampions = legendaryChampions;
+                break;
+            default:
+                selectedChampions = commonChampions; // 기본적으로 일반 등급 챔피언 그룹 선택
+                break;
+        }
+
+        // 선택된 등급의 챔피언 리스트에서 랜덤하게 챔피언 선택
+        if (selectedChampions.Count == 0)
+        {
+            //Debug.LogWarning("No available champions in the selected rarity group!");
+            return null;
+        }
+
+        int randomIndex = Random.Range(0, selectedChampions.Count);
+        return selectedChampions[randomIndex];
+
     }
 
-    // 플레이어 레벨에 따라 챔피언 수를 계산하는 메서드
-    private int CalculateChampionCount(int playerLevel)
+
+    private float CalculateProbability(int playerLevel, ChampionRarity rarity)
     {
-        // 플레이어 레벨 * 5를 반환
-        return playerLevel * 5;
+        float baseChance;
+        
+        switch (rarity)
+        {
+            case ChampionRarity.Common:
+                switch (playerLevel)
+                {
+                    case 1:
+                        baseChance = 1.0f;
+                        break;
+                    case 2:
+                        baseChance = 0.9f;
+                        break;
+                    case 3:
+                        baseChance = 0.75f;
+                        break;
+                    case 4:
+                        baseChance = 0.55f;
+                        break;
+                    case 5:
+                        baseChance = 0.45f;
+                        break;
+                    case 6:
+                        baseChance = 0.3f;
+                        break;
+                    default:
+                        baseChance = 0.1f;
+                        break;
+                }
+                break;
+            case ChampionRarity.Rare:
+                switch (playerLevel)
+                {
+                    case 1:
+                        baseChance = 0.0f;
+                        break;
+                    case 2:
+                        baseChance = 0.1f;
+                        break;
+                    case 3:
+                        baseChance = 0.25f;
+                        break;
+                    case 4:
+                        baseChance = 0.3f;
+                        break;
+                    case 5:
+                        baseChance = 0.33f;
+                        break;
+                    case 6:
+                        baseChance = 0.4f;
+                        break;
+                    default:
+                        baseChance = 0.1f;
+                        break;
+                }
+                break;
+            case ChampionRarity.Epic:
+                switch (playerLevel)
+                {
+                    case 1:
+                        baseChance = 0.0f;
+                        break;
+                    case 2:
+                        baseChance = 0.0f;
+                        break;
+                    case 3:
+                        baseChance = 0.0f;
+                        break;
+                    case 4:
+                        baseChance = 0.15f;
+                        break;
+                    case 5:
+                        baseChance = 0.2f;
+                        break;
+                    case 6:
+                        baseChance = 0.25f;
+                        break;
+                    default:
+                        baseChance = 0.1f;
+                        break;
+                }
+                break;
+            case ChampionRarity.Legendary:
+                switch (playerLevel)
+                {
+                    case 1:
+                        baseChance = 0.0f;
+                        break;
+                    case 2:
+                        baseChance = 0.0f;
+                        break;
+                    case 3:
+                        baseChance = 0.0f;
+                        break;
+                    case 4:
+                        baseChance = 0.0f;
+                        break;
+                    case 5:
+                        baseChance = 0.02f;
+                        break;
+                    case 6:
+                        baseChance = 0.05f;
+                        break;
+                    default:
+                        baseChance = 0.1f;
+                        break;
+                }
+                break;
+            default:
+                baseChance = 0.1f
+        }
+
+        return baseChance;
     }
 }
