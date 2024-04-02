@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public Text scoreText;
     public GameObject gameoverUI;
 
+    Round round;
+
     private int score = 0;
     void Awake()
     {
@@ -22,6 +24,11 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        round = GetComponent<Round>();
     }
 
     void Update()
@@ -43,5 +50,13 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = true;
         gameoverUI.SetActive(true);
+    }
+
+    public void CheckGameOver()  //게임 오버 체크
+    {
+        if(round.isRound==false)
+        {
+
+        }
     }
 }
