@@ -8,4 +8,5 @@ public class UnitType : ScriptableObject
 {
     public string displayName = "name";
     public Sprite Synergyicon;
+    
 }

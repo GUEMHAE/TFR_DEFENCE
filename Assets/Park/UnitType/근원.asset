@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80be02129aa895e46a2dd44d18f01a97, type: 3}
   m_Name: "\uADFC\uC6D0"
   m_EditorClassIdentifier: 
-  displayName: name
-  icon: {fileID: 0}
+  displayName: "\uADFC\uC6D0"
+  Synergyicon: {fileID: 0}
