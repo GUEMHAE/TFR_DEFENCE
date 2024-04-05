@@ -57,7 +57,7 @@ public class SynergyManager : MonoBehaviour
     {
         synergies[2].name = "기원";
         synergies[2].effect = "1 시너지 : 주문력 20증가 5%\n2 시너지 : 주문력 50증가\n3 시너지 : 주문력 100증가\n4 시너지 : 주문력 200증가";
-        synergies[2].grade = 5;
+        synergies[2].grade = 0;
         synergies[2].icon = Resources.Load<Sprite>("Synergey/Water"); //리소스 이름을 ""사이에 넣으면 아이콘 정보 저장
     }
 
@@ -65,7 +65,7 @@ public class SynergyManager : MonoBehaviour
     {
         synergies[3].name = "황혼";
         synergies[3].effect = "1 시너지 : 공격력 20증가 5%\n2 시너지 : 공격력 50증가\n3 시너지 : 공격력 100증가\n4 시너지 : 공격력 200증가";
-        synergies[3].grade = 3;
+        synergies[3].grade = 0;
         synergies[3].icon = Resources.Load<Sprite>("Synergey/Fire"); //리소스 이름을 ""사이에 넣으면 아이콘 정보 저장
     }
 
@@ -73,7 +73,7 @@ public class SynergyManager : MonoBehaviour
     {
         synergies[4].name = "근원";
         synergies[4].effect = "1 시너지 : 공격 적중 시 적의 방어력과 마법저항력 3감소 5%\n2 시너지 : 공격 적중 시 적의 방어력과 마법저항력 8감소\n3 시너지 : 공격 적중 시 적의 방어력과 마법저항력 16감소\n4 시너지 : 공격 적중 시 적의 방어력과 마법저항력 30감소";
-        synergies[4].grade = 4;
+        synergies[4].grade = 0;
         synergies[4].icon = Resources.Load<Sprite>("Synergey/Ground"); //리소스 이름을 ""사이에 넣으면 아이콘 정보 저장
     }
 
@@ -81,7 +81,7 @@ public class SynergyManager : MonoBehaviour
     {
         synergies[5].name = "천공";
         synergies[5].effect = "1 시너지 : 공격 속도 30%증가\n\n 전장에 바람 속성 영웅이 2개체 존재할 시 시너지 효과가 사라집니다.";
-        synergies[5].grade = 2;
+        synergies[5].grade = 0;
         synergies[5].icon = Resources.Load<Sprite>("Synergey/Air"); //리소스 이름을 ""사이에 넣으면 아이콘 정보 저장
     }
 }

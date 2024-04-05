@@ -23,7 +23,7 @@ public class UnitInfo : ScriptableObject
     public float AttackSpeed { get { return attackSpeed; } }
 
     public UnitType[] type;
-
+    public string Type1 { get { return type[0].ToString(); } }
 
     public GameObject attackProjectile;
     [SerializeField] private float attackRange;

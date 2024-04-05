@@ -89,16 +89,15 @@ public class SynergyUI : MonoBehaviour
 
     private void Start()
     {
-        //DisplaySynergy();
+        synergyGradeCheck= new int[6];
+        synergyGradeCheck[0] = synergyManager.synergies[0].grade;
+        DisplaySynergy();
     }
 
     private void Update()
     {
-        synergyGradeCheck[0] = synergyManager.synergies[0].grade;
         synergyManager.synergies[0].grade = synergyGradeCheck[0];
         System.Array.Sort(synergyManager.synergies, (x, y) => y.grade.CompareTo(x.grade));
-        //gridLayoutGroup.enabled = true;
-        //LayoutRebuilder.ForceRebuildLayoutImmediate(gridLayoutGroup.GetComponent<RectTransform>());
         DisplaySynergy();
     }
 }
