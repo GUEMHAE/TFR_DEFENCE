@@ -1,46 +1,71 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class PlacePoint : MonoBehaviour
+public class PlacePoint : MonoBehaviour, IDragHandler, IEndDragHandler
 {
     public bool isPalce = false;
-    public SpriteRenderer sprite;
-    public GameObject unit;
+    public bool canPlace = false;
+    public GameObject grid;
+    Transform defaultPos;
+    BoxCollider2D boxCol;
 
     private void Start()
     {
-        sprite = gameObject.GetComponent<SpriteRenderer>();
+        boxCol = GetComponent<BoxCollider2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Unit")
+        if (collision.tag == "Grid")
         {
             if (isPalce)
             {
-                sprite.color = Color.red;
-                unit.GetComponent<BoxCollider2D>().enabled = false;
+                collision.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                canPlace = false;
             }
             else
             {
-                sprite.color = Color.green;
-                onUnitPlace();
+                collision.gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+                grid = collision.gameObject;
+                canPlace = true;
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Unit")
+        if (collision.tag == "Grid")
         {
-            sprite.color = Color.white;
+            collision.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            grid = null;
         }
     }
 
-    void onUnitPlace()
+   void IEndDragHandler.OnEndDrag(PointerEventData eventData)
     {
-        unit.transform.parent = transform;
-        isPalce = true;
+        if (canPlace && !isPalce && grid != null)
+        {
+            transform.SetParent(grid.transform);
+            transform.localPosition = Vector3.zero;
+            boxCol.size = new Vector2(0.7f, 0.7f);
+        }
+        if(grid == null)
+        {
+            transform.localPosition = Vector3.zero;
+            boxCol.size = new Vector2(0.7f, 0.7f);
+        }
+    }
+    
+
+    void IDragHandler.OnDrag(PointerEventData eventData)
+    {
+        boxCol.size = new Vector2(0.1f, 0.1f);
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0f;
+        transform.position = mousePos;
+        // 오브젝트를 마우스 위치로 이동
+        // transform.position = Vector3.MoveTowards(transform.position, mousePos, moveSpeed * Time.deltaTime);
     }
 }
