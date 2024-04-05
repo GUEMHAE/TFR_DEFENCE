@@ -10,7 +10,6 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     TMP_Text _currentRound; //현재 라운드 표시 해주는 UI
 
-
     float _roundTime; //현재 라운드 시간 받아오는 변수
 
     void Update()
