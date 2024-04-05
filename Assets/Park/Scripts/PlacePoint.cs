@@ -6,6 +6,7 @@ public class PlacePoint : MonoBehaviour
 {
     public bool isPalce = false;
     public SpriteRenderer sprite;
+    public GameObject unit;
 
     private void Start()
     {
@@ -19,10 +20,12 @@ public class PlacePoint : MonoBehaviour
             if (isPalce)
             {
                 sprite.color = Color.red;
+                unit.GetComponent<BoxCollider2D>().enabled = false;
             }
             else
             {
                 sprite.color = Color.green;
+                onUnitPlace();
             }
         }
     }
@@ -33,5 +36,11 @@ public class PlacePoint : MonoBehaviour
         {
             sprite.color = Color.white;
         }
+    }
+
+    void onUnitPlace()
+    {
+        unit.transform.parent = transform;
+        isPalce = true;
     }
 }

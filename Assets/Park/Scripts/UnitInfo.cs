@@ -24,7 +24,6 @@ public class UnitInfo : ScriptableObject
 
     public UnitType[] type;
 
-
     public GameObject attackProjectile;
     [SerializeField] private float attackRange;
     public float AttackRange { get { return attackRange; } }

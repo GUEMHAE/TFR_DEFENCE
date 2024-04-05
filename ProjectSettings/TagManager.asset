@@ -3,13 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-<<<<<<< Updated upstream
-  tags: []
-=======
   tags:
-  - Grid
-  - Unit
->>>>>>> Stashed changes
+  - champion
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -17,7 +13,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Grid
+  - 
   - 
   - 
   - 
