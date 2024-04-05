@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance; // 싱글톤을 할당할 전역 변수
-    public bool isGameOver = false;
+    public bool isGameOver = false; //게임오버 여부 판단
     public Text scoreText;
     public GameObject gameoverUI;
     [SerializeField]
