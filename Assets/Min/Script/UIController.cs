@@ -55,25 +55,25 @@ public class UIController : MonoBehaviour
     }
 
     // 상점 아이템을 로드하는 메서드
-    public void LoadShopItem(Champion champion, int index)
-    {
-        Transform championUI = championsFrameArray[index].transform.Find("champion");
-        Transform top = championUI.Find("top");
-        Transform bottom = championUI.Find("bottom");
-        Transform type1 = top.Find("type 1");
-        Transform type2 = top.Find("type 2");
-        Transform name = bottom.Find("Name");
-        Transform cost = bottom.Find("Cost");
-        Transform icon1 = top.Find("icon 1");
-        Transform icon2 = top.Find("icon 2");
+    //public void LoadShopItem(Champion champion, int index)
+    //{
+    //    Transform championUI = championsFrameArray[index].transform.Find("champion");
+    //    Transform top = championUI.Find("top");
+    //    Transform bottom = championUI.Find("bottom");
+    //    Transform type1 = top.Find("type 1");
+    //    Transform type2 = top.Find("type 2");
+    //    Transform name = bottom.Find("Name");
+    //    Transform cost = bottom.Find("Cost");
+    //    Transform icon1 = top.Find("icon 1");
+    //    Transform icon2 = top.Find("icon 2");
 
-        name.GetComponent<Text>().text = champion.uiname;
-        cost.GetComponent<Text>().text = champion.cost.ToString();
-        type1.GetComponent<Text>().text = champion.type1.displayName;
-        type2.GetComponent<Text>().text = champion.type2.displayName;
-        icon1.GetComponent<Image>().sprite = champion.type1.icon;
-        icon2.GetComponent<Image>().sprite = champion.type2.icon;
-    }
+    //    name.GetComponent<Text>().text = champion.uiname;
+    //    cost.GetComponent<Text>().text = champion.cost.ToString();
+    //    //type1.GetComponent<Text>().text = champion.type1.displayName;
+    //    //type2.GetComponent<Text>().text = champion.type2.displayName;
+    //    //icon1.GetComponent<Image>().sprite = champion.type1.icon;
+    //    //icon2.GetComponent<Image>().sprite = champion.type2.icon;
+    //}
 
     // UI를 업데이트하는 메서드
     public void UpdateUI()

@@ -49,11 +49,11 @@ public class GamePlayController : MonoBehaviour
 
     void Update()
     {
-       
+
     }
 
 
-    public bool BuyChampionFromShop(Champion champion)
+    public bool BuyChampionFromShop(ChampionShop champion)
     {
         int emptyIndex = -1;
         for (int i = 0; i < ownChampionInventoryArray.Length; i++)
@@ -68,11 +68,11 @@ public class GamePlayController : MonoBehaviour
         if (emptyIndex == -1)
             return false;
 
-        if (currentGold < champion.cost)
-            return false;
+        //if (currentGold < champion.cost)
+        //    return false;
 
-        GameObject championPrefab = Instantiate(champion.prefab);
-        currentGold -= champion.cost;
+        //GameObject championPrefab = Instantiate(champion.prefab);
+        //currentGold -= champion.cost;
 
         uIController.UpdateUI();
 
@@ -124,7 +124,7 @@ public class GamePlayController : MonoBehaviour
     // 플레이어 레벨을 증가시키는 메서드
     public void IncreasePlayerLevel()
     {
-        if(!playerLevel == 6)
+        if (playerLevel != 6)
         {
             currentExp += 4;
             if (currentExp >= 2)

@@ -63,9 +63,9 @@ public class ChampionShop : MonoBehaviour
         for (int i = 0; i < availableChampionArray.Length; i++)
         {
             // 챔피언 풀에서 랜덤하게 챔피언을 가져옴
-            Champion champion = GetRandomChampionWithProbability();
-            availableChampionArray[i] = champion;
-            uIController.LoadShopItem(champion, i);
+            //ChampionData champion = GetRandomChampionWithProbability(playerLevel);
+            //availableChampionArray[i] = champion;
+            //uIController.LoadShopItem(champion, i);
             uIController.ShowShopItems();
         }
 
@@ -79,19 +79,19 @@ public class ChampionShop : MonoBehaviour
         //Debug.Log("Champion: ", )
     }
 
-    public void OnChampionFrameClicked(int index)
-    {
-        // 상점에서 챔피언을 구매하고 성공하면 해당 챔피언 프레임 숨김
-        bool isSuccess = gamePlayController.BuyChampionFromShop(availableChampionArray[index]);
-        if (isSuccess)
-            uIController.HideChampionFrame(index);
-    }
+    //public void OnChampionFrameClicked(int index)
+    //{
+    //    // 상점에서 챔피언을 구매하고 성공하면 해당 챔피언 프레임 숨김
+    //    bool isSuccess = gamePlayController.BuyChampionFromShop(availableChampionArray[index]);
+    //    if (isSuccess)
+    //        uIController.HideChampionFrame(index);
+    //}
 
     // 플레이어 레벨에 따라 챔피언 수를 계산하는 메서드
     private int CalculateChampionCount(int playerLevel)
     {
         // 플레이어 레벨 * 5를 반환
-        return playerLevel * 5;
+        return playerLevel;
     }
 
     // 해당 챔피언이 최대 수에 도달했는지 확인하는 메서드
@@ -124,19 +124,41 @@ public class ChampionShop : MonoBehaviour
         return currentCount >= maxCount;
     }
 
+    //챔피언 등급 열거형
+    public enum ChampionRarity
+    {
+        Common,
+        Rare,
+        Epic,
+        Legendary
+    }
+
+    //챔피언 클래스에 등급속성 추가
+    public class Champion
+    {
+        public string championName;
+        public ChampionRarity rarity;
+
+        public Champion(string name, ChampionRarity rarity)
+        {
+            championName = name;
+            this.rarity = rarity;
+        }
+    }
+
     // 챔피언 풀에서 랜덤하게 챔피언을 가져오는 메서드
     private Champion GetRandomChampionWithProbability(int playerLevel)
     {
-        //각 등급별 챔피언 리스트 초기화
+        // 각 등급별 챔피언 리스트 초기화
         List<Champion> commonChampions = new List<Champion>();
         List<Champion> rareChampions = new List<Champion>();
         List<Champion> epicChampions = new List<Champion>();
         List<Champion> legendaryChampions = new List<Champion>();
 
-        //각 등급별로 챔피언을 그룹화
+        // 각 등급별로 챔피언을 그룹화
         foreach (Champion champion in championPoolScript.championPool)
         {
-            switch ( champion.rarity)
+            switch (champion.rarity)
             {
                 case ChampionRarity.Common:
                     commonChampions.Add(champion);
@@ -151,32 +173,36 @@ public class ChampionShop : MonoBehaviour
                     legendaryChampions.Add(champion);
                     break;
                 default:
-                    //Debug.Log
+                    Debug.LogError("Unknown Champion Rarity: " + champion.rarity);
                     break;
             }
         }
 
-        //플레이어 레벨에 따른 확률 설정
+        // 플레이어 레벨에 따른 확률 설정
         float commonChance = CalculateProbability(playerLevel, ChampionRarity.Common);
-        float rareChampions = CalculateProbability(playerLevel, ChampionRarity.Rare);
-        float epicChampions = CalculateProbability(playerLevel, ChampionRarity.Epic);
-        float legendaryChampions = CalculateProbability(playerLevel, ChampionRarity.Legendary);
+        float rareChance = CalculateProbability(playerLevel, ChampionRarity.Rare);
+        float epicChance = CalculateProbability(playerLevel, ChampionRarity.Epic);
+        float legendaryChance = CalculateProbability(playerLevel, ChampionRarity.Legendary);
 
-        // 랜덤으로 등급을 선택
+        // 등급에 따른 확률을 배열에 저장
+        float[] chances = { commonChance, rareChance, epicChance, legendaryChance };
+
+        // 랜덤으로 등급 선택
         float randomValue = Random.value;
         float cumulativeChance = 0f;
         ChampionRarity selectedRarity = ChampionRarity.Common;
 
-        if (randomValue < commonChance)
-            selectedRarity = ChampionRarity.Common;
-        else if (randomValue < commonChance + rareChance)
-            selectedRarity = ChampionRarity.Rare;
-        else if (randomValue < commonChance + rareChance + epicChance)
-            selectedRarity = ChampionRarity.Epic;
-        else
-            selectedRarity = ChampionRarity.Legendary;
+        for (int i = 0; i < chances.Length; i++)
+        {
+            cumulativeChance += chances[i];
+            if (randomValue < cumulativeChance)
+            {
+                selectedRarity = (ChampionRarity)i;
+                break;
+            }
+        }
 
-        // 선택된 등급에 따라 챔피언을 선택
+        // 선택된 등급에 따라 챔피언 선택
         List<Champion> selectedChampions;
         switch (selectedRarity)
         {
@@ -200,20 +226,19 @@ public class ChampionShop : MonoBehaviour
         // 선택된 등급의 챔피언 리스트에서 랜덤하게 챔피언 선택
         if (selectedChampions.Count == 0)
         {
-            //Debug.LogWarning("No available champions in the selected rarity group!");
+            Debug.LogWarning("No champions available!");
             return null;
         }
 
         int randomIndex = Random.Range(0, selectedChampions.Count);
         return selectedChampions[randomIndex];
-
     }
 
 
     private float CalculateProbability(int playerLevel, ChampionRarity rarity)
     {
         float baseChance;
-        
+
         switch (rarity)
         {
             case ChampionRarity.Common:
@@ -320,10 +345,8 @@ public class ChampionShop : MonoBehaviour
                         break;
                 }
                 break;
-            default:
-                baseChance = 0.1f
         }
 
-        return baseChance;
+        return playerLevel;
     }
 }
