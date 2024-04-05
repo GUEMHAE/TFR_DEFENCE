@@ -56,8 +56,15 @@ public class Round : MonoBehaviour
 
     }
 
+        // 경험치 증가 함수
+    public void IncreaseExperience()
+    {
+        exp += 3;
+    }
+
     private void Start()
     {
         WaitRound().Forget();
+
     }
 }

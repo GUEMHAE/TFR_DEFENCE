@@ -6,51 +6,41 @@ using TMPro;
 
 public class Exp : MonoBehaviour
 {
-    public TMP_Text expText;   // 경험치를 표시할 텍스트 UI
     public TMP_Text levelText; // 레벨을 표시할 텍스트 UI
 
-    private float interval = 60f; // 경험치가 증가하는 간격 (초 단위)
-    private int round = 1;       // 현재 라운드를 저장하는 변수
-    private int exp = 0;  // 경험치를 저장하는 변수
+    public int exp;  // 경험치를 저장하는 변수
     private int level = 0;       // 현재 레벨을 저장하는 변수
-
-    void Start()
-    {
-        //expText = Round.instance.expText;
-        //exp = Round.instance.exp;
-    }
 
     void Update()
     {
-        // 경험치 텍스트 업데이트
-       // expText.text = "Experience: " + experience.ToString();
+        exp = Round.instance.exp;
 
         // 레벨 텍스트 업데이트
         levelText.text = "Level: " + level.ToString();
 
 
         // 경험치가 일정 수준 이상인 경우 레벨 업
-        if (exp >= GetExperienceRequiredForLevelUp(level))
+        if (exp >= Levelup(level))
         {
             if (level < 6)
             {
+                Round.instance.exp -= Levelup(level);
                 level++;
-                exp = 0; // 경험치 초기화
             }
-            exp = 0;
+            else
+                Round.instance.exp = 0;
         }
+
     }
 
     // 경험치 증가 함수
     public void IncreaseExperience()
     {
-        exp += 3;
-
-        expText.text = "Exp: " + exp.ToString();
+            exp += 3;
     }
 
     // 레벨업에 필요한 경험치 양 반환 함수
-    public int GetExperienceRequiredForLevelUp(int currentLevel)
+    public int Levelup(int currentLevel)
     {
         // 각 레벨별로 필요한 경험치 양 설정
         switch (currentLevel)

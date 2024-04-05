@@ -945,7 +945,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &585275634
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1893,6 +1893,7 @@ MonoBehaviour:
   totalRounds: 20
   currentRound: 1
   expRound: 0
+  exp: 0
   expText: {fileID: 669725879}
   isRound: 0
 --- !u!4 &1286661408
