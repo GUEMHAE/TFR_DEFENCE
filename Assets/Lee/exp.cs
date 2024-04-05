@@ -4,24 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class exp : MonoBehaviour
+public class Exp : MonoBehaviour
 {
     public TMP_Text expText;   // 경험치를 표시할 텍스트 UI
     public TMP_Text levelText; // 레벨을 표시할 텍스트 UI
-    public Button expButton; // 경험치를 증가시킬 버튼
 
     private float interval = 60f; // 경험치가 증가하는 간격 (초 단위)
     private int round = 1;       // 현재 라운드를 저장하는 변수
-    private int experience;  // 경험치를 저장하는 변수
+    private int exp = 0;  // 경험치를 저장하는 변수
     private int level = 0;       // 현재 레벨을 저장하는 변수
 
     void Start()
     {
-        expText = Round.instance.expText;
-        experience = Round.instance.exp;
-
-        // 버튼에 클릭 이벤트 연결
-        expButton.onClick.AddListener(IncreaseExperience);
+        //expText = Round.instance.expText;
+        //exp = Round.instance.exp;
     }
 
     void Update()
@@ -34,31 +30,38 @@ public class exp : MonoBehaviour
 
 
         // 경험치가 일정 수준 이상인 경우 레벨 업
-        if (experience >= GetExperienceRequiredForLevelUp(level))
+        if (exp >= GetExperienceRequiredForLevelUp(level))
         {
-            level++;
-            experience = 0; // 경험치 초기화
+            if (level < 6)
+            {
+                level++;
+                exp = 0; // 경험치 초기화
+            }
+            exp = 0;
         }
     }
 
     // 경험치 증가 함수
-    void IncreaseExperience()
+    public void IncreaseExperience()
     {
-        experience += 3;
+        exp += 3;
+
+        expText.text = "Exp: " + exp.ToString();
     }
 
     // 레벨업에 필요한 경험치 양 반환 함수
-    int GetExperienceRequiredForLevelUp(int currentLevel)
+    public int GetExperienceRequiredForLevelUp(int currentLevel)
     {
         // 각 레벨별로 필요한 경험치 양 설정
         switch (currentLevel)
         {
-            case 0: return 2;
-            case 1: return 6;
-            case 2: return 12;
-            case 3: return 18;
-            case 4: return 28;
-            default: return int.MaxValue; // 최대값으로 설정하여 이후 레벨업 없음을 의미
+            case 1: return 2;
+            case 2: return 6;
+            case 3: return 12;
+            case 4: return 18;
+            case 5: return 28;
+            case 6: return 0;
         }
+        return exp;
     }
 }

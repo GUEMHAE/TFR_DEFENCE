@@ -32,7 +32,7 @@ public class Round : MonoBehaviour
     void Update()
     {
         // 경험치 텍스트 업데이트
-        expText.text = "Experience: " + exp.ToString();
+        expText.text = "Exp: " + exp.ToString();
     }
 
     private async UniTaskVoid WaitRound()
