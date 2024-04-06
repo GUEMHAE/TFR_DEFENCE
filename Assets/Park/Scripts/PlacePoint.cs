@@ -65,7 +65,5 @@ public class PlacePoint : MonoBehaviour, IDragHandler, IEndDragHandler
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0f;
         transform.position = mousePos;
-        // 오브젝트를 마우스 위치로 이동
-        // transform.position = Vector3.MoveTowards(transform.position, mousePos, moveSpeed * Time.deltaTime);
     }
 }
