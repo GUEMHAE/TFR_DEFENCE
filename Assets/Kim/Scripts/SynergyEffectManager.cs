@@ -19,12 +19,10 @@ public class SynergyEffectManager : MonoBehaviour
     public float ad;                //플레이어 유닛의 공격력
     public float armor;           //적의 방어력
     public float ability_resist;   //적의 마법저항력
-    public float team_attack_spd; //플레이어 유닛의 추가 공격속도
 
     void Start()
     {
         trueDamage = 0; //초기 추가 고정피해 0으로 초기화
-        team_attack_spd = 1f; //초기 추가 공격속도 1로 초기화
     }
 
     void Update()
@@ -166,20 +164,20 @@ public class SynergyEffectManager : MonoBehaviour
         }
     }
 
-    void Air_Synergy()
-    {
-        switch (air_num)
-        {
-            case 0:
-                break;
-            case 1:
-                team_attack_spd=team_attack_spd * 0.3f;
-                break;
-            case 2:
-                team_attack_spd = 1f;
-                break;
-            default:
-                break;
-        }
-    }
+    //void Air_Synergy() //바람 시너지는 단일로 썻을 시 팀 전체 공격 속도 증가
+    //{
+    //    switch (air_num)
+    //    {
+    //        case 0:
+    //            break;
+    //        case 1:
+    //            team_attack_spd *= 1.3f;//team_attack_spd자리에 리스트에 담겨있는 아군 유닛 의 공격속도를 받아와야함
+    //            break;
+    //        case 2:
+    //            team_attack_spd = 1f;
+    //            break;
+    //        default:
+    //            break;
+    //    }
+    //}
 }

@@ -5,8 +5,7 @@ using UnityEngine;
 public class EnemyMoveMent2D : MonoBehaviour
 {
     //고박사의 유니티 강의_TowerDefense#01 참고함
-    [SerializeField]
-    private float moveSpeed = 0.0f; //적의 이동속도
+    public float moveSpeed = 0.0f; //적의 이동속도
     [SerializeField]
     private Vector3 moveDirection = Vector3.zero; //적의 이동 방향
 
