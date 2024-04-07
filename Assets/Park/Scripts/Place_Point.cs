@@ -5,32 +5,26 @@ using UnityEngine.EventSystems;
 
 public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
 {
-    public bool isPalce = false;
-    public bool canPlace = false;
+    [SerializeField]private bool canPlace = false;
     public GameObject grid;
-    Transform defaultPos;
     BoxCollider2D boxCol;
 
     private void Start()
     {
         boxCol = GetComponent<BoxCollider2D>();
+        canPlace = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Grid")
+        if (collision.tag == "Grid" && canPlace)
         {
-            if (isPalce)
-            {
-                collision.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-                canPlace = false;
-            }
-            else
-            {
-                collision.gameObject.GetComponent<SpriteRenderer>().color = Color.green;
-                grid = collision.gameObject;
-                canPlace = true;
-            }
+            collision.gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+            grid = collision.gameObject;
+        }
+        else
+        {
+            grid = null;
         }
     }
 
@@ -43,25 +37,24 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
         }
     }
 
-   void IEndDragHandler.OnEndDrag(PointerEventData eventData)
+    void IEndDragHandler.OnEndDrag(PointerEventData eventData)
     {
-        if (canPlace && !isPalce && grid != null)
+        if (canPlace && grid != null)
         {
             transform.SetParent(grid.transform);
             transform.localPosition = Vector3.zero;
-            boxCol.size = new Vector2(0.7f, 0.7f);
+            boxCol.size = new Vector2(0.65f, 0.65f);
         }
-        if(grid == null)
+        if (grid == null)
         {
             transform.localPosition = Vector3.zero;
-            boxCol.size = new Vector2(0.7f, 0.7f);
+            boxCol.size = new Vector2(0.65f, 0.65f);
         }
     }
-    
 
     void IDragHandler.OnDrag(PointerEventData eventData)
     {
-        boxCol.size = new Vector2(0.15f, 0.15f);
+        boxCol.size = new Vector2(0.08f, 0.08f);
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0f;
         transform.position = mousePos;
