@@ -14,11 +14,6 @@ public class AttackProjectile : MonoBehaviour
         this.attackTarget = target;
     }
 
-    private void OnEnable()
-    {
-
-    }
-
     void Update()
     {
         if(attackTarget!=null) //타겟이 존재하면
