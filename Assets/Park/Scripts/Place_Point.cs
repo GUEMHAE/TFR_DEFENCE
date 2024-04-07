@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PlacePoint : MonoBehaviour, IDragHandler, IEndDragHandler
+public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
 {
     public bool isPalce = false;
     public bool canPlace = false;
@@ -61,7 +61,7 @@ public class PlacePoint : MonoBehaviour, IDragHandler, IEndDragHandler
 
     void IDragHandler.OnDrag(PointerEventData eventData)
     {
-        boxCol.size = new Vector2(0.1f, 0.1f);
+        boxCol.size = new Vector2(0.15f, 0.15f);
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0f;
         transform.position = mousePos;
