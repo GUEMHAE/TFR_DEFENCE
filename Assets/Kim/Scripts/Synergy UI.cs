@@ -18,7 +18,7 @@ public class SynergyUI : MonoBehaviour
 
     public void DisplaySynergy()
     {
-        if (synergyManager.synergies[0].grade > 0)
+        if (synergyManager.synergies[0].grade > 0) //시너지의 갯수가 0개 이상일 경우만 시너지 UI에표시
         {
             synergyPrefab[0].SetActive(true);
 
@@ -83,14 +83,13 @@ public class SynergyUI : MonoBehaviour
     private void Start()
     {
         synergyGradeCheck= new int[6];
-        synergyGradeCheck[0] = synergyManager.synergies[0].grade;
+        synergyGradeCheck[0] = synergyManager.synergies[0].grade; //시너지 갯수 제대로 들어가는지 체크하는 코드
         DisplaySynergy();
     }
 
     private void Update()
     {
-        //synergyManager.synergies[0].grade = synergyGradeCheck[0];
-        System.Array.Sort(synergyManager.synergies, (x, y) => y.grade.CompareTo(x.grade));
+        System.Array.Sort(synergyManager.synergies, (x, y) => y.grade.CompareTo(x.grade));//시너지의 갯수가 높은 순으로 정렬
         DisplaySynergy();
     }
 }

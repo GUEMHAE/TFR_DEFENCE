@@ -25,6 +25,9 @@ public class UnitInfo : ScriptableObject
     public UnitType[] type;
 
     public GameObject attackProjectile;
+
+    public Transform spawnPoint; //발사체 생성 위치
+
     [SerializeField] private float attackRange;
     public float AttackRange { get { return attackRange; } }
 }

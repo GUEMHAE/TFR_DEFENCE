@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     Transform[] wayPoints;     //이동 경로 정보
     int currentIndex = 0;       //현재 목표지점 인덱스
     EnemyMoveMent2D enemyMoveMent2D;  //오브젝트 이동 제어
+    public float hp;
+    public float damage;
 
     public void Setup(Transform[] wayPoints)
     {
@@ -18,12 +20,20 @@ public class Enemy : MonoBehaviour
         //적 이동 경로 WayPoints 정보 설정
         wayPointCount = wayPoints.Length;
         this.wayPoints = new Transform[wayPointCount];
-        this.wayPoints = wayPoints;
+        this.wayPoints = wayPoints;      
 
         //적의 위치를 첫번째 wayPoint위치로 설정
         transform.position = wayPoints[currentIndex].position;
 
         OnMove();
+    }
+
+    public void Die()
+    {
+        if (hp <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private async UniTask OnMove() //다음 목표지점을 설정하는 함수 호출
@@ -64,5 +74,27 @@ public class Enemy : MonoBehaviour
             //적 오브젝트 다시 waypoint0으로 향하게
             currentIndex = 0;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag=="Projectile")
+        {
+
+            if (gameObject.transform != collision.GetComponent<AttackProjectile>().attackTarget) //적이 여러기 겹쳐 있을때 projectile의 attackTarget만 충돌 처리 되게 하는 코드
+            {
+                return;
+            }
+
+            damage = collision.GetComponent<AttackProjectile>().damage; //projectile의 데미지를 받아옴
+            hp -= damage; //적이 데미지를 받는 코드
+
+            Destroy(collision); //projectile 파괴
+        }
+    }
+
+    private void Update()
+    {
+        Die();
     }
 }
