@@ -9,11 +9,10 @@ public class Tonir : MonoBehaviour,IUnit
     public UnitInfo unitInfo; //UnitInfo스크립터블 오브젝트를 받아오기 위한 변수
 
     public GameObject enemy; //가장 가까운 적 유닛을 담는 오브젝트
-
-    public List<GameObject> foundEnemy = new List<GameObject>(); //콜라이더에 들어온 적 유닛을 담는 리스트
     public float shortDis; //가장 가까운 적과의 거리를 저장하는 변수
     public string tagName="Enemy"; //적의 태그 이름 초기화
-    public Transform attackTarget;
+    public GameObject attackTarget;
+    public GameObject dummy; //멀리 떨어뜨린 더미 오브젝트 
 
     public string unitName; //유닛 이름
     public float attackSpeed; //공격 속도
@@ -24,8 +23,6 @@ public class Tonir : MonoBehaviour,IUnit
     public float sellCost; //유닛 판매 가격
     public GameObject attackProjectile; //유닛 공격 프로젝타일
     public Transform attackSpawn; //유닛 공격 시작 위치
-
-    public CircleCollider2D circleCollider;
 
     public string unitNameP
     {
@@ -79,23 +76,51 @@ public class Tonir : MonoBehaviour,IUnit
     {
         while (true)
         {
-            if(enemy==null) //적이 null이면
+            if (EnemySpawnManager.instance.EnemyPool.childCount == 0)
             {
-                await UniTask.WaitUntil(() => enemy != null); //적이 null이 아닐때까지 기다림
+                enemy = dummy;
             }
-            if (shortDis <= attackRange) //최소거리가 공격사거리보다 작거나 같다면
+
+            if (enemy==null) //적이 null이면
             {
-                await UniTask.Delay(TimeSpan.FromSeconds(1 / attackSpeedP)); //공격속도에 맞춰
-                SpawnProjectile(); //프로젝타일 생성
+                await UniTask.WaitUntil(() => enemy != null);
             }
-            await UniTask.WaitUntil(() => enemy != null); //적이 널이 아닐때까지 다시 대기
+            if (Round.instance.isRound ==true && shortDis <= attackRange) //최소거리가 공격사거리보다 작거나 같다면
+            {
+                await UniTask.Delay(TimeSpan.FromSeconds(1 / attackSpeed)); //공격속도에 맞춰
+                Debug.Log("공격생성직전");
+                if (EnemySpawnManager.instance.EnemyPool.childCount == 0)
+                {
+                    enemy = dummy;//2라운드부터 enemy가 missing으로 변해 공격을 안하는 걸 막기 위한 코드
+                }
+                if (enemy != dummy)//더미가 아닐 경우만 공격
+                {
+                    SpawnProjectile(); //프로젝타일 생성
+                }
+            }
+            await UniTask.WaitUntil(() => enemy != null); //적이 null이 아닐때까지 다시 대기
+        }
+    }
+
+    void CheckEnemies()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(tagName);
+
+        shortDis = float.MaxValue;
+        foreach(GameObject enemyObject in enemies)
+        {
+            float distance = Vector3.Distance(gameObject.transform.position, enemyObject.transform.position);
+            if(distance<shortDis)
+            {
+                enemy = enemyObject;
+                shortDis = distance;
+            }
         }
     }
 
     void Start()
     {
         AttackToTarget();
-        circleCollider = GetComponent<CircleCollider2D>();
     }
 
     private void OnEnable()
@@ -110,50 +135,8 @@ public class Tonir : MonoBehaviour,IUnit
         attackProjectileP = unitInfo.attackProjectile;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void Update()
     {
-        if(other.tag==tagName)
-        {
-            if (!foundEnemy.Contains(other.gameObject)) //이미 리스트에 들어있는 적 리스트에 추가 안함
-            {
-                foundEnemy.Add(other.gameObject);
-            }
-         shortDis = Vector3.Distance(gameObject.transform.position, foundEnemy[0].transform.position);
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)//호출될때마다 가장 가까운 적만을 찾음
-    {
-        if (collision = circleCollider)
-        {
-            if (collision.tag == tagName)
-            {
-                float shortestDistance = float.MaxValue;
-                GameObject nearestEnemy = null;
-
-                foreach (GameObject found in foundEnemy)
-                {
-                    float Distance = Vector3.Distance(gameObject.transform.position, found.transform.position);
-
-                    if (Distance < shortestDistance)
-                    {
-                        nearestEnemy = found;
-                        shortestDistance = Distance;
-                    }
-                }
-                enemy = nearestEnemy;
-                shortDis = shortestDistance;
-
-                if (enemy == null)
-                {
-                    shortDis = 0;
-                }
-            }
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        foundEnemy.Remove(collision.gameObject);
+        CheckEnemies();
     }
 }
