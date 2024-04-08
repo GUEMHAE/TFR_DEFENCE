@@ -50,7 +50,7 @@ public class Exp : MonoBehaviour
     public void IncreaseExperience()
     {
         Round.instance.exp += 3;
-        CheckExp();
+        ExpBarSlider.value = (float)exp / (float)expBar;
     }
 
     public void CheckExp()

@@ -2060,6 +2060,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelText: {fileID: 464015526}
   exp: 0
+  expBar: 0
+  ExpBarSlider: {fileID: 0}
+  exping: {fileID: 0}
 --- !u!1 &1374095082
 GameObject:
   m_ObjectHideFlags: 0
