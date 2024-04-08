@@ -25,6 +25,8 @@ public class Tonir : MonoBehaviour,IUnit
     public GameObject attackProjectile; //유닛 공격 프로젝타일
     public Transform attackSpawn; //유닛 공격 시작 위치
 
+    public CircleCollider2D circleCollider;
+
     public string unitNameP
     {
         get => unitName;
@@ -93,6 +95,7 @@ public class Tonir : MonoBehaviour,IUnit
     void Start()
     {
         AttackToTarget();
+        circleCollider = GetComponent<CircleCollider2D>();
     }
 
     private void OnEnable()
@@ -121,27 +124,30 @@ public class Tonir : MonoBehaviour,IUnit
 
     private void OnTriggerStay2D(Collider2D collision)//호출될때마다 가장 가까운 적만을 찾음
     {
-        if (collision.tag == tagName)
+        if (collision = circleCollider)
         {
-            float shortestDistance = float.MaxValue;
-            GameObject nearestEnemy = null;
-
-            foreach (GameObject found in foundEnemy)
+            if (collision.tag == tagName)
             {
-                float Distance = Vector3.Distance(gameObject.transform.position, found.transform.position);
+                float shortestDistance = float.MaxValue;
+                GameObject nearestEnemy = null;
 
-                if (Distance < shortestDistance)
+                foreach (GameObject found in foundEnemy)
                 {
-                    nearestEnemy = found;
-                    shortestDistance = Distance;
-                }
-            }
-            enemy = nearestEnemy;
-            shortDis = shortestDistance;
+                    float Distance = Vector3.Distance(gameObject.transform.position, found.transform.position);
 
-            if(enemy==null)
-            {
-                shortDis = 0;
+                    if (Distance < shortestDistance)
+                    {
+                        nearestEnemy = found;
+                        shortestDistance = Distance;
+                    }
+                }
+                enemy = nearestEnemy;
+                shortDis = shortestDistance;
+
+                if (enemy == null)
+                {
+                    shortDis = 0;
+                }
             }
         }
     }

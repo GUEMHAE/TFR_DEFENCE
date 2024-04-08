@@ -33,8 +33,9 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
         }
         else
         {
-            grid = null;
             Debug.Log("???");
+            transform.localPosition = Vector3.zero;
+
         }
     }
 
