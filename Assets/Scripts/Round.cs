@@ -31,8 +31,8 @@ public class Round : MonoBehaviour
 
     void Update()
     {
-        // 경험치 텍스트 업데이트
-        expText.text = "Exp: " + exp.ToString();
+        //// 경험치 텍스트 업데이트
+        //expText.text = "Exp: " + exp.ToString();
     }
 
     private async UniTaskVoid WaitRound()
@@ -44,7 +44,7 @@ public class Round : MonoBehaviour
             Debug.Log("선택시간") ;
             isRound = false;
 
-            exp++;
+            //exp++;
 
             await UniTask.Delay(TimeSpan.FromSeconds(15f)); // 15초 선택시간
             Debug.Log("선택시간 종료");

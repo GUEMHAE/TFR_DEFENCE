@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2699030171192128140}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,8 @@ GameObject:
   - component: {fileID: 3797249811377624825}
   - component: {fileID: 73107302666275923}
   - component: {fileID: 8480210314889470155}
-  m_Layer: 0
+  - component: {fileID: 4263087532674170541}
+  m_Layer: 3
   m_Name: "\uD1A0\uB2C8\uB974"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,9 +107,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 1, g: 0.9540519, b: 0, a: 1}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 7384e013f1695ac4faf91bcf538a25b3, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -135,6 +136,7 @@ MonoBehaviour:
   foundEnemy: []
   shortDis: 0
   tagName: Enemy
+  attackTarget: {fileID: 0}
   unitName: 
   attackSpeed: 0
   attackRange: 0
@@ -179,3 +181,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 7
+--- !u!114 &4263087532674170541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4289398598157677505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0174ef34b97d10d41878a9b58e1997ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitInfo: {fileID: 11400000, guid: 745d7a9b45ddefc459ac85f1a2f2d387, type: 2}
+  unitType:
+  - {fileID: 11400000, guid: 9add369b0b0a7ba4c8e70de2c57d9bf1, type: 2}
+  - {fileID: 0}
