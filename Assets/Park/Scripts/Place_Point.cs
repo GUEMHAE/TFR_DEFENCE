@@ -29,11 +29,12 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
                 grid = null;
                 transform.localPosition = Vector3.zero;
                 Debug.Log("À¯´Ö³¢¸® °ãÄ§");
-            }    
+            }
         }
         else
         {
             grid = null;
+            Debug.Log("???");
         }
     }
 
@@ -42,9 +43,8 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
         if (collision.tag == "Grid")
         {
             collision.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
-            grid = null;
-            Debug.Log("ÄÝ¶óÀÌ´õ¿¡¼­ ³ª°¨");
             canPlace = true;
+            grid = null;
         }
     }
 
@@ -55,13 +55,20 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
             gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
             transform.SetParent(grid.transform);
             transform.localPosition = Vector3.zero;
-            boxCol.size = new Vector2(0.4f, 0.4f);
+            boxCol.size = new Vector2(0.5f, 0.5f);
         }
-        if (grid == null)
+        else if (grid == null)
         {
             gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
             transform.localPosition = Vector3.zero;
-            boxCol.size = new Vector2(0.4f, 0.4f);
+            boxCol.size = new Vector2(0.5f, 0.5f);
+        }
+        else
+        {
+            gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            grid = null;
+            transform.localPosition = Vector3.zero;
+            boxCol.size = new Vector2(0.5f, 0.5f);
         }
     }
 
