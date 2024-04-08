@@ -89,6 +89,8 @@ public class SynergyUI : MonoBehaviour
 
     private void Update()
     {
+        synergyManager.synergies[0].grade = synergyGradeCheck[0];
+
         System.Array.Sort(synergyManager.synergies, (x, y) => y.grade.CompareTo(x.grade));//시너지의 갯수가 높은 순으로 정렬
         DisplaySynergy();
     }

@@ -52,6 +52,5 @@ public class Round : MonoBehaviour
     private void Start()
     {
         WaitRound().Forget();
-
     }
 }
