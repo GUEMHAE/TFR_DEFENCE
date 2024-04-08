@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class Grid : MonoBehaviour
 {
-    Place_Point place;
-    public bool canPlace;
+    private Place_Point place;
 
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        // 부모 오브젝트를 가져옵니다.
-        Transform parentObject = transform;
+        if (collision.tag == "Unit")
+        {
+            place = collision.GetComponent<Place_Point>();
+            Transform parentObject = transform;
 
-        // 자식 오브젝트가 있는지 확인합니다.
-        if (parentObject.childCount > 0)
-        {
-            canPlace = false;
-        }
-        else
-        {
-            canPlace = true;
+            // 자식 오브젝트가 있는지 확인
+            if (parentObject.childCount > 0)
+            {
+                place.canPlace = false;
+            }
+            else
+            {
+                place.canPlace = true;
+            }
         }
     }
 }
