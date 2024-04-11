@@ -21,5 +21,6 @@ MonoBehaviour:
   attackSpeed: 1
   type:
   - {fileID: 11400000, guid: 8884a4446f6821f4485e7f7ec3ea99a6, type: 2}
-  attackProjectile: {fileID: 0}
-  attackRange: 0
+  attackProjectile: {fileID: 1109751858030904874, guid: 66db3ec4e609347489af07ce09c42e7f, type: 3}
+  spawnPoint: {fileID: 0}
+  attackRange: 3
