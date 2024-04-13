@@ -9,7 +9,7 @@ public class Exp : MonoBehaviour
     public TMP_Text levelText; // 레벨을 표시할 텍스트 UI
 
     public float exp;  // 경험치를 저장하는 변수
-    private float level = 0;  // 현재 레벨을 저장하는 변수
+    private float level = 1;  // 현재 레벨을 저장하는 변수
     public float expBar; // 레벨까지 필요한 경험치
     public Slider ExpBarSlider; // 경험치 슬라이더
     public TMP_Text exping; // 현재 경험치 / 레벨까지 필요한 경험치

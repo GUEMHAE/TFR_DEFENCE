@@ -1005,7 +1005,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 428170605}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 902427971}
+        m_TargetAssemblyTypeName: Random_Unit, Assembly-CSharp
+        m_MethodName: RandomSprite
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &428170605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2520,6 +2532,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 902427970}
+  - component: {fileID: 902427971}
   m_Layer: 5
   m_Name: Shop
   m_TagString: Untagged
@@ -2547,6 +2560,39 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &902427971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902427969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9caf649016f113479e5d54342568eb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageSlots:
+  - {fileID: 1078553965}
+  - {fileID: 516318607}
+  - {fileID: 1783485194}
+  - {fileID: 1494268741}
+  sprites:
+  - {fileID: 21300000, guid: 9b7e44f3d87c38448b9c3c825a2d5a9c, type: 3}
+  - {fileID: 21300000, guid: 6c9289ce98a6d814db014deff7f56781, type: 3}
+  - {fileID: 21300000, guid: dabb50a3b37c8e2469b98fbb7855bfa9, type: 3}
+  - {fileID: 21300000, guid: 6690eaf7edb1fe8468e2627b434d2fe2, type: 3}
+  - {fileID: 21300000, guid: 1407f8bda9aa61b48ad23f3ae6bc7b4a, type: 3}
+  - {fileID: 21300000, guid: 3a74bf0d8cc082942b2442ff03e5d345, type: 3}
+  - {fileID: 21300000, guid: fdb6f8b165fd12347a705a1fecd18a8f, type: 3}
+  - {fileID: 21300000, guid: d1036355456752949b52cac3a7ac9fe7, type: 3}
+  - {fileID: 21300000, guid: 35e8744a5be1e9a48b64d5632146cb8a, type: 3}
+  - {fileID: 21300000, guid: fb7d705217c13b946a9f5364322ac65a, type: 3}
+  - {fileID: 21300000, guid: 3f0974e55dc9c544380652f0de1db61f, type: 3}
+  - {fileID: 21300000, guid: 3f0afedae029bee42b9142ce686d851e, type: 3}
+  - {fileID: 21300000, guid: b4769dc345932e547ba8131ea6baf7a4, type: 3}
+  - {fileID: 21300000, guid: 3c17eaafd72e67f458a1e18d3a705c29, type: 3}
+  - {fileID: 21300000, guid: e495f5beeb3270845858d387b8d105f7, type: 3}
 --- !u!1 &934158127
 GameObject:
   m_ObjectHideFlags: 0
