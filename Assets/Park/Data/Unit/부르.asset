@@ -21,5 +21,5 @@ MonoBehaviour:
   attackSpeed: 1
   type:
   - {fileID: 11400000, guid: 474399af88a3da04e8b97ac5e5947a6e, type: 2}
-  attackProjectile: {fileID: 0}
-  attackRange: 0
+  attackProjectile: {fileID: 1109751858030904874, guid: 66db3ec4e609347489af07ce09c42e7f, type: 3}
+  attackRange: 3
