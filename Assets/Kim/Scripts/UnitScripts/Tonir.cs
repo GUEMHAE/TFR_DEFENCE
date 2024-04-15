@@ -11,8 +11,10 @@ public class Tonir : MonoBehaviour,IUnit
     public GameObject enemy; //가장 가까운 적 유닛을 담는 오브젝트
     public float shortDis; //가장 가까운 적과의 거리를 저장하는 변수
     public string tagName="Enemy"; //적의 태그 이름 초기화
+    Vector3 enemyPosition; //적 유닛의 위에 스킬을 생성하기 위한 변수
     public GameObject attackTarget;
     public GameObject dummy; //멀리 떨어뜨린 더미 오브젝트 
+    public GameObject skillPrefab;
 
     public string unitName; //유닛 이름
     public float attackSpeed; //공격 속도
@@ -21,6 +23,9 @@ public class Tonir : MonoBehaviour,IUnit
     public float ap;  //유닛 ap
     public float cost; //유닛 구매 가격
     public float sellCost; //유닛 판매 가격
+    public float maxMana; //유닛의 최대 마나
+    public float currentMana; //유닛의 현재 마나
+    public float regenManaRate; //마나 회복량
     public GameObject attackProjectile; //유닛 공격 프로젝타일
     public Transform attackSpawn; //유닛 공격 시작 위치
 
@@ -117,10 +122,23 @@ public class Tonir : MonoBehaviour,IUnit
             }
         }
     }
+    async UniTask RegenMana()
+    {
+        while (true)
+        {
+            await UniTask.Delay(1000);//1초마다 마나 회복
+            if (currentMana < maxMana)
+            {
+                currentMana += regenManaRate;
+                currentMana = Mathf.Min(currentMana, maxMana);//현재 마나가 최대 마나를 초과하지 않게 하기 위해
+            }
+        }
+    }
 
     void Start()
     {
         AttackToTarget();
+        RegenMana();
     }
 
     private void OnEnable()
@@ -133,10 +151,21 @@ public class Tonir : MonoBehaviour,IUnit
         costP = unitInfo.Cost;
         sellCostP = unitInfo.SellCost;
         attackProjectileP = unitInfo.attackProjectile;
+        regenManaRate = 4f;
     }
 
     private void Update()
     {
         CheckEnemies();
+        enemyPosition = enemy.transform.position;
+        if (currentMana == maxMana)
+        {
+            if (enemy != null && enemy != dummy)
+            {
+                currentMana = 0;
+                GameObject SkillClone = Instantiate(skillPrefab, enemyPosition+Vector3.up, Quaternion.identity);
+                SkillClone.GetComponent<TonirSkill>().SkillTargeting(enemy.transform);//적을 타게팅함
+            }
+        }
     }
 }

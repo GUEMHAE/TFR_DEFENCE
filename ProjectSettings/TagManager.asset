@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - Projectile
   - Grid
+  - DarbamSkill
+  - TonirSkill
   layers:
   - Default
   - TransparentFX

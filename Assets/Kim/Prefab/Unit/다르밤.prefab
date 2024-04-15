@@ -146,6 +146,9 @@ MonoBehaviour:
   ap: 0
   cost: 0
   sellCost: 0
+  maxMana: 40
+  currentMana: 0
+  regenManaRate: 0
   attackProjectile: {fileID: 0}
   attackSpawn: {fileID: 5377363186222607736}
 --- !u!114 &439005740334820361

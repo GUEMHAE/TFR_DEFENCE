@@ -91,6 +91,25 @@ public class Enemy : MonoBehaviour
 
             Destroy(collision); //projectile 파괴
         }
+
+        if(collision.tag=="DarbamSkill")
+        {
+            damage = collision.GetComponent<DarbamSkill>().damage;
+            hp -= damage;
+        }
+
+        if(collision.tag=="TonirSkill")
+        {
+            if (gameObject.transform != collision.GetComponent<TonirSkill>().attackTarget) //적이 여러기 겹쳐 있을때 projectile의 attackTarget만 충돌 처리 되게 하는 코드
+            {
+                return;
+            }
+            damage = collision.GetComponent<TonirSkill>().damage;
+            Debug.Log("토니르 스킬 적중");
+        }
+        hp -= damage;
+
+        Destroy(collision);
     }
 
     private void Update()
