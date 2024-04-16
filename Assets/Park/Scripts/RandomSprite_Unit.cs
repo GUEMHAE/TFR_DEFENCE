@@ -8,23 +8,30 @@ public class RandomSprite_Unit : MonoBehaviour
     public Image[] imageSlots; // 4개의 이미지 슬롯 
     public Sprite[] sprites; // 스프라이트를 저장할 배열
 
+    Exp exp;
     [SerializeField] private int level = 1;
 
-    void Start()
+    private void Awake()
     {
-        level = 1;
         RandomSprite();
+        exp = GetComponent<Exp>();
+    }
+
+    private void Update()
+    {
+        level = exp.level;
     }
 
     public void RandomSprite()
     {
         for (int i = 0; i < imageSlots.Length; i++)
         {
-            int randomIndex =0;
+            int randomIndex = 0;
             if (level == 1)
             {
                 randomIndex = Random.Range(0, 105);
             }
+
             else if (level == 2)
             {
                 float randomValue = Random.Range(0, 10);
@@ -37,6 +44,7 @@ public class RandomSprite_Unit : MonoBehaviour
                     randomIndex = Random.Range(105, 153);
                 }
             }
+
             else if (level == 3)
             {
                 float randomValue = Random.Range(0, 10);
@@ -49,6 +57,7 @@ public class RandomSprite_Unit : MonoBehaviour
                     randomIndex = Random.Range(105, 153);
                 }
             }
+
             else if (level == 4)
             {
                 float randomValue = Random.Range(0, 10);
@@ -65,6 +74,7 @@ public class RandomSprite_Unit : MonoBehaviour
                     randomIndex = Random.Range(153, 183);
                 }
             }
+
             else if (level == 5)
             {
                 float randomValue = Random.Range(0, 10);
@@ -85,6 +95,7 @@ public class RandomSprite_Unit : MonoBehaviour
                     randomIndex = Random.Range(183, 192);
                 }
             }
+
             else if (level == 6)
             {
                 float randomValue = Random.Range(0, 10);
@@ -105,7 +116,10 @@ public class RandomSprite_Unit : MonoBehaviour
                     randomIndex = Random.Range(183, 192);
                 }
             }
-
+            else //예외 처리
+            {
+                randomIndex = Random.Range(0, 105);
+            }
             // 선택된 스프라이트를 해당 이미지 슬롯에 적용
             imageSlots[i].sprite = sprites[randomIndex];
         }
