@@ -31,11 +31,12 @@ public class AttackProjectile : MonoBehaviour
             transform.position += direction * speed * Time.deltaTime;
 
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; //방향 벡터를 기반으로한 회전 각도 방향 벡터가 이루는 각도를 라디안 단위로 계산
-            targetRotation = Quaternion.Euler(new Vector3(0, 0, angle-180));
+            targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
             transform.rotation = targetRotation;
         }
         else //만약 타겟이 사라지면
         {
+            Destroy(GetComponentInParent<Transform>().gameObject);
             Destroy(gameObject);
         }
     }

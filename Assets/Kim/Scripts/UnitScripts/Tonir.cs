@@ -11,7 +11,6 @@ public class Tonir : MonoBehaviour,IUnit
     public GameObject enemy; //가장 가까운 적 유닛을 담는 오브젝트
     public float shortDis; //가장 가까운 적과의 거리를 저장하는 변수
     public string tagName="Enemy"; //적의 태그 이름 초기화
-    Vector3 enemyPosition; //적 유닛의 위에 스킬을 생성하기 위한 변수
     public GameObject attackTarget;
     public GameObject dummy; //멀리 떨어뜨린 더미 오브젝트 
     public GameObject skillPrefab;
@@ -157,13 +156,14 @@ public class Tonir : MonoBehaviour,IUnit
     private void Update()
     {
         CheckEnemies();
-        enemyPosition = enemy.transform.position;
         if (currentMana == maxMana)
         {
             if (enemy != null && enemy != dummy)
             {
                 currentMana = 0;
-                GameObject SkillClone = Instantiate(skillPrefab, enemyPosition+Vector3.up, Quaternion.identity);
+                GameObject SkillClone = Instantiate(skillPrefab, attackSpawn.transform.position, Quaternion.identity);
+                SkillClone.transform.SetParent(enemy.transform, false); //스킬 오브젝트를 적의 자식 오브젝트로 생성
+                SkillClone.transform.localPosition = new Vector3(0, 3, 0); //부모 오브젝트(적)의 y값 3위에 생성
                 SkillClone.GetComponent<TonirSkill>().SkillTargeting(enemy.transform);//적을 타게팅함
             }
         }

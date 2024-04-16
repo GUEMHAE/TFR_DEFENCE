@@ -1,33 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using Cysharp.Threading.Tasks;
 
 public class TonirSkill : MonoBehaviour
 {
-    public float fallSpeed = 5f;//인스펙터에서 조정
-    public Transform attackTarget;
-    public float trackingSpeed; //인스펙터에서 조정
-    public float damage;//인스펙터에서 조정
+    [SerializeField]
+    public Transform attackTarget; //공격대상
+    public float speed;
+    public float damage;
+    private Quaternion targetRotation;
 
     public void SkillTargeting(Transform target) //공격대상 설정
     {
         this.attackTarget = target;
     }
 
-    private void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (attackTarget != null)
-        {
-            trackingSpeed = attackTarget.GetComponent<EnemyMoveMent2D>().moveSpeed*2;
-            Vector3 horizontalDirection = (attackTarget.position - transform.position).normalized;
-            horizontalDirection.y = 0;
-            transform.position += horizontalDirection * trackingSpeed * Time.deltaTime;
-        }
+        //if (collision.tag == "Enemy")
+        //{
+        //    Destroy(gameObject);
+        //}
+    }
 
-        if(attackTarget==null)
+    void Update()
+    {
+        if (attackTarget != null) //타겟이 존재하면
         {
-            Destroy(gameObject);
+            Vector3 direction = (attackTarget.position - transform.position).normalized;
+            transform.position += direction * speed * Time.deltaTime;
+
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; //방향 벡터를 기반으로한 회전 각도 방향 벡터가 이루는 각도를 라디안 단위로 계산
+            targetRotation = Quaternion.Euler(new Vector3(0, 0, angle - 270));
+            transform.rotation = targetRotation;
         }
-        transform.position += Vector3.down * fallSpeed * Time.deltaTime;
+        else //만약 타겟이 사라지면
+        {
+            Destroy(gameObject,1.3f);
+        }
     }
 }

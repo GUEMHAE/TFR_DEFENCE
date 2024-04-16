@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 149129072710870055}
   - component: {fileID: -5017878224396613693}
   - component: {fileID: 6694596534134228870}
-  - component: {fileID: 3400013934381128963}
+  - component: {fileID: 8750103223477682250}
   m_Layer: 0
   m_Name: TonirAttackProjectile
   m_TagString: Projectile
@@ -28,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1109751858030904874}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!212 &149129072710870055
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 8b3cc142b0783eb40be02cde5b31ca6a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75,13 +75,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 6ddd4f1e7f8defa46ab92b7c4e7e7d19, type: 3}
+  m_SortingOrder: 3
+  m_Sprite: {fileID: -403426751, guid: 6ddd4f1e7f8defa46ab92b7c4e7e7d19, type: 3}
   m_Color: {r: 0.93207544, g: 0.9111512, b: 0.4343823, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.14, y: 1.66}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -128,9 +128,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackTarget: {fileID: 0}
   speed: 6
-  damage: 50
---- !u!60 &3400013934381128963
-PolygonCollider2D:
+  damage: 40
+--- !u!70 &8750103223477682250
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -158,74 +158,9 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.54, y: 2.54}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.17, y: -1.14}
-      - {x: 0.14999999, y: -1.1}
-      - {x: -0.13, y: -1.06}
-      - {x: -0.16, y: -1.01}
-      - {x: -0.39, y: -0.91999996}
-      - {x: -0.58, y: -0.77}
-      - {x: -0.69, y: -0.66999996}
-      - {x: -0.65999997, y: -0.66999996}
-      - {x: -0.64, y: -0.64}
-      - {x: -0.71, y: -0.5}
-      - {x: -0.78999996, y: -0.37}
-      - {x: -0.79999995, y: -0.22999999}
-      - {x: -0.82, y: -0.16}
-      - {x: -0.82, y: -0.01}
-      - {x: -0.84, y: 0.08}
-      - {x: -0.82, y: 0.089999996}
-      - {x: -0.82, y: -0.07}
-      - {x: -0.77, y: -0.089999996}
-      - {x: -0.75, y: -0.049999997}
-      - {x: -0.68, y: 0.29999998}
-      - {x: -0.61, y: 0.44}
-      - {x: -0.59, y: 0.5}
-      - {x: -0.63, y: 0.53999996}
-      - {x: -0.59, y: 0.59999996}
-      - {x: -0.51, y: 0.77}
-      - {x: -0.35999998, y: 0.94}
-      - {x: -0.24, y: 1.01}
-      - {x: -0.14999999, y: 1.0699999}
-      - {x: 0.03, y: 1.12}
-      - {x: 0.06, y: 1.13}
-      - {x: 0.12, y: 1.22}
-      - {x: 0.11, y: 1.25}
-      - {x: -0.17, y: 1.25}
-      - {x: -0.25, y: 1.24}
-      - {x: -0.35999998, y: 1.22}
-      - {x: -0.59999996, y: 1.11}
-      - {x: -0.75, y: 1.02}
-      - {x: -0.98999995, y: 0.78}
-      - {x: -1.0699999, y: 0.65999997}
-      - {x: -1.1899999, y: 0.39999998}
-      - {x: -1.22, y: 0.26999998}
-      - {x: -1.23, y: 0.16}
-      - {x: -1.23, y: -0.14999999}
-      - {x: -1.1999999, y: -0.31}
-      - {x: -1.16, y: -0.47}
-      - {x: -1.0699999, y: -0.65}
-      - {x: -0.93, y: -0.83}
-      - {x: -0.71, y: -1.04}
-      - {x: -0.48, y: -1.17}
-      - {x: -0.24, y: -1.23}
-      - {x: -0.11, y: -1.25}
-      - {x: 0.19999999, y: -1.25}
-      - {x: 0.22, y: -1.2099999}
-      - {x: 0.21, y: -1.18}
-      - {x: 0.12, y: -1.18}
-  m_UseDelaunayMesh: 0
+  m_Offset: {x: 0.0057017803, y: -0.0000013411045}
+  m_Size: {x: 1.1, y: 1.7}
+  m_Direction: 0

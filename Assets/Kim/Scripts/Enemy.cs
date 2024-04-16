@@ -88,8 +88,6 @@ public class Enemy : MonoBehaviour
 
             damage = collision.GetComponent<AttackProjectile>().damage; //projectile의 데미지를 받아옴
             hp -= damage; //적이 데미지를 받는 코드
-
-            Destroy(collision); //projectile 파괴
         }
 
         if(collision.tag=="DarbamSkill")
@@ -106,10 +104,10 @@ public class Enemy : MonoBehaviour
             }
             damage = collision.GetComponent<TonirSkill>().damage;
             Debug.Log("토니르 스킬 적중");
-        }
-        hp -= damage;
+            hp -= damage;
 
-        Destroy(collision);
+            Destroy(collision.gameObject);
+        }
     }
 
     private void Update()
