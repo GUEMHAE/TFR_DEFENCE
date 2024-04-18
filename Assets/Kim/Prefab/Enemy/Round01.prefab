@@ -116,6 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 120
   damage: 0
+  boureSkillEffect: {fileID: 8628003836598575728, guid: 516857e7f212c6241a558eb44eb30525, type: 3}
 --- !u!50 &1092324617615431929
 Rigidbody2D:
   serializedVersion: 4

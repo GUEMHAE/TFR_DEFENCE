@@ -13,6 +13,9 @@ public class Enemy : MonoBehaviour
     public float hp;
     public float damage;
 
+    [SerializeField]
+    GameObject boureSkillEffect;
+
     public void Setup(Transform[] wayPoints)
     {
         enemyMoveMent2D = GetComponent<EnemyMoveMent2D>();
@@ -104,6 +107,21 @@ public class Enemy : MonoBehaviour
             }
             damage = collision.GetComponent<TonirSkill>().damage;
             Debug.Log("토니르 스킬 적중");
+            hp -= damage;
+
+            Destroy(collision.gameObject);
+        }
+        if (collision.tag == "BoureSkill")
+        {
+            if (gameObject.transform != collision.GetComponent<BoureSkill>().attackTarget) //적이 여러기 겹쳐 있을때 projectile의 attackTarget만 충돌 처리 되게 하는 코드
+            {
+                return;
+            }
+            damage = collision.GetComponent<BoureSkill>().damage;
+
+            Instantiate(boureSkillEffect, this.transform.position, Quaternion.identity);
+            Debug.Log("부르 스킬 적중");
+
             hp -= damage;
 
             Destroy(collision.gameObject);
