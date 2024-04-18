@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoureSkill : MonoBehaviour
+public class BabarianSkill : MonoBehaviour
 {
     [SerializeField]
     public Transform attackTarget; //공격대상

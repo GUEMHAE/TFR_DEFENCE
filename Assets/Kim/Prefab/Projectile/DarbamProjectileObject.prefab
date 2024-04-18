@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6694596534134228870}
   - component: {fileID: 3400013934381128963}
   - component: {fileID: 1047138515082436417}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DarbamProjectileObject
   m_TagString: Projectile
   m_Icon: {fileID: 0}

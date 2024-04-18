@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7474581949280235747}
   - component: {fileID: 7507383895326598149}
   - component: {fileID: 4507987756199136224}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: "\uBC14\uBC14\uB9AC\uC548"
   m_TagString: Unit
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 3537b5b7bb035b04d8c112bdb73387b3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -228,7 +228,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8817880630498521942}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

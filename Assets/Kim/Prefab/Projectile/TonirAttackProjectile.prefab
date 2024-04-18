@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -5017878224396613693}
   - component: {fileID: 6694596534134228870}
   - component: {fileID: 8750103223477682250}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TonirAttackProjectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}

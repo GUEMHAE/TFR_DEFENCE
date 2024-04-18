@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField]
     GameObject boureSkillEffect;
+    [SerializeField]
+    GameObject babarianSkillEffect;
 
     public void Setup(Transform[] wayPoints)
     {
@@ -121,6 +123,22 @@ public class Enemy : MonoBehaviour
 
             Instantiate(boureSkillEffect, this.transform.position, Quaternion.identity);
             Debug.Log("부르 스킬 적중");
+
+            hp -= damage;
+
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.tag == "BabarianSkill")
+        {
+            if (gameObject.transform != collision.GetComponent<BabarianSkill>().attackTarget) //적이 여러기 겹쳐 있을때 projectile의 attackTarget만 충돌 처리 되게 하는 코드
+            {
+                return;
+            }
+            damage = collision.GetComponent<BabarianSkill>().damage;
+
+            Instantiate(babarianSkillEffect, this.transform.position, Quaternion.identity);
+            Debug.Log("바바리안 스킬 적중");
 
             hp -= damage;
 
