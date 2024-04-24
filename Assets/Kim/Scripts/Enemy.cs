@@ -99,6 +99,7 @@ public class Enemy : MonoBehaviour
 
             damage = collision.GetComponent<AttackProjectile>().damage; //projectile의 데미지를 받아옴
             hp -= damage; //적이 데미지를 받는 코드
+            Destroy(collision.gameObject);
         }
 
         if(collision.tag=="DarbamSkill")
@@ -188,6 +189,15 @@ public class Enemy : MonoBehaviour
             damage = collision.GetComponent<IrsigSkill>().damage;
 
             Debug.Log("이르시그 스킬 적중");
+
+            hp -= damage;
+        }
+
+        if (collision.tag == "AsusSkill")
+        {
+            damage = collision.GetComponent<AsusSkill>().damage;
+
+            Debug.Log("아서스 스킬 적중");
 
             hp -= damage;
         }

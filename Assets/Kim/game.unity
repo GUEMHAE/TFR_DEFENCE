@@ -7440,6 +7440,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 47063160}
     m_Modifications:
+    - target: {fileID: 418139315472225754, guid: c2c29b36eb74dc349ad6ef1ed081076e, type: 3}
+      propertyPath: maxMana
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 418139315472225754, guid: c2c29b36eb74dc349ad6ef1ed081076e, type: 3}
+      propertyPath: skillPrefab
+      value: 
+      objectReference: {fileID: 105514210609866744, guid: c3429b837f1f674448927ec82d5519c6, type: 3}
     - target: {fileID: 2282708086631485649, guid: c2c29b36eb74dc349ad6ef1ed081076e, type: 3}
       propertyPath: m_Name
       value: "\uC544\uC11C\uC2A4"

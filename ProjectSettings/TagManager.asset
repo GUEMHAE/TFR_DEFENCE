@@ -18,6 +18,7 @@ TagManager:
   - AroxSkill
   - PionaSkill
   - IrsigSkill
+  - AsusSkill
   layers:
   - Default
   - TransparentFX

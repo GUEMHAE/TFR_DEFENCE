@@ -20,7 +20,6 @@ public class Arox : MonoBehaviour,IUnit
     public float currentMana; //유닛의 현재 마나
     public float regenManaRate; //마나 회복량
 
-
     public string unitName; //유닛 이름
     public float attackSpeed; //공격 속도
     public float attackRange; //공격 범위
