@@ -13,6 +13,11 @@ TagManager:
   - TonirSkill
   - BoureSkill
   - BabarianSkill
+  - SnelSkill
+  - AroxProjectile
+  - AroxSkill
+  - PionaSkill
+  - IrsigSkill
   layers:
   - Default
   - TransparentFX

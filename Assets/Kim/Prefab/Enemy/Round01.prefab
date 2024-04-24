@@ -118,6 +118,9 @@ MonoBehaviour:
   damage: 0
   boureSkillEffect: {fileID: 8628003836598575728, guid: 516857e7f212c6241a558eb44eb30525, type: 3}
   babarianSkillEffect: {fileID: 1758473627833946668, guid: cc9a26e71c2049643910ed5ae0d14d28, type: 3}
+  SnelSkillEffect: {fileID: 6768671904302900901, guid: a3e0879c27b7a304abdcd849dc877394, type: 3}
+  AroxAttackEffect: {fileID: 3824282788395934224, guid: 9b71eb1402dcd494f8eeaf9d898c9f32, type: 3}
+  IrsigSkillEffect: {fileID: 2434421697330913857, guid: e12b00d341d793c4693b8103f65cfd4a, type: 3}
 --- !u!50 &1092324617615431929
 Rigidbody2D:
   serializedVersion: 4

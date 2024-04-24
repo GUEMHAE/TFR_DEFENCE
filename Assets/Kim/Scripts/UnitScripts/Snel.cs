@@ -13,6 +13,11 @@ public class Snel : MonoBehaviour,IUnit
     public string tagName="Enemy"; //적의 태그 이름 초기화
     public GameObject attackTarget;
     public GameObject dummy; //멀리 떨어뜨린 더미 오브젝트 
+    public GameObject skillPrefab;
+
+    public float maxMana; //유닛의 최대 마나
+    public float currentMana; //유닛의 현재 마나
+    public float regenManaRate; //마나 회복량
 
     public string unitName; //유닛 이름
     public float attackSpeed; //공격 속도
@@ -118,9 +123,23 @@ public class Snel : MonoBehaviour,IUnit
         }
     }
 
+    async UniTask RegenMana()
+    {
+        while (true)
+        {
+            await UniTask.Delay(1000);//1초마다 마나 회복
+            if (currentMana < maxMana)
+            {
+                currentMana += regenManaRate;
+                currentMana = Mathf.Min(currentMana, maxMana);//현재 마나가 최대 마나를 초과하지 않게 하기 위해
+            }
+        }
+    }
+
     void Start()
     {
         AttackToTarget();
+        RegenMana();
     }
 
     private void OnEnable()
@@ -133,10 +152,20 @@ public class Snel : MonoBehaviour,IUnit
         costP = unitInfo.Cost;
         sellCostP = unitInfo.SellCost;
         attackProjectileP = unitInfo.attackProjectile;
+        regenManaRate = 4f;
     }
 
     private void Update()
     {
         CheckEnemies();
+        if (currentMana == maxMana)
+        {
+            if (enemy != null && enemy != dummy)
+            {
+                currentMana = 0;
+                GameObject SkillClone = Instantiate(skillPrefab, attackSpawn.transform.position, Quaternion.identity);
+                SkillClone.GetComponent<SnelSkill>().SkillTargeting(enemy.transform);//적을 타게팅함
+            }
+        }
     }
 }

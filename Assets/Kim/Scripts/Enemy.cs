@@ -17,6 +17,12 @@ public class Enemy : MonoBehaviour
     GameObject boureSkillEffect;
     [SerializeField]
     GameObject babarianSkillEffect;
+    [SerializeField]
+    GameObject SnelSkillEffect;
+    [SerializeField]
+    GameObject AroxAttackEffect;
+    [SerializeField]
+    GameObject IrsigSkillEffect;
 
     public void Setup(Transform[] wayPoints)
     {
@@ -129,20 +135,61 @@ public class Enemy : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-        if (collision.tag == "BabarianSkill")
+        if (collision.tag == "SnelSkill")
         {
-            if (gameObject.transform != collision.GetComponent<BabarianSkill>().attackTarget) //적이 여러기 겹쳐 있을때 projectile의 attackTarget만 충돌 처리 되게 하는 코드
+            if (gameObject.transform != collision.GetComponent<SnelSkill>().attackTarget) //적이 여러기 겹쳐 있을때 projectile의 attackTarget만 충돌 처리 되게 하는 코드
             {
                 return;
             }
-            damage = collision.GetComponent<BabarianSkill>().damage;
+            damage = collision.GetComponent<SnelSkill>().damage;
 
-            Instantiate(babarianSkillEffect, this.transform.position, Quaternion.identity);
-            Debug.Log("바바리안 스킬 적중");
+            Instantiate(SnelSkillEffect, this.transform.position, Quaternion.identity);
+            Debug.Log("스넬 스킬 적중");
 
             hp -= damage;
 
             Destroy(collision.gameObject);
+        }
+
+        if (collision.tag == "AroxProjectile")
+        {
+
+            if (gameObject.transform != collision.GetComponent<AttackProjectile>().attackTarget) //적이 여러기 겹쳐 있을때 projectile의 attackTarget만 충돌 처리 되게 하는 코드
+            {
+                return;
+            }
+
+            Instantiate(AroxAttackEffect, this.transform.position, Quaternion.identity);
+            Debug.Log("아록스 평타 적중");
+            damage = collision.GetComponent<AttackProjectile>().damage; //projectile의 데미지를 받아옴
+            hp -= damage; //적이 데미지를 받는 코드
+        }
+
+        if (collision.tag == "AroxSkill")
+        {
+            damage = collision.GetComponent<AroxSkill>().damage;
+            hp -= damage;
+            Debug.Log("아록스 스킬 적중");
+        }
+
+        if(collision.tag=="PionaSkill")
+        {
+            damage = collision.GetComponent<PionaSkill>().damage;
+
+            Debug.Log("피오나 스킬 적중");
+
+            hp -= damage;
+
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.tag == "IrsigSkill")
+        {
+            damage = collision.GetComponent<IrsigSkill>().damage;
+
+            Debug.Log("이르시그 스킬 적중");
+
+            hp -= damage;
         }
     }
 

@@ -17,14 +17,6 @@ public class TonirSkill : MonoBehaviour
         this.attackTarget = target;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //if (collision.tag == "Enemy")
-        //{
-        //    Destroy(gameObject);
-        //}
-    }
-
     void Update()
     {
         if (attackTarget != null) //타겟이 존재하면
