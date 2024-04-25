@@ -19,6 +19,9 @@ TagManager:
   - PionaSkill
   - IrsigSkill
   - AsusSkill
+  - ArteProjectile
+  - ArteSkill
+  - KamuemSkill
   layers:
   - Default
   - TransparentFX

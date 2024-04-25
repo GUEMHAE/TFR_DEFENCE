@@ -14,6 +14,12 @@ public class Arte : MonoBehaviour,IUnit
     public GameObject attackTarget;
     public GameObject dummy; //멀리 떨어뜨린 더미 오브젝트 
 
+    public GameObject skillEffectPrefab;
+
+    public float maxMana; //유닛의 최대 마나
+    public float currentMana; //유닛의 현재 마나
+    public float regenManaRate; //마나 회복량
+
     public string unitName; //유닛 이름
     public float attackSpeed; //공격 속도
     public float attackRange; //공격 범위
@@ -68,8 +74,12 @@ public class Arte : MonoBehaviour,IUnit
 
     void SpawnProjectile()
     {
-        GameObject clone = Instantiate(attackProjectile, attackSpawn.position, Quaternion.identity); //프로젝타일은 attackSpawn위치에 생성
-        clone.GetComponent<AttackProjectile>().Targeting(enemy.transform);//가장 가까운 적을 타게팅함
+        GameObject clone = Instantiate(attackProjectile, enemy.transform.position, Quaternion.identity); //프로젝타일은 attackSpawn위치에 생성
+    }
+
+    void SpawnSkillEffect()
+    {
+        GameObject clone = Instantiate(skillEffectPrefab, enemy.transform.position, Quaternion.identity); //프로젝타일은 attackSpawn위치에 생성
     }
 
     async UniTask AttackToTarget()
@@ -96,6 +106,11 @@ public class Arte : MonoBehaviour,IUnit
                 if (enemy != dummy)//더미가 아닐 경우만 공격
                 {
                     SpawnProjectile(); //프로젝타일 생성
+                    if(currentMana == maxMana)
+                    {
+                        currentMana = 0;
+                        SpawnSkillEffect();
+                    }
                 }
             }
             await UniTask.WaitUntil(() => enemy != null); //적이 null이 아닐때까지 다시 대기
@@ -118,9 +133,23 @@ public class Arte : MonoBehaviour,IUnit
         }
     }
 
+    async UniTask RegenMana()
+    {
+        while (true)
+        {
+            await UniTask.Delay(1000);//1초마다 마나 회복
+            if (currentMana < maxMana)
+            {
+                currentMana += regenManaRate;
+                currentMana = Mathf.Min(currentMana, maxMana);//현재 마나가 최대 마나를 초과하지 않게 하기 위해
+            }
+        }
+    }
+
     void Start()
     {
         AttackToTarget();
+        RegenMana();
     }
 
     private void OnEnable()
@@ -133,6 +162,7 @@ public class Arte : MonoBehaviour,IUnit
         costP = unitInfo.Cost;
         sellCostP = unitInfo.SellCost;
         attackProjectileP = unitInfo.attackProjectile;
+        regenManaRate = 4f;
     }
 
     private void Update()

@@ -201,6 +201,39 @@ public class Enemy : MonoBehaviour
 
             hp -= damage;
         }
+
+        if (collision.tag == "ArteProjectile") //범위형 평타
+        {
+            Debug.Log("아르테 평타 적중");
+            damage = collision.GetComponent<ArteAttackProjectile>().damage; //projectile의 데미지를 받아옴
+            hp -= damage; //적이 데미지를 받는 코드
+        }
+
+        if (collision.tag == "ArteSkill")
+        {
+            if (gameObject.transform != collision.GetComponent<ArteSkill>().attackTarget) //적이 여러기 겹쳐 있을때 projectile의 attackTarget만 충돌 처리 되게 하는 코드
+            {
+                return;
+            }
+
+            damage = collision.GetComponent<ArteSkill>().damage;
+
+            void CallDamage()
+            {
+                hp -= damage;
+            }
+
+            Debug.Log("아르테 스킬 적중");
+
+            Invoke("CallDamage", 1f);
+        }
+
+        if (collision.tag=="KamuemSkill")
+        {
+            damage = collision.GetComponent<KamuemSkill>().damage;
+            hp -= damage;
+            Debug.Log("카뮴 스킬 적중");
+        }
     }
 
     private void Update()
