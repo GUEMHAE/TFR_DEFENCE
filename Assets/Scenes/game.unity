@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 26587645}
   - component: {fileID: 26587647}
   m_Layer: 6
-  m_Name: wait2
+  m_Name: wait5
   m_TagString: Grid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -585,10 +585,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 47063160}
-  - {fileID: 26587644}
-  - {fileID: 324207928}
-  - {fileID: 1111978150}
   - {fileID: 953639400}
+  - {fileID: 1111978150}
+  - {fileID: 324207928}
+  - {fileID: 26587644}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &103092562
@@ -1585,7 +1585,7 @@ GameObject:
   - component: {fileID: 324207929}
   - component: {fileID: 324207931}
   m_Layer: 6
-  m_Name: wait3
+  m_Name: wait4
   m_TagString: Grid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2641,6 +2641,11 @@ MonoBehaviour:
   - {fileID: 6268225684095355328, guid: 7bb0785500f9f5140bad462bd47caec8, type: 3}
   - {fileID: 2797794966598844234, guid: 9695b2649354a484bb082b8588b98181, type: 3}
   Waits: {fileID: 47063159}
+  wait1: {fileID: 47063159}
+  wait2: {fileID: 26587643}
+  wait3: {fileID: 324207927}
+  wait4: {fileID: 1111978149}
+  wait5: {fileID: 953639399}
 --- !u!1 &513870028
 GameObject:
   m_ObjectHideFlags: 0
@@ -5923,7 +5928,7 @@ GameObject:
   - component: {fileID: 953639401}
   - component: {fileID: 953639403}
   m_Layer: 6
-  m_Name: wait5
+  m_Name: wait2
   m_TagString: Grid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6605,7 +6610,7 @@ GameObject:
   - component: {fileID: 1111978151}
   - component: {fileID: 1111978153}
   m_Layer: 6
-  m_Name: wait4
+  m_Name: wait3
   m_TagString: Grid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
