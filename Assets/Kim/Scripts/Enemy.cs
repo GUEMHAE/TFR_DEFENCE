@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
+using System.Threading;
 
 public class Enemy : MonoBehaviour
 {
@@ -12,6 +13,19 @@ public class Enemy : MonoBehaviour
     EnemyMoveMent2D enemyMoveMent2D;  //오브젝트 이동 제어
     public float hp;
     public float damage;
+
+    [SerializeField]
+    GameObject boureSkillEffect;
+    [SerializeField]
+    GameObject babarianSkillEffect;
+    [SerializeField]
+    GameObject SnelSkillEffect;
+    [SerializeField]
+    GameObject AroxAttackEffect;
+    [SerializeField]
+    GameObject IrsigSkillEffect;
+    [SerializeField]
+    GameObject RlrorProjectileEffect;
 
     public void Setup(Transform[] wayPoints)
     {
@@ -80,7 +94,6 @@ public class Enemy : MonoBehaviour
     {
         if (collision.tag=="Projectile")
         {
-
             if (gameObject.transform != collision.GetComponent<AttackProjectile>().attackTarget) //적이 여러기 겹쳐 있을때 projectile의 attackTarget만 충돌 처리 되게 하는 코드
             {
                 return;
@@ -88,8 +101,169 @@ public class Enemy : MonoBehaviour
 
             damage = collision.GetComponent<AttackProjectile>().damage; //projectile의 데미지를 받아옴
             hp -= damage; //적이 데미지를 받는 코드
+            Destroy(collision.gameObject);
+        }
 
-            Destroy(collision); //projectile 파괴
+        if(collision.tag=="DarbamSkill")
+        {
+            damage = collision.GetComponent<DarbamSkill>().damage;
+            hp -= damage;
+        }
+
+        if(collision.tag=="TonirSkill")
+        {
+            if (gameObject.transform != collision.GetComponent<TonirSkill>().attackTarget) //적이 여러기 겹쳐 있을때 projectile의 attackTarget만 충돌 처리 되게 하는 코드
+            {
+                return;
+            }
+            damage = collision.GetComponent<TonirSkill>().damage;
+            Debug.Log("토니르 스킬 적중");
+            hp -= damage;
+
+            Destroy(collision.gameObject);
+        }
+        if (collision.tag == "BoureSkill")
+        {
+            if (gameObject.transform != collision.GetComponent<BoureSkill>().attackTarget) //적이 여러기 겹쳐 있을때 projectile의 attackTarget만 충돌 처리 되게 하는 코드
+            {
+                return;
+            }
+            damage = collision.GetComponent<BoureSkill>().damage;
+
+            Instantiate(boureSkillEffect, this.transform.position, Quaternion.identity);
+            Debug.Log("부르 스킬 적중");
+
+            hp -= damage;
+
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.tag == "SnelSkill")
+        {
+            if (gameObject.transform != collision.GetComponent<SnelSkill>().attackTarget) //적이 여러기 겹쳐 있을때 projectile의 attackTarget만 충돌 처리 되게 하는 코드
+            {
+                return;
+            }
+            damage = collision.GetComponent<SnelSkill>().damage;
+
+            Instantiate(SnelSkillEffect, this.transform.position, Quaternion.identity);
+            Debug.Log("스넬 스킬 적중");
+
+            hp -= damage;
+
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.tag == "AroxProjectile")
+        {
+
+            if (gameObject.transform != collision.GetComponent<AttackProjectile>().attackTarget) //적이 여러기 겹쳐 있을때 projectile의 attackTarget만 충돌 처리 되게 하는 코드
+            {
+                return;
+            }
+
+            Instantiate(AroxAttackEffect, this.transform.position, Quaternion.identity);
+            Debug.Log("아록스 평타 적중");
+            damage = collision.GetComponent<AttackProjectile>().damage; //projectile의 데미지를 받아옴
+            hp -= damage; //적이 데미지를 받는 코드
+        }
+
+        if (collision.tag == "AroxSkill")
+        {
+            damage = collision.GetComponent<AroxSkill>().damage;
+            hp -= damage;
+            Debug.Log("아록스 스킬 적중");
+        }
+
+        if(collision.tag=="PionaSkill")
+        {
+            damage = collision.GetComponent<PionaSkill>().damage;
+
+            Debug.Log("피오나 스킬 적중");
+
+            hp -= damage;
+
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.tag == "IrsigSkill")
+        {
+            damage = collision.GetComponent<IrsigSkill>().damage;
+
+            Debug.Log("이르시그 스킬 적중");
+
+            hp -= damage;
+        }
+
+        if (collision.tag == "AsusSkill")
+        {
+            damage = collision.GetComponent<AsusSkill>().damage;
+
+            Debug.Log("아서스 스킬 적중");
+
+            hp -= damage;
+        }
+
+        if (collision.tag == "ArteProjectile") //범위형 평타
+        {
+            Debug.Log("아르테 평타 적중");
+            damage = collision.GetComponent<ArteAttackProjectile>().damage; //projectile의 데미지를 받아옴
+            hp -= damage; //적이 데미지를 받는 코드
+        }
+
+        if (collision.tag == "ArteSkill")
+        {
+            if (gameObject.transform != collision.GetComponent<ArteSkill>().attackTarget) //적이 여러기 겹쳐 있을때 projectile의 attackTarget만 충돌 처리 되게 하는 코드
+            {
+                return;
+            }
+
+            damage = collision.GetComponent<ArteSkill>().damage;
+
+            void CallDamage()
+            {
+                hp -= damage;
+            }
+
+            Debug.Log("아르테 스킬 적중");
+
+            Invoke("CallDamage", 1f);
+        }
+
+        if (collision.tag=="KamuemSkill")
+        {
+            damage = collision.GetComponent<KamuemSkill>().damage;
+            hp -= damage;
+            Debug.Log("카뮴 스킬 적중");
+        }
+
+        if (collision.tag == "RlrorProjectile")
+        {
+            if (gameObject.transform != collision.GetComponent<AttackProjectile>().attackTarget) //적이 여러기 겹쳐 있을때 projectile의 attackTarget만 충돌 처리 되게 하는 코드
+            {
+                return;
+            }
+
+            Debug.Log("를로르 평타 적중");
+            Instantiate(RlrorProjectileEffect, this.gameObject.transform.position, Quaternion.identity);
+            damage = collision.GetComponent<AttackProjectile>().damage; //projectile의 데미지를 받아옴
+            hp -= damage; //적이 데미지를 받는 코드
+            Destroy(collision.gameObject);
+        }
+
+        if(collision.tag=="RlrorSkill")
+        {
+            Debug.Log("를로르 스킬 적중");
+            damage = collision.GetComponent<RlrorSkill>().damage; //projectile의 데미지를 받아옴
+
+            hp -= damage;
+        }
+
+        if(collision.tag=="ElectoSkill")
+        {
+            Debug.Log("일렉토 스킬 적중");
+            damage = collision.GetComponent<ElectoSkill>().damage;
+            hp -= damage;
         }
     }
 

@@ -210,6 +210,10 @@ MonoBehaviour:
   tagName: Enemy
   attackTarget: {fileID: 0}
   dummy: {fileID: 7383394015066688635, guid: 386b6661d87229f4fa7f2a2b8bf9cf22, type: 3}
+  skillPrefab: {fileID: 2936928888573565465, guid: 78c0895af2e95f54ba662a75d742a562, type: 3}
+  maxMana: 28
+  currentMana: 0
+  regenManaRate: 0
   unitName: 
   attackSpeed: 0
   attackRange: 0

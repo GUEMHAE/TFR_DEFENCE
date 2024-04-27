@@ -13,6 +13,7 @@ public class Darbam : MonoBehaviour,IUnit
     public string tagName="Enemy"; //적의 태그 이름 초기화
     public GameObject attackTarget;
     public GameObject dummy; //멀리 떨어뜨린 더미 오브젝트 
+    public GameObject skillPrefab;
 
     public string unitName; //유닛 이름
     public float attackSpeed; //공격 속도
@@ -21,6 +22,9 @@ public class Darbam : MonoBehaviour,IUnit
     public float ap;  //유닛 ap
     public float cost; //유닛 구매 가격
     public float sellCost; //유닛 판매 가격
+    public float maxMana; //유닛의 최대 마나
+    public float currentMana; //유닛의 현재 마나
+    public float regenManaRate; //마나 회복량
     public GameObject attackProjectile; //유닛 공격 프로젝타일
     public Transform attackSpawn; //유닛 공격 시작 위치
 
@@ -68,8 +72,8 @@ public class Darbam : MonoBehaviour,IUnit
 
     void SpawnProjectile()
     {
-        GameObject clone = Instantiate(attackProjectile, attackSpawn.position, Quaternion.identity); //프로젝타일은 attackSpawn위치에 생성
-        clone.GetComponent<AttackProjectile>().Targeting(enemy.transform);//가장 가까운 적을 타게팅함
+        GameObject Attackclone = Instantiate(attackProjectile, attackSpawn.position, Quaternion.identity); //프로젝타일은 attackSpawn위치에 생성
+        Attackclone.GetComponent<AttackProjectile>().Targeting(enemy.transform);//가장 가까운 적을 타게팅함
     }
 
     async UniTask AttackToTarget()
@@ -118,9 +122,23 @@ public class Darbam : MonoBehaviour,IUnit
         }
     }
 
+    async UniTask RegenMana()
+    {
+        while(true)
+        {
+            await UniTask.Delay(1000);//1초마다 마나 회복
+            if(currentMana<maxMana)
+            {
+                currentMana += regenManaRate;
+                currentMana = Mathf.Min(currentMana, maxMana);//현재 마나가 최대 마나를 초과하지 않게 하기 위해
+            }
+        }    
+    }
+
     void Start()
     {
         AttackToTarget();
+        RegenMana();
     }
 
     private void OnEnable()
@@ -133,10 +151,20 @@ public class Darbam : MonoBehaviour,IUnit
         costP = unitInfo.Cost;
         sellCostP = unitInfo.SellCost;
         attackProjectileP = unitInfo.attackProjectile;
+        regenManaRate = 4f;
     }
 
     private void Update()
     {
         CheckEnemies();
+
+        if (currentMana == maxMana)
+        {
+            if (enemy != null && enemy != dummy)
+            { 
+                GameObject SkillClone = Instantiate(skillPrefab, enemy.transform.position, Quaternion.identity);
+                currentMana = 0;
+            }
+        }
     }
 }

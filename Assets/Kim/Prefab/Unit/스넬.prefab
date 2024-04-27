@@ -241,6 +241,10 @@ MonoBehaviour:
   tagName: Enemy
   attackTarget: {fileID: 0}
   dummy: {fileID: 7383394015066688635, guid: 386b6661d87229f4fa7f2a2b8bf9cf22, type: 3}
+  skillPrefab: {fileID: 4519577906943085281, guid: 3009739b36991eb4c89b48a53dd56acc, type: 3}
+  maxMana: 28
+  currentMana: 0
+  regenManaRate: 0
   unitName: 
   attackSpeed: 0
   attackRange: 0
@@ -248,5 +252,5 @@ MonoBehaviour:
   ap: 0
   cost: 0
   sellCost: 0
-  attackProjectile: {fileID: 0}
+  attackProjectile: {fileID: 4519540787519262811, guid: 00f3145b04e174c49aedb91d35bcd003, type: 3}
   attackSpawn: {fileID: 7700727822293570115}

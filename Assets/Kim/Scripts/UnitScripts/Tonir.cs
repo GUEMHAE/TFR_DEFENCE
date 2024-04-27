@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System;
+using System.Threading;
 
 public class Tonir : MonoBehaviour,IUnit
 {
@@ -13,6 +14,7 @@ public class Tonir : MonoBehaviour,IUnit
     public string tagName="Enemy"; //적의 태그 이름 초기화
     public GameObject attackTarget;
     public GameObject dummy; //멀리 떨어뜨린 더미 오브젝트 
+    public GameObject skillPrefab;
 
     public string unitName; //유닛 이름
     public float attackSpeed; //공격 속도
@@ -21,8 +23,13 @@ public class Tonir : MonoBehaviour,IUnit
     public float ap;  //유닛 ap
     public float cost; //유닛 구매 가격
     public float sellCost; //유닛 판매 가격
+    public float maxMana; //유닛의 최대 마나
+    public float currentMana; //유닛의 현재 마나
+    public float regenManaRate; //마나 회복량
     public GameObject attackProjectile; //유닛 공격 프로젝타일
     public Transform attackSpawn; //유닛 공격 시작 위치
+
+    private CancellationTokenSource cancellationTokenSource; //작업 취소 요청을 감지하기 위한 토큰
 
     public string unitNameP
     {
@@ -72,9 +79,9 @@ public class Tonir : MonoBehaviour,IUnit
         clone.GetComponent<AttackProjectile>().Targeting(enemy.transform);//가장 가까운 적을 타게팅함
     }
 
-    async UniTask AttackToTarget()
+    async UniTask AttackToTarget(CancellationToken cancellationToken)
     {
-        while (true)
+        while (!cancellationToken.IsCancellationRequested)
         {
             if (EnemySpawnManager.instance.EnemyPool.childCount == 0)
             {
@@ -117,10 +124,17 @@ public class Tonir : MonoBehaviour,IUnit
             }
         }
     }
-
-    void Start()
+    async UniTask RegenMana(CancellationToken cancellationToken)
     {
-        AttackToTarget();
+        while (!cancellationToken.IsCancellationRequested)
+        {
+            await UniTask.Delay(1000);//1초마다 마나 회복
+            if (currentMana < maxMana)
+            {
+                currentMana += regenManaRate;
+                currentMana = Mathf.Min(currentMana, maxMana);//현재 마나가 최대 마나를 초과하지 않게 하기 위해
+            }
+        }
     }
 
     private void OnEnable()
@@ -133,10 +147,30 @@ public class Tonir : MonoBehaviour,IUnit
         costP = unitInfo.Cost;
         sellCostP = unitInfo.SellCost;
         attackProjectileP = unitInfo.attackProjectile;
+        regenManaRate = 4f;
+        cancellationTokenSource = new CancellationTokenSource(); 
+        AttackToTarget(cancellationTokenSource.Token);
+        RegenMana(cancellationTokenSource.Token);
+    }
+
+    private void OnDisable()
+    {
+        cancellationTokenSource.Cancel();
     }
 
     private void Update()
     {
         CheckEnemies();
+        if (currentMana == maxMana)
+        {
+            if (enemy != null && enemy != dummy)
+            {
+                currentMana = 0;
+                GameObject SkillClone = Instantiate(skillPrefab, attackSpawn.transform.position, Quaternion.identity);
+                SkillClone.transform.SetParent(enemy.transform, false); //스킬 오브젝트를 적의 자식 오브젝트로 생성
+                SkillClone.transform.localPosition = new Vector3(0, 3, 0); //부모 오브젝트(적)의 y값 3위에 생성
+                SkillClone.GetComponent<TonirSkill>().SkillTargeting(enemy.transform);//적을 타게팅함
+            }
+        }
     }
 }

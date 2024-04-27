@@ -61,14 +61,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6894503861647231451}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1494176764882841661}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6913704667447310327
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -241,6 +241,8 @@ MonoBehaviour:
   tagName: Enemy
   attackTarget: {fileID: 0}
   dummy: {fileID: 7383394015066688635, guid: 386b6661d87229f4fa7f2a2b8bf9cf22, type: 3}
+  usuallyProjectile: {fileID: 0}
+  skillProjectile: {fileID: 97685429480574169, guid: c8353fcc658af734b8588a58c7b31072, type: 3}
   unitName: 
   attackSpeed: 0
   attackRange: 0
@@ -248,5 +250,8 @@ MonoBehaviour:
   ap: 0
   cost: 0
   sellCost: 0
-  attackProjectile: {fileID: 1109751858030904874, guid: 66db3ec4e609347489af07ce09c42e7f, type: 3}
+  maxMana: 40
+  currentMana: 0
+  regenManaRate: 0
+  attackProjectile: {fileID: 1109751858030904874, guid: cfbd693d594484743b62d84b73009d34, type: 3}
   attackSpawn: {fileID: 1494176764882841661}

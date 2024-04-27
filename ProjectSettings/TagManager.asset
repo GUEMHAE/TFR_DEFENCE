@@ -9,6 +9,22 @@ TagManager:
   - Enemy
   - Projectile
   - Grid
+  - DarbamSkill
+  - TonirSkill
+  - BoureSkill
+  - BabarianSkill
+  - SnelSkill
+  - AroxProjectile
+  - AroxSkill
+  - PionaSkill
+  - IrsigSkill
+  - AsusSkill
+  - ArteProjectile
+  - ArteSkill
+  - KamuemSkill
+  - RlrorProjectile
+  - RlrorSkill
+  - ElectoSkill
   layers:
   - Default
   - TransparentFX
@@ -17,8 +33,8 @@ TagManager:
   - Water
   - UI
   - Wait
-  - 
-  - 
+  - Attack,Skill
+  - InGrid
   - 
   - 
   - 
@@ -45,4 +61,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Skill,AttackProjectile
+    uniqueID: 2437669179
     locked: 0

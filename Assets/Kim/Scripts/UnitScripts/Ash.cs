@@ -13,6 +13,10 @@ public class Ash : MonoBehaviour,IUnit
     public string tagName="Enemy"; //적의 태그 이름 초기화
     public GameObject attackTarget;
     public GameObject dummy; //멀리 떨어뜨린 더미 오브젝트 
+    public GameObject usuallyProjectile; //스킬 쓰기 전 평타
+    public GameObject skillProjectile; //스킬 쓴 후 평타
+    private bool isSkillActive = false; // 스킬 활성화 상태
+    private float skillTimer = 0f; // 스킬 유지 시간 카운터
 
     public string unitName; //유닛 이름
     public float attackSpeed; //공격 속도
@@ -21,6 +25,9 @@ public class Ash : MonoBehaviour,IUnit
     public float ap;  //유닛 ap
     public float cost; //유닛 구매 가격
     public float sellCost; //유닛 판매 가격
+    public float maxMana; //유닛의 최대 마나
+    public float currentMana; //유닛의 현재 마나
+    public float regenManaRate; //마나 회복량
     public GameObject attackProjectile; //유닛 공격 프로젝타일
     public Transform attackSpawn; //유닛 공격 시작 위치
 
@@ -95,7 +102,7 @@ public class Ash : MonoBehaviour,IUnit
                 }
                 if (enemy != dummy)//더미가 아닐 경우만 공격
                 {
-                    SpawnProjectile(); //프로젝타일 생성
+                    Attack(); //프로젝타일 생성
                 }
             }
             await UniTask.WaitUntil(() => enemy != null); //적이 null이 아닐때까지 다시 대기
@@ -118,8 +125,57 @@ public class Ash : MonoBehaviour,IUnit
         }
     }
 
+    async UniTask RegenMana()
+    {
+        while (true)
+        {
+            await UniTask.Delay(1000);//1초마다 마나 회복
+            if (currentMana < maxMana)
+            {
+                currentMana += regenManaRate;
+                currentMana = Mathf.Min(currentMana, maxMana);//현재 마나가 최대 마나를 초과하지 않게 하기 위해
+            }
+
+            if(currentMana==maxMana)
+            {
+                await UniTask.Delay(6000);
+            }
+        }
+    }
+
+    //async UniTask AshSkill()
+    //{
+    //    await UniTask.WaitUntil(() => currentMana == maxMana);
+    //    currentMana = 0;
+    //    attackSpeedP *= 1.4f;
+    //    attackProjectile = skillProjectile;
+    //    await UniTask.Delay(6000);
+    //    attackSpeedP /= 1.4f;
+    //    attackProjectile = usuallyProjectile;
+    //}
+
+    public void CheckManaAndActivateSkill()
+    {
+        
+        if (currentMana == maxMana) // 마나가 100 이상일 때 스킬 활성화
+        {
+            isSkillActive = true;
+            attackSpeedP *= 1.4f; // 공격 속도 1.4배 증가
+            currentMana = 0;
+        }
+    }
+
+    void Attack()
+    {
+        GameObject projectile = isSkillActive ? skillProjectile : attackProjectile;
+        Instantiate(projectile, transform.position, Quaternion.identity);
+        projectile.GetComponent<AttackProjectile>().Targeting(enemy.transform);
+    }
+
+
     void Start()
     {
+        RegenMana();
         AttackToTarget();
     }
 
@@ -133,10 +189,24 @@ public class Ash : MonoBehaviour,IUnit
         costP = unitInfo.Cost;
         sellCostP = unitInfo.SellCost;
         attackProjectileP = unitInfo.attackProjectile;
+        regenManaRate = 4f;
     }
 
     private void Update()
     {
         CheckEnemies();
+
+        CheckManaAndActivateSkill();
+
+        if (isSkillActive)
+        {
+            skillTimer += Time.deltaTime;
+            if (skillTimer > 6f) // 6초 후 스킬 비활성화
+            {
+                isSkillActive = false;
+                attackSpeedP /= 1.4f; // 공격 속도 원래대로
+                skillTimer = 0;
+            }
+        }
     }
 }
