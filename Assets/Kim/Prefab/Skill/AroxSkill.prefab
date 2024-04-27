@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7500399340458443206}
   - component: {fileID: 5190048589473203301}
   - component: {fileID: 1821678571506754594}
+  - component: {fileID: 8563798418306774056}
   m_Layer: 0
   m_Name: AroxSkill
   m_TagString: AroxSkill
@@ -4909,3 +4910,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 40
+--- !u!210 &8563798418306774056
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3456167335857915150}
+  m_Enabled: 1
+  m_SortingLayerID: -1857298117
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_SortAtRoot: 0

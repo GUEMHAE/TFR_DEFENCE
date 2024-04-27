@@ -175,6 +175,15 @@ public class Enemy : MonoBehaviour
             Debug.Log("아록스 스킬 적중");
         }
 
+        if(collision.tag=="BabarianSkill")
+        {
+            damage = collision.GetComponent<BabarianSkill>().damage;
+            hp -= damage;
+            Debug.Log("바바리안 스킬 적중");
+            Instantiate(babarianSkillEffect, this.transform.position, Quaternion.identity);
+            Destroy(collision.gameObject);
+        }
+
         if(collision.tag=="PionaSkill")
         {
             damage = collision.GetComponent<PionaSkill>().damage;

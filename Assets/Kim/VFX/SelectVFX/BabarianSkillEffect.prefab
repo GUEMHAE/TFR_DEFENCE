@@ -4908,6 +4908,7 @@ GameObject:
   - component: {fileID: 2452082064152055796}
   - component: {fileID: 484368387861551534}
   - component: {fileID: 8206432625395753029}
+  - component: {fileID: 2666543996877747723}
   m_Layer: 0
   m_Name: BabarianSkillEffect
   m_TagString: Untagged
@@ -9797,6 +9798,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!210 &2666543996877747723
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758473627833946668}
+  m_Enabled: 1
+  m_SortingLayerID: -1857298117
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &3195425902662666683
 GameObject:
   m_ObjectHideFlags: 0
