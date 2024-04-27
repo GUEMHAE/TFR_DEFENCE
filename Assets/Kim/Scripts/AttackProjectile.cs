@@ -28,8 +28,10 @@ public class AttackProjectile : MonoBehaviour
         }
         else //만약 타겟이 사라지면
         {
+            Vector3 direction = Vector3.forward;
             Destroy(GetComponentInParent<Transform>().gameObject);
-            Destroy(gameObject);
+            transform.position += direction * speed * Time.deltaTime;
+            Destroy(gameObject,0.5f);
         }
     }
 }

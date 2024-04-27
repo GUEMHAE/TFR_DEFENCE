@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
+using System.Threading;
 
 public class Enemy : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class Enemy : MonoBehaviour
     GameObject AroxAttackEffect;
     [SerializeField]
     GameObject IrsigSkillEffect;
+    [SerializeField]
+    GameObject RlrorProjectileEffect;
 
     public void Setup(Transform[] wayPoints)
     {
@@ -91,7 +94,6 @@ public class Enemy : MonoBehaviour
     {
         if (collision.tag=="Projectile")
         {
-
             if (gameObject.transform != collision.GetComponent<AttackProjectile>().attackTarget) //적이 여러기 겹쳐 있을때 projectile의 attackTarget만 충돌 처리 되게 하는 코드
             {
                 return;
@@ -233,6 +235,35 @@ public class Enemy : MonoBehaviour
             damage = collision.GetComponent<KamuemSkill>().damage;
             hp -= damage;
             Debug.Log("카뮴 스킬 적중");
+        }
+
+        if (collision.tag == "RlrorProjectile")
+        {
+            if (gameObject.transform != collision.GetComponent<AttackProjectile>().attackTarget) //적이 여러기 겹쳐 있을때 projectile의 attackTarget만 충돌 처리 되게 하는 코드
+            {
+                return;
+            }
+
+            Debug.Log("를로르 평타 적중");
+            Instantiate(RlrorProjectileEffect, this.gameObject.transform.position, Quaternion.identity);
+            damage = collision.GetComponent<AttackProjectile>().damage; //projectile의 데미지를 받아옴
+            hp -= damage; //적이 데미지를 받는 코드
+            Destroy(collision.gameObject);
+        }
+
+        if(collision.tag=="RlrorSkill")
+        {
+            Debug.Log("를로르 스킬 적중");
+            damage = collision.GetComponent<RlrorSkill>().damage; //projectile의 데미지를 받아옴
+
+            hp -= damage;
+        }
+
+        if(collision.tag=="ElectoSkill")
+        {
+            Debug.Log("일렉토 스킬 적중");
+            damage = collision.GetComponent<ElectoSkill>().damage;
+            hp -= damage;
         }
     }
 

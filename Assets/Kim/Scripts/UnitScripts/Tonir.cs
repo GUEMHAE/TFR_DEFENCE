@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System;
+using System.Threading;
 
 public class Tonir : MonoBehaviour,IUnit
 {
@@ -27,6 +28,8 @@ public class Tonir : MonoBehaviour,IUnit
     public float regenManaRate; //마나 회복량
     public GameObject attackProjectile; //유닛 공격 프로젝타일
     public Transform attackSpawn; //유닛 공격 시작 위치
+
+    private CancellationTokenSource cancellationTokenSource; //작업 취소 요청을 감지하기 위한 토큰
 
     public string unitNameP
     {
@@ -76,9 +79,9 @@ public class Tonir : MonoBehaviour,IUnit
         clone.GetComponent<AttackProjectile>().Targeting(enemy.transform);//가장 가까운 적을 타게팅함
     }
 
-    async UniTask AttackToTarget()
+    async UniTask AttackToTarget(CancellationToken cancellationToken)
     {
-        while (true)
+        while (!cancellationToken.IsCancellationRequested)
         {
             if (EnemySpawnManager.instance.EnemyPool.childCount == 0)
             {
@@ -121,9 +124,9 @@ public class Tonir : MonoBehaviour,IUnit
             }
         }
     }
-    async UniTask RegenMana()
+    async UniTask RegenMana(CancellationToken cancellationToken)
     {
-        while (true)
+        while (!cancellationToken.IsCancellationRequested)
         {
             await UniTask.Delay(1000);//1초마다 마나 회복
             if (currentMana < maxMana)
@@ -132,12 +135,6 @@ public class Tonir : MonoBehaviour,IUnit
                 currentMana = Mathf.Min(currentMana, maxMana);//현재 마나가 최대 마나를 초과하지 않게 하기 위해
             }
         }
-    }
-
-    void Start()
-    {
-        AttackToTarget();
-        RegenMana();
     }
 
     private void OnEnable()
@@ -151,6 +148,14 @@ public class Tonir : MonoBehaviour,IUnit
         sellCostP = unitInfo.SellCost;
         attackProjectileP = unitInfo.attackProjectile;
         regenManaRate = 4f;
+        cancellationTokenSource = new CancellationTokenSource(); 
+        AttackToTarget(cancellationTokenSource.Token);
+        RegenMana(cancellationTokenSource.Token);
+    }
+
+    private void OnDisable()
+    {
+        cancellationTokenSource.Cancel();
     }
 
     private void Update()

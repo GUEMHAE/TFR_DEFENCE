@@ -22,6 +22,9 @@ TagManager:
   - ArteProjectile
   - ArteSkill
   - KamuemSkill
+  - RlrorProjectile
+  - RlrorSkill
+  - ElectoSkill
   layers:
   - Default
   - TransparentFX
@@ -31,7 +34,7 @@ TagManager:
   - UI
   - Wait
   - Attack,Skill
-  - 
+  - InGrid
   - 
   - 
   - 
