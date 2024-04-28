@@ -18,6 +18,9 @@ public class Ash : MonoBehaviour,IUnit
     private bool isSkillActive = false; // 스킬 활성화 상태
     private float skillTimer = 0f; // 스킬 유지 시간 카운터
 
+    [SerializeField]
+    AudioClip skillSound;
+
     public string unitName; //유닛 이름
     public float attackSpeed; //공격 속도
     public float attackRange; //공격 범위
@@ -160,6 +163,8 @@ public class Ash : MonoBehaviour,IUnit
         if (currentMana == maxMana) // 마나가 100 이상일 때 스킬 활성화
         {
             isSkillActive = true;
+            GetComponent<AudioSource>().PlayOneShot(skillSound);
+            Debug.Log("애쉬 스킬 소리 출력중");
             attackSpeedP *= 1.4f; // 공격 속도 1.4배 증가
             currentMana = 0;
         }

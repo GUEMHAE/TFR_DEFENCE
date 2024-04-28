@@ -14,6 +14,9 @@ public class Tonir : MonoBehaviour,IUnit
     public string tagName="Enemy"; //적의 태그 이름 초기화
     public GameObject attackTarget;
     public GameObject dummy; //멀리 떨어뜨린 더미 오브젝트 
+
+    [SerializeField]
+    AudioClip skillSound;
     public GameObject skillPrefab;
 
     public string unitName; //유닛 이름
@@ -166,9 +169,12 @@ public class Tonir : MonoBehaviour,IUnit
             if (enemy != null && enemy != dummy)
             {
                 currentMana = 0;
+
                 GameObject SkillClone = Instantiate(skillPrefab, attackSpawn.transform.position, Quaternion.identity);
                 SkillClone.transform.SetParent(enemy.transform, false); //스킬 오브젝트를 적의 자식 오브젝트로 생성
                 SkillClone.transform.localPosition = new Vector3(0, 3, 0); //부모 오브젝트(적)의 y값 3위에 생성
+                GetComponent<AudioSource>().PlayOneShot(skillSound);
+                Debug.Log("토니르 스킬 소리 출력중");
                 SkillClone.GetComponent<TonirSkill>().SkillTargeting(enemy.transform);//적을 타게팅함
             }
         }

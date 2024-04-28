@@ -13,6 +13,9 @@ public class Babarian : MonoBehaviour,IUnit
     public string tagName="Enemy"; //적의 태그 이름 초기화
     public GameObject attackTarget;
     public GameObject dummy; //멀리 떨어뜨린 더미 오브젝트 
+
+    [SerializeField]
+    AudioClip skillSound;
     public GameObject skillPrefab;
 
     public string unitName; //유닛 이름
@@ -162,6 +165,8 @@ public class Babarian : MonoBehaviour,IUnit
             if (enemy != null && enemy != dummy)
             {
                 currentMana = 0;
+                GetComponent<AudioSource>().PlayOneShot(skillSound);
+                Debug.Log("바바리안 스킬 소리 출력중");
                 GameObject SkillClone = Instantiate(skillPrefab, attackSpawn.transform.position, Quaternion.identity);
                 SkillClone.GetComponent<BabarianSkill>().SkillTargeting(enemy.transform);//적을 타게팅함
             }

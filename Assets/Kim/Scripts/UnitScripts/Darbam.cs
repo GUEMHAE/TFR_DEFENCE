@@ -13,6 +13,9 @@ public class Darbam : MonoBehaviour,IUnit
     public string tagName="Enemy"; //적의 태그 이름 초기화
     public GameObject attackTarget;
     public GameObject dummy; //멀리 떨어뜨린 더미 오브젝트 
+
+    [SerializeField]
+    AudioClip skillSound;
     public GameObject skillPrefab;
 
     public string unitName; //유닛 이름
@@ -161,7 +164,9 @@ public class Darbam : MonoBehaviour,IUnit
         if (currentMana == maxMana)
         {
             if (enemy != null && enemy != dummy)
-            { 
+            {
+                GetComponent<AudioSource>().PlayOneShot(skillSound);
+                Debug.Log("다르밤 스킬 소리 출력중");
                 GameObject SkillClone = Instantiate(skillPrefab, enemy.transform.position, Quaternion.identity);
                 currentMana = 0;
             }
