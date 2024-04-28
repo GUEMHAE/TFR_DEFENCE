@@ -27,6 +27,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     GameObject RlrorProjectileEffect;
 
+    Animator animator;
+
     public void Setup(Transform[] wayPoints)
     {
         enemyMoveMent2D = GetComponent<EnemyMoveMent2D>();
@@ -46,7 +48,9 @@ public class Enemy : MonoBehaviour
     {
         if (hp <= 0)
         {
-            Destroy(gameObject);
+            animator.SetInteger("State", 9);
+            gameObject.tag = "Untagged";
+            Destroy(gameObject,1f);
         }
     }
 
@@ -60,7 +64,7 @@ public class Enemy : MonoBehaviour
             //적의 현재위치와 목표위치의 거리가 0.02*EnemyMovement2D.MoveSpeed보다 작을 때 if 조건문 실행
             //EnemyMovement2D.MoveSpeed를 곱해주는 이유는 속도가 빠르면 한 프레임에 0.02보다 크게 움직이기 때문에
             //if조건문에 걸리지 않고 경로를 탈주하는 오브젝트가 발생할 수 있다.
-            if(Vector3.Distance(transform.position,wayPoints[currentIndex].position)<=0.03f*enemyMoveMent2D.MoveSpeed)
+            if(Vector3.Distance(transform.position,wayPoints[currentIndex].position)<=0.06f*enemyMoveMent2D.MoveSpeed)
             {
                 NextMoveTo();
             }
@@ -87,6 +91,31 @@ public class Enemy : MonoBehaviour
         {
             //적 오브젝트 다시 waypoint0으로 향하게
             currentIndex = 0;
+        }
+
+        if(currentIndex==1)
+        {
+            this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+
+        if(currentIndex==2)
+        {
+            this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 90);
+        }
+
+        if(currentIndex==3)
+        {
+            this.gameObject.transform.rotation = Quaternion.Euler(180, 0, 180);
+        }
+
+        if(currentIndex==4)
+        {
+            this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 270);
+        }
+
+        if(currentIndex==5)
+        {
+            this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
 
@@ -274,6 +303,11 @@ public class Enemy : MonoBehaviour
             damage = collision.GetComponent<ElectoSkill>().damage;
             hp -= damage;
         }
+    }
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
     }
 
     private void Update()

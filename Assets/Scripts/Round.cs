@@ -30,7 +30,7 @@ public class Round : MonoBehaviour
         while (currentRound <= totalRounds)
         {
             isRound = true;
-            await UniTask.Delay(TimeSpan.FromMinutes(1f)); // 1분 대기
+            await UniTask.Delay(TimeSpan.FromSeconds(45f)); // 45초 대기
             Debug.Log("선택시간") ;
             isRound = false;
 
