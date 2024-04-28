@@ -121,6 +121,7 @@ public class Link : MonoBehaviour,IUnit
     void Start()
     {
         AttackToTarget();
+        enabled = false;
     }
 
     private void OnEnable()
@@ -138,5 +139,13 @@ public class Link : MonoBehaviour,IUnit
     private void Update()
     {
         CheckEnemies();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Grid")
+        {
+            enabled = true;
+        }
     }
 }

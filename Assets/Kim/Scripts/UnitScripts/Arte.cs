@@ -150,6 +150,7 @@ public class Arte : MonoBehaviour,IUnit
     {
         AttackToTarget();
         RegenMana();
+        enabled = false;
     }
 
     private void OnEnable()
@@ -168,5 +169,13 @@ public class Arte : MonoBehaviour,IUnit
     private void Update()
     {
         CheckEnemies();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Grid")
+        {
+            enabled = true;
+        }
     }
 }

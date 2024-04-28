@@ -182,6 +182,7 @@ public class Ash : MonoBehaviour,IUnit
     {
         RegenMana();
         AttackToTarget();
+        enabled = false;
     }
 
     private void OnEnable()
@@ -212,6 +213,14 @@ public class Ash : MonoBehaviour,IUnit
                 attackSpeedP /= 1.4f; // 공격 속도 원래대로
                 skillTimer = 0;
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Grid")
+        {
+            enabled = true;
         }
     }
 }

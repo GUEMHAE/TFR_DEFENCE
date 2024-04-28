@@ -143,6 +143,7 @@ public class Arox : MonoBehaviour,IUnit
     {
         AttackToTarget();
         RegenMana();
+        enabled = false;
     }
 
     private void OnEnable()
@@ -170,6 +171,14 @@ public class Arox : MonoBehaviour,IUnit
                 GetComponent<AudioSource>().PlayOneShot(skillSound);
                 Debug.Log("아룩스 스킬 소리 출력중");
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Grid")
+        {
+            enabled = true;
         }
     }
 }

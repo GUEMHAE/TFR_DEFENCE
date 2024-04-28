@@ -140,8 +140,9 @@ public class Darbam : MonoBehaviour,IUnit
 
     void Start()
     {
-        AttackToTarget();
         RegenMana();
+        AttackToTarget();
+        enabled = false;
     }
 
     private void OnEnable()
@@ -172,4 +173,12 @@ public class Darbam : MonoBehaviour,IUnit
             }
         }
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Grid")
+        {
+            enabled = true;
+        }
+    }
+
 }

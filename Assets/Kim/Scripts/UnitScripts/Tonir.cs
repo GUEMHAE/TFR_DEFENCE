@@ -160,6 +160,10 @@ public class Tonir : MonoBehaviour,IUnit
     {
         cancellationTokenSource.Cancel();
     }
+    private void Start()
+    {
+        enabled = false;
+    }
 
     private void Update()
     {
@@ -177,6 +181,13 @@ public class Tonir : MonoBehaviour,IUnit
                 Debug.Log("토니르 스킬 소리 출력중");
                 SkillClone.GetComponent<TonirSkill>().SkillTargeting(enemy.transform);//적을 타게팅함
             }
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Grid")
+        {
+            enabled = true;
         }
     }
 }

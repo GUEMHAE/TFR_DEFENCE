@@ -143,6 +143,7 @@ public class Snel : MonoBehaviour,IUnit
     {
         AttackToTarget();
         RegenMana();
+        enabled = false;
     }
 
     private void OnEnable()
@@ -171,6 +172,13 @@ public class Snel : MonoBehaviour,IUnit
                 Debug.Log("스넬 스킬 소리 출력중");
                 SkillClone.GetComponent<SnelSkill>().SkillTargeting(enemy.transform);//적을 타게팅함
             }
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Grid")
+        {
+            enabled = true;
         }
     }
 }

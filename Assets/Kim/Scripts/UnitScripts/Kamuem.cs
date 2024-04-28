@@ -143,6 +143,8 @@ public class Kamuem : MonoBehaviour,IUnit
         skillRotation = Quaternion.Euler(90f, 0f, 0f);
         AttackToTarget();
         RegenMana();
+
+        enabled = false;
     }
 
     private void OnEnable()
@@ -168,6 +170,14 @@ public class Kamuem : MonoBehaviour,IUnit
                 currentMana = 0;
                 GameObject SkillClone = Instantiate(skillEffectPrefab, attackSpawn.transform.position, skillRotation);
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Grid")
+        {
+            enabled = true;
         }
     }
 }

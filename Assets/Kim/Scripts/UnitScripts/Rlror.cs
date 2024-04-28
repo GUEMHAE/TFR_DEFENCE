@@ -143,6 +143,7 @@ public class Rlror : MonoBehaviour,IUnit
         skillRotation = Quaternion.Euler(90f, 0f, 0f);
         AttackToTarget();
         RegenMana();
+        enabled = false;
     }
 
     private void OnEnable()
@@ -169,6 +170,14 @@ public class Rlror : MonoBehaviour,IUnit
                 GameObject SkillClone = Instantiate(skillPrefab, enemy.transform.position, skillRotation);
                 SkillClone.GetComponent<RlrorSkill>().SkillTargeting(enemy.transform);//적을 타게팅함
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Grid")
+        {
+            enabled = true;
         }
     }
 }

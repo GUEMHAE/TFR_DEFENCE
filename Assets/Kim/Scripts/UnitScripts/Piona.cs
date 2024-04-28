@@ -142,6 +142,7 @@ public class Piona : MonoBehaviour,IUnit
     {
         AttackToTarget();
         RegenMana();
+        enabled = false;
     }
 
     private void OnEnable()
@@ -167,6 +168,14 @@ public class Piona : MonoBehaviour,IUnit
                 currentMana = 0;
                 GameObject SkillClone = Instantiate(skillPrefab, enemy.transform.position+ spawnPosition, Quaternion.identity);
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Grid")
+        {
+            enabled = true;
         }
     }
 }

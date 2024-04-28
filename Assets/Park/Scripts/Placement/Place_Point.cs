@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -7,22 +8,41 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
 {
     [SerializeField]public bool canPlace = false;
     public GameObject grid;
+    public GameObject Unit;
     BoxCollider2D boxCol;
+    private Unit unit;
 
+    Round round;
+    GameObject RoundManager;
     private void Start()
     {
+        RoundManager = GameObject.FindWithTag("Round");
         boxCol = GetComponent<BoxCollider2D>();
+        round = RoundManager.GetComponent<Round>();
         canPlace = true;
+        unit = GetComponent<Unit>();
+        unit.enabled = false;
+        Debug.Log(unit.enabled);
+    }
+    
+
+    private void Update()
+    {
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Grid" && canPlace)
+        if (round.isRound == true && collision.tag != "Wait")
+        {
+            canPlace = false;
+        }
+
+        if (collision.tag == "Grid" && canPlace || collision.tag == "Wait" && canPlace)
         {
             collision.gameObject.GetComponent<SpriteRenderer>().color = Color.green;
             grid = collision.gameObject;
         }
-        else if (collision.tag == "Grid" && !canPlace)
+        else if (collision.tag == "Grid" && !canPlace || collision.tag == "Wait" && !canPlace)
         {
             if (Input.GetMouseButtonUp(1))
             {
@@ -30,6 +50,10 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
                 transform.localPosition = Vector3.zero;
                 Debug.Log("À¯´Ö³¢¸® °ãÄ§");
             }
+        }
+        else if (collision.tag == "Wait")
+        {
+            canPlace = true;
         }
         else
         {
@@ -39,7 +63,7 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Grid")
+        if (collision.tag == "Grid" || collision.tag == "Wait")
         {
             collision.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
             canPlace = true;
@@ -73,7 +97,8 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
 
     void IDragHandler.OnDrag(PointerEventData eventData)
     {
-        boxCol.size = new Vector2(0.05f, 0.05f);
+        boxCol.size = new Vector2(0.065f, 0.065f);
+        unit.enabled = false;
         gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0f;

@@ -140,6 +140,7 @@ public class Irsig : MonoBehaviour,IUnit
     {
         AttackToTarget();
         RegenMana();
+        enabled = false;
     }
 
     private void OnEnable()
@@ -165,6 +166,13 @@ public class Irsig : MonoBehaviour,IUnit
                 currentMana = 0;
                 GameObject SkillClone = Instantiate(skillPrefab, enemy.transform.position, Quaternion.identity);
             }
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Grid")
+        {
+            enabled = true;
         }
     }
 }

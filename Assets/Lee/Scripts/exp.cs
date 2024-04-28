@@ -49,8 +49,6 @@ public class Exp : MonoBehaviour
 
     }
 
-
-
     // 버튼 클릭 경험치 증가 함수
     public void IncreaseExperience()
     {
@@ -75,7 +73,5 @@ public class Exp : MonoBehaviour
             case 6: return 0;
         }
         return exp;
-
-
     }
 }
