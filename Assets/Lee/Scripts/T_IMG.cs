@@ -5,7 +5,7 @@ using UnityEngine;
 public class T_IMG : MonoBehaviour
 {
     public float maxSize = 1.2f; // 이미지의 최대 크기
-    public float duration = 0.5f; // 애니메이션의 총 시간 (크기가 최대까지 성장하는 데 걸리는 시간)
+    public float duration = 0.5f; // 애니메이션의 총 시간
 
     private Vector3 initialScale; // 이미지의 초기 크기
     private bool isGrowing = true; // 커지고 있는지 확인

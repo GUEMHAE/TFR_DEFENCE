@@ -10,9 +10,8 @@ public class ESCUI : MonoBehaviour
     public GameObject Ttab;
     public bool isTab = false;
 
-    public GameObject IMG;
-    public GameObject IMG1;
-    public GameObject IMG2;
+    public GameObject Tabtext;
+    public GameObject Expup;
 
     // Start is called before the first frame update
     void Start()
@@ -49,9 +48,8 @@ public class ESCUI : MonoBehaviour
             if (isTab)
             {
                 Ttab.SetActive(true); // 활성화
-                IMG.SetActive(false);
-                IMG1.SetActive(true);
-                IMG2.SetActive(true);
+                Tabtext.SetActive(false);
+                Expup.SetActive(true);
             }
             else
                 Ttab.SetActive(false); //비활성화

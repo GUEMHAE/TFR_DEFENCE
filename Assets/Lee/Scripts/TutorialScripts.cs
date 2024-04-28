@@ -27,7 +27,7 @@ public class TutorialScripts : MonoBehaviour, IEndDragHandler
     {
         if (isGrid && !IMG_Grid.activeSelf) // 정착 상태이고 이미지가 비활성화된 경우
         {
-            IMG_Grid.SetActive(true); // 이미지를 활성화합니다.
+            IMG_Grid.SetActive(true); // 이미지를 활성화
             IMG_waits.SetActive(false);
             IMG1.SetActive(false);
             ep_IMG.SetActive(false);
@@ -41,7 +41,7 @@ public class TutorialScripts : MonoBehaviour, IEndDragHandler
 
         if (iswaits && !IMG_waits.activeSelf) // 정착 상태이고 이미지가 비활성화된 경우
         {
-            IMG_waits.SetActive(true); // 이미지를 활성화합니다.
+            IMG_waits.SetActive(true); // 이미지를 활성화
             ep_IMGGrid.SetActive(false);
             IMG2.SetActive(false);
             IMG2_1.SetActive(false);
@@ -55,12 +55,12 @@ public class TutorialScripts : MonoBehaviour, IEndDragHandler
     {
         if (collision.gameObject.name == GridName) // 충돌한 게임 오브젝트의 이름이 배치석 이름과 같은 경우
         {
-            isGrid = true; // 정착 상태를 true로 설정합니다.
+            isGrid = true; // 정착 상태를 true로 설정
         }
 
         if (collision.gameObject.name == waitsName) // 충돌한 게임 오브젝트의 이름이 대기석 이름과 같은 경우
         {
-            iswaits = true; // 정착 상태를 true로 설정합니다.
+            iswaits = true; // 정착 상태를 true로 설정
         }
     }
 
@@ -68,12 +68,12 @@ public class TutorialScripts : MonoBehaviour, IEndDragHandler
     {
         if (collision.gameObject.name == GridName) // 배치석과 충돌이 끝난 경우
         {
-            isGrid = false; // 정착 상태를 false로 설정합니다.
+            isGrid = false; // 정착 상태를 false로 설정
         }
 
         if (collision.gameObject.name == waitsName) // 대기석과 충돌이 끝난 경우
         {
-            iswaits = false; // 정착 상태를 false로 설정합니다.
+            iswaits = false; // 정착 상태를 false로 설정
         }
     }
 }
