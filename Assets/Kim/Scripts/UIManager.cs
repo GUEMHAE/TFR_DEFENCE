@@ -18,6 +18,11 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     GameObject bossWarning;
 
+    [SerializeField]
+    Button synergyButton; //시너지 표시 버튼
+    [SerializeField]
+    GameObject synergyPannel; //시너지 표시 패널
+
     async UniTask BossWarning()
     {
         while(true)
@@ -32,6 +37,19 @@ public class UIManager : MonoBehaviour
             await UniTask.WaitUntil(() => Round.instance.currentRound % 5 == 0);
         }
     }
+
+    public void ActiveSynergyPannel() //시너지 표시 버튼 눌럿을때 시너지 패널 활성화
+    {
+        synergyButton.gameObject.SetActive(false);
+        synergyPannel.SetActive(true);
+    }
+
+    public void QuitSynergyPannel() //시너지 표시 패널 닫기 버튼 눌럿을때 시너지 표시 버튼 활성화
+    {
+        synergyButton.gameObject.SetActive(true);
+        synergyPannel.SetActive(false);
+    }
+
 
     private void Start()
     {
