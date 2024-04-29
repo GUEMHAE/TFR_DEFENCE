@@ -173,7 +173,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.25, y: 1.25}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -223,6 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canPlace: 0
   grid: {fileID: 0}
+  Unit: {fileID: 0}
 --- !u!114 &7978203094167682595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,3 +255,5 @@ MonoBehaviour:
   sellCost: 0
   attackProjectile: {fileID: 0}
   attackSpawn: {fileID: 3302397817636139694}
+  stunEffect: {fileID: 1936204856907710318, guid: 8c0e17fd5bacca14c8c72f803482bae0, type: 3}
+  isStun: 0

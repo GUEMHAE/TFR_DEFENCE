@@ -193,6 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canPlace: 0
   grid: {fileID: 0}
+  Unit: {fileID: 0}
 --- !u!114 &4507987756199136224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,6 +226,8 @@ MonoBehaviour:
   regenManaRate: 0
   attackProjectile: {fileID: 0}
   attackSpawn: {fileID: 8817880630498521942}
+  stunEffect: {fileID: 1936204856907710318, guid: 8c0e17fd5bacca14c8c72f803482bae0, type: 3}
+  isStun: 0
 --- !u!82 &5011800234735263449
 AudioSource:
   m_ObjectHideFlags: 0

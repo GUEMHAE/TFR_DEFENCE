@@ -9,6 +9,6 @@ public class AroxSkill : MonoBehaviour
 
     private void Update()
     {
-        Destroy(gameObject, 6f);
+        Destroy(gameObject, 3f);
     }
 }

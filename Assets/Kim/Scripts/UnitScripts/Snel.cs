@@ -32,6 +32,12 @@ public class Snel : MonoBehaviour,IUnit
     public GameObject attackProjectile; //유닛 공격 프로젝타일
     public Transform attackSpawn; //유닛 공격 시작 위치
 
+    public GameObject stunEffect;
+    [SerializeField]
+    bool isStun;
+
+    public bool isGrid;
+
     public string unitNameP
     {
         get => unitName;
@@ -131,7 +137,7 @@ public class Snel : MonoBehaviour,IUnit
         while (true)
         {
             await UniTask.Delay(1000);//1초마다 마나 회복
-            if (currentMana < maxMana)
+            if (currentMana < maxMana&&Round.instance.isRound==true)
             {
                 currentMana += regenManaRate;
                 currentMana = Mathf.Min(currentMana, maxMana);//현재 마나가 최대 마나를 초과하지 않게 하기 위해
@@ -168,17 +174,35 @@ public class Snel : MonoBehaviour,IUnit
             {
                 currentMana = 0;
                 GameObject SkillClone = Instantiate(skillPrefab, attackSpawn.transform.position, Quaternion.identity);
-                GetComponent<AudioSource>().PlayOneShot(skillSound);
+                GetComponent<AudioSource>().Play();
                 Debug.Log("스넬 스킬 소리 출력중");
                 SkillClone.GetComponent<SnelSkill>().SkillTargeting(enemy.transform);//적을 타게팅함
             }
         }
-    }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "Grid")
+        if(FirstBoss.instance.isUseFirst==true)
+        {
+            enabled = false;
+        }
+        else if(FirstBoss.instance.isUseFirst==false&&isGrid==true)
         {
             enabled = true;
+        }
+    }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.tag == "Grid" && FirstBoss.instance.isUseFirst == false)
+        {
+            enabled = true;
+            isStun = false;
+        }
+        if (other.tag == "Wait" || FirstBoss.instance.isUseFirst == true)
+        {
+            if (isStun == false)
+            {
+                Instantiate(stunEffect, gameObject.transform.position, Quaternion.identity);
+            }
+            isStun = true;
+            enabled = false;
         }
     }
 }

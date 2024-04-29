@@ -224,6 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canPlace: 0
   grid: {fileID: 0}
+  Unit: {fileID: 0}
 --- !u!114 &5295692850163286350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +257,9 @@ MonoBehaviour:
   sellCost: 0
   attackProjectile: {fileID: 4519540787519262811, guid: 00f3145b04e174c49aedb91d35bcd003, type: 3}
   attackSpawn: {fileID: 7700727822293570115}
+  stunEffect: {fileID: 1936204856907710318, guid: 8c0e17fd5bacca14c8c72f803482bae0, type: 3}
+  isStun: 0
+  isGrid: 0
 --- !u!82 &-1357980235708779421
 AudioSource:
   m_ObjectHideFlags: 0

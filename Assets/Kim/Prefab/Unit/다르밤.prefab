@@ -140,7 +140,7 @@ MonoBehaviour:
   tagName: Enemy
   attackTarget: {fileID: 0}
   dummy: {fileID: 7383394015066688635, guid: 386b6661d87229f4fa7f2a2b8bf9cf22, type: 3}
-  skillSound: {fileID: 0}
+  skillSound: {fileID: 8300000, guid: 19f93d7d1c7d5474f9496abf20e7c247, type: 3}
   skillPrefab: {fileID: 8900739791680044732, guid: f1e8a433cc50b304fa2e9dbe44622c32, type: 3}
   unitName: 
   attackSpeed: 0
@@ -154,6 +154,8 @@ MonoBehaviour:
   regenManaRate: 0
   attackProjectile: {fileID: 1109751858030904874, guid: aa9a6cffe09742a48a5b26f2580594e8, type: 3}
   attackSpawn: {fileID: 5377363186222607736}
+  stunEffect: {fileID: 1936204856907710318, guid: 8c0e17fd5bacca14c8c72f803482bae0, type: 3}
+  isStun: 0
 --- !u!114 &439005740334820361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canPlace: 0
   grid: {fileID: 0}
+  Unit: {fileID: 0}
 --- !u!82 &1072924990419725155
 AudioSource:
   m_ObjectHideFlags: 0

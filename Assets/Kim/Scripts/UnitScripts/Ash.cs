@@ -34,6 +34,11 @@ public class Ash : MonoBehaviour,IUnit
     public GameObject attackProjectile; //유닛 공격 프로젝타일
     public Transform attackSpawn; //유닛 공격 시작 위치
 
+    public GameObject stunEffect;
+    [SerializeField]
+    bool isStun;
+
+
     public string unitNameP
     {
         get => unitName;
@@ -163,7 +168,7 @@ public class Ash : MonoBehaviour,IUnit
         if (currentMana == maxMana) // 마나가 100 이상일 때 스킬 활성화
         {
             isSkillActive = true;
-            GetComponent<AudioSource>().PlayOneShot(skillSound);
+            GetComponent<AudioSource>().Play();
             Debug.Log("애쉬 스킬 소리 출력중");
             attackSpeedP *= 1.4f; // 공격 속도 1.4배 증가
             currentMana = 0;
@@ -216,11 +221,21 @@ public class Ash : MonoBehaviour,IUnit
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.tag == "Grid")
+        if (other.tag == "Grid" && FirstBoss.instance.isUseFirst == false)
         {
             enabled = true;
+            isStun = false;
+        }
+        if (other.tag == "Wait" || FirstBoss.instance.isUseFirst == true)
+        {
+            if (isStun == false)
+            {
+                Instantiate(stunEffect, gameObject.transform.position, Quaternion.identity);
+            }
+            isStun = true;
+            enabled = false;
         }
     }
 }

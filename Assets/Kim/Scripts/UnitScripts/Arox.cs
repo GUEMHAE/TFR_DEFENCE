@@ -32,6 +32,10 @@ public class Arox : MonoBehaviour,IUnit
     public GameObject attackProjectile; //유닛 공격 프로젝타일
     public Transform attackSpawn; //유닛 공격 시작 위치
 
+    public GameObject stunEffect;
+    [SerializeField]
+    bool isStun;
+
     public string unitNameP
     {
         get => unitName;
@@ -168,17 +172,27 @@ public class Arox : MonoBehaviour,IUnit
             {
                 currentMana = 0;
                 GameObject SkillClone = Instantiate(skillPrefab, enemy.transform.position, Quaternion.identity);
-                GetComponent<AudioSource>().PlayOneShot(skillSound);
+                GetComponent<AudioSource>().Play();
                 Debug.Log("아룩스 스킬 소리 출력중");
             }
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.tag == "Grid")
+        if (other.tag == "Grid" && FirstBoss.instance.isUseFirst == false)
         {
             enabled = true;
+            isStun = false;
+        }
+        if (other.tag == "Wait" || FirstBoss.instance.isUseFirst == true)
+        {
+            if (isStun == false)
+            {
+                Instantiate(stunEffect, gameObject.transform.position, Quaternion.identity);
+            }
+            isStun = true;
+            enabled = false;
         }
     }
 }

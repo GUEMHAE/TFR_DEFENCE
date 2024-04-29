@@ -5,13 +5,13 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Threading;
 
-public class Tonir : MonoBehaviour,IUnit
+public class Tonir : MonoBehaviour, IUnit
 {
     public UnitInfo unitInfo; //UnitInfo스크립터블 오브젝트를 받아오기 위한 변수
 
     public GameObject enemy; //가장 가까운 적 유닛을 담는 오브젝트
     public float shortDis; //가장 가까운 적과의 거리를 저장하는 변수
-    public string tagName="Enemy"; //적의 태그 이름 초기화
+    public string tagName = "Enemy"; //적의 태그 이름 초기화
     public GameObject attackTarget;
     public GameObject dummy; //멀리 떨어뜨린 더미 오브젝트 
 
@@ -32,19 +32,23 @@ public class Tonir : MonoBehaviour,IUnit
     public GameObject attackProjectile; //유닛 공격 프로젝타일
     public Transform attackSpawn; //유닛 공격 시작 위치
 
+    public GameObject stunEffect;
+    [SerializeField]
+    bool isStun;
+
     private CancellationTokenSource cancellationTokenSource; //작업 취소 요청을 감지하기 위한 토큰
 
     public string unitNameP
     {
         get => unitName;
-        set=>unitName = value;
+        set => unitName = value;
     }
     public float attackSpeedP
     {
         get => attackSpeed;
         set => attackSpeed = value;
-    }    
-    public float  attackRangeP
+    }
+    public float attackRangeP
     {
         get => attackRange;
         set => attackRange = value;
@@ -52,12 +56,12 @@ public class Tonir : MonoBehaviour,IUnit
     public float adP
     {
         get => ad;
-        set => ad= value;
+        set => ad = value;
     }
     public float apP
     {
         get => ap;
-        set => ap=value;
+        set => ap = value;
     }
     public float costP
     {
@@ -72,7 +76,7 @@ public class Tonir : MonoBehaviour,IUnit
     public GameObject attackProjectileP
     {
         get => attackProjectile;
-        set => attackProjectile=value;
+        set => attackProjectile = value;
     }
     //Interface로 선언한 변수들을 정의하는 부분
 
@@ -91,11 +95,11 @@ public class Tonir : MonoBehaviour,IUnit
                 enemy = dummy;
             }
 
-            if (enemy==null) //적이 null이면
+            if (enemy == null) //적이 null이면
             {
                 await UniTask.WaitUntil(() => enemy != null);
             }
-            if (Round.instance.isRound ==true && shortDis <= attackRange) //최소거리가 공격사거리보다 작거나 같다면
+            if (Round.instance.isRound == true && shortDis <= attackRange) //최소거리가 공격사거리보다 작거나 같다면
             {
                 await UniTask.Delay(TimeSpan.FromSeconds(1 / attackSpeed)); //공격속도에 맞춰
                 Debug.Log("공격생성직전");
@@ -117,10 +121,10 @@ public class Tonir : MonoBehaviour,IUnit
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(tagName);
 
         shortDis = float.MaxValue;
-        foreach(GameObject enemyObject in enemies)
+        foreach (GameObject enemyObject in enemies)
         {
             float distance = Vector3.Distance(gameObject.transform.position, enemyObject.transform.position);
-            if(distance<shortDis)
+            if (distance < shortDis)
             {
                 enemy = enemyObject;
                 shortDis = distance;
@@ -151,7 +155,7 @@ public class Tonir : MonoBehaviour,IUnit
         sellCostP = unitInfo.SellCost;
         attackProjectileP = unitInfo.attackProjectile;
         regenManaRate = 4f;
-        cancellationTokenSource = new CancellationTokenSource(); 
+        cancellationTokenSource = new CancellationTokenSource();
         AttackToTarget(cancellationTokenSource.Token);
         RegenMana(cancellationTokenSource.Token);
     }
@@ -177,17 +181,27 @@ public class Tonir : MonoBehaviour,IUnit
                 GameObject SkillClone = Instantiate(skillPrefab, attackSpawn.transform.position, Quaternion.identity);
                 SkillClone.transform.SetParent(enemy.transform, false); //스킬 오브젝트를 적의 자식 오브젝트로 생성
                 SkillClone.transform.localPosition = new Vector3(0, 3, 0); //부모 오브젝트(적)의 y값 3위에 생성
-                GetComponent<AudioSource>().PlayOneShot(skillSound);
+                GetComponent<AudioSource>().Play();
                 Debug.Log("토니르 스킬 소리 출력중");
                 SkillClone.GetComponent<TonirSkill>().SkillTargeting(enemy.transform);//적을 타게팅함
             }
         }
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.tag == "Grid")
+        if (other.tag == "Grid"&&FirstBoss.instance.isUseFirst==false)
         {
-            enabled = true;
+           enabled = true;
+            isStun = false;
+        }
+        if (other.tag == "Wait" || FirstBoss.instance.isUseFirst == true)
+        {
+            if (isStun == false)
+            {
+                Instantiate(stunEffect, gameObject.transform.position, Quaternion.identity);
+            }
+            isStun = true;
+            enabled = false;
         }
     }
 }
