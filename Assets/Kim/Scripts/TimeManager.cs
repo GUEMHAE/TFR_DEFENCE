@@ -7,6 +7,7 @@ public class TimeManager : MonoBehaviour
     public float roundTime=45f; //현재 라운드 시간 변수
     private bool isTime ;
     public static TimeManager instance; //싱글톤 패턴
+    public bool isNoEnemy;
 
     void Awake()
     {
@@ -34,7 +35,7 @@ public class TimeManager : MonoBehaviour
             roundTime = 15;
             isTime = true;
         }
-        if (isTime == true && Round.instance.isRound == true)
+        else if (isTime == true && Round.instance.isRound == true)
         {
             roundTime = 45;
             isTime = false;

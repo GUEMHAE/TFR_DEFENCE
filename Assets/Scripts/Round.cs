@@ -31,7 +31,7 @@ public class Round : MonoBehaviour
         {
             isRound = true;
             await UniTask.Delay(TimeSpan.FromSeconds(45f)); // 45초
-            Debug.Log("선택시간") ;
+            Debug.Log("선택시간");
 
             isRound = false;
 
