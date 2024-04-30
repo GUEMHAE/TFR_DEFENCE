@@ -23,6 +23,8 @@ public class TutorialScripts : MonoBehaviour, IEndDragHandler
     public GameObject IMG_waits; //다음 이미지
     private bool iswaits = false; // 대기석에 정착 되었는지 확인
 
+
+
     public void OnEndDrag(PointerEventData eventData)
     {
         if (isGrid && !IMG_Grid.activeSelf) // 정착 상태이고 이미지가 비활성화된 경우
@@ -74,6 +76,25 @@ public class TutorialScripts : MonoBehaviour, IEndDragHandler
         if (collision.gameObject.name == waitsName) // 대기석과 충돌이 끝난 경우
         {
             iswaits = false; // 정착 상태를 false로 설정
+        }
+    }
+
+    public void ApplyCollision(GameObject collidedObject)
+    {
+        TutorialScripts objectScript = collidedObject.GetComponent<TutorialScripts>();
+        if (objectScript != null)
+        {
+            objectScript.isGrid = isGrid;
+            objectScript.iswaits = iswaits;
+            objectScript.IMG.SetActive(IMG.activeSelf);
+            objectScript.IMG1.SetActive(IMG1.activeSelf);
+            objectScript.ep_IMG.SetActive(ep_IMG.activeSelf);
+            objectScript.ep_IMGGrid.SetActive(ep_IMGGrid.activeSelf);
+            objectScript.IMG2.SetActive(IMG2.activeSelf);
+            objectScript.IMG2_1.SetActive(IMG2_1.activeSelf);
+            objectScript.IMG2_2.SetActive(IMG2_2.activeSelf);
+            objectScript.IMG_Grid.SetActive(IMG_Grid.activeSelf);
+            objectScript.IMG_waits.SetActive(IMG_waits.activeSelf);
         }
     }
 }
