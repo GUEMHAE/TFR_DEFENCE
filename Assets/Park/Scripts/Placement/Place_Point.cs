@@ -11,35 +11,31 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
     public GameObject Unit;
     BoxCollider2D boxCol;
     private Unit unit;
-
-    Round round;
-    GameObject RoundManager;
     private void Start()
     {
-        RoundManager = GameObject.FindWithTag("Round");
         boxCol = GetComponent<BoxCollider2D>();
-        round = RoundManager.GetComponent<Round>();
         canPlace = true;
         unit = GetComponent<Unit>();
         unit.enabled = false;
         Debug.Log(unit.enabled);
     }
-    
 
     private void Update()
     {
+        if (Round.instance.isRound == true)
+        {
+            Camera.main.GetComponent<Physics2DRaycaster>().enabled = false;
+        }
+        else
+        {
+            Camera.main.GetComponent<Physics2DRaycaster>().enabled = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (round.isRound == true && collision.tag != "Wait")
-        {
-            canPlace = false;
-        }
-
         if (collision.tag == "Grid" && canPlace || collision.tag == "Wait" && canPlace)
         {
-            collision.gameObject.GetComponent<SpriteRenderer>().color = Color.green;
             grid = collision.gameObject;
         }
         else if (collision.tag == "Grid" && !canPlace || collision.tag == "Wait" && !canPlace)
@@ -48,12 +44,7 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
             {
                 grid = null;
                 transform.localPosition = Vector3.zero;
-                Debug.Log("À¯´Ö³¢¸® °ãÄ§");
             }
-        }
-        else if (collision.tag == "Wait")
-        {
-            canPlace = true;
         }
         else
         {
@@ -65,7 +56,6 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         if (collision.tag == "Grid" || collision.tag == "Wait")
         {
-            collision.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
             canPlace = true;
             grid = null;
         }
