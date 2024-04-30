@@ -29447,6 +29447,7 @@ GameObject:
   - component: {fileID: 3607339651789740162}
   - component: {fileID: 5258311444270833389}
   - component: {fileID: 6206840256749317594}
+  - component: {fileID: 9099537330686798663}
   m_Layer: 0
   m_Name: RlorAttackProjectileEffect
   m_TagString: Untagged
@@ -34342,3 +34343,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!210 &9099537330686798663
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7819557312314079244}
+  m_Enabled: 1
+  m_SortingLayerID: -1857298117
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_SortAtRoot: 0

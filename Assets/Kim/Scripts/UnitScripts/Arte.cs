@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System;
+using System.Threading;
+using DG.Tweening;
 
 public class Arte : MonoBehaviour,IUnit
 {
@@ -33,6 +35,8 @@ public class Arte : MonoBehaviour,IUnit
     public GameObject stunEffect;
     [SerializeField]
     bool isStun;
+
+    private CancellationTokenSource cancellationTokenSource; //작업 취소 요청을 감지하기 위한 토큰
 
     public string unitNameP
     {
@@ -86,9 +90,9 @@ public class Arte : MonoBehaviour,IUnit
         GameObject clone = Instantiate(skillEffectPrefab, enemy.transform.position, Quaternion.identity); //프로젝타일은 attackSpawn위치에 생성
     }
 
-    async UniTask AttackToTarget()
+    async UniTask AttackToTarget(CancellationToken cancellationToken)
     {
-        while (true)
+        while (!cancellationToken.IsCancellationRequested)
         {
             if (EnemySpawnManager.instance.EnemyPool.childCount == 0)
             {
@@ -109,6 +113,9 @@ public class Arte : MonoBehaviour,IUnit
                 }
                 if (enemy != dummy)//더미가 아닐 경우만 공격
                 {
+                    var sequence = DOTween.Sequence();
+                    sequence.Append(transform.DOScale(new Vector3(0.85f, 0.85f, 0.85f), 0.15f).SetEase(Ease.OutBounce));
+                    sequence.Append(transform.DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.15f).SetEase(Ease.InBounce));
                     SpawnProjectile(); //프로젝타일 생성
                     if(currentMana == maxMana)
                     {
@@ -137,9 +144,9 @@ public class Arte : MonoBehaviour,IUnit
         }
     }
 
-    async UniTask RegenMana()
+    async UniTask RegenMana(CancellationToken cancellationToken)
     {
-        while (true)
+        while (!cancellationToken.IsCancellationRequested)
         {
             await UniTask.Delay(1000);//1초마다 마나 회복
             if (currentMana < maxMana)
@@ -149,11 +156,35 @@ public class Arte : MonoBehaviour,IUnit
             }
         }
     }
+    
+    async UniTask bossSkillHit()
+    {
+        while (FirstBoss.instance != null)
+        {
+            if (FirstBoss.instance.isUseFirst == true)
+            {
+                HitFirstBossSkill();
+                this.enabled = false;
+                await UniTask.WaitUntil(() => !FirstBoss.instance.isUseFirst);
+                isStun = false;
+                this.enabled = true;
+            }
+            await UniTask.WaitUntil(() => FirstBoss.instance.isUseFirst);
+        }
+    }
+
+    void HitFirstBossSkill()
+    {
+        isStun = true;
+        if (isStun == true)
+        {
+            Instantiate(stunEffect, gameObject.transform.position, Quaternion.identity);
+        }
+    }
 
     void Start()
     {
-        AttackToTarget();
-        RegenMana();
+        bossSkillHit();
         enabled = false;
     }
 
@@ -168,6 +199,14 @@ public class Arte : MonoBehaviour,IUnit
         sellCostP = unitInfo.SellCost;
         attackProjectileP = unitInfo.attackProjectile;
         regenManaRate = 4f;
+        cancellationTokenSource = new CancellationTokenSource();
+        AttackToTarget(cancellationTokenSource.Token);
+        RegenMana(cancellationTokenSource.Token);
+    }
+
+    private void OnDisable()
+    {
+        cancellationTokenSource.Cancel();
     }
 
     private void Update()
@@ -177,19 +216,13 @@ public class Arte : MonoBehaviour,IUnit
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.tag == "Grid" && FirstBoss.instance.isUseFirst == false)
+        if (isStun == true || other.tag == "Wait")
+        {
+            enabled = false;
+        }
+        else if (other.tag == "Grid" && isStun == false)
         {
             enabled = true;
-            isStun = false;
-        }
-        if (other.tag == "Wait" || FirstBoss.instance.isUseFirst == true)
-        {
-            if (isStun == false)
-            {
-                Instantiate(stunEffect, gameObject.transform.position, Quaternion.identity);
-            }
-            isStun = true;
-            enabled = false;
         }
     }
 }

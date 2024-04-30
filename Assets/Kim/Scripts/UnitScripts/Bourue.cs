@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System;
+using System.Threading;
+using DG.Tweening;
 
-public class Bourue : MonoBehaviour,IUnit
+public class Bourue : MonoBehaviour, IUnit
 {
     public UnitInfo unitInfo; //UnitInfo스크립터블 오브젝트를 받아오기 위한 변수
 
     public GameObject enemy; //가장 가까운 적 유닛을 담는 오브젝트
     public float shortDis; //가장 가까운 적과의 거리를 저장하는 변수
-    public string tagName="Enemy"; //적의 태그 이름 초기화
+    public string tagName = "Enemy"; //적의 태그 이름 초기화
     public GameObject attackTarget;
     public GameObject dummy; //멀리 떨어뜨린 더미 오브젝트 
 
@@ -35,17 +37,19 @@ public class Bourue : MonoBehaviour,IUnit
     [SerializeField]
     bool isStun;
 
+    private CancellationTokenSource cancellationTokenSource; //작업 취소 요청을 감지하기 위한 토큰
+
     public string unitNameP
     {
         get => unitName;
-        set=>unitName = value;
+        set => unitName = value;
     }
     public float attackSpeedP
     {
         get => attackSpeed;
         set => attackSpeed = value;
-    }    
-    public float  attackRangeP
+    }
+    public float attackRangeP
     {
         get => attackRange;
         set => attackRange = value;
@@ -53,12 +57,12 @@ public class Bourue : MonoBehaviour,IUnit
     public float adP
     {
         get => ad;
-        set => ad= value;
+        set => ad = value;
     }
     public float apP
     {
         get => ap;
-        set => ap=value;
+        set => ap = value;
     }
     public float costP
     {
@@ -73,7 +77,7 @@ public class Bourue : MonoBehaviour,IUnit
     public GameObject attackProjectileP
     {
         get => attackProjectile;
-        set => attackProjectile=value;
+        set => attackProjectile = value;
     }
     //Interface로 선언한 변수들을 정의하는 부분
 
@@ -83,20 +87,20 @@ public class Bourue : MonoBehaviour,IUnit
         clone.GetComponent<AttackProjectile>().Targeting(enemy.transform);//가장 가까운 적을 타게팅함
     }
 
-    async UniTask AttackToTarget()
+    async UniTask AttackToTarget(CancellationToken cancellationToken)
     {
-        while (true)
+        while (!cancellationToken.IsCancellationRequested)
         {
             if (EnemySpawnManager.instance.EnemyPool.childCount == 0)
             {
                 enemy = dummy;
             }
 
-            if (enemy==null) //적이 null이면
+            if (enemy == null) //적이 null이면
             {
                 await UniTask.WaitUntil(() => enemy != null);
             }
-            if (Round.instance.isRound ==true && shortDis <= attackRange) //최소거리가 공격사거리보다 작거나 같다면
+            if (Round.instance.isRound == true && shortDis <= attackRange) //최소거리가 공격사거리보다 작거나 같다면
             {
                 await UniTask.Delay(TimeSpan.FromSeconds(1 / attackSpeed)); //공격속도에 맞춰
                 Debug.Log("공격생성직전");
@@ -106,6 +110,9 @@ public class Bourue : MonoBehaviour,IUnit
                 }
                 if (enemy != dummy)//더미가 아닐 경우만 공격
                 {
+                    var sequence = DOTween.Sequence();
+                    sequence.Append(transform.DOScale(new Vector3(0.85f, 0.85f, 0.85f), 0.15f).SetEase(Ease.OutBounce));
+                    sequence.Append(transform.DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.15f).SetEase(Ease.InBounce));
                     SpawnProjectile(); //프로젝타일 생성
                 }
             }
@@ -118,10 +125,10 @@ public class Bourue : MonoBehaviour,IUnit
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(tagName);
 
         shortDis = float.MaxValue;
-        foreach(GameObject enemyObject in enemies)
+        foreach (GameObject enemyObject in enemies)
         {
             float distance = Vector3.Distance(gameObject.transform.position, enemyObject.transform.position);
-            if(distance<shortDis)
+            if (distance < shortDis)
             {
                 enemy = enemyObject;
                 shortDis = distance;
@@ -129,9 +136,9 @@ public class Bourue : MonoBehaviour,IUnit
         }
     }
 
-    async UniTask RegenMana()
+    async UniTask RegenMana(CancellationToken cancellationToken)
     {
-        while (true)
+        while (!cancellationToken.IsCancellationRequested)
         {
             await UniTask.Delay(1000);//1초마다 마나 회복
             if (currentMana < maxMana)
@@ -142,10 +149,34 @@ public class Bourue : MonoBehaviour,IUnit
         }
     }
 
+    async UniTask bossSkillHit()
+    {
+        while (FirstBoss.instance != null)
+        {
+            if (FirstBoss.instance.isUseFirst == true)
+            {
+                HitFirstBossSkill();
+                this.enabled = false;
+                await UniTask.WaitUntil(() => !FirstBoss.instance.isUseFirst);
+                isStun = false;
+                this.enabled = true;
+            }
+            await UniTask.WaitUntil(() => FirstBoss.instance.isUseFirst);
+        }
+    }
+
+    void HitFirstBossSkill()
+    {
+        isStun = true;
+        if (isStun == true)
+        {
+            Instantiate(stunEffect, gameObject.transform.position, Quaternion.identity);
+        }
+    }
+
     void Start()
     {
-        AttackToTarget();
-        RegenMana();
+        bossSkillHit();
         enabled = false;
     }
 
@@ -160,6 +191,14 @@ public class Bourue : MonoBehaviour,IUnit
         sellCostP = unitInfo.SellCost;
         attackProjectileP = unitInfo.attackProjectile;
         regenManaRate = 4f;
+        cancellationTokenSource = new CancellationTokenSource();
+        AttackToTarget(cancellationTokenSource.Token);
+        RegenMana(cancellationTokenSource.Token);
+    }
+
+    private void OnDisable()
+    {
+        cancellationTokenSource.Cancel();
     }
 
     private void Update()
@@ -176,22 +215,18 @@ public class Bourue : MonoBehaviour,IUnit
                 SkillClone.GetComponent<BoureSkill>().SkillTargeting(enemy.transform);//적을 타게팅함
             }
         }
+        
     }
+
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.tag == "Grid" && FirstBoss.instance.isUseFirst == false)
+        if (isStun == true || other.tag == "Wait")
+        {
+            enabled = false;
+        }
+        else if (other.tag == "Grid" && isStun == false)
         {
             enabled = true;
-            isStun = false;
-        }
-        if (other.tag == "Wait" || FirstBoss.instance.isUseFirst == true)
-        {
-            if (isStun == false)
-            {
-                Instantiate(stunEffect, gameObject.transform.position, Quaternion.identity);
-            }
-            isStun = true;
-            enabled = false;
         }
     }
 }

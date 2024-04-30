@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2022925519435349475}
   - component: {fileID: 9218355482728516335}
   - component: {fileID: 8239167828026763248}
+  - component: {fileID: 9178722781999609892}
   m_Layer: 0
   m_Name: TonirSkill
   m_TagString: TonirSkill
@@ -174,3 +175,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!210 &9178722781999609892
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3924564542954860131}
+  m_Enabled: 1
+  m_SortingLayerID: -1857298117
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_SortAtRoot: 0

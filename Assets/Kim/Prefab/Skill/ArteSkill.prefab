@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3713565186702365835}
   - component: {fileID: 4220253063202069585}
   - component: {fileID: 7837480079106752772}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Stones
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4908,7 +4908,7 @@ GameObject:
   - component: {fileID: 3584174435907458634}
   - component: {fileID: 615854241362949720}
   - component: {fileID: 3775722932787965504}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShockWaveIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9798,7 +9798,8 @@ GameObject:
   - component: {fileID: 2342833475654029032}
   - component: {fileID: 3835347589298922974}
   - component: {fileID: -8111220515150563516}
-  m_Layer: 0
+  - component: {fileID: 5104159617549766836}
+  m_Layer: 7
   m_Name: ArteSkill
   m_TagString: ArteSkill
   m_Icon: {fileID: 0}
@@ -14748,6 +14749,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackTarget: {fileID: 0}
   damage: 300
+--- !u!210 &5104159617549766836
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229218767257688744}
+  m_Enabled: 1
+  m_SortingLayerID: -1857298117
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &1412484140060810877
 GameObject:
   m_ObjectHideFlags: 0
@@ -14759,7 +14772,7 @@ GameObject:
   - component: {fileID: 7311002618236957261}
   - component: {fileID: 1844447774246334274}
   - component: {fileID: 4375505972176622143}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Trails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19657,7 +19670,7 @@ GameObject:
   - component: {fileID: 4669828542468652584}
   - component: {fileID: 3963728632460173987}
   - component: {fileID: 8623600058221374963}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24617,7 +24630,7 @@ GameObject:
   - component: {fileID: 6303262519226337239}
   - component: {fileID: 2043239147034492576}
   - component: {fileID: 2608967369688611089}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}

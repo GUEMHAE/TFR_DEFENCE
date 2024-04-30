@@ -4,6 +4,7 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System;
 using System.Threading;
+using DG.Tweening;
 
 public class Tonir : MonoBehaviour, IUnit
 {
@@ -110,6 +111,9 @@ public class Tonir : MonoBehaviour, IUnit
                 if (enemy != dummy)//더미가 아닐 경우만 공격
                 {
                     SpawnProjectile(); //프로젝타일 생성
+                    var sequence = DOTween.Sequence();
+                    sequence.Append(transform.DOScale(new Vector3(0.85f, 0.85f, 0.85f), 0.15f).SetEase(Ease.OutBounce));
+                    sequence.Append(transform.DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.15f).SetEase(Ease.InBounce));
                 }
             }
             await UniTask.WaitUntil(() => enemy != null); //적이 null이 아닐때까지 다시 대기
@@ -143,6 +147,31 @@ public class Tonir : MonoBehaviour, IUnit
             }
         }
     }
+    
+    async UniTask bossSkillHit()
+    {
+        while (FirstBoss.instance != null)
+        {
+            if (FirstBoss.instance.isUseFirst == true)
+            {
+                HitFirstBossSkill();
+                this.enabled = false;
+                await UniTask.WaitUntil(() => !FirstBoss.instance.isUseFirst);
+                isStun = false;
+                this.enabled = true;
+            }
+            await UniTask.WaitUntil(()=>FirstBoss.instance.isUseFirst);
+        }
+    }
+
+    void HitFirstBossSkill()
+    {
+        isStun = true;
+        if (isStun == true)
+        {
+            Instantiate(stunEffect, gameObject.transform.position, Quaternion.identity);
+        }
+    }
 
     private void OnEnable()
     {
@@ -164,8 +193,10 @@ public class Tonir : MonoBehaviour, IUnit
     {
         cancellationTokenSource.Cancel();
     }
+
     private void Start()
     {
+        bossSkillHit();
         enabled = false;
     }
 
@@ -189,19 +220,13 @@ public class Tonir : MonoBehaviour, IUnit
     }
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.tag == "Grid"&&FirstBoss.instance.isUseFirst==false)
+        if (isStun == true||other.tag == "Wait")
         {
-           enabled = true;
-            isStun = false;
-        }
-        if (other.tag == "Wait" || FirstBoss.instance.isUseFirst == true)
-        {
-            if (isStun == false)
-            {
-                Instantiate(stunEffect, gameObject.transform.position, Quaternion.identity);
-            }
-            isStun = true;
             enabled = false;
+        }
+        else if (other.tag == "Grid"&&isStun==false)
+        {
+            enabled = true;
         }
     }
 }

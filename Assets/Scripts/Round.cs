@@ -32,11 +32,11 @@ public class Round : MonoBehaviour
             isRound = true;
             await UniTask.Delay(TimeSpan.FromSeconds(45f)); // 45초
             Debug.Log("선택시간") ;
+
             isRound = false;
 
             await UniTask.Delay(TimeSpan.FromSeconds(15f)); // 15초 선택시간
             Debug.Log("선택시간 종료");
-
 
             currentRound++;
             EnemySpawnManager.instance.enemyCount = 0; //유닛 재 생성을 위해 EnemySpawnManager의 enemyCount를 0으로 초기화

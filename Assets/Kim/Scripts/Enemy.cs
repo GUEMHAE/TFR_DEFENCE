@@ -195,6 +195,8 @@ public class Enemy : MonoBehaviour
             Debug.Log("아록스 평타 적중");
             damage = collision.GetComponent<AttackProjectile>().damage; //projectile의 데미지를 받아옴
             hp -= damage; //적이 데미지를 받는 코드
+
+            Destroy(collision.gameObject);
         }
 
         if (collision.tag == "AroxSkill")

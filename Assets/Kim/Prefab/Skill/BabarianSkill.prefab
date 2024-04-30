@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 909039063704843744}
   - component: {fileID: 2364189310516996263}
   - component: {fileID: 7030803561245447309}
+  - component: {fileID: -4529346074909340688}
   m_Layer: 0
   m_Name: BabarianSkill
   m_TagString: BabarianSkill
@@ -278,3 +279,15 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!210 &-4529346074909340688
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581168049294705264}
+  m_Enabled: 1
+  m_SortingLayerID: -1857298117
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_SortAtRoot: 0

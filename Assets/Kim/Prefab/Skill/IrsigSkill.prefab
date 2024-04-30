@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5271593360562088867}
   - component: {fileID: 6907981758342258399}
   - component: {fileID: 3372472442363038424}
+  - component: {fileID: -7343782080999545300}
   m_Layer: 0
   m_Name: IrsigSkill
   m_TagString: IrsigSkill
@@ -4892,6 +4893,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!210 &-7343782080999545300
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2434421697330913857}
+  m_Enabled: 1
+  m_SortingLayerID: -1857298117
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &2559849837175745945
 GameObject:
   m_ObjectHideFlags: 0

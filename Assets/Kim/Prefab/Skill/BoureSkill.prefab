@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: -5685493881424648084}
   - component: {fileID: 191919606135222288}
   - component: {fileID: 7435636924672072162}
-  m_Layer: 0
+  - component: {fileID: -6619975375204818441}
+  m_Layer: 7
   m_Name: BoureSkill
   m_TagString: BoureSkill
   m_Icon: {fileID: 0}
@@ -74,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1857298117
+  m_SortingLayer: 2
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 385b90e5eb4ff1f4db5f6810986cd2f9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -165,6 +166,18 @@ MonoBehaviour:
   attackTarget: {fileID: 0}
   speed: 7
   damage: 90
+--- !u!210 &-6619975375204818441
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9216630479365947763}
+  m_Enabled: 1
+  m_SortingLayerID: -1857298117
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1001 &930667963108153254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -176,6 +189,10 @@ PrefabInstance:
     - target: {fileID: 1947871717301538, guid: 4924007438da12442a16689e79fd421e, type: 3}
       propertyPath: m_Name
       value: FireBall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1947871717301538, guid: 4924007438da12442a16689e79fd421e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4209731392266258, guid: 4924007438da12442a16689e79fd421e, type: 3}
       propertyPath: m_LocalScale.x
@@ -264,6 +281,10 @@ PrefabInstance:
     - target: {fileID: 199577645087675124, guid: 4924007438da12442a16689e79fd421e, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553434713198701587, guid: 4924007438da12442a16689e79fd421e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4577187839491108, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
       propertyPath: m_LocalPosition.y
