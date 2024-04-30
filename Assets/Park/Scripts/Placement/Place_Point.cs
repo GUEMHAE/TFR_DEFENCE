@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
 {
@@ -12,34 +10,33 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
     BoxCollider2D boxCol;
     private Unit unit;
 
-    Round round;
-    GameObject RoundManager;
+    public GameObject sell;
     private void Start()
     {
-        RoundManager = GameObject.FindWithTag("Round");
         boxCol = GetComponent<BoxCollider2D>();
-        round = RoundManager.GetComponent<Round>();
         canPlace = true;
         unit = GetComponent<Unit>();
         unit.enabled = false;
-        Debug.Log(unit.enabled);
+
+        sell = GameObject.FindWithTag("SellObj");
     }
-    
 
     private void Update()
     {
+        if (Round.instance.isRound == true)
+        {
+            Camera.main.GetComponent<Physics2DRaycaster>().enabled = false;
+        }
+        else
+        {
+            Camera.main.GetComponent<Physics2DRaycaster>().enabled = true;
+        }
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (round.isRound == true && collision.tag != "Wait")
-        {
-            canPlace = false;
-        }
-
         if (collision.tag == "Grid" && canPlace || collision.tag == "Wait" && canPlace)
         {
-            collision.gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+            //collision.gameObject.GetComponent<SpriteRenderer>().color = Color.green;
             grid = collision.gameObject;
         }
         else if (collision.tag == "Grid" && !canPlace || collision.tag == "Wait" && !canPlace)
@@ -51,9 +48,11 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
                 Debug.Log("À¯´Ö³¢¸® °ãÄ§");
             }
         }
-        else if (collision.tag == "Wait")
+        else if (collision.tag == "Sell")
         {
-            canPlace = true;
+            sell.SetActive(true);
+                Destroy(gameObject);
+                Debug.Log("Sell");
         }
         else
         {
@@ -65,9 +64,13 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         if (collision.tag == "Grid" || collision.tag == "Wait")
         {
-            collision.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            //collision.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
             canPlace = true;
             grid = null;
+        }
+        if (collision.tag == "Sell")
+        {
+            sell.SetActive(false);
         }
     }
 
