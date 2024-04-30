@@ -4,22 +4,14 @@ using UnityEngine;
 
 public class ScriptsP : MonoBehaviour
 {
+    public GameObject scriptPrefab; // 스크립트 프리팹
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // 충돌된 모든 오브젝트들에 대해 반복합니다.
-        foreach (var contact in collision.contacts)
+        if (collision.gameObject.CompareTag("wait2")) // 충돌한 오브젝트의 태그를 확인하여 필요한 경우에만 스크립트를 추가합니다.
         {
-            // 충돌된 오브젝트에 TutorialScripts 스크립트가 추가되어 있는지 확인합니다.
-            TutorialScripts tutorialScript = contact.collider.gameObject.GetComponent<TutorialScripts>();
-            if (tutorialScript == null)
-            {
-                // 스크립트가 없는 경우 스크립트를 추가합니다.
-                tutorialScript = contact.collider.gameObject.AddComponent<TutorialScripts>();
-                Debug.Log("jj");
-            }
-
-            // ApplyCollision 함수를 호출하여 작업을 수행합니다.
-            tutorialScript.ApplyCollision(contact.collider.gameObject);
+            // 충돌한 오브젝트에 스크립트를 추가합니다.
+            collision.gameObject.AddComponent<TutorialScripts>();
         }
     }
 }

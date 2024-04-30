@@ -25,6 +25,7 @@ TagManager:
   - RlrorProjectile
   - RlrorSkill
   - ElectoSkill
+  - wait2
   layers:
   - Default
   - TransparentFX

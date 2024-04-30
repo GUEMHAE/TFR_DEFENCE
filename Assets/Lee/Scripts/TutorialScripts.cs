@@ -78,23 +78,4 @@ public class TutorialScripts : MonoBehaviour, IEndDragHandler
             iswaits = false; // 정착 상태를 false로 설정
         }
     }
-
-    public void ApplyCollision(GameObject collidedObject)
-    {
-        TutorialScripts objectScript = collidedObject.GetComponent<TutorialScripts>();
-        if (objectScript != null)
-        {
-            objectScript.isGrid = isGrid;
-            objectScript.iswaits = iswaits;
-            objectScript.IMG.SetActive(IMG.activeSelf);
-            objectScript.IMG1.SetActive(IMG1.activeSelf);
-            objectScript.ep_IMG.SetActive(ep_IMG.activeSelf);
-            objectScript.ep_IMGGrid.SetActive(ep_IMGGrid.activeSelf);
-            objectScript.IMG2.SetActive(IMG2.activeSelf);
-            objectScript.IMG2_1.SetActive(IMG2_1.activeSelf);
-            objectScript.IMG2_2.SetActive(IMG2_2.activeSelf);
-            objectScript.IMG_Grid.SetActive(IMG_Grid.activeSelf);
-            objectScript.IMG_waits.SetActive(IMG_waits.activeSelf);
-        }
-    }
 }
