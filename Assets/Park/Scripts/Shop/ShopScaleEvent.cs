@@ -1,8 +1,8 @@
-﻿using DG.Tweening;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UnitScaleEvent :MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ShopScaleEvent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public float scaleFactor = 0.1f;
     public float duration = 0.2f;
@@ -17,25 +17,20 @@ public class UnitScaleEvent :MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (Round.instance.isRound == false)
-        {
             if (scaleTween != null && scaleTween.IsPlaying())
             {
                 scaleTween.Kill();
             }
             scaleTween = transform.DOScale(originalScale * (1 + scaleFactor), duration);
-        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (Round.instance.isRound == false)
-        {
             if (scaleTween != null && scaleTween.IsPlaying())
             {
                 scaleTween.Kill();
             }
             scaleTween = transform.DOScale(originalScale, duration);
-        }
     }
+
 }
