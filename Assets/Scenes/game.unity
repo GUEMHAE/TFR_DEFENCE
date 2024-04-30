@@ -7735,7 +7735,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1260970046
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10132,63 +10132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f9013c4ef9c49044b7bb574e8d6b91c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1631848115
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 739778757841092499, guid: 338af4fc6384a714bbfe963ec0160137, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 739778757841092499, guid: 338af4fc6384a714bbfe963ec0160137, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 739778757841092499, guid: 338af4fc6384a714bbfe963ec0160137, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 739778757841092499, guid: 338af4fc6384a714bbfe963ec0160137, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 739778757841092499, guid: 338af4fc6384a714bbfe963ec0160137, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 739778757841092499, guid: 338af4fc6384a714bbfe963ec0160137, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 739778757841092499, guid: 338af4fc6384a714bbfe963ec0160137, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 739778757841092499, guid: 338af4fc6384a714bbfe963ec0160137, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 739778757841092499, guid: 338af4fc6384a714bbfe963ec0160137, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 739778757841092499, guid: 338af4fc6384a714bbfe963ec0160137, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4240428966781211706, guid: 338af4fc6384a714bbfe963ec0160137, type: 3}
-      propertyPath: m_Name
-      value: Round5(Boss)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 338af4fc6384a714bbfe963ec0160137, type: 3}
 --- !u!1 &1646913000
 GameObject:
   m_ObjectHideFlags: 0
@@ -12341,4 +12284,3 @@ SceneRoots:
   - {fileID: 1883490785}
   - {fileID: 1534960825}
   - {fileID: 1577821738}
-  - {fileID: 1631848115}
