@@ -4,14 +4,28 @@ using UnityEngine;
 
 public class ScriptsP : MonoBehaviour
 {
-    public GameObject scriptPrefab; // 스크립트 프리팹
+    public string targetTag; // 스크립트를 추가할 대상 태그
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void Start()
     {
-        if (collision.gameObject.CompareTag("wait2")) // 충돌한 오브젝트의 태그를 확인하여 필요한 경우에만 스크립트를 추가합니다.
+        // 대상 태그를 가진 모든 오브젝트를 찾습니다.
+        GameObject[] taggedObjects = GameObject.FindGameObjectsWithTag(targetTag);
+
+        // 각 오브젝트에 스크립트를 추가합니다.
+        foreach (GameObject obj in taggedObjects)
         {
-            // 충돌한 오브젝트에 스크립트를 추가합니다.
-            collision.gameObject.AddComponent<TutorialScripts>();
+            if (!obj.GetComponent<TutorialScripts>())
+            {
+                // TutorialScripts 스크립트를 찾아서 없다면 추가합니다.
+                var tutorialScript = obj.AddComponent<TutorialScripts>();
+
+                // TutorialScripts 스크립트에 설정된 변수를 이 스크립트에서 참조합니다.
+                //tutorialScript.ep_IMGGrid = GameObject.Find("6");
+                tutorialScript.GridName = "111"; // 배치석 이름 설정
+                tutorialScript.IMG_Grid = GameObject.Find("GridEP");
+                tutorialScript.waitsName = "222"; // 대기석 이름 설정
+                tutorialScript.IMG_waits = GameObject.Find("waitEP");
+            }
         }
     }
 }

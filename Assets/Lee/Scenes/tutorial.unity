@@ -1789,7 +1789,7 @@ GameObject:
   - component: {fileID: 204252685}
   - component: {fileID: 204252684}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2213,7 +2213,7 @@ GameObject:
   - component: {fileID: 219710156}
   - component: {fileID: 219710155}
   m_Layer: 0
-  m_Name: Grid EP
+  m_Name: GridEP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2709,6 +2709,18 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1451821212}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
           m_CallState: 2
 --- !u!61 &300593950
 BoxCollider2D:
@@ -3355,10 +3367,9 @@ Transform:
   m_LocalScale: {x: 1.25, y: 1.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1697037384}
   - {fileID: 1404964364}
   - {fileID: 853484661}
-  - {fileID: 1451821214}
+  - {fileID: 1697037384}
   - {fileID: 1501945718}
   - {fileID: 1078747415}
   - {fileID: 1650486281}
@@ -6400,10 +6411,9 @@ GameObject:
   - component: {fileID: 853484664}
   - component: {fileID: 853484663}
   - component: {fileID: 853484662}
-  - component: {fileID: 853484665}
   m_Layer: 6
-  m_Name: wait2
-  m_TagString: wait2
+  m_Name: 222
+  m_TagString: Grid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6538,19 +6548,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &853484665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 853484660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fd1ffe1e618dc0459cb503a2c03063a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scriptPrefab: {fileID: 1451821212}
 --- !u!1 &864716249
 GameObject:
   m_ObjectHideFlags: 0
@@ -9834,9 +9831,8 @@ GameObject:
   - component: {fileID: 1337145708}
   - component: {fileID: 1337145707}
   - component: {fileID: 1337145706}
-  - component: {fileID: 1337145709}
   m_Layer: 6
-  m_Name: Grid
+  m_Name: 111
   m_TagString: Grid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9972,19 +9968,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1337145709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1337145704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fd1ffe1e618dc0459cb503a2c03063a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scriptPrefab: {fileID: 0}
 --- !u!1 &1344398051
 GameObject:
   m_ObjectHideFlags: 0
@@ -11412,13 +11395,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1451821214}
   - component: {fileID: 1451821213}
+  - component: {fileID: 1451821215}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1451821213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11431,13 +11415,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec0367932250ad04aa79a406b982549a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IMG: {fileID: 1024868291}
-  IMG1: {fileID: 0}
-  ep_IMG: {fileID: 0}
-  ep_IMGGrid: {fileID: 0}
-  IMG2: {fileID: 0}
-  IMG2_1: {fileID: 0}
-  IMG2_2: {fileID: 0}
   GridName: 
   IMG_Grid: {fileID: 0}
   waitsName: 
@@ -11451,12 +11428,25 @@ Transform:
   m_GameObject: {fileID: 1451821212}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.4, y: -1.2, z: 0}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 423510513}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1451821215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451821212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fd1ffe1e618dc0459cb503a2c03063a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Unit
 --- !u!1001 &1474987074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13584,7 +13574,7 @@ GameObject:
   - component: {fileID: 1697037386}
   - component: {fileID: 1697037385}
   m_Layer: 0
-  m_Name: wait EP
+  m_Name: waitEP
   m_TagString: Grid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13599,7 +13589,7 @@ Transform:
   m_GameObject: {fileID: 1697037383}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5, y: 2.5, z: 0}
+  m_LocalPosition: {x: 5, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15834,6 +15824,7 @@ SceneRoots:
   - {fileID: 1893306816}
   - {fileID: 1508632334}
   - {fileID: 79692225}
+  - {fileID: 1451821214}
   - {fileID: 423510513}
   - {fileID: 1666779452}
   - {fileID: 960495933}

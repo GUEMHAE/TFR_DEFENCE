@@ -6,14 +6,14 @@ using UnityEngine.EventSystems;
 
 public class TutorialScripts : MonoBehaviour, IEndDragHandler
 {
-    public GameObject IMG; // 이전 이미지
-    public GameObject IMG1; // 이전 이미지
-    public GameObject ep_IMG; // 이전 이미지
-    public GameObject ep_IMGGrid; // 이전 이미지
-    public GameObject IMG2; // 이전 이미지
-    public GameObject IMG2_1; // 이전 이미지
-    public GameObject IMG2_2; // 이전 이미지
- // 이전 이미지
+    //   public GameObject IMG; // 이전 이미지
+    //   public GameObject IMG1; // 이전 이미지
+    //   public GameObject ep_IMG; // 이전 이미지
+    //   public GameObject ep_IMGGrid; // 이전 이미지
+    //   public GameObject IMG2; // 이전 이미지
+    //   public GameObject IMG2_1; // 이전 이미지
+    //   public GameObject IMG2_2; // 이전 이미지
+    //// 이전 이미지
 
     public string GridName; //배치석 이름
     public GameObject IMG_Grid; // 이미지
@@ -31,9 +31,9 @@ public class TutorialScripts : MonoBehaviour, IEndDragHandler
         {
             IMG_Grid.SetActive(true); // 이미지를 활성화
             IMG_waits.SetActive(false);
-            IMG1.SetActive(false);
-            ep_IMG.SetActive(false);
-            ep_IMGGrid.SetActive(true);
+            //IMG1.SetActive(false);
+            //ep_IMG.SetActive(false);
+            //ep_IMGGrid.SetActive(true);
         }
         else
         {
@@ -44,11 +44,11 @@ public class TutorialScripts : MonoBehaviour, IEndDragHandler
         if (iswaits && !IMG_waits.activeSelf) // 정착 상태이고 이미지가 비활성화된 경우
         {
             IMG_waits.SetActive(true); // 이미지를 활성화
-            ep_IMGGrid.SetActive(false);
-            IMG2.SetActive(false);
-            IMG2_1.SetActive(false);
-            IMG2_2.SetActive(false);
-            IMG.SetActive(true);
+            //ep_IMGGrid.SetActive(false);
+            //IMG2.SetActive(false);
+            //IMG2_1.SetActive(false);
+            //IMG2_2.SetActive(false);
+            //IMG.SetActive(true);
 
         }
     }
