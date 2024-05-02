@@ -16,6 +16,11 @@ public class T_IMG : MonoBehaviour
         StartCoroutine(AnimateLoop()); // 애니메이션 루프 시작
     }
 
+    public void StartAnimation()
+    {
+        StartCoroutine(AnimateLoop()); // 애니메이션 루프 시작
+    }
+
     IEnumerator AnimateLoop()
     {
         while (true)
