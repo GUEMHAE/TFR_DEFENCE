@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class TutorialScripts : MonoBehaviour, IEndDragHandler
 {
-    //   public GameObject IMG; // 이전 이미지
+    public GameObject goGrid; // 이전 이미지
     //   public GameObject IMG1; // 이전 이미지
     //   public GameObject ep_IMG; // 이전 이미지
     //   public GameObject ep_IMGGrid; // 이전 이미지
@@ -15,6 +15,7 @@ public class TutorialScripts : MonoBehaviour, IEndDragHandler
     //   public GameObject IMG2_2; // 이전 이미지
     //// 이전 이미지
 
+    public float enemy;
     private T_IMG waitsAnimation; // T_IMG 스크립트 참조
 
     public string GridName; //배치석 이름
@@ -27,8 +28,14 @@ public class TutorialScripts : MonoBehaviour, IEndDragHandler
 
     void Start()
     {
+        Enemy EScript = FindObjectOfType<Enemy>();
         IMG_waits.SetActive(false);
         waitsAnimation = IMG_waits.GetComponent<T_IMG>(); // T_IMG 스크립트 참조 가져오기
+
+        if(EScript != null)
+        {
+            float Ehp = EScript.hp;
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -40,7 +47,7 @@ public class TutorialScripts : MonoBehaviour, IEndDragHandler
         else
         {
             IMG_Grid.SetActive(false); // 배치석 이미지를 비활성화합니다.
-            Debug.Log("1");
+            goGrid.SetActive(false); // 배치석 이미지를 비활성화합니다.
         }
 
         if(isGrid==true)
@@ -51,7 +58,6 @@ public class TutorialScripts : MonoBehaviour, IEndDragHandler
             if (waitsAnimation != null)
             {
                 waitsAnimation.StartAnimation();
-                Debug.Log("2");
             }
         }
         else
