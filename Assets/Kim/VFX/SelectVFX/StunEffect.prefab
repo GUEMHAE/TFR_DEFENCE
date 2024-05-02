@@ -199,6 +199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6523596173245482967}
   - component: {fileID: -1399115886236137667}
+  - component: {fileID: 6462606662576935982}
   m_Layer: 0
   m_Name: StunEffect
   m_TagString: Untagged
@@ -236,6 +237,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 600
+--- !u!210 &6462606662576935982
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936204856907710318}
+  m_Enabled: 1
+  m_SortingLayerID: -1857298117
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &7842017898804217701
 GameObject:
   m_ObjectHideFlags: 0
