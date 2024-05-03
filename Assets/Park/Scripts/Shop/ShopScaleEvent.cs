@@ -17,6 +17,7 @@ public class ShopScaleEvent : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+
             if (scaleTween != null && scaleTween.IsPlaying())
             {
                 scaleTween.Kill();
@@ -30,7 +31,6 @@ public class ShopScaleEvent : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             {
                 scaleTween.Kill();
             }
-            scaleTween = transform.DOScale(originalScale, duration);
+            scaleTween = transform.DOScale(originalScale, 0);
     }
-
 }

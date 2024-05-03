@@ -11,13 +11,18 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
     public GameObject Unit;
     BoxCollider2D boxCol;
     private Unit unit;
+
+    Renderer render;
+
     private void Start()
     {
+        gameObject.transform.localScale = new Vector3(0.8f, 0.8f, 1);
         boxCol = GetComponent<BoxCollider2D>();
+        boxCol.size = new Vector2(1f, 1f);
         canPlace = true;
-        unit = GetComponent<Unit>();
-        unit.enabled = false;
-        Debug.Log(unit.enabled);
+        render = GetComponent<Renderer>();
+        render.material.DisableKeyword("OUTBASE_ON");
+
     }
 
     private void Update()
@@ -37,6 +42,8 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
         if (collision.tag == "Grid" && canPlace || collision.tag == "Wait" && canPlace)
         {
             grid = collision.gameObject;
+            render = GetComponent<Renderer>();
+            render.material.EnableKeyword("OUTBASE_ON");
         }
         else if (collision.tag == "Grid" && !canPlace || collision.tag == "Wait" && !canPlace)
         {
@@ -56,6 +63,7 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         if (collision.tag == "Grid" || collision.tag == "Wait")
         {
+            render.material.DisableKeyword("OUTBASE_ON");
             canPlace = true;
             grid = null;
         }
@@ -67,29 +75,32 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
             transform.SetParent(grid.transform);
+            gameObject.transform.localScale = new Vector3(0.8f,0.8f, 1) ;
             transform.localPosition = Vector3.zero;
-            boxCol.size = new Vector2(0.5f, 0.5f);
+            boxCol.size = new Vector2(1f, 1f);
         }
         else if (grid == null)
         {
             gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            gameObject.transform.localScale = new Vector3(0.8f,0.8f, 1) ;
             transform.localPosition = Vector3.zero;
-            boxCol.size = new Vector2(0.5f, 0.5f);
+            boxCol.size = new Vector2(1f, 1f);
         }
         else
         {
             gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
             grid = null;
+            gameObject.transform.localScale = new Vector3(0.8f,0.8f, 1) ;
             transform.localPosition = Vector3.zero;
-            boxCol.size = new Vector2(0.5f, 0.5f);
+            boxCol.size = new Vector2(1f, 1f);
         }
     }
 
     void IDragHandler.OnDrag(PointerEventData eventData)
     {
+        gameObject.transform.localScale = new Vector3(1, 1, 1);
         boxCol.size = new Vector2(0.065f, 0.065f);
-        unit.enabled = false;
-        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
+        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 4;
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0f;
         transform.position = mousePos;

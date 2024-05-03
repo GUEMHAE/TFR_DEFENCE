@@ -8,6 +8,7 @@ public class Buy_Unit : MonoBehaviour
     RandomSprite_Unit Unit;
     public GameObject[] units;
 
+    public GameObject grid;
     public GameObject Waits;
     public GameObject[] waitArray;
     public GameObject wait1;
@@ -21,6 +22,9 @@ public class Buy_Unit : MonoBehaviour
     private void Start()
     {
         Unit = GetComponent<RandomSprite_Unit>();
+        GameObject instance = Instantiate(units[PlayerPrefs.GetInt("Character")]);
+        instance.transform.SetParent(grid.transform);
+        instance.transform.localPosition = Vector3.zero;
         canBuy = true;
         Waits = wait1;
     }
