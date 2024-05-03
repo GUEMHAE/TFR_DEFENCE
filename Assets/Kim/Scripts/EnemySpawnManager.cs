@@ -15,7 +15,7 @@ public class EnemySpawnManager : MonoBehaviour
     Transform[] wayPoints;   //현재 스테이지의 이동 경로
 
     public int enemyCount=0; //라운드 당 유닛 20기 제한 을 위한 변수
-    
+    public bool isFullSpawnEnemy;//적이 다 생성됬는지 알기 위한 변수
     public Transform EnemyPool; //생성된 적 유닛이 남아있는지 체크하기 위한 부모 객체
 
 
@@ -78,6 +78,18 @@ public class EnemySpawnManager : MonoBehaviour
 
             var token = this.GetCancellationTokenOnDestroy();//파괴 됬을 때 UniTask취소
             await UniTask.Delay(TimeSpan.FromSeconds(spawnTime), cancellationToken: token);
+        }
+    }
+
+    private void Update()
+    {
+        if(enemyCount==20)
+        {
+            isFullSpawnEnemy = true;
+        }
+        else if(enemyCount==0)
+        {
+            isFullSpawnEnemy = false;
         }
     }
 }
