@@ -131,7 +131,6 @@ GameObject:
   - component: {fileID: 2665411603569909112}
   - component: {fileID: 1041073370374016725}
   - component: {fileID: 7872058323134896993}
-  - component: {fileID: 7395127170397571946}
   m_Layer: 3
   m_Name: "\uC560\uC26C"
   m_TagString: Unit
@@ -444,20 +443,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7395127170397571946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6894503861647231451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04faebbf21df33a4e8becc5a1bc124aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scaleFactor: 0.1
-  duration: 0.2
 --- !u!1 &8029788591716549423
 GameObject:
   m_ObjectHideFlags: 0

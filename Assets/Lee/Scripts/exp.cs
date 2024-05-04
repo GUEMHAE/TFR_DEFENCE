@@ -19,7 +19,7 @@ public class Exp : MonoBehaviour
         ExpBarSlider.value = 0;// Exp의 값을 현재 경험치 / 레벨까지 필요한 경험치로 시작
 
         // 레벨 텍스트 업데이트
-        levelText.text = "Level: " + level.ToString();
+        levelText.text = level.ToString();
         exping.text = exp.ToString() + " / " + expBar.ToString();
     }
 
@@ -35,14 +35,14 @@ public class Exp : MonoBehaviour
             {
                 exp -= Levelup(level); // 필요한 경험치를 총 경험치에서 뺌
                 level++; // 레벨 업
-                levelText.text = "Level: " + level.ToString();
+                levelText.text = level.ToString();
                 exping.text = exp.ToString() + " / " + expBar.ToString();
             }
 
             else
             {
                 exp = 0; // 최대 레벨까지 가면 경험치 0으로 초기화 // 더 이상 얻지 못함
-                levelText.text = "MaxLevel";
+                levelText.text = "MAX";
                 exping.enabled = false;
             }
         }
@@ -55,7 +55,7 @@ public class Exp : MonoBehaviour
         exp += 3;
         ExpBarSlider.value = exp / expBar;
 
-        levelText.text = "Level: " + level.ToString();
+        levelText.text = level.ToString();
         exping.text = exp.ToString() + " / " + expBar.ToString();
     }
 
