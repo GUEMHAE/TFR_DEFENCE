@@ -70,3 +70,6 @@ TagManager:
   - name: Skill,AttackProjectile
     uniqueID: 2437669179
     locked: 0
+  - name: UnitUpgrade
+    uniqueID: 1199393253
+    locked: 0

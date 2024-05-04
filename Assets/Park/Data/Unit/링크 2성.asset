@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97321de795980464b85bdfd9a3dffbe4, type: 3}
+  m_Name: "\uB9C1\uD06C 2\uC131"
+  m_EditorClassIdentifier: 
+  unitName: "\uB9C1\uD06C"
+  cost: 5
+  sellCost: 5
+  grade: 1
+  ad: 600
+  ap: 0
+  attackSpeed: 2
+  type:
+  - {fileID: 11400000, guid: 4634aa39f0518a042864912f863fba61, type: 2}
+  - {fileID: 11400000, guid: 58f4074f0c74867468fa04561c087fbd, type: 2}
+  attackProjectile: {fileID: 1109751858030904874, guid: 66db3ec4e609347489af07ce09c42e7f, type: 3}
+  attackRange: 5

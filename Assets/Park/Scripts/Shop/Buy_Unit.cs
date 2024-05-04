@@ -17,6 +17,8 @@ public class Buy_Unit : MonoBehaviour
     public GameObject wait4;
     public GameObject wait5;
 
+    Vector3 waitUnitScale = new Vector3(0.8f, 0.8f, 1);
+
     public bool canBuy;
 
     private void Start()
@@ -87,30 +89,50 @@ public class Buy_Unit : MonoBehaviour
             {
                 GameObject instantiatedUnit = Instantiate(units[0], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
+                instantiatedUnit.transform.localScale = waitUnitScale;
+                instantiatedUnit.name = "1성 다르밤";
+                MergeManager.instance.CheckFor1CostUnitCount();
+                MergeManager.instance.CheckFor2CostUnitCount();
             }
 
             if (Unit.imageSlots[index].sprite.name == "1_Fire_arokseu")
             {
                 GameObject instantiatedUnit = Instantiate(units[1], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
+                instantiatedUnit.transform.localScale = waitUnitScale;
+                instantiatedUnit.name = "1성 아룩스";
+                MergeManager.instance.CheckFor1CostUnitCount();
+                MergeManager.instance.CheckFor2CostUnitCount();
             }
 
             if (Unit.imageSlots[index].sprite.name == "1_Fire_bureu")
             {
                 GameObject instantiatedUnit = Instantiate(units[2], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
+                instantiatedUnit.transform.localScale = waitUnitScale;
+                instantiatedUnit.name = "1성 부르";
+                MergeManager.instance.CheckFor1CostUnitCount();
+                MergeManager.instance.CheckFor2CostUnitCount();
             }
 
             if (Unit.imageSlots[index].sprite.name == "1_Ground_babarian")
             {
                 GameObject instantiatedUnit = Instantiate(units[3], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
+                instantiatedUnit.transform.localScale = waitUnitScale;
+                instantiatedUnit.name = "1성 바바리안";
+                MergeManager.instance.CheckFor1CostUnitCount();
+                MergeManager.instance.CheckFor2CostUnitCount();
             }
 
             if (Unit.imageSlots[index].sprite.name == "1_Light_Water_seunel")
             {
                 GameObject instantiatedUnit = Instantiate(units[4], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
+                instantiatedUnit.transform.localScale = waitUnitScale;
+                instantiatedUnit.name = "1성 스넬";
+                MergeManager.instance.CheckFor1CostUnitCount();
+                MergeManager.instance.CheckFor2CostUnitCount();
             }
 
 
@@ -118,6 +140,10 @@ public class Buy_Unit : MonoBehaviour
             {
                 GameObject instantiatedUnit = Instantiate(units[5], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
+                instantiatedUnit.transform.localScale = waitUnitScale;
+                instantiatedUnit.name = "1성 토니르";
+                MergeManager.instance.CheckFor1CostUnitCount();
+                MergeManager.instance.CheckFor2CostUnitCount();
             }
 
 
@@ -125,6 +151,10 @@ public class Buy_Unit : MonoBehaviour
             {
                 GameObject instantiatedUnit = Instantiate(units[6], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
+                instantiatedUnit.transform.localScale = waitUnitScale;
+                instantiatedUnit.name = "1성 애쉬";
+                MergeManager.instance.CheckFor1CostUnitCount();
+                MergeManager.instance.CheckFor2CostUnitCount();
             }
 
 
@@ -132,48 +162,80 @@ public class Buy_Unit : MonoBehaviour
             {
                 GameObject instantiatedUnit = Instantiate(units[7], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
+                instantiatedUnit.transform.localScale = waitUnitScale;
+                instantiatedUnit.name = "1성 아서스";
+                MergeManager.instance.CheckFor1CostUnitCount();
+                MergeManager.instance.CheckFor2CostUnitCount();
             }
 
             if (Unit.imageSlots[index].sprite.name == "2_Ground_areute")
             {
                 GameObject instantiatedUnit = Instantiate(units[8], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
+                instantiatedUnit.transform.localScale = waitUnitScale;
+                instantiatedUnit.name = "1성 아르테";
+                MergeManager.instance.CheckFor1CostUnitCount();
+                MergeManager.instance.CheckFor2CostUnitCount();
             }
 
             if (Unit.imageSlots[index].sprite.name == "2_Light Dark_ireusigeu")
             {
                 GameObject instantiatedUnit = Instantiate(units[9], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
+                instantiatedUnit.transform.localScale = waitUnitScale;
+                instantiatedUnit.name = "1성 이르시그";
+                MergeManager.instance.CheckFor1CostUnitCount();
+                MergeManager.instance.CheckFor2CostUnitCount();
             }
 
             if (Unit.imageSlots[index].sprite.name == "2_Water_piona")
             {
                 GameObject instantiatedUnit = Instantiate(units[10], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
+                instantiatedUnit.transform.localScale = waitUnitScale;
+                instantiatedUnit.name = "1성 피오나";
+                MergeManager.instance.CheckFor1CostUnitCount();
+                MergeManager.instance.CheckFor2CostUnitCount();
             }
 
             if (Unit.imageSlots[index].sprite.name == "3_Dark_kamyum")
             {
                 GameObject instantiatedUnit = Instantiate(units[11], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
+                instantiatedUnit.transform.localScale = waitUnitScale;
+                instantiatedUnit.name = "1성 카뮴";
+                MergeManager.instance.CheckFor1CostUnitCount();
+                MergeManager.instance.CheckFor2CostUnitCount();
             }
 
             if (Unit.imageSlots[index].sprite.name == "3_Light Fire_reulloreu")
             {
                 GameObject instantiatedUnit = Instantiate(units[12], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
+                instantiatedUnit.transform.localScale = waitUnitScale;
+                instantiatedUnit.name = "1성 를로르";
+                MergeManager.instance.CheckFor1CostUnitCount();
+                MergeManager.instance.CheckFor2CostUnitCount();
             }
 
             if (Unit.imageSlots[index].sprite.name == "3_Light Ground_illekto")
             {
                 GameObject instantiatedUnit = Instantiate(units[13], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
+                instantiatedUnit.transform.localScale = waitUnitScale;
+                instantiatedUnit.name = "1성 일렉토";
+                MergeManager.instance.CheckFor1CostUnitCount();
+                MergeManager.instance.CheckFor2CostUnitCount();
             }
 
             if (Unit.imageSlots[index].sprite.name == "5_Air_Ground_link")
             {
                 GameObject instantiatedUnit = Instantiate(units[14], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
+                instantiatedUnit.transform.localScale = waitUnitScale;
+                instantiatedUnit.name = "1성 링크";
+                MergeManager.instance.CheckFor1CostUnitCount();
+                MergeManager.instance.CheckFor2CostUnitCount();
             }
 
             if (Input.GetMouseButtonUp(0))
