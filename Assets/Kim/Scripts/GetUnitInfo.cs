@@ -100,13 +100,13 @@ public class GetUnitInfo : MonoBehaviour, IUnit
             unitBorder1.SetActive(false);
             unitBorder2.SetActive(false);
             unitBorder3.SetActive(true);
-            unitNameP = unitInfo2.UnitName;
-            attackSpeedP = unitInfo2.AttackSpeed;
-            attackRangeP = unitInfo2.AttackRange;
-            adP = unitInfo2.Ad;
-            apP = unitInfo2.Ap;
-            costP = unitInfo2.Cost;
-            sellCostP = unitInfo2.SellCost;
+            unitNameP = unitInfo3.UnitName;
+            attackSpeedP = unitInfo3.AttackSpeed;
+            attackRangeP = unitInfo3.AttackRange;
+            adP = unitInfo3.Ad;
+            apP = unitInfo3.Ap;
+            costP = unitInfo3.Cost;
+            sellCostP = unitInfo3.SellCost;
             attackProjectileP = unitInfo3.attackProjectile;
         }
     }

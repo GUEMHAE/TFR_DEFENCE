@@ -9487,6 +9487,78 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 941972997}
   m_CullTransparentMesh: 1
+--- !u!1 &946308271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 946308272}
+  - component: {fileID: 946308273}
+  m_Layer: 0
+  m_Name: MergeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &946308272
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946308271}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1883490785}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &946308273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946308271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce834e0f6140334badc63f87c6ef82d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allUnits: []
+  allGrid:
+  - {fileID: 1149417714}
+  - {fileID: 546004004}
+  - {fileID: 1547440801}
+  - {fileID: 1385316948}
+  - {fileID: 2055458266}
+  - {fileID: 1236094551}
+  - {fileID: 930671975}
+  - {fileID: 2081471847}
+  - {fileID: 1404720205}
+  - {fileID: 312313553}
+  - {fileID: 447906381}
+  - {fileID: 951193975}
+  - {fileID: 1175943875}
+  - {fileID: 1617936376}
+  - {fileID: 362215050}
+  - {fileID: 142480035}
+  - {fileID: 158248517}
+  - {fileID: 1646913000}
+  - {fileID: 1104532595}
+  - {fileID: 825627879}
+  - {fileID: 47063159}
+  - {fileID: 953639399}
+  - {fileID: 1111978149}
+  - {fileID: 324207927}
+  - {fileID: 26587643}
+  unitUpgrade2Particle: {fileID: 3367314013316085171, guid: 638357a75b0c230459e9b6f545fc660d, type: 3}
 --- !u!1 &951193975
 GameObject:
   m_ObjectHideFlags: 0
@@ -12163,37 +12235,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f251e00c60fa44942ae275c7eb3daaac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 17841910}
-  sprite: {fileID: 21300000, guid: bf95702f4d3d5e145a7f665435426348, type: 3}
-  sprites:
-  - {fileID: 21300000, guid: 8dd0660a93be66044ae6d6c52da49acf, type: 3}
-  - {fileID: 21300000, guid: 8dc67870391a2c34dace95fc07444c15, type: 3}
-  - {fileID: 21300000, guid: 74c6ff2a8e8b748418c44901afe2a5ac, type: 3}
-  - {fileID: 21300000, guid: ce759fa7f5e3dbb46ac788c17b3c9529, type: 3}
-  - {fileID: 21300000, guid: 4c778d0c53baf754787957d10039f19e, type: 3}
-  - {fileID: 21300000, guid: 01e5df768e3d5ba43af61c5443a40cf9, type: 3}
-  - {fileID: 21300000, guid: c754aaa54794b75408a7f0e6821dc238, type: 3}
-  - {fileID: 21300000, guid: 3ce8384ac45bf4f4fa39d8f45cc83b02, type: 3}
-  - {fileID: 21300000, guid: 96213c21f0c8d6b4dbaac2c401a7222e, type: 3}
-  - {fileID: 21300000, guid: 2a198eec081605143a992ed4b6757093, type: 3}
-  - {fileID: 21300000, guid: d038c28b845bd5448a72ad01346bac8d, type: 3}
-  - {fileID: 21300000, guid: 62dafd81a5f55d54db5ef4e5c7122dc0, type: 3}
-  - {fileID: 21300000, guid: 5c214782a0a409847910f9711d2956fb, type: 3}
-  - {fileID: 21300000, guid: e653a2d88b969424ca0227a3f84d9135, type: 3}
-  - {fileID: 21300000, guid: bf95702f4d3d5e145a7f665435426348, type: 3}
-  name: {fileID: 1036904336}
-  SynergyText1: {fileID: 89604968}
-  SynergyText2: {fileID: 85450601}
-  Synergy1: {fileID: 0}
-  _Synergy2: {fileID: 1440659045}
-  Synergys:
-  - {fileID: 21300000, guid: 931b18101a4990448b5f53c0d69960a0, type: 3}
-  - {fileID: 21300000, guid: 40b3370b8a523874fa6dbe5f85e2b247, type: 3}
-  - {fileID: 21300000, guid: 438b117a6ce65504292c1b67cb3c718d, type: 3}
-  - {fileID: 21300000, guid: da863bde7510a484dbd46d82e941fc49, type: 3}
-  - {fileID: 21300000, guid: ab4fe676be8ad4943af9c7b4b5a4a92a, type: 3}
-  - {fileID: 21300000, guid: b43504a529e3c3945bf10dbcc283daa0, type: 3}
-  Synergy2: {fileID: 0}
 --- !u!1 &1260970045
 GameObject:
   m_ObjectHideFlags: 0
@@ -17287,6 +17328,7 @@ Transform:
   - {fileID: 1473271289}
   - {fileID: 1209742054}
   - {fileID: 303542486}
+  - {fileID: 946308272}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1906919578
