@@ -26,6 +26,7 @@ public class ScriptsP : MonoBehaviour
                 tutorialScript.waitsName = "222"; // 대기석 이름 설정
                 tutorialScript.IMG_waits = GameObject.Find("waitEP");
                 tutorialScript.goGrid = GameObject.Find("goGrid");
+                tutorialScript.enemy_0 = GameObject.Find("enemy_0");
             }
         }
     }

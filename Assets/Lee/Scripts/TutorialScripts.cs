@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Cysharp.Threading.Tasks;
+using System;
 
 public class TutorialScripts : MonoBehaviour, IEndDragHandler
 {
-    public GameObject goGrid; // 이전 이미지
-    //   public GameObject IMG1; // 이전 이미지
+    public GameObject goGrid; // 대기석에서 배치석으로
+    public GameObject enemy_0; // 적이 죽으면
     //   public GameObject ep_IMG; // 이전 이미지
     //   public GameObject ep_IMGGrid; // 이전 이미지
     //   public GameObject IMG2; // 이전 이미지
@@ -28,13 +30,25 @@ public class TutorialScripts : MonoBehaviour, IEndDragHandler
 
     void Start()
     {
-        Enemy EScript = FindObjectOfType<Enemy>();
+        Step2();
         IMG_waits.SetActive(false);
         waitsAnimation = IMG_waits.GetComponent<T_IMG>(); // T_IMG 스크립트 참조 가져오기
+    }
 
-        if(EScript != null)
+
+    async UniTaskVoid Step2()
+    {
+        while(true)
         {
-            float Ehp = EScript.hp;
+            await UniTask.WaitUntil(() => GameObject.FindWithTag("Enemy"));
+            enemy = GameObject.FindWithTag("Enemy").GetComponent<Enemy>().hp;
+            if(enemy<=0)
+            {
+                goGrid.SetActive(false);
+                IMG_Grid.SetActive(false);
+                enemy_0.SetActive(true);
+                Debug.Log("2");
+            }
         }
     }
 
@@ -46,6 +60,7 @@ public class TutorialScripts : MonoBehaviour, IEndDragHandler
         }
         else
         {
+            Debug.Log("1");
             IMG_Grid.SetActive(false); // 배치석 이미지를 비활성화합니다.
             goGrid.SetActive(false); // 배치석 이미지를 비활성화합니다.
         }
@@ -64,6 +79,14 @@ public class TutorialScripts : MonoBehaviour, IEndDragHandler
         {
             IMG_waits.SetActive(false);
         }
+
+        //if (enemy <= 0)
+        //{
+        //    enemy_0.SetActive(true);
+        //    Debug.Log("2");
+        //}
+
+
 
         //// IMG_Grid가 비활성화된 경우 대기석 이미지를 활성화합니다.
         //if (!IMG_Grid.activeSelf)

@@ -14,14 +14,14 @@ public class ESCUI : MonoBehaviour
     public GameObject Expup;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         escImage.SetActive(false); // 이미지 비활성화
         Ttab.SetActive(false); // 이미지 비활성화
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // ESC 키를 누르면 이미지를 활성화
         if (Input.GetKeyDown(KeyCode.Escape))
