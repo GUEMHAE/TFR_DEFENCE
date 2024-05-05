@@ -178,12 +178,13 @@ GameObject:
   m_Component:
   - component: {fileID: 511540942768741880}
   - component: {fileID: 3476019646946672132}
-  - component: {fileID: 937393827062228413}
   - component: {fileID: 5097130906527927168}
   - component: {fileID: 6812766025428997435}
   - component: {fileID: 6969549167836186774}
   - component: {fileID: 4143661564512978555}
   - component: {fileID: 45874059549321420}
+  - component: {fileID: 4076368230735184420}
+  - component: {fileID: 937393827062228413}
   m_Layer: 3
   m_Name: "1\uC131 \uBD80\uB974"
   m_TagString: Unit
@@ -262,22 +263,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &937393827062228413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8387455438542987280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0174ef34b97d10d41878a9b58e1997ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unitInfo: {fileID: 11400000, guid: 093a35445da3bf746a8fc098467424a9, type: 2}
-  unitType:
-  - {fileID: 11400000, guid: 474399af88a3da04e8b97ac5e5947a6e, type: 2}
-  - {fileID: 0}
 --- !u!61 &5097130906527927168
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -495,6 +480,48 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4076368230735184420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8387455438542987280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c250d3209f3e4074089647113c741f1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitInfo1: {fileID: 11400000, guid: 2ebf6e8bfbf2cb34ca1ff0b747d04d43, type: 2}
+  unitInfo2: {fileID: 11400000, guid: 54e7d95ea950fbf4fba6bfa0a4a6f4d3, type: 2}
+  unitInfo3: {fileID: 11400000, guid: b5ae6ec0ae5cb6b499b982bf3e965177, type: 2}
+  unitBorder1: {fileID: 8455036857193924283}
+  unitBorder2: {fileID: 396590083879915621}
+  unitBorder3: {fileID: 185032329940296444}
+  unitName: 
+  attackSpeed: 0
+  attackRange: 0
+  ad: 0
+  ap: 0
+  cost: 0
+  sellCost: 0
+  attackProjectile: {fileID: 0}
+--- !u!114 &937393827062228413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8387455438542987280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0174ef34b97d10d41878a9b58e1997ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitInfo: {fileID: 11400000, guid: 2ebf6e8bfbf2cb34ca1ff0b747d04d43, type: 2}
+  unitType:
+  - {fileID: 11400000, guid: 474399af88a3da04e8b97ac5e5947a6e, type: 2}
+  - {fileID: 0}
 --- !u!1 &8455036857193924283
 GameObject:
   m_ObjectHideFlags: 0

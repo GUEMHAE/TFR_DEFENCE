@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 3786840505384754904}
   - component: {fileID: 5295692850163286350}
   - component: {fileID: -1357980235708779421}
+  - component: {fileID: -151615056607836883}
   m_Layer: 3
   m_Name: "1\uC131 \uC2A4\uB12C"
   m_TagString: Unit
@@ -526,6 +527,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-151615056607836883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5209699315555595529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c250d3209f3e4074089647113c741f1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitInfo1: {fileID: 11400000, guid: 98bec2b2bb51ffb48b0ff2cd58c19cae, type: 2}
+  unitInfo2: {fileID: 11400000, guid: 2f7715b8af4b1db4bbad9b8c0a25cc2e, type: 2}
+  unitInfo3: {fileID: 11400000, guid: 0d696bb13d424174dbffe7b86d2156f8, type: 2}
+  unitBorder1: {fileID: 6938765307013045818}
+  unitBorder2: {fileID: 1760588823171960561}
+  unitBorder3: {fileID: 4666662518797113479}
+  unitName: 
+  attackSpeed: 0
+  attackRange: 0
+  ad: 0
+  ap: 0
+  cost: 0
+  sellCost: 0
+  attackProjectile: {fileID: 0}
 --- !u!1 &6938765307013045818
 GameObject:
   m_ObjectHideFlags: 0

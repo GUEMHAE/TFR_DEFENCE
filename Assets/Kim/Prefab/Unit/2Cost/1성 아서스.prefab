@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 4351888751305981737}
   - component: {fileID: 5377444158202115457}
   - component: {fileID: 418139315472225754}
-  - component: {fileID: 7598233072013745798}
+  - component: {fileID: -627488994881059311}
   m_Layer: 3
   m_Name: "1\uC131 \uC544\uC11C\uC2A4"
   m_TagString: Unit
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0174ef34b97d10d41878a9b58e1997ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitInfo: {fileID: 11400000, guid: b6499f497691d2c42812be41992cbb23, type: 2}
+  unitInfo: {fileID: 11400000, guid: 8145f5d561e8df04483fe1da2b16eeef, type: 2}
   unitType:
   - {fileID: 11400000, guid: 4e23f49400bbb9c449804d092fadb4a9, type: 2}
   - {fileID: 0}
@@ -314,7 +314,7 @@ MonoBehaviour:
   attackSpawn: {fileID: 6090822052665826093}
   stunEffect: {fileID: 1936204856907710318, guid: 8c0e17fd5bacca14c8c72f803482bae0, type: 3}
   isStun: 0
---- !u!114 &7598233072013745798
+--- !u!114 &-627488994881059311
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -323,11 +323,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 2282708086631485649}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04faebbf21df33a4e8becc5a1bc124aa, type: 3}
+  m_Script: {fileID: 11500000, guid: c250d3209f3e4074089647113c741f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleFactor: 0.1
-  duration: 0.2
+  unitInfo1: {fileID: 11400000, guid: 8145f5d561e8df04483fe1da2b16eeef, type: 2}
+  unitInfo2: {fileID: 11400000, guid: 871466d53d9af0748ad300c38f969823, type: 2}
+  unitInfo3: {fileID: 11400000, guid: b6499f497691d2c42812be41992cbb23, type: 2}
+  unitBorder1: {fileID: 3149643951029251974}
+  unitBorder2: {fileID: 71305350417075897}
+  unitBorder3: {fileID: 5073821337985602639}
+  unitName: 
+  attackSpeed: 0
+  attackRange: 0
+  ad: 0
+  ap: 0
+  cost: 0
+  sellCost: 0
+  attackProjectile: {fileID: 0}
 --- !u!1 &3149643951029251974
 GameObject:
   m_ObjectHideFlags: 0
