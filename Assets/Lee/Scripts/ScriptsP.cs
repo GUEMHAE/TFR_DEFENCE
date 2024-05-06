@@ -11,8 +11,6 @@ public class ScriptsP : MonoBehaviour
     private GameObject enemyPoolObj;
     private GameObject unit222;
 
-    public GameObject End;
-
     void Start()
     {
         enemyPoolObj = GameObject.Find("EnemyPool");

@@ -20,4 +20,9 @@ public class ScenesManager : MonoBehaviour
     {
         SceneManager.LoadScene("tutorial");
     }
+
+    public void TitleScene()
+    {
+        SceneManager.LoadScene("TitleScene");
+    }
 }
