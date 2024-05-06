@@ -4,29 +4,70 @@ using UnityEngine;
 
 public class ScriptsP : MonoBehaviour
 {
-    public string targetTag; // 스크립트를 추가할 대상 태그
+    public string targetTag;
+    public GameObject enemy_0;
+    public GameObject IMG_waits;
+
+    private GameObject enemyPoolObj;
+    private GameObject unit222;
+
+    public GameObject End;
 
     void Start()
     {
-        // 대상 태그를 가진 모든 오브젝트를 찾습니다.
-        GameObject[] taggedObjects = GameObject.FindGameObjectsWithTag(targetTag);
+        enemyPoolObj = GameObject.Find("EnemyPool");
+        unit222 = GameObject.Find("222");
 
-        // 각 오브젝트에 스크립트를 추가합니다.
+        TScript();
+    }
+
+    void OnEnable()
+    {
+        Invoke("ui_false", 1f);
+    }
+
+    private void LateUpdate()
+    {
+        if (enemyPoolObj != null)
+        {
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            if (enemies.Length == 0)
+            {
+                enemy_0.SetActive(true);
+                IMG_waits.SetActive(true);
+                ui_false();
+            }
+        }
+    }
+
+    private void TScript()
+    {
+        GameObject[] taggedObjects = GameObject.FindGameObjectsWithTag(targetTag);
         foreach (GameObject obj in taggedObjects)
         {
             if (!obj.GetComponent<TutorialScripts>())
             {
-                // TutorialScripts 스크립트를 찾아서 없다면 추가합니다.
                 var tutorialScript = obj.AddComponent<TutorialScripts>();
-
-                // TutorialScripts 스크립트에 설정된 변수를 이 스크립트에서 참조합니다.
-                //tutorialScript.ep_IMGGrid = GameObject.Find("6");
-                tutorialScript.GridName = "111"; // 배치석 이름 설정
+                tutorialScript.GridName = "111";
                 tutorialScript.IMG_Grid = GameObject.Find("GridEP");
-                tutorialScript.waitsName = "222"; // 대기석 이름 설정
-                tutorialScript.IMG_waits = GameObject.Find("waitEP");
                 tutorialScript.goGrid = GameObject.Find("goGrid");
-                tutorialScript.enemy_0 = GameObject.Find("enemy_0");
+            }
+        }
+    }
+
+    private void ui_false()
+    {
+        if (unit222 != null)
+        {
+            Transform[] childTransforms = unit222.GetComponentsInChildren<Transform>();
+            foreach (Transform childTransform in childTransforms)
+            {
+                if (childTransform.CompareTag("Unit"))
+                {
+                    enemy_0.SetActive(false);
+                    IMG_waits.SetActive(false);
+                    break;
+                }
             }
         }
     }

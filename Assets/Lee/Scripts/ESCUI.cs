@@ -10,9 +10,6 @@ public class ESCUI : MonoBehaviour
     public GameObject Ttab;
     public bool isTab = false;
 
-    public GameObject Tabtext;
-    public GameObject Expup;
-
     // Start is called before the first frame update
     void Awake()
     {
@@ -21,7 +18,7 @@ public class ESCUI : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         // ESC 키를 누르면 이미지를 활성화
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -48,8 +45,6 @@ public class ESCUI : MonoBehaviour
             if (isTab)
             {
                 Ttab.SetActive(true); // 활성화
-                Tabtext.SetActive(false);
-                Expup.SetActive(true);
             }
             else
                 Ttab.SetActive(false); //비활성화
