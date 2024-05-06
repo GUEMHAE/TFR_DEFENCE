@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 1475874559173089935}
   - component: {fileID: 5727666215795260888}
   - component: {fileID: 7362847886675304780}
-  - component: {fileID: 5625864832572898277}
+  - component: {fileID: 3438472212326055196}
   m_Layer: 0
   m_Name: "1\uC131 \uD53C\uC624\uB098"
   m_TagString: Unit
@@ -314,7 +314,7 @@ MonoBehaviour:
   canPlace: 0
   grid: {fileID: 0}
   Unit: {fileID: 0}
---- !u!114 &5625864832572898277
+--- !u!114 &3438472212326055196
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -323,11 +323,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 2417212188554672420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04faebbf21df33a4e8becc5a1bc124aa, type: 3}
+  m_Script: {fileID: 11500000, guid: c250d3209f3e4074089647113c741f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleFactor: 0.1
-  duration: 0.2
+  unitInfo1: {fileID: 11400000, guid: 8f9e2f023da946143b013e27598902d5, type: 2}
+  unitInfo2: {fileID: 11400000, guid: f7a13d8312fa17d4aa3e40945a380b28, type: 2}
+  unitInfo3: {fileID: 11400000, guid: abdf4bef650929b4da0e9173d9e76f53, type: 2}
+  unitBorder1: {fileID: 1204985041983255376}
+  unitBorder2: {fileID: 8832155338046362222}
+  unitBorder3: {fileID: 7520573781541898122}
+  unitName: 
+  attackSpeed: 0
+  attackRange: 0
+  ad: 0
+  ap: 0
+  cost: 0
+  sellCost: 0
+  attackProjectile: {fileID: 0}
 --- !u!1 &4413885617371834968
 GameObject:
   m_ObjectHideFlags: 0

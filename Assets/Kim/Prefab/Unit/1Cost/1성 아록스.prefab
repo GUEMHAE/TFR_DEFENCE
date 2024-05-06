@@ -299,6 +299,7 @@ GameObject:
   - component: {fileID: 5475180817218167561}
   - component: {fileID: 781429725087704156}
   - component: {fileID: 3848756580892205946}
+  - component: {fileID: -7865764667430038551}
   m_Layer: 3
   m_Name: "1\uC131 \uC544\uB85D\uC2A4"
   m_TagString: Unit
@@ -389,7 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0174ef34b97d10d41878a9b58e1997ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitInfo: {fileID: 11400000, guid: 58b2ceeeecb71eb45afe96954c0d113a, type: 2}
+  unitInfo: {fileID: 11400000, guid: 2b35eddcc9f7f6b40825c5901c4ac539, type: 2}
   unitType:
   - {fileID: 11400000, guid: 474399af88a3da04e8b97ac5e5947a6e, type: 2}
   - {fileID: 11400000, guid: 4634aa39f0518a042864912f863fba61, type: 2}
@@ -492,7 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aff7b874a3d13348b3746fef748a680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitInfo: {fileID: 11400000, guid: 58b2ceeeecb71eb45afe96954c0d113a, type: 2}
+  unitInfo: {fileID: 11400000, guid: 2b35eddcc9f7f6b40825c5901c4ac539, type: 2}
   enemy: {fileID: 0}
   shortDis: 0
   tagName: Enemy
@@ -610,3 +611,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-7865764667430038551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9007141795832384823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c250d3209f3e4074089647113c741f1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitInfo1: {fileID: 11400000, guid: 2b35eddcc9f7f6b40825c5901c4ac539, type: 2}
+  unitInfo2: {fileID: 11400000, guid: 98579c28d9847a344916c5b79d910358, type: 2}
+  unitInfo3: {fileID: 11400000, guid: 58b2ceeeecb71eb45afe96954c0d113a, type: 2}
+  unitBorder1: {fileID: 7709459636680916728}
+  unitBorder2: {fileID: 2775127385911697111}
+  unitBorder3: {fileID: 7107340912966451007}
+  unitName: 
+  attackSpeed: 0
+  attackRange: 0
+  ad: 0
+  ap: 0
+  cost: 0
+  sellCost: 0
+  attackProjectile: {fileID: 0}

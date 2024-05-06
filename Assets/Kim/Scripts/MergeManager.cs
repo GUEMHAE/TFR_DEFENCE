@@ -164,6 +164,7 @@ public class MergeManager : MonoBehaviour
                                 changeGrade = upgrade3Unit.name.Substring(0, 2).Replace("2성", "3성");
                                 upgrade3Unit.name = changeGrade + unitName;
                                 upgrade3Unit.transform.localScale = originScale;
+                                Instantiate(unitUpgrade2Particle, allUnits[idx].transform.position, Quaternion.identity);
                                 Debug.Log("3성 업그레이드");
                             }
                             Destroy(allUnits[idx]);

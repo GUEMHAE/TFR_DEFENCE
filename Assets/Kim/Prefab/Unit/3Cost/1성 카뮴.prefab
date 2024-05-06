@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 3953243605936057505}
   - component: {fileID: 5951881296602413202}
   - component: {fileID: 7978203094167682595}
-  - component: {fileID: -1698790577472657845}
+  - component: {fileID: -4851565140195403121}
   m_Layer: 3
   m_Name: "1\uC131 \uCE74\uBBB4"
   m_TagString: Unit
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0174ef34b97d10d41878a9b58e1997ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitInfo: {fileID: 11400000, guid: 238849755fe5369458c3053f49910de0, type: 2}
+  unitInfo: {fileID: 11400000, guid: b9694936813752e4c8e6dd2e5f06ee88, type: 2}
   unitType:
   - {fileID: 11400000, guid: 4e23f49400bbb9c449804d092fadb4a9, type: 2}
   - {fileID: 11400000, guid: 8884a4446f6821f4485e7f7ec3ea99a6, type: 2}
@@ -261,7 +261,7 @@ MonoBehaviour:
   attackSpawn: {fileID: 3302397817636139694}
   stunEffect: {fileID: 1936204856907710318, guid: 8c0e17fd5bacca14c8c72f803482bae0, type: 3}
   isStun: 0
---- !u!114 &-1698790577472657845
+--- !u!114 &-4851565140195403121
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -270,11 +270,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 2820609073821823100}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04faebbf21df33a4e8becc5a1bc124aa, type: 3}
+  m_Script: {fileID: 11500000, guid: c250d3209f3e4074089647113c741f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleFactor: 0.1
-  duration: 0.2
+  unitInfo1: {fileID: 11400000, guid: b9694936813752e4c8e6dd2e5f06ee88, type: 2}
+  unitInfo2: {fileID: 11400000, guid: 663effdc0e1332746a485b821a3e66e1, type: 2}
+  unitInfo3: {fileID: 11400000, guid: 238849755fe5369458c3053f49910de0, type: 2}
+  unitBorder1: {fileID: 8837746839979183982}
+  unitBorder2: {fileID: 5504244542899227626}
+  unitBorder3: {fileID: 5476727925415695018}
+  unitName: 
+  attackSpeed: 0
+  attackRange: 0
+  ad: 0
+  ap: 0
+  cost: 0
+  sellCost: 0
+  attackProjectile: {fileID: 0}
 --- !u!1 &5476727925415695018
 GameObject:
   m_ObjectHideFlags: 0
