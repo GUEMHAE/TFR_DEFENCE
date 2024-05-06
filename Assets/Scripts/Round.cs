@@ -33,6 +33,7 @@ public class Round : MonoBehaviour
             await UniTask.WaitUntil(() => !TimeManager.instance.isRoundTime );
             Debug.Log("선택시간");
             isRound = false;
+            RandomSprite_Unit.instance.RandomSprite();
             await UniTask.WaitUntil(() => TimeManager.instance.isRoundTime);
             Debug.Log("선택시간 종료");
 

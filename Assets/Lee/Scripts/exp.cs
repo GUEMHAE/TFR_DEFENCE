@@ -21,6 +21,7 @@ public class Exp : MonoBehaviour
         // 레벨 텍스트 업데이트
         levelText.text = level.ToString();
         exping.text = exp.ToString() + " / " + expBar.ToString();
+        UnitLimitManager.instance.MaxunitCount = 1;
     }
 
 
@@ -62,15 +63,28 @@ public class Exp : MonoBehaviour
     // 레벨업에 필요한 경험치 양 반환 함수
     public float Levelup(float currentLevel)
     {
+        Debug.Log(UnitLimitManager.instance.MaxunitCount);
         // 각 레벨별로 필요한 경험치 양 설정
         switch (currentLevel)
         {
-            case 1: return 3;
-            case 2: return 6;
-            case 3: return 12;
-            case 4: return 18;
-            case 5: return 28;
-            case 6: return 0;
+            case 1:
+                UnitLimitManager.instance.MaxunitCount = 2;
+                return 2;
+            case 2:
+                UnitLimitManager.instance.MaxunitCount = 3;
+                return 6;
+            case 3:
+                UnitLimitManager.instance.MaxunitCount = 4;
+                return 12;
+            case 4:
+                UnitLimitManager.instance.MaxunitCount = 5;
+                return 24;
+            case 5:
+                UnitLimitManager.instance.MaxunitCount = 6;
+                return 48;
+            case 6:
+                UnitLimitManager.instance.MaxunitCount = 7;
+                return 0;
         }
         return exp;
     }

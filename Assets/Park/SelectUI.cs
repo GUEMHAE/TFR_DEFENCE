@@ -35,9 +35,9 @@ public class SelectUI : MonoBehaviour
         {
             case 0:
                 name.text = "아록스";
-                unitInfo.text = "공격력 0\n" +
-                    "주문력 50\n" +
-                    "공격속도 0.7\n" +
+                unitInfo.text = "공격력 0 \n" +
+                    "주문력 50 \n" +
+                    "공격속도 0.7 \n" +
                     "스킬: 화염 소용돌이\n";
                 classLogo.sprite = classLogos[0];
                 _Synergy2.SetActive(true);
@@ -50,9 +50,9 @@ public class SelectUI : MonoBehaviour
                 break;
             case 1:
                 name.text = "토니르";
-                unitInfo.text = "공격력 50\n" +
-                    "주문력 0\n" +
-                    "공격속도 1\n" +
+                unitInfo.text = "공격력 50 \n" +
+                    "주문력 0 \n" +
+                    "공격속도 1 \n" +
                     "스킬: 신성의 검\n";
                 classLogo.sprite = classLogos[0];
                 _Synergy2.SetActive(false);
@@ -62,10 +62,10 @@ public class SelectUI : MonoBehaviour
                 break;
             case 2:
                 name.text = "바바리안";
-                unitInfo.text = "공격력 60\n" +
-                    "주문력 0\n" +
-                    "공격속도 1.2\n" +
-                    "스킬: 암석던지기\n";
+                unitInfo.text = "공격력 60 \n" +
+                    "주문력 0 \n" +
+                    "공격속도 1.2 \n" +
+                    "스킬: 암석던지기 \n";
                 classLogo.sprite = classLogos[0];
                 Synergy1.sprite = Synergys[4];
                 SynergyText1.text = "근원";
@@ -74,9 +74,9 @@ public class SelectUI : MonoBehaviour
                 break;
             case 3:
                 name.text = "다르밤";
-                unitInfo.text = "공격력 40\n" +
-                    "주문력 0\n" +
-                    "공격속도 1.1\n" +
+                unitInfo.text = "공격력 40 \n" +
+                    "주문력 0 \n" +
+                    "공격속도 1.1 \n" +
                     "스킬: 압정 깔기\n";
                 classLogo.sprite = classLogos[3];
                 _Synergy2.SetActive(false);
@@ -86,10 +86,10 @@ public class SelectUI : MonoBehaviour
                 break;
             case 4:
                 name.text = "애쉬";
-                unitInfo.text = "공격력 0\n" +
-                    "주문력 40\n" +
-                    "공격속도 1.1\n" +
-                    "스킬: 삼중 화살\n";
+                unitInfo.text = "공격력 0 \n" +
+                    "주문력 40 \n" +
+                    "공격속도 1.1 \n" +
+                    "스킬: 삼중 화살 \n";
                 classLogo.sprite = classLogos[1];
                 _Synergy2.SetActive(false);
                 Synergy1.sprite = Synergys[5];
@@ -99,8 +99,8 @@ public class SelectUI : MonoBehaviour
             case 5:
                 name.text = "스넬";
                 unitInfo.text = " 공격력 0\n" +
-                    "주문력 45\n" +
-                    "공격속도 0.9\n" +
+                    "주문력 45 \n" +
+                    "공격속도 0.9 \n" +
                     "스킬: 물의 숨결\n";
                 classLogo.sprite = classLogos[2];
                 _Synergy2.SetActive(true);
@@ -111,11 +111,11 @@ public class SelectUI : MonoBehaviour
                 PlayerPrefs.SetInt("Character", 4);
                 break;
             case 6:
-                name.text = "부르\n";
-                unitInfo.text = "공격력 40\n'" +
-                    "주문력 0\n" +
-                    "공격속도 1\n" +
-                    "스킬: 파이어 락\n";
+                name.text = "부르 \n";
+                unitInfo.text = "공격력 40 \n'" +
+                    "주문력 0 \n" +
+                    "공격속도 1 \n" +
+                    "스킬: 파이어 락 \n";
                 classLogo.sprite = classLogos[2];
                 _Synergy2.SetActive(false);
                 Synergy1.sprite = Synergys[2];

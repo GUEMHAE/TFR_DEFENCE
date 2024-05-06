@@ -9,10 +9,11 @@ public class UnitLimitManager : MonoBehaviour
     [SerializeField]
     List<GameObject> allGrid; //그리드 리스트
 
-    [SerializeField]
-    int unitCount; //그리드 위에 있는 유닛의 수 세는 변수
+    public int curUnitCount; //그리드 위에 있는 유닛의 수 세는 변수
 
-    UnitLimitManager instance;
+    public int MaxunitCount = 1;
+
+    public static UnitLimitManager instance;
 
     public void GetOnlyGridUnits()
     {
@@ -45,7 +46,6 @@ public class UnitLimitManager : MonoBehaviour
     private void Update()
     {
         GetOnlyGridUnits();
-        unitCount = allUnits.Count;
-        Debug.Log(unitCount);
+        curUnitCount = allUnits.Count;
     }
 }

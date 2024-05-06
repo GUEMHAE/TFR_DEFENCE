@@ -8,6 +8,7 @@ public class RandomSprite_Unit : MonoBehaviour
     public Image[] imageSlots; // 4개의 이미지 슬롯 
     public Sprite[] sprites; // 스프라이트를 저장할 배열
 
+    public static RandomSprite_Unit instance;
     Exp exp;
     [SerializeField] private int level = 1;
 
@@ -15,6 +16,15 @@ public class RandomSprite_Unit : MonoBehaviour
     {
         RandomSprite();
         exp = GetComponent<Exp>();
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Update()
