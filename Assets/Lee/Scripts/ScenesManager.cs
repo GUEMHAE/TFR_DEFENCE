@@ -15,4 +15,13 @@ public class ScenesManager : MonoBehaviour
         Application.Quit();
         Debug.Log("²ý");
     }
+    public void tutorial()
+    {
+        SceneManager.LoadScene("Ttutorial");
+    }
+
+    public void TitleScene()
+    {
+        SceneManager.LoadScene("TitleScene");
+    }
 }

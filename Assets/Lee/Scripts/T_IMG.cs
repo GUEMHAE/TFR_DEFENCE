@@ -5,7 +5,7 @@ using UnityEngine;
 public class T_IMG : MonoBehaviour
 {
     public float maxSize = 1.2f; // 이미지의 최대 크기
-    public float duration = 0.5f; // 애니메이션의 총 시간 (크기가 최대까지 성장하는 데 걸리는 시간)
+    public float duration = 0.5f; // 애니메이션의 총 시간
 
     private Vector3 initialScale; // 이미지의 초기 크기
     private bool isGrowing = true; // 커지고 있는지 확인
@@ -13,6 +13,11 @@ public class T_IMG : MonoBehaviour
     void Start()
     {
         initialScale = transform.localScale; // 이미지의 초기 크기를 저장
+        StartCoroutine(AnimateLoop()); // 애니메이션 루프 시작
+    }
+
+    public void StartAnimation()
+    {
         StartCoroutine(AnimateLoop()); // 애니메이션 루프 시작
     }
 
@@ -37,7 +42,7 @@ public class T_IMG : MonoBehaviour
             currentTime += Time.deltaTime;
             yield return null; // 한 프레임마다 애니메이션 업데이트, 다음 프레임까지 대기
         }
-         
+
         transform.localScale = targetScale; //애니메이션이 끝난 후 이미지 크기를 목표 크기로 설정
     }
 }

@@ -6,74 +6,52 @@ using UnityEngine.EventSystems;
 
 public class TutorialScripts : MonoBehaviour, IEndDragHandler
 {
-    public GameObject IMG; // 이전 이미지
-    public GameObject IMG1; // 이전 이미지
-    public GameObject ep_IMG; // 이전 이미지
-    public GameObject ep_IMGGrid; // 이전 이미지
-    public GameObject IMG2; // 이전 이미지
-    public GameObject IMG2_1; // 이전 이미지
-    public GameObject IMG2_2; // 이전 이미지
- // 이전 이미지
+    public GameObject goGrid;
+    public GameObject enemy_0;
 
-    public string GridName; //배치석 이름
-    public GameObject IMG_Grid; // 이미지
-    private bool isGrid = false; // 배치석에 장착 되었는지 확인
+    public string GridName;
+    public GameObject IMG_Grid;
+    private bool isGrid = false;
 
-    public string waitsName; // 대기석 이름
-    public GameObject IMG_waits; //다음 이미지
-    private bool iswaits = false; // 대기석에 정착 되었는지 확인
+    public string waitsName;
+    private bool iswaits = false;
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (isGrid && !IMG_Grid.activeSelf) // 정착 상태이고 이미지가 비활성화된 경우
+        if (isGrid && !IMG_Grid.activeSelf)
         {
-            IMG_Grid.SetActive(true); // 이미지를 활성화합니다.
-            IMG_waits.SetActive(false);
-            IMG1.SetActive(false);
-            ep_IMG.SetActive(false);
-            ep_IMGGrid.SetActive(true);
+            IMG_Grid.SetActive(true);
         }
         else
         {
             IMG_Grid.SetActive(false);
-        }
-
-
-        if (iswaits && !IMG_waits.activeSelf) // 정착 상태이고 이미지가 비활성화된 경우
-        {
-            IMG_waits.SetActive(true); // 이미지를 활성화합니다.
-            ep_IMGGrid.SetActive(false);
-            IMG2.SetActive(false);
-            IMG2_1.SetActive(false);
-            IMG2_2.SetActive(false);
-            IMG.SetActive(true);
-
+            goGrid.SetActive(false);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == GridName) // 충돌한 게임 오브젝트의 이름이 배치석 이름과 같은 경우
+        if (collision.gameObject.name == GridName)
         {
-            isGrid = true; // 정착 상태를 true로 설정합니다.
+            isGrid = true;
         }
 
-        if (collision.gameObject.name == waitsName) // 충돌한 게임 오브젝트의 이름이 대기석 이름과 같은 경우
+        if (collision.gameObject.name == waitsName)
         {
-            iswaits = true; // 정착 상태를 true로 설정합니다.
+            iswaits = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.name == GridName) // 배치석과 충돌이 끝난 경우
+        if (collision.gameObject.name == GridName)
         {
-            isGrid = false; // 정착 상태를 false로 설정합니다.
+            isGrid = false;
         }
 
-        if (collision.gameObject.name == waitsName) // 대기석과 충돌이 끝난 경우
+        if (collision.gameObject.name == waitsName)
         {
-            iswaits = false; // 정착 상태를 false로 설정합니다.
+            iswaits = false;
         }
     }
 }
