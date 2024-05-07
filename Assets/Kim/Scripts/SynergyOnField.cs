@@ -1,19 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class UnitLimitManager : MonoBehaviour
+public class SynergyOnField : MonoBehaviour
 {
     [SerializeField]
-    List<GameObject> allUnits; //유닛 리스트
+    public List<GameObject> allUnits; //유닛 리스트
     [SerializeField]
     List<GameObject> allGrid; //그리드 리스트
 
-    public int curUnitCount; //그리드 위에 있는 유닛의 수 세는 변수
-
-    public int MaxunitCount = 7;
-
-    public static UnitLimitManager instance;
+    static public SynergyOnField instance;
 
     public void GetOnlyGridUnits()
     {
@@ -31,9 +28,10 @@ public class UnitLimitManager : MonoBehaviour
         }
     }
 
+
     private void Awake()
     {
-        if(instance==null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -46,6 +44,5 @@ public class UnitLimitManager : MonoBehaviour
     private void Update()
     {
         GetOnlyGridUnits();
-        curUnitCount = allUnits.Count;
     }
 }

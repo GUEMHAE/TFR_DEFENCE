@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 508371536972601617}
   - component: {fileID: 7982479952506668499}
   - component: {fileID: 8195199531322737359}
+  - component: {fileID: 8425482329100620155}
   m_Layer: 7
   m_Name: "AsheAttackProjectile 1\uC131"
   m_TagString: Projectile
@@ -278,3 +279,15 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!210 &8425482329100620155
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6902903491124681590}
+  m_Enabled: 1
+  m_SortingLayerID: -1857298117
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_SortAtRoot: 0

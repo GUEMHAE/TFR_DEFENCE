@@ -26,6 +26,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     TMP_Text goldText;
 
+    public bool isSynergyPannelOn;
+
     async UniTask BossWarning()
     {
         while(true)
@@ -43,14 +45,17 @@ public class UIManager : MonoBehaviour
 
     public void ActiveSynergyPannel() //시너지 표시 버튼 눌럿을때 시너지 패널 활성화
     {
-        synergyButton.gameObject.SetActive(false);
-        synergyPannel.SetActive(true);
-    }
 
-    public void QuitSynergyPannel() //시너지 표시 패널 닫기 버튼 눌럿을때 시너지 표시 버튼 활성화
-    {
-        synergyButton.gameObject.SetActive(true);
-        synergyPannel.SetActive(false);
+        if (!isSynergyPannelOn)
+        {
+            synergyPannel.SetActive(true);
+            isSynergyPannelOn = true;
+        }
+        else if (isSynergyPannelOn)
+        {
+            synergyPannel.SetActive(false);
+            isSynergyPannelOn = false;
+        }
     }
 
 

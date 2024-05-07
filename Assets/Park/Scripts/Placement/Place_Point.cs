@@ -70,15 +70,15 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
 
     void IEndDragHandler.OnEndDrag(PointerEventData eventData)
     {
-        if (UnitLimitManager.instance.curUnitCount >= UnitLimitManager.instance.MaxunitCount)
-        {
-            Debug.Log("배치불가");
-            gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
-            grid = null;
-            gameObject.transform.localScale = new Vector3(0.8f, 0.8f, 1);
-            transform.localPosition = Vector3.zero;
-            boxCol.size = new Vector2(1f, 1f);
-        }
+        //if (UnitLimitManager.instance.curUnitCount >= UnitLimitManager.instance.MaxunitCount)
+        //{
+        //    Debug.Log("배치불가");
+        //    gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
+        //    grid = null;
+        //    gameObject.transform.localScale = new Vector3(0.8f, 0.8f, 1);
+        //    transform.localPosition = Vector3.zero;
+        //    boxCol.size = new Vector2(1f, 1f);
+        //}
         if (canPlace && grid != null)
         {
             gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;

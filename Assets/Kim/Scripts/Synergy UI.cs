@@ -82,16 +82,16 @@ public class SynergyUI : MonoBehaviour
 
     private void Start()
     {
-        synergyGradeCheck= new int[6];
-        synergyGradeCheck[0] = synergyManager.synergies[0].grade; //시너지 갯수 제대로 들어가는지 체크하는 코드
+        //synergyGradeCheck= new int[6];
+        //synergyGradeCheck[0] = synergyManager.synergies[0].grade; //시너지 갯수 제대로 들어가는지 체크하는 코드
         DisplaySynergy();
     }
 
     private void Update()
     {
-        synergyManager.synergies[0].grade = synergyGradeCheck[0];
+        //synergyManager.synergies[0].grade = synergyGradeCheck[0];
 
-        System.Array.Sort(synergyManager.synergies, (x, y) => y.grade.CompareTo(x.grade));//시너지의 갯수가 높은 순으로 정렬
+        //System.Array.Sort(synergyManager.synergies, (x, y) => y.grade.CompareTo(x.grade));//시너지의 갯수가 높은 순으로 정렬
         DisplaySynergy();
     }
 }
