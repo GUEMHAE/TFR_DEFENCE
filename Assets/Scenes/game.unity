@@ -3901,7 +3901,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &382914474
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12435,6 +12435,7 @@ MonoBehaviour:
   bossWarning: {fileID: 1205451154}
   synergyButton: {fileID: 1260970047}
   synergyPannel: {fileID: 1382465151}
+  goldText: {fileID: 0}
 --- !u!114 &1259072451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15554,6 +15555,7 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   gameoverUI: {fileID: 0}
   enemyPool: {fileID: 2117061025}
+  gold: 0
 --- !u!21 &1699648170
 Material:
   serializedVersion: 8

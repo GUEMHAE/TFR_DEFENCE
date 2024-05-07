@@ -617,7 +617,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8686431058729070422}
         m_TargetAssemblyTypeName: ScenesManager, Assembly-CSharp
-        m_MethodName: start
+        m_MethodName: tutorial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
