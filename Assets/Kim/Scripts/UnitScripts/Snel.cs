@@ -91,6 +91,11 @@ public class Snel : MonoBehaviour
     {
         while (!cancellationToken.IsCancellationRequested)
         {
+            if (Round.instance.isRound == false)
+            {
+                currentMana = 0;
+            }
+            await UniTask.WaitUntil(() => Round.instance.isRound);
             await UniTask.Delay(1000);//1초마다 마나 회복
             if (currentMana < maxMana&&Round.instance.isRound==true)
             {
