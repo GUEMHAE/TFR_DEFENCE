@@ -31,6 +31,7 @@ public class Round : MonoBehaviour
         {
             isRound = true;
             await UniTask.WaitUntil(() => !TimeManager.instance.isRoundTime );
+            GameManager.instance.gold += 6;
             Debug.Log("선택시간");
             isRound = false;
             RandomSprite_Unit.instance.RandomSprite();

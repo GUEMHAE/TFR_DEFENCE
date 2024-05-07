@@ -107,6 +107,7 @@ public class Darbam : MonoBehaviour
             {
                 HitFirstBossSkill();
                 this.enabled = false;
+                Debug.Log("½ºÅÏÁß");
                 await UniTask.WaitUntil(() => !FirstBoss.instance.isUseFirst);
                 isStun = false;
                 this.enabled = true;
@@ -122,6 +123,7 @@ public class Darbam : MonoBehaviour
         {
             Instantiate(stunEffect, gameObject.transform.position, Quaternion.identity);
         }
+
     }
 
     void Start()

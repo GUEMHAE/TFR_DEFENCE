@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Text scoreText;
     public GameObject gameoverUI;
     public GameObject enemyPool; //적들이 들어 있는 부모 오브젝트를 등록하기 위한 GameObject
+    public int gold;
 
     private int score = 0;
 
@@ -40,11 +41,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    private void Start()
-    {
-       
+        RandomSprite_Unit.instance.RandomSprite();
     }
 
     void Update()
@@ -57,8 +54,8 @@ public class GameManager : MonoBehaviour
         if (isGameOver)
         {
             gameoverUI.SetActive(true);
+            Round.instance.enabled = false;
         }
-
     }
     public void AddScore(int newScore)
     {

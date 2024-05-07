@@ -23,6 +23,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     GameObject synergyPannel; //시너지 표시 패널
 
+    [SerializeField]
+    TMP_Text goldText;
+
     async UniTask BossWarning()
     {
         while(true)
@@ -61,5 +64,6 @@ public class UIManager : MonoBehaviour
         _roundTime = TimeManager.instance.roundTime; 
         roundTime.text = _roundTime.ToString("F0");
         _currentRound.text = Round.instance.currentRound.ToString("F0")+"라운드";
+        goldText.text = GameManager.instance.gold.ToString();
     }
 }

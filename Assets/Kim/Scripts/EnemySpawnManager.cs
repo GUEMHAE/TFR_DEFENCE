@@ -62,7 +62,11 @@ public class EnemySpawnManager : MonoBehaviour
 
                 else if (Round.instance.currentRound == 10) //두번 째 보스 라운드
                 {
+                    GameObject bossClone1 = Instantiate(enemyPrefab[9], EnemyPool);
+                    enemyCount = 20;
+                    Enemy enemy = bossClone1.GetComponent<Enemy>();
 
+                    enemy.Setup(wayPoints);
                 }
 
                 else if (Round.instance.currentRound == 15) //세번 째 보스 라운드

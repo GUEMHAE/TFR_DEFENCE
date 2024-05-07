@@ -53,11 +53,15 @@ public class Exp : MonoBehaviour
     // 버튼 클릭 경험치 증가 함수
     public void IncreaseExperience()
     {
-        exp += 3;
-        ExpBarSlider.value = exp / expBar;
+        if (GameManager.instance.gold >= 3&&level!=6)
+        {
+            exp += 3;
+            GameManager.instance.gold -= 3;
+            ExpBarSlider.value = exp / expBar;
 
-        levelText.text = level.ToString();
-        exping.text = exp.ToString() + " / " + expBar.ToString();
+            levelText.text = level.ToString();
+            exping.text = exp.ToString() + " / " + expBar.ToString();
+        }
     }
 
     // 레벨업에 필요한 경험치 양 반환 함수
