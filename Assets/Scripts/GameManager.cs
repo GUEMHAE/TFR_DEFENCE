@@ -41,7 +41,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        RandomSprite_Unit.instance.RandomSprite();
+    gold = 502;
+    RandomSprite_Unit.instance.RandomSprite();
     }
 
     void Update()

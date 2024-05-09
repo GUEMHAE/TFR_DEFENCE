@@ -2677,7 +2677,8 @@ MonoBehaviour:
   - {fileID: 1646913000}
   - {fileID: 1104532595}
   - {fileID: 825627879}
-  unitCount: 0
+  curUnitCount: 0
+  MaxunitCount: 7
 --- !u!1 &312313553
 GameObject:
   m_ObjectHideFlags: 0
@@ -12162,11 +12163,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roundTime: {fileID: 2031831140}
   _currentRound: {fileID: 767813491}
-  isOnSynergyPannel: 0
   bossWarning: {fileID: 0}
   synergyButton: {fileID: 1260970047}
   synergyPannel: {fileID: 1382465151}
   goldText: {fileID: 1670810683}
+  isSynergyPannelOn: 0
 --- !u!1 &1260970045
 GameObject:
   m_ObjectHideFlags: 0

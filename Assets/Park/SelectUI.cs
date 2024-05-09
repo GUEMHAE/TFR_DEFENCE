@@ -151,6 +151,8 @@ public class SelectUI : MonoBehaviour
 
     public void loadGameScene()
     {
+        GameManager.instance.gold = 502;
         SceneManager.LoadScene("game");
+        GameManager.instance.gold = 502;
     }
 }

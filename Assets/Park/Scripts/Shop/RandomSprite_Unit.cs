@@ -24,7 +24,6 @@ public class RandomSprite_Unit : MonoBehaviour
             Destroy(gameObject);
         }
         exp = GetComponent<Exp>();
-        RandomSprite();
     }
 
     private void Update()
