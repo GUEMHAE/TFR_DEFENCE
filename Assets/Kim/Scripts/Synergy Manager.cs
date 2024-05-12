@@ -16,7 +16,13 @@ public class SynergyManager : MonoBehaviour
         public int grade; //시너지 등급(갯수)
     }
     public List<string> unitName;
-
+    public List<string> onFieldUnit;
+    public List<string> air;
+    public List<string> light;
+    public List<string> fire;
+    public List<string> dark;
+    public List<string> ground;
+    public List<string> water;
 
     [SerializeField]
     public Synergy[] synergies = new Synergy[6]; //시너지 구조체 배열
@@ -44,46 +50,16 @@ public class SynergyManager : MonoBehaviour
         Init_Air();
     }
 
-    private void Start()
-    {
-        SynergyOnField.instance.allUnits = RemoveDuplicates(SynergyOnField.instance.allUnits);
-        checkSynergy().Forget();
-    }
-
     void Update()
     {
         Debug.Log(synergies[1].grade);
+        CheckSynergy();
     }
 
-    async UniTaskVoid checkSynergy()
+    public void CheckSynergy()
     {
-        int previousListLength = SynergyOnField.instance.allUnits.Count; // 처음에 이전 리스트의 길이 저장
-        while (true)
-        {
-            await UniTask.WaitUntil(() =>
-            {
-                // 이전 리스트의 길이와 현재 리스트의 길이를 비교하여 변화를 감지
-                int currentListLength = SynergyOnField.instance.allUnits.Count;
-                if (currentListLength != previousListLength)
-                {
-                    // 리스트의 길이가 증가했을 때
-                    if (currentListLength > previousListLength)
-                    {
-                        Debug.Log("List length increased!");
-                        IncreaseSynergy();
-                    }
-                    // 리스트의 길이가 감소했을 때
-                    else
-                    {
-                        Debug.Log("List length decreased!");
-                    }
-
-                    previousListLength = currentListLength; // 변경된 리스트의 길이로 업데이트
-                    return true; // 변경되었으면 대기 해제
-                }
-                return false; // 변경되지 않았으면 계속 대기
-            });
-        }
+        onFieldUnit = UnitLimitManager.instance.allUnits.Select(unit => unit.name.Substring(unit.name.IndexOf('_') + 1)).Distinct().ToList();
+        CountSynergy();
     }
 
     void Init_Light()
@@ -134,114 +110,24 @@ public class SynergyManager : MonoBehaviour
         synergies[5].icon = Resources.Load<Sprite>("Symbol/Air"); //리소스 이름을 ""사이에 넣으면 아이콘 정보 저장
     }
 
-    public List<GameObject> RemoveDuplicates(List<GameObject> originalList)
+    void CountSynergy()
     {
-        List<GameObject> uniqueList = new List<GameObject>();
+        air = onFieldUnit.Where(unitName => unitName.Contains("천공")).ToList();
+        light = onFieldUnit.Where(unitName => unitName.Contains("신성")).ToList();
+        fire = onFieldUnit.Where(unitName => unitName.Contains("황혼")).ToList();
+        dark = onFieldUnit.Where(unitName => unitName.Contains("암영")).ToList();
+        ground = onFieldUnit.Where(unitName => unitName.Contains("근원")).ToList();
+        water = onFieldUnit.Where(unitName => unitName.Contains("기원")).ToList();
 
-        foreach (GameObject obj in originalList)
-        {
-            // 새 리스트에 같은 이름의 요소가 없으면 추가
-            if (!uniqueList.Any(item => item.name.Substring(3) == obj.name.Substring(3)))
-            {
-                uniqueList.Add(obj);
-                //IncreaseSynergy();
-            }
-        }
-
-        return uniqueList;
+        synergies[0].grade = light.Count;
+        synergies[1].grade = dark.Count;
+        synergies[2].grade = water.Count;
+        synergies[3].grade = fire.Count;
+        synergies[4].grade = ground.Count;
+        synergies[5].grade = air.Count;
     }
-
-    public Dictionary<string, int> GetSynergyCounts(Synergy[] synergies, List<GameObject> unitsOnField)
-{
-        Dictionary<string, int> synergyCountMap = new Dictionary<string, int>();
-
-        // 각 시너지의 초기 갯수를 0으로 설정
-        foreach (Synergy synergy in synergies)
-        {
-            synergyCountMap[synergy.name] = 0;
-        }
-
-        // 각 유닛을 순회하면서 시너지 갯수를 증가
-        foreach (GameObject unit in unitsOnField)
-        {
-            string unitName = unit.name;
-
-            // 시너지 목록을 순회하면서 해당 유닛이 어떤 시너지에 속하는지 확인
-            foreach (Synergy synergy in synergies)
-            {
-                if (unitName.Contains(synergy.name)) // 유닛 이름에 시너지 이름이 포함되어 있는지 확인
-                {
-                    synergyCountMap[synergy.name]++;
-                }
-            }
-        }
-
-        return synergyCountMap;
-    }
-
-
-    public void IncreaseSynergy()
-    {
-        foreach (var unit in SynergyOnField.instance.allUnits)
-        {
-            
-            Debug.Log(unit.name.Substring(3));
-            switch (unit.name.Substring(3))
-            {
-                case "다르밤":
-                    synergies[1].grade++;
-                    break;
-                case "바바리안":
-                    synergies[4].grade++;
-                    break;
-                case "부르":
-                    synergies[3].grade++;
-                    break;
-                case "스넬":
-                    synergies[0].grade++;
-                    synergies[2].grade++;
-                    break;
-                case "아록스":
-                    synergies[3].grade++;
-                    synergies[5].grade++;
-                    break;
-                case "애쉬":
-                    synergies[2].grade++;
-                    break;
-                case "토니르":
-                    synergies[0].grade++;
-                    break;
-                case "아르테":
-                    synergies[4].grade++;
-                    break;
-                case "아서스":
-                    synergies[1].grade++;
-                    break;
-                case "이르시그":
-                    synergies[0].grade++;
-                    synergies[1].grade++;
-                    break;
-                case "피오나":
-                    synergies[2].grade++;
-                    break;
-                case "를로르":
-                    synergies[0].grade++;
-                    synergies[3].grade++;
-                    break;
-                case "일렉토":
-                    synergies[0].grade++;
-                    synergies[4].grade++;
-                    break;
-                case "카뮵":
-                    synergies[1].grade++;
-                    synergies[2].grade++;
-                    break;
-                case "링크":
-                    synergies[4].grade++;
-                    synergies[5].grade++;
-                    break;
-            }
-        }
-    }
-
 }
+
+
+
+

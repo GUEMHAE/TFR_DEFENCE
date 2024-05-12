@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class UnitLimitManager : MonoBehaviour
 {
-    [SerializeField]
-    List<GameObject> allUnits; //유닛 리스트
+    public List<GameObject> allUnits; //유닛 리스트
     [SerializeField]
     List<GameObject> allGrid; //그리드 리스트
 

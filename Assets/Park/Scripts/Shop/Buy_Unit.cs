@@ -27,8 +27,6 @@ public class Buy_Unit : MonoBehaviour
         GameObject instance = Instantiate(units[PlayerPrefs.GetInt("Character")]);
         instance.transform.SetParent(grid.transform);
         instance.name = instance.name.Substring(0,instance.name.Length-7);
-        SynergyOnField.instance.GetOnlyGridUnits();
-        SynergyOnField.instance.allUnits = SynergyManager.instance.RemoveDuplicates(SynergyOnField.instance.allUnits);
         instance.transform.localPosition = Vector3.zero;
         canBuy = true;
         Waits = wait1;
@@ -93,7 +91,7 @@ public class Buy_Unit : MonoBehaviour
                 GameObject instantiatedUnit = Instantiate(units[0], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
                 instantiatedUnit.transform.localScale = waitUnitScale;
-                instantiatedUnit.name = "1성 다르밤";
+                instantiatedUnit.name = "1성 다르밤_암영1";
                 GameManager.instance.gold -= 1;
                 MergeManager.instance.CheckFor1CostUnitCount();
                 MergeManager.instance.CheckFor2CostUnitCount();
@@ -104,7 +102,7 @@ public class Buy_Unit : MonoBehaviour
                 GameObject instantiatedUnit = Instantiate(units[1], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
                 instantiatedUnit.transform.localScale = waitUnitScale;
-                instantiatedUnit.name = "1성 아록스";
+                instantiatedUnit.name = "1성 아록스_천공1,황혼2";
                 GameManager.instance.gold -= 1;
                 MergeManager.instance.CheckFor1CostUnitCount();
                 MergeManager.instance.CheckFor2CostUnitCount();
@@ -115,8 +113,7 @@ public class Buy_Unit : MonoBehaviour
                 GameObject instantiatedUnit = Instantiate(units[2], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
                 instantiatedUnit.transform.localScale = waitUnitScale;
-                instantiatedUnit.name = "1성 부르";
-                GameManager.instance.gold -= 1;
+                instantiatedUnit.name = "1성 부르_황혼1";
                 MergeManager.instance.CheckFor1CostUnitCount();
                 MergeManager.instance.CheckFor2CostUnitCount();
             }
@@ -126,7 +123,7 @@ public class Buy_Unit : MonoBehaviour
                 GameObject instantiatedUnit = Instantiate(units[3], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
                 instantiatedUnit.transform.localScale = waitUnitScale;
-                instantiatedUnit.name = "1성 바바리안";
+                instantiatedUnit.name = "1성 바바리안_근원1";
                 GameManager.instance.gold -= 1;
                 MergeManager.instance.CheckFor1CostUnitCount();
                 MergeManager.instance.CheckFor2CostUnitCount();
@@ -137,7 +134,7 @@ public class Buy_Unit : MonoBehaviour
                 GameObject instantiatedUnit = Instantiate(units[4], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
                 instantiatedUnit.transform.localScale = waitUnitScale;
-                instantiatedUnit.name = "1성 스넬";
+                instantiatedUnit.name = "1성 스넬_신성1,기원1";
                 GameManager.instance.gold -= 1;
                 MergeManager.instance.CheckFor1CostUnitCount();
                 MergeManager.instance.CheckFor2CostUnitCount();
@@ -149,7 +146,7 @@ public class Buy_Unit : MonoBehaviour
                 GameObject instantiatedUnit = Instantiate(units[5], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
                 instantiatedUnit.transform.localScale = waitUnitScale;
-                instantiatedUnit.name = "1성 토니르";
+                instantiatedUnit.name = "1성 토니르_신성2";
                 GameManager.instance.gold -= 1;
                 MergeManager.instance.CheckFor1CostUnitCount();
                 MergeManager.instance.CheckFor2CostUnitCount();
@@ -161,7 +158,7 @@ public class Buy_Unit : MonoBehaviour
                 GameObject instantiatedUnit = Instantiate(units[6], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
                 instantiatedUnit.transform.localScale = waitUnitScale;
-                instantiatedUnit.name = "1성 애쉬";
+                instantiatedUnit.name = "1성 애쉬_기원2";
                 GameManager.instance.gold -= 1;
                 MergeManager.instance.CheckFor1CostUnitCount();
                 MergeManager.instance.CheckFor2CostUnitCount();
@@ -173,10 +170,9 @@ public class Buy_Unit : MonoBehaviour
                 GameObject instantiatedUnit = Instantiate(units[7], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
                 instantiatedUnit.transform.localScale = waitUnitScale;
-                instantiatedUnit.name = "1성 아서스";
+                instantiatedUnit.name = "1성 아서스_암영2";
                 MergeManager.instance.CheckFor1CostUnitCount();
                 MergeManager.instance.CheckFor2CostUnitCount();
-                GameManager.instance.gold -= 2;
             }
 
             if (Unit.imageSlots[index].sprite.name == "2_Ground_areute")
@@ -184,7 +180,7 @@ public class Buy_Unit : MonoBehaviour
                 GameObject instantiatedUnit = Instantiate(units[8], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
                 instantiatedUnit.transform.localScale = waitUnitScale;
-                instantiatedUnit.name = "1성 아르테";
+                instantiatedUnit.name = "1성 아르테_근원2";
                 GameManager.instance.gold -= 2;
                 MergeManager.instance.CheckFor1CostUnitCount();
                 MergeManager.instance.CheckFor2CostUnitCount();
@@ -195,7 +191,7 @@ public class Buy_Unit : MonoBehaviour
                 GameObject instantiatedUnit = Instantiate(units[9], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
                 instantiatedUnit.transform.localScale = waitUnitScale;
-                instantiatedUnit.name = "1성 이르시그";
+                instantiatedUnit.name = "1성 이르시그_신성3,암영3";
                 GameManager.instance.gold -= 2;
                 MergeManager.instance.CheckFor1CostUnitCount();
                 MergeManager.instance.CheckFor2CostUnitCount();
@@ -206,7 +202,7 @@ public class Buy_Unit : MonoBehaviour
                 GameObject instantiatedUnit = Instantiate(units[10], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
                 instantiatedUnit.transform.localScale = waitUnitScale;
-                instantiatedUnit.name = "1성 피오나";
+                instantiatedUnit.name = "1성 피오나_기원3";
                 GameManager.instance.gold -= 2;
                 MergeManager.instance.CheckFor1CostUnitCount();
                 MergeManager.instance.CheckFor2CostUnitCount();
@@ -217,7 +213,7 @@ public class Buy_Unit : MonoBehaviour
                 GameObject instantiatedUnit = Instantiate(units[11], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
                 instantiatedUnit.transform.localScale = waitUnitScale;
-                instantiatedUnit.name = "1성 카뮴";
+                instantiatedUnit.name = "1성 카뮴_암영3,기원4";
                 GameManager.instance.gold -= 3;
                 MergeManager.instance.CheckFor1CostUnitCount();
                 MergeManager.instance.CheckFor2CostUnitCount();
@@ -228,7 +224,7 @@ public class Buy_Unit : MonoBehaviour
                 GameObject instantiatedUnit = Instantiate(units[12], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
                 instantiatedUnit.transform.localScale = waitUnitScale;
-                instantiatedUnit.name = "1성 를로르";
+                instantiatedUnit.name = "1성 를로르_신성4,황혼3";
                 GameManager.instance.gold -= 3;
                 MergeManager.instance.CheckFor1CostUnitCount();
                 MergeManager.instance.CheckFor2CostUnitCount();
@@ -239,7 +235,7 @@ public class Buy_Unit : MonoBehaviour
                 GameObject instantiatedUnit = Instantiate(units[13], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
                 instantiatedUnit.transform.localScale = waitUnitScale;
-                instantiatedUnit.name = "1성 일렉토";
+                instantiatedUnit.name = "1성 일렉토_신성5,근원3";
                 GameManager.instance.gold -= 3;
                 MergeManager.instance.CheckFor1CostUnitCount();
                 MergeManager.instance.CheckFor2CostUnitCount();
@@ -250,11 +246,12 @@ public class Buy_Unit : MonoBehaviour
                 GameObject instantiatedUnit = Instantiate(units[14], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
                 instantiatedUnit.transform.localScale = waitUnitScale;
-                instantiatedUnit.name = "1성 링크";
+                instantiatedUnit.name = "1성 링크_천공2,근원4";
                 GameManager.instance.gold -= 5;
                 MergeManager.instance.CheckFor1CostUnitCount();
                 MergeManager.instance.CheckFor2CostUnitCount();
             }
+
 
             if (Input.GetMouseButtonUp(0))
             {
