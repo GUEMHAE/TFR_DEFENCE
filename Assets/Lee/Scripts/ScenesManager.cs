@@ -5,19 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class ScenesManager : MonoBehaviour
 {
-    public void start()
-    {
-        SceneManager.LoadScene("game");
-    }
-
-    public void quit()
+    public void Quit()
     {
         Application.Quit();
-        Debug.Log("²ý");
     }
-    public void tutorial()
+    public void Tutorial()
     {
-        SceneManager.LoadScene("Ttutorial");
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void TitleScene()

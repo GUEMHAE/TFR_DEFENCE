@@ -15,9 +15,10 @@ public class ScriptsP : MonoBehaviour
     {
         enemyPoolObj = GameObject.Find("EnemyPool");
         unit222 = GameObject.Find("222");
-        TimeManager.instance.isRoundTime = false;
+        Round.instance.isRound = false;
         TScript();
     }
+
 
     void OnEnable()
     {

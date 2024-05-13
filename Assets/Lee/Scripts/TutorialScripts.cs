@@ -15,17 +15,18 @@ public class TutorialScripts : MonoBehaviour, IEndDragHandler
 
     public string waitsName;
     private bool iswaits = false;
+    public GameObject turorial;
+
+    private void Awake()
+    {
+        turorial = GameObject.Find("111");
+    }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (isGrid && !IMG_Grid.activeSelf)
+        if (isGrid && IMG_Grid.activeSelf == false)
         {
             IMG_Grid.SetActive(true);
-        }
-        else
-        {
-            IMG_Grid.SetActive(false);
-            goGrid.SetActive(false);
         }
     }
 
@@ -39,6 +40,14 @@ public class TutorialScripts : MonoBehaviour, IEndDragHandler
         if (collision.gameObject.name == waitsName)
         {
             iswaits = true;
+        }
+
+        if (collision.tag == "Grid" )
+        {
+            IMG_Grid.SetActive(false);
+            goGrid.SetActive(false);
+            gameObject.transform.SetParent(turorial.transform);
+            Round.instance.isRound = true;
         }
     }
 

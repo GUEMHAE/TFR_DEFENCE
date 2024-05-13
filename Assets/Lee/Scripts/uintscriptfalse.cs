@@ -8,7 +8,7 @@ public class uintscriptfalse : MonoBehaviour
     //private TimeManager sp_Time; // Buy_Unit 스크립트에 대한 참조
     //private Round sp_Round; // Buy_Unit 스크립트에 대한 참조
 
-    public GameObject escImage; // esc 이미지 표시할 게임 오브젝트
+    //public GameObject escImage; // esc 이미지 표시할 게임 오브젝트
     public bool isimage = false; // esc 이미지의 여부 저장
 
     public GameObject Ttab;
@@ -17,9 +17,11 @@ public class uintscriptfalse : MonoBehaviour
     public GameObject Tabtext;
     public GameObject Expup;
 
+    private bool exp = false;
+
     void Awake()
     {
-        escImage.SetActive(false); // 이미지 비활성화
+       //escImage.SetActive(false); // 이미지 비활성화
         Ttab.SetActive(false); // 이미지 비활성화
     }
 
@@ -43,22 +45,22 @@ public class uintscriptfalse : MonoBehaviour
 
     void Update()
     {
-        // ESC 키를 누르면 이미지를 활성화
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            isimage = !isimage; // 활성화 상태 반전
+        //// ESC 키를 누르면 이미지를 활성화
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    isimage = !isimage; // 활성화 상태 반전
 
-            if (isimage)
-            {
-                escImage.SetActive(true); // 활성화
-                Time.timeScale = 0;
-            }
-            else
-            {
-                escImage.SetActive(false); //비활성화
-                Time.timeScale = 1;
-            }
-        }
+        //    if (isimage)
+        //    {
+        //        escImage.SetActive(true); // 활성화
+        //        Time.timeScale = 0;
+        //    }
+        //    else
+        //    {
+        //        escImage.SetActive(false); //비활성화
+        //        Time.timeScale = 1;
+        //    }
+        //}
 
         // Tab 키를 누르면 이미지를 활성화
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -69,7 +71,11 @@ public class uintscriptfalse : MonoBehaviour
             {
                 Ttab.SetActive(true); // 활성화
                 Tabtext.SetActive(false);
-                Expup.SetActive(true);
+                if (exp == false)
+                {
+                    Expup.SetActive(true);
+                    exp = true;
+                }
             }
             else
                 Ttab.SetActive(false); //비활성화
