@@ -13265,6 +13265,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitName: []
+  onFieldUnit: []
+  air: []
+  light: []
+  fire: []
+  dark: []
+  ground: []
+  water: []
   grid:
   - {fileID: 1149417715}
   - {fileID: 546004005}
@@ -13719,16 +13726,16 @@ MonoBehaviour:
   - {fileID: 6011689630226910818, guid: 491b3598dada2224fad0157d26458d19, type: 3}
   - {fileID: 2257075626138977718, guid: 196e3150d39e17b4fa0e3d641a7d1a2c, type: 3}
   - {fileID: 2827991716768233640, guid: 79a886ebcd040c24fafa54679d52b428, type: 3}
-  - {fileID: 6204239889240253531, guid: 92ce03d6b99b4f84a99e50b9d96b3de1, type: 3}
-  - {fileID: 6204239889240253531, guid: da664d26063e4544ba67c34f4731137f, type: 3}
-  - {fileID: 6204239889240253531, guid: 99e825e88c66cdf41aa8097c433108dd, type: 3}
-  - {fileID: 6204239889240253531, guid: 4e90b0ca1df3e5f4fb18de802bd8136e, type: 3}
-  - {fileID: 6204239889240253531, guid: 549d2655f91bd5e48bd563b989f577e5, type: 3}
-  - {fileID: 6204239889240253531, guid: e384acfa98af6e64092fafb833e40e76, type: 3}
-  - {fileID: 6204239889240253531, guid: e503774b025c7544580e1af2c9a2f575, type: 3}
-  - {fileID: 6204239889240253531, guid: bdc70b5e7c7f813469b938d84eeb07f5, type: 3}
-  - {fileID: 6204239889240253531, guid: c9c64cf656898b346ae19da30df16824, type: 3}
-  - {fileID: 6204239889240253531, guid: 0e56ae5b306e6b24f8c0ddce5f131fae, type: 3}
+  - {fileID: 7713662963858614026, guid: 92ce03d6b99b4f84a99e50b9d96b3de1, type: 3}
+  - {fileID: 990236646051841859, guid: da664d26063e4544ba67c34f4731137f, type: 3}
+  - {fileID: 7915237043353986019, guid: 99e825e88c66cdf41aa8097c433108dd, type: 3}
+  - {fileID: 6176945672182289678, guid: 4e90b0ca1df3e5f4fb18de802bd8136e, type: 3}
+  - {fileID: 5076370146981105873, guid: 549d2655f91bd5e48bd563b989f577e5, type: 3}
+  - {fileID: 24828728668746420, guid: e384acfa98af6e64092fafb833e40e76, type: 3}
+  - {fileID: 302658723435156884, guid: e503774b025c7544580e1af2c9a2f575, type: 3}
+  - {fileID: 3033000677400508946, guid: bdc70b5e7c7f813469b938d84eeb07f5, type: 3}
+  - {fileID: 3768130119905822667, guid: c9c64cf656898b346ae19da30df16824, type: 3}
+  - {fileID: 403227020507767071, guid: 0e56ae5b306e6b24f8c0ddce5f131fae, type: 3}
   spawnTime: 0.5
   wayPoints:
   - {fileID: 1345256824}

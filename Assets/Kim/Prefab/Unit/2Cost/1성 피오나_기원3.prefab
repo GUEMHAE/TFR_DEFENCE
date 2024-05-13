@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 7362847886675304780}
   - component: {fileID: 3438472212326055196}
   m_Layer: 0
-  m_Name: "1\uC131 \uD53C\uC624\uB098"
+  m_Name: "1\uC131 \uD53C\uC624\uB098_\uAE30\uC6D03"
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

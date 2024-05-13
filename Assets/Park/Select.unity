@@ -2168,10 +2168,10 @@ MonoBehaviour:
   _Synergy2: {fileID: 1961779345}
   Synergys:
   - {fileID: 21300000, guid: 931b18101a4990448b5f53c0d69960a0, type: 3}
-  - {fileID: 21300000, guid: 40b3370b8a523874fa6dbe5f85e2b247, type: 3}
-  - {fileID: 21300000, guid: 438b117a6ce65504292c1b67cb3c718d, type: 3}
-  - {fileID: 21300000, guid: da863bde7510a484dbd46d82e941fc49, type: 3}
   - {fileID: 21300000, guid: ab4fe676be8ad4943af9c7b4b5a4a92a, type: 3}
+  - {fileID: 21300000, guid: 438b117a6ce65504292c1b67cb3c718d, type: 3}
+  - {fileID: 21300000, guid: 40b3370b8a523874fa6dbe5f85e2b247, type: 3}
+  - {fileID: 21300000, guid: da863bde7510a484dbd46d82e941fc49, type: 3}
   - {fileID: 21300000, guid: b43504a529e3c3945bf10dbcc283daa0, type: 3}
   Synergy2: {fileID: 1961779347}
   currentSprite: 0
@@ -2498,7 +2498,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.114107095, y: 0.032}
   m_AnchorMax: {x: 0.98568857, y: 0.57622665}
-  m_AnchoredPosition: {x: -6.0253906, y: 311.00018}
+  m_AnchoredPosition: {x: -6.0253906, y: 311.00024}
   m_SizeDelta: {x: -12.013062, y: -414.12262}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1287629731

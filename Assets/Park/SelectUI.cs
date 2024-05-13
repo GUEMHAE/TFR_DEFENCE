@@ -80,7 +80,7 @@ public class SelectUI : MonoBehaviour
                     "스킬: 압정 깔기\n";
                 classLogo.sprite = classLogos[3];
                 _Synergy2.SetActive(false);
-                Synergy1.sprite = Synergys[1];
+                Synergy1.sprite = Synergys[3];
                 SynergyText1.text = "암영";
                 PlayerPrefs.SetInt("Character", 0);
                 break;
@@ -104,7 +104,7 @@ public class SelectUI : MonoBehaviour
                     "스킬: 물의 숨결\n";
                 classLogo.sprite = classLogos[2];
                 _Synergy2.SetActive(true);
-                Synergy1.sprite = Synergys[4];
+                Synergy1.sprite = Synergys[1];
                 SynergyText1.text = "신성";
                 Synergy2.sprite = Synergys[5];
                 SynergyText2.text = "기원";
@@ -151,7 +151,6 @@ public class SelectUI : MonoBehaviour
 
     public void loadGameScene()
     {
-        GameManager.instance.gold = 502;
         SceneManager.LoadScene("game");
         GameManager.instance.gold = 502;
     }
