@@ -86,7 +86,7 @@ public class Buy_Unit : MonoBehaviour
     {
         if (canBuy == true && Unit.imageSlots[index].sprite != null)
         {
-            if (Unit.imageSlots[index].sprite.name == "1_Dark_dareubam")
+            if (Unit.imageSlots[index].sprite.name == "1_Dark_dareubam" && GameManager.instance.gold >=1)
             {
                 GameObject instantiatedUnit = Instantiate(units[0], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
@@ -97,7 +97,7 @@ public class Buy_Unit : MonoBehaviour
                 MergeManager.instance.CheckFor2CostUnitCount();
             }
 
-            if (Unit.imageSlots[index].sprite.name == "1_Fire_arokseu")
+            if (Unit.imageSlots[index].sprite.name == "1_Fire_arokseu"&&GameManager.instance.gold >= 1)
             {
                 GameObject instantiatedUnit = Instantiate(units[1], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
@@ -108,7 +108,7 @@ public class Buy_Unit : MonoBehaviour
                 MergeManager.instance.CheckFor2CostUnitCount();
             }
 
-            if (Unit.imageSlots[index].sprite.name == "1_Fire_bureu")
+            if (Unit.imageSlots[index].sprite.name == "1_Fire_bureu"&&GameManager.instance.gold >= 1)
             {
                 GameObject instantiatedUnit = Instantiate(units[2], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
@@ -118,7 +118,7 @@ public class Buy_Unit : MonoBehaviour
                 MergeManager.instance.CheckFor2CostUnitCount();
             }
 
-            if (Unit.imageSlots[index].sprite.name == "1_Ground_babarian")
+            if (Unit.imageSlots[index].sprite.name == "1_Ground_babarian"&&GameManager.instance.gold >= 1)
             {
                 GameObject instantiatedUnit = Instantiate(units[3], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
@@ -129,7 +129,7 @@ public class Buy_Unit : MonoBehaviour
                 MergeManager.instance.CheckFor2CostUnitCount();
             }
 
-            if (Unit.imageSlots[index].sprite.name == "1_Light_Water_seunel")
+            if (Unit.imageSlots[index].sprite.name == "1_Light_Water_seunel"&&GameManager.instance.gold >= 1)
             {
                 GameObject instantiatedUnit = Instantiate(units[4], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
@@ -141,7 +141,7 @@ public class Buy_Unit : MonoBehaviour
             }
 
 
-            if (Unit.imageSlots[index].sprite.name == "1_Light_tonireu")
+            if (Unit.imageSlots[index].sprite.name == "1_Light_tonireu"&&GameManager.instance.gold >= 1)
             {
                 GameObject instantiatedUnit = Instantiate(units[5], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
@@ -153,7 +153,7 @@ public class Buy_Unit : MonoBehaviour
             }
 
 
-            if (Unit.imageSlots[index].sprite.name == "1_Water_aeswi")
+            if (Unit.imageSlots[index].sprite.name == "1_Water_aeswi"&&GameManager.instance.gold >= 1)
             {
                 GameObject instantiatedUnit = Instantiate(units[6], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
@@ -165,7 +165,7 @@ public class Buy_Unit : MonoBehaviour
             }
 
 
-            if (Unit.imageSlots[index].sprite.name == "2_Dark_aseoseu")
+            if (Unit.imageSlots[index].sprite.name == "2_Dark_aseoseu"&&GameManager.instance.gold >= 2)
             {
                 GameObject instantiatedUnit = Instantiate(units[7], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
@@ -175,7 +175,7 @@ public class Buy_Unit : MonoBehaviour
                 MergeManager.instance.CheckFor2CostUnitCount();
             }
 
-            if (Unit.imageSlots[index].sprite.name == "2_Ground_areute")
+            if (Unit.imageSlots[index].sprite.name == "2_Ground_areute"&&GameManager.instance.gold >= 2)
             {
                 GameObject instantiatedUnit = Instantiate(units[8], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
@@ -186,7 +186,7 @@ public class Buy_Unit : MonoBehaviour
                 MergeManager.instance.CheckFor2CostUnitCount();
             }
 
-            if (Unit.imageSlots[index].sprite.name == "2_Light Dark_ireusigeu")
+            if (Unit.imageSlots[index].sprite.name == "2_Light Dark_ireusigeu" && GameManager.instance.gold >= 2)
             {
                 GameObject instantiatedUnit = Instantiate(units[9], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
@@ -197,7 +197,7 @@ public class Buy_Unit : MonoBehaviour
                 MergeManager.instance.CheckFor2CostUnitCount();
             }
 
-            if (Unit.imageSlots[index].sprite.name == "2_Water_piona")
+            if (Unit.imageSlots[index].sprite.name == "2_Water_piona" && GameManager.instance.gold >= 2)
             {
                 GameObject instantiatedUnit = Instantiate(units[10], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
@@ -208,7 +208,7 @@ public class Buy_Unit : MonoBehaviour
                 MergeManager.instance.CheckFor2CostUnitCount();
             }
 
-            if (Unit.imageSlots[index].sprite.name == "3_Dark_kamyum")
+            if (Unit.imageSlots[index].sprite.name == "3_Dark_kamyum" && GameManager.instance.gold >= 3)
             {
                 GameObject instantiatedUnit = Instantiate(units[11], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
@@ -219,7 +219,7 @@ public class Buy_Unit : MonoBehaviour
                 MergeManager.instance.CheckFor2CostUnitCount();
             }
 
-            if (Unit.imageSlots[index].sprite.name == "3_Light Fire_reulloreu")
+            if (Unit.imageSlots[index].sprite.name == "3_Light Fire_reulloreu" && GameManager.instance.gold >= 3)
             {
                 GameObject instantiatedUnit = Instantiate(units[12], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
@@ -230,7 +230,7 @@ public class Buy_Unit : MonoBehaviour
                 MergeManager.instance.CheckFor2CostUnitCount();
             }
 
-            if (Unit.imageSlots[index].sprite.name == "3_Light Ground_illekto")
+            if (Unit.imageSlots[index].sprite.name == "3_Light Ground_illekto" && GameManager.instance.gold >= 3)
             {
                 GameObject instantiatedUnit = Instantiate(units[13], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
@@ -241,7 +241,7 @@ public class Buy_Unit : MonoBehaviour
                 MergeManager.instance.CheckFor2CostUnitCount();
             }
 
-            if (Unit.imageSlots[index].sprite.name == "5_Air_Ground_link")
+            if (Unit.imageSlots[index].sprite.name == "5_Air_Ground_link" && GameManager.instance.gold >= 5)
             {
                 GameObject instantiatedUnit = Instantiate(units[14], Waits.transform.position, Quaternion.identity);
                 instantiatedUnit.transform.SetParent(Waits.transform);
