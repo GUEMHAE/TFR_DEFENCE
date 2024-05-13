@@ -32,22 +32,22 @@ public class Round : MonoBehaviour
             isRound = true;
             await UniTask.WaitUntil(() => !TimeManager.instance.isRoundTime );
 
-            if (GameManager.instance.gold < 10) //이자
-            {
-                GameManager.instance.gold += 6;
-            }
-            else if(GameManager.instance.gold<20)
-            {
-                GameManager.instance.gold += 7;
-            }
-            else if (GameManager.instance.gold < 30)
-            {
-                GameManager.instance.gold += 8;
-            }
-            else
-            {
-                GameManager.instance.gold += 9;
-            }
+            //if (GameManager.instance.gold < 10) //이자
+            //{
+            //    GameManager.instance.gold += 6;
+            //}
+            //else if(GameManager.instance.gold<20)
+            //{
+            //    GameManager.instance.gold += 7;
+            //}
+            //else if (GameManager.instance.gold < 30)
+            //{
+            //    GameManager.instance.gold += 8;
+            //}
+            //else if(GameManager.instance.gold>30)
+            //{
+            //    GameManager.instance.gold += 9;
+            //}
 
             Debug.Log("선택시간");
             isRound = false;

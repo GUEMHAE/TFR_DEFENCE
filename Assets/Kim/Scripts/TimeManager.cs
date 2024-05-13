@@ -55,6 +55,22 @@ public class TimeManager : MonoBehaviour
 
         if (isRoundTime == true && Round.instance.isRound == true&&roundTime<=0)
         {
+            if (GameManager.instance.gold < 10) //ÀÌÀÚ
+            {
+                GameManager.instance.gold += 6;
+            }
+            else if (GameManager.instance.gold < 20)
+            {
+                GameManager.instance.gold += 7;
+            }
+            else if (GameManager.instance.gold < 30)
+            {
+                GameManager.instance.gold += 8;
+            }
+            else if (GameManager.instance.gold > 30)
+            {
+                GameManager.instance.gold += 9;
+            }
             roundTime = 15;
             isRoundTime = false;
         }

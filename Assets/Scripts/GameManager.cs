@@ -73,4 +73,14 @@ public class GameManager : MonoBehaviour
             isGameOver = true;
         }
     }
+
+    public void GameOver_Title()
+    {
+        SceneManager.LoadScene("TitleScene");
+    }
+
+    public void GameOver_Quit()
+    {
+        Application.Quit();
+    }
 }
