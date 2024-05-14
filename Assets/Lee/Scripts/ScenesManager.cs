@@ -23,4 +23,9 @@ public class ScenesManager : MonoBehaviour
     {
         SceneManager.LoadScene("Select");
     }
+
+    public void GameScene()
+    {
+        SceneManager.LoadScene("Game");
+    }
 }

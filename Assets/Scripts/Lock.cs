@@ -20,4 +20,11 @@ public class Lock : MonoBehaviour
             lockimg.color = Color.gray;
         }
     }
+
+    public void ReRollUnLock()
+    {
+        Round.instance.isLock = false;
+        lockimg.color = Color.white;
+    }
+
 }

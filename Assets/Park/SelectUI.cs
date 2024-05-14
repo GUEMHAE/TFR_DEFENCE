@@ -148,10 +148,4 @@ public class SelectUI : MonoBehaviour
         Debug.Log(currentSprite);
         img.sprite = sprites[currentSprite];
     }
-
-    public void loadGameScene()
-    {
-        SceneManager.LoadScene("game");
-        GameManager.instance.gold = 502;
-    }
 }

@@ -13,6 +13,7 @@ public class Round : MonoBehaviour
 
     public bool isRound;
     public bool isLock = false;
+    public Image lockimg;
     void Awake()
     {
         if (instance == null) //ΩÃ±€≈Ê ∆–≈œ
@@ -31,6 +32,7 @@ public class Round : MonoBehaviour
         {
             isRound = true;
             isLock = false;
+            lockimg.color = Color.white;
             await UniTask.WaitUntil(() => !TimeManager.instance.isRoundTime );
 
             Debug.Log("º±≈√Ω√∞£");
