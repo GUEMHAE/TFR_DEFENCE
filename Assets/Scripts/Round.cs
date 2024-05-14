@@ -41,6 +41,24 @@ public class Round : MonoBehaviour
             {
                 RandomSprite_Unit.instance.RoundRandomSprite();
             }
+
+            if(GameManager.instance.gold<10)
+            {
+                GameManager.instance.gold += 6;
+            }
+            else if (GameManager.instance.gold < 20)
+            {
+                GameManager.instance.gold += 7;
+            }
+            else if (GameManager.instance.gold < 30)
+            {
+                GameManager.instance.gold += 8;
+            }
+            else if (GameManager.instance.gold >= 30)
+            {
+                GameManager.instance.gold += 9;
+            }
+
             await UniTask.WaitUntil(() => TimeManager.instance.isRoundTime);
             Debug.Log("선택시간 종료");
 
