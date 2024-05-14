@@ -12,7 +12,7 @@ public class Round : MonoBehaviour
     public int currentRound = 1; // 현재 라운드
 
     public bool isRound;
-
+    public bool isLock = false;
     void Awake()
     {
         if (instance == null) //싱글톤 패턴
@@ -30,28 +30,15 @@ public class Round : MonoBehaviour
         while (currentRound <= totalRounds)
         {
             isRound = true;
+            isLock = false;
             await UniTask.WaitUntil(() => !TimeManager.instance.isRoundTime );
-
-            //if (GameManager.instance.gold < 10) //이자
-            //{
-            //    GameManager.instance.gold += 6;
-            //}
-            //else if(GameManager.instance.gold<20)
-            //{
-            //    GameManager.instance.gold += 7;
-            //}
-            //else if (GameManager.instance.gold < 30)
-            //{
-            //    GameManager.instance.gold += 8;
-            //}
-            //else if(GameManager.instance.gold>30)
-            //{
-            //    GameManager.instance.gold += 9;
-            //}
 
             Debug.Log("선택시간");
             isRound = false;
-            RandomSprite_Unit.instance.RoundRandomSprite();
+            if (isLock == false)
+            {
+                RandomSprite_Unit.instance.RoundRandomSprite();
+            }
             await UniTask.WaitUntil(() => TimeManager.instance.isRoundTime);
             Debug.Log("선택시간 종료");
 
