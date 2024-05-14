@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 2f;
             isTimeMultyply = true;
         }
-        else if(isTimeMultyply==true)
+        else if (isTimeMultyply == true)
         {
             Time.timeScale = 1f;
             isTimeMultyply = false;
@@ -41,8 +41,15 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    gold = 2;
-    RandomSprite_Unit.instance.RandomSprite();
+        if (gameObject.scene.name == "Tutorial")
+        {
+            gold = 7;
+        }
+        else if (gameObject.scene.name == "Game")
+        {
+            gold = 4;
+        }
+        RandomSprite_Unit.instance.RandomSprite();
     }
 
     void Update()
@@ -68,7 +75,7 @@ public class GameManager : MonoBehaviour
 
     public void CheckGameOver()  //게임 오버 체크
     {
-        if(enemyPool.transform.childCount>=1)
+        if (enemyPool.transform.childCount >= 1)
         {
             isGameOver = true;
         }

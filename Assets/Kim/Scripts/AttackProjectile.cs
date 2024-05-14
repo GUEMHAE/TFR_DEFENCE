@@ -31,7 +31,7 @@ public class AttackProjectile : MonoBehaviour
             Vector3 direction = Vector3.forward;
             Destroy(GetComponentInParent<Transform>().gameObject);
             transform.position += direction * speed * Time.deltaTime;
-            Destroy(gameObject,0.5f);
+            Destroy(gameObject, 5f);
         }
     }
 }
