@@ -6,54 +6,35 @@ using System;
 
 public class FirstBoss : MonoBehaviour
 {
-    public static FirstBoss instance; // 싱글톤을 할당할 전역 변수
-    public delegate void UseFirstChanged();
-    public static event UseFirstChanged OnUseFirstChanged;
-    public GameObject bossSkillEffect;
-
-    public bool isUseFirst;
+    public bool isInvincible;
 
     [SerializeField]
-    float firstSkillDuration = 3f; //보스의 첫 스킬 지속시간
+    float coolTime;
     [SerializeField]
-    float skillColldown = 15f;
+    float duration;
 
-    [SerializeField]
-    const float firstSkillUse=1f;
+    public GameObject shieldParticle;
 
-    async UniTaskVoid  BossSkill()
+    private void Start()
     {
-        float ranNum = UnityEngine.Random.Range(0f, 1f);
-        while(true)
-        {
-            if(ranNum<=firstSkillUse)
-            {
-                await UniTask.Delay((int)skillColldown * 1000);
-                Instantiate(bossSkillEffect, gameObject.transform.position, Quaternion.identity);
-                UseSkill1();
-            }
-        }
+        coolTime = 16f;
+        duration = 4f;
+        Invincible();
     }
 
-    async UniTask UseSkill1()
+    async UniTaskVoid Invincible() //보스의 무적 관리하는 UniTask
     {
-        Debug.Log("첫번째 스킬 사용 시작");
-        isUseFirst = true;
-        await UniTask.Delay((int)firstSkillDuration * 1000);
-        Debug.Log("첫번째 스킬 사용 종료");
-        isUseFirst = false;
-    }
+        while (true)
+        {
+            var destroyToken = this.GetCancellationTokenOnDestroy();
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
+            await UniTask.WaitForSeconds(coolTime, cancellationToken: destroyToken);//쿨타임 동안 대기 후 무적 활성화
+            isInvincible = true;
+            GameObject shield = Instantiate(shieldParticle, transform.position, Quaternion.identity);
+            shield.transform.SetParent(gameObject.transform);
+            shield.transform.position += new Vector3(0,-0.5f,0);
+            await UniTask.WaitForSeconds(duration, cancellationToken: destroyToken);//지속시간 동안 무적
+            isInvincible = false;
         }
-        else
-        {
-            Destroy(gameObject);
-        }
-        BossSkill();
     }
 }

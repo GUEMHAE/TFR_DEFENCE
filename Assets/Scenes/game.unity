@@ -5601,7 +5601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalRounds: 20
-  currentRound: 1
+  currentRound: 10
   isRound: 0
   isLock: 0
   lockimg: {fileID: 1133323557}

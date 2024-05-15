@@ -102,22 +102,6 @@ public class Irsig : MonoBehaviour
         }
     }
 
-    async UniTask bossSkillHit()
-    {
-        while (FirstBoss.instance != null)
-        {
-            if (FirstBoss.instance.isUseFirst == true)
-            {
-                HitFirstBossSkill();
-                this.enabled = false;
-                await UniTask.WaitUntil(() => !FirstBoss.instance.isUseFirst);
-                isStun = false;
-                this.enabled = true;
-            }
-            await UniTask.WaitUntil(() => FirstBoss.instance.isUseFirst);
-        }
-    }
-
     void HitFirstBossSkill()
     {
         isStun = true;
@@ -130,7 +114,6 @@ public class Irsig : MonoBehaviour
     void Start()
     {
         getUnitInfo = GetComponent<GetUnitInfo>();
-        bossSkillHit();
         enabled = false;
     }
 

@@ -385,15 +385,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1484793912858419538}
-  - component: {fileID: 3687633806183597917}
-  - component: {fileID: 7745616429155112214}
-  - component: {fileID: 7572220455627521394}
   - component: {fileID: 1643285129460607028}
   - component: {fileID: 2346090004437528931}
   - component: {fileID: 3154544080705127332}
   - component: {fileID: 7568138138752226592}
   - component: {fileID: 2493804895082044073}
   - component: {fileID: 7775636816248385384}
+  - component: {fileID: 5781555666156779126}
   m_Layer: 0
   m_Name: Round10(Boss)
   m_TagString: Enemy
@@ -418,63 +416,6 @@ Transform:
   - {fileID: 4625808839528821663}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3687633806183597917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2827991716768233640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62b9a7e211ea2074c83a96a2ab1e590f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Head: {fileID: 5379305435860772728}
-  HeadSprites:
-  - {fileID: -1828946549344447192, guid: f11696f3d632290408c2af193f764beb, type: 3}
-  - {fileID: -7252215782646672311, guid: f11696f3d632290408c2af193f764beb, type: 3}
-  - {fileID: -1381065623766834176, guid: f11696f3d632290408c2af193f764beb, type: 3}
-  Animator: {fileID: 2346090004437528931}
-  Variations: 0
---- !u!114 &7745616429155112214
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2827991716768233640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81c8ad34430ec104ea8c1856fce3164b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Body: {fileID: 1845483364560268579}
-  Weapon: {fileID: 9084552541012415091}
-  Shield: {fileID: 0}
-  Status: {fileID: 7368661124004381105}
---- !u!114 &7572220455627521394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2827991716768233640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80e7850929f3a324984a5875e3615cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SortingGroup: {fileID: 1643285129460607028}
-  Sprites:
-  - {fileID: 3516404141195181291}
-  - {fileID: 5792991010024286944}
-  - {fileID: 781457687233351114}
-  - {fileID: 4037145459771131099}
-  - {fileID: 8660456855963176792}
-  - {fileID: 5379305435860772728}
-  - {fileID: 4281626757750854028}
-  - {fileID: 2668994404802385565}
 --- !u!210 &1643285129460607028
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -605,6 +546,23 @@ MonoBehaviour:
   AroxAttackEffect: {fileID: 3824282788395934224, guid: 9b71eb1402dcd494f8eeaf9d898c9f32, type: 3}
   IrsigSkillEffect: {fileID: 2434421697330913857, guid: e12b00d341d793c4693b8103f65cfd4a, type: 3}
   RlrorProjectileEffect: {fileID: 7819557312314079244, guid: 640aa043ff50db643aaa09c3adc93974, type: 3}
+  firstBoss: {fileID: 5781555666156779126}
+--- !u!114 &5781555666156779126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2827991716768233640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fba8574aca4ee54a927bb02f3924452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInvincible: 0
+  coolTime: 0
+  duration: 0
+  shieldParticle: {fileID: 2007974865362810838, guid: 6453985814ffb6b4cbc9d18fcd9b092b, type: 3}
 --- !u!1 &3150180521799997302
 GameObject:
   m_ObjectHideFlags: 0

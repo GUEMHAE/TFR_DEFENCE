@@ -29,6 +29,9 @@ public class Enemy : MonoBehaviour
 
     Animator animator;
 
+    [SerializeField]
+    FirstBoss firstBoss;
+
     public void Setup(Transform[] wayPoints)
     {
         enemyMoveMent2D = GetComponent<EnemyMoveMent2D>();
@@ -36,7 +39,7 @@ public class Enemy : MonoBehaviour
         //적 이동 경로 WayPoints 정보 설정
         wayPointCount = wayPoints.Length;
         this.wayPoints = new Transform[wayPointCount];
-        this.wayPoints = wayPoints;      
+        this.wayPoints = wayPoints;
 
         //적의 위치를 첫번째 wayPoint위치로 설정
         transform.position = wayPoints[currentIndex].position;
@@ -50,7 +53,7 @@ public class Enemy : MonoBehaviour
         {
             animator.SetInteger("State", 9);
             gameObject.tag = "Untagged";
-            Destroy(gameObject,1f);
+            Destroy(gameObject, 1f);
         }
     }
 
@@ -59,7 +62,7 @@ public class Enemy : MonoBehaviour
         //다음 이동 방향 설정
         NextMoveTo();
 
-        while(true)
+        while (true)
         {
             Vector3 direction = wayPoints[currentIndex].position - transform.position;
 
@@ -76,7 +79,7 @@ public class Enemy : MonoBehaviour
     void NextMoveTo()
     {
         //아직 이동할 wayPoints가 남아있다면
-        if(currentIndex<wayPointCount-1)
+        if (currentIndex < wayPointCount - 1)
         {
             //적의 위치를 정확하게 목표 위치로 설정
             transform.position = wayPoints[currentIndex].position;
@@ -92,27 +95,27 @@ public class Enemy : MonoBehaviour
             currentIndex = 0;
         }
 
-        if(currentIndex==1)
+        if (currentIndex == 1)
         {
             this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
-        if(currentIndex==2)
+        if (currentIndex == 2)
         {
             this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 90);
         }
 
-        if(currentIndex==3)
+        if (currentIndex == 3)
         {
             this.gameObject.transform.rotation = Quaternion.Euler(180, 0, 180);
         }
 
-        if(currentIndex==4)
+        if (currentIndex == 4)
         {
             this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 270);
         }
 
-        if(currentIndex==5)
+        if (currentIndex == 5)
         {
             this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
@@ -120,64 +123,94 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag=="Projectile")
+        if (collision.tag == "Projectile")
         {
             if (gameObject.transform != collision.GetComponent<AttackProjectile>().attackTarget) //적이 여러기 겹쳐 있을때 projectile의 attackTarget만 충돌 처리 되게 하는 코드
             {
                 return;
             }
 
-            damage = collision.GetComponent<AttackProjectile>().damage; //projectile의 데미지를 받아옴
-            hp -= damage; //적이 데미지를 받는 코드
-            Destroy(collision.gameObject);
-        }
-
-        if(collision.tag=="DarbamSkill")
-        {
-            damage = collision.GetComponent<DarbamSkill>().damage;
-            hp -= damage;
-        }
-
-        if(collision.tag=="TonirSkill")
-        {
-            if (gameObject.transform != collision.GetComponent<TonirSkill>().attackTarget) //적이 여러기 겹쳐 있을때 projectile의 attackTarget만 충돌 처리 되게 하는 코드
+            if (firstBoss == null || firstBoss.isInvincible == false)
+            {
+                damage = collision.GetComponent<AttackProjectile>().damage; //projectile의 데미지를 받아옴
+                hp -= damage; //적이 데미지를 받는 코드
+            }
+            else if (firstBoss != null && firstBoss.isInvincible == true)
             {
                 return;
             }
-            damage = collision.GetComponent<TonirSkill>().damage;
-            Debug.Log("토니르 스킬 적중");
-            hp -= damage;
 
             Destroy(collision.gameObject);
         }
+
+        if (collision.tag == "DarbamSkill")
+        {
+            if (firstBoss == null || firstBoss.isInvincible == false)
+            {
+                damage = collision.GetComponent<DarbamSkill>().damage; //projectile의 데미지를 받아옴
+                hp -= damage; //적이 데미지를 받는 코드
+            }
+
+            else if (firstBoss != null && firstBoss.isInvincible == true)
+            {
+                return;
+            }
+        }
+
+        if (collision.tag == "TonirSkill")
+        {
+            if (firstBoss == null || firstBoss.isInvincible == false)
+            {
+                damage = collision.GetComponent<TonirSkill>().damage; //projectile의 데미지를 받아옴
+                hp -= damage; //적이 데미지를 받는 코드
+            }
+
+            else if (firstBoss != null && firstBoss.isInvincible == true)
+            {
+                return;
+            }
+
+            Destroy(collision.gameObject);
+        }
+
         if (collision.tag == "BoureSkill")
         {
             if (gameObject.transform != collision.GetComponent<BoureSkill>().attackTarget) //적이 여러기 겹쳐 있을때 projectile의 attackTarget만 충돌 처리 되게 하는 코드
             {
                 return;
             }
-            damage = collision.GetComponent<BoureSkill>().damage;
 
             Instantiate(boureSkillEffect, this.transform.position, Quaternion.identity);
-            Debug.Log("부르 스킬 적중");
 
-            hp -= damage;
+            if (firstBoss == null || firstBoss.isInvincible == false)
+            {
+                damage = collision.GetComponent<BoureSkill>().damage; //projectile의 데미지를 받아옴
+                hp -= damage; //적이 데미지를 받는 코드
+            }
+
+            else if (firstBoss != null && firstBoss.isInvincible == true)
+            {
+                return;
+            }
 
             Destroy(collision.gameObject);
         }
 
         if (collision.tag == "SnelSkill")
         {
-            if (gameObject.transform != collision.GetComponent<SnelSkill>().attackTarget) //적이 여러기 겹쳐 있을때 projectile의 attackTarget만 충돌 처리 되게 하는 코드
+            if (firstBoss == null || firstBoss.isInvincible == false)
+            {
+                damage = collision.GetComponent<SnelSkill>().damage; //projectile의 데미지를 받아옴
+                hp -= damage; //적이 데미지를 받는 코드
+            }
+
+            else if (firstBoss != null && firstBoss.isInvincible == true)
             {
                 return;
             }
-            damage = collision.GetComponent<SnelSkill>().damage;
 
             Instantiate(SnelSkillEffect, this.transform.position, Quaternion.identity);
             Debug.Log("스넬 스킬 적중");
-
-            hp -= damage;
 
             Destroy(collision.gameObject);
         }
@@ -192,62 +225,107 @@ public class Enemy : MonoBehaviour
 
             Instantiate(AroxAttackEffect, this.transform.position, Quaternion.identity);
             Debug.Log("아록스 평타 적중");
-            damage = collision.GetComponent<AttackProjectile>().damage; //projectile의 데미지를 받아옴
-            hp -= damage; //적이 데미지를 받는 코드
+
+            if (firstBoss == null || firstBoss.isInvincible==false)
+            {
+                damage = collision.GetComponent<AttackProjectile>().damage; //projectile의 데미지를 받아옴
+                hp -= damage; //적이 데미지를 받는 코드
+            }
+
+            else if (firstBoss != null && firstBoss.isInvincible == true)
+            {
+                return;
+            }
 
             Destroy(collision.gameObject);
         }
 
         if (collision.tag == "AroxSkill")
         {
-            damage = collision.GetComponent<AroxSkill>().damage;
-            hp -= damage;
-            Debug.Log("아록스 스킬 적중");
+            if (firstBoss == null || firstBoss.isInvincible == false)
+            {
+                damage = collision.GetComponent<AroxSkill>().damage; //projectile의 데미지를 받아옴
+                hp -= damage; //적이 데미지를 받는 코드
+            }
+
+            else if (firstBoss != null && firstBoss.isInvincible == true)
+            {
+                return;
+            }
         }
 
-        if(collision.tag=="BabarianSkill")
+        if (collision.tag == "BabarianSkill")
         {
-            damage = collision.GetComponent<BabarianSkill>().damage;
-            hp -= damage;
-            Debug.Log("바바리안 스킬 적중");
+            if (firstBoss == null || firstBoss.isInvincible == false)
+            {
+                damage = collision.GetComponent<BabarianSkill>().damage; //projectile의 데미지를 받아옴
+                hp -= damage; //적이 데미지를 받는 코드
+            }
+
+            else if (firstBoss != null && firstBoss.isInvincible == true)
+            {
+                return;
+            }
             Instantiate(babarianSkillEffect, this.transform.position, Quaternion.identity);
             Destroy(collision.gameObject);
         }
 
-        if(collision.tag=="PionaSkill")
+        if (collision.tag == "PionaSkill")
         {
-            damage = collision.GetComponent<PionaSkill>().damage;
+            if (firstBoss == null || firstBoss.isInvincible == false)
+            {
+                damage = collision.GetComponent<PionaSkill>().damage; //projectile의 데미지를 받아옴
+                hp -= damage; //적이 데미지를 받는 코드
+            }
 
-            Debug.Log("피오나 스킬 적중");
-
-            hp -= damage;
+            else if (firstBoss != null && firstBoss.isInvincible == true)
+            {
+                return;
+            }
 
             Destroy(collision.gameObject);
         }
 
         if (collision.tag == "IrsigSkill")
         {
-            damage = collision.GetComponent<IrsigSkill>().damage;
+            if (firstBoss == null || firstBoss.isInvincible == false)
+            {
+                damage = collision.GetComponent<IrsigSkill>().damage; //projectile의 데미지를 받아옴
+                hp -= damage; //적이 데미지를 받는 코드
+            }
 
-            Debug.Log("이르시그 스킬 적중");
-
-            hp -= damage;
+            else if (firstBoss != null && firstBoss.isInvincible == true)
+            {
+                return;
+            }
         }
 
         if (collision.tag == "AsusSkill")
         {
-            damage = collision.GetComponent<AsusSkill>().damage;
+            if (firstBoss == null || firstBoss.isInvincible == false)
+            {
+                damage = collision.GetComponent<AsusSkill>().damage; //projectile의 데미지를 받아옴
+                hp -= damage; //적이 데미지를 받는 코드
+            }
 
-            Debug.Log("아서스 스킬 적중");
-
-            hp -= damage;
+            else if (firstBoss != null && firstBoss.isInvincible == true)
+            {
+                return;
+            }
         }
 
         if (collision.tag == "ArteProjectile") //범위형 평타
         {
-            Debug.Log("아르테 평타 적중");
-            damage = collision.GetComponent<ArteAttackProjectile>().damage; //projectile의 데미지를 받아옴
-            hp -= damage; //적이 데미지를 받는 코드
+            if (firstBoss == null || firstBoss.isInvincible == false)
+            {
+                damage = collision.GetComponent<ArteAttackProjectile>().damage; //projectile의 데미지를 받아옴
+                hp -= damage; //적이 데미지를 받는 코드
+            }
+
+            else if (firstBoss != null && firstBoss.isInvincible == true)
+            {
+                return;
+            }
         }
 
         if (collision.tag == "ArteSkill")
@@ -257,23 +335,35 @@ public class Enemy : MonoBehaviour
                 return;
             }
 
-            damage = collision.GetComponent<ArteSkill>().damage;
-
             void CallDamage()
             {
                 hp -= damage;
             }
 
-            Debug.Log("아르테 스킬 적중");
+            if (firstBoss == null || firstBoss.isInvincible == false)
+            {
+                damage = collision.GetComponent<ArteSkill>().damage; //projectile의 데미지를 받아옴
+                Invoke("CallDamage", 1f);
+            }
 
-            Invoke("CallDamage", 1f);
+            else if (firstBoss != null && firstBoss.isInvincible == true)
+            {
+                return;
+            }
         }
 
-        if (collision.tag=="KamuemSkill")
+        if (collision.tag == "KamuemSkill")
         {
-            damage = collision.GetComponent<KamuemSkill>().damage;
-            hp -= damage;
-            Debug.Log("카뮴 스킬 적중");
+            if (firstBoss == null || firstBoss.isInvincible == false)
+            {
+                damage = collision.GetComponent<ArteAttackProjectile>().damage; //projectile의 데미지를 받아옴
+                hp -= damage; //적이 데미지를 받는 코드
+            }
+
+            else if (firstBoss != null && firstBoss.isInvincible == true)
+            {
+                return;
+            }
         }
 
         if (collision.tag == "RlrorProjectile")
@@ -283,26 +373,49 @@ public class Enemy : MonoBehaviour
                 return;
             }
 
+            if (firstBoss == null || firstBoss.isInvincible == false)
+            {
+                damage = collision.GetComponent<AttackProjectile>().damage; //projectile의 데미지를 받아옴
+                hp -= damage; //적이 데미지를 받는 코드
+            }
+
+            else if (firstBoss != null && firstBoss.isInvincible == true)
+            {
+                return;
+            }
+
             Debug.Log("를로르 평타 적중");
             Instantiate(RlrorProjectileEffect, this.gameObject.transform.position, Quaternion.identity);
-            damage = collision.GetComponent<AttackProjectile>().damage; //projectile의 데미지를 받아옴
-            hp -= damage; //적이 데미지를 받는 코드
+
             Destroy(collision.gameObject);
         }
 
-        if(collision.tag=="RlrorSkill")
+        if (collision.tag == "RlrorSkill")
         {
-            Debug.Log("를로르 스킬 적중");
-            damage = collision.GetComponent<RlrorSkill>().damage; //projectile의 데미지를 받아옴
+            if (firstBoss == null || firstBoss.isInvincible == false)
+            {
+                damage = collision.GetComponent<RlrorSkill>().damage; //projectile의 데미지를 받아옴
+                hp -= damage; //적이 데미지를 받는 코드
+            }
 
-            hp -= damage;
+            else if (firstBoss != null && firstBoss.isInvincible == true)
+            {
+                return;
+            }
         }
 
-        if(collision.tag=="ElectoSkill")
+        if (collision.tag == "ElectoSkill")
         {
-            Debug.Log("일렉토 스킬 적중");
-            damage = collision.GetComponent<ElectoSkill>().damage;
-            hp -= damage;
+            if (firstBoss == null || firstBoss.isInvincible == false)
+            {
+                damage = collision.GetComponent<ElectoSkill>().damage; //projectile의 데미지를 받아옴
+                hp -= damage; //적이 데미지를 받는 코드
+            }
+
+            else if (firstBoss != null && firstBoss.isInvincible == true)
+            {
+                return;
+            }
         }
     }
 

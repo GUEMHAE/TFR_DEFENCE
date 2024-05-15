@@ -103,21 +103,6 @@ public class Electo : MonoBehaviour
         }
     }
 
-    async UniTask bossSkillHit()
-    {
-        while (FirstBoss.instance != null)
-        {
-            if (FirstBoss.instance.isUseFirst == true)
-            {
-                HitFirstBossSkill();
-                this.enabled = false;
-                await UniTask.WaitUntil(() => !FirstBoss.instance.isUseFirst);
-                isStun = false;
-                this.enabled = true;
-            }
-            await UniTask.WaitUntil(() => FirstBoss.instance.isUseFirst);
-        }
-    }
 
     void HitFirstBossSkill()
     {
@@ -132,7 +117,6 @@ public class Electo : MonoBehaviour
     {
         getUnitInfo = GetComponent<GetUnitInfo>();
         skillRotation = Quaternion.Euler(90f, 0f, 0f);
-        bossSkillHit();
         enabled = false;
     }
 
