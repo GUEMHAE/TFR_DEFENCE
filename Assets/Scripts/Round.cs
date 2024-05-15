@@ -37,12 +37,8 @@ public class Round : MonoBehaviour
 
             Debug.Log("선택시간");
             isRound = false;
-            if (isLock == false)
-            {
-                RandomSprite_Unit.instance.RoundRandomSprite();
-            }
 
-            if(GameManager.instance.gold<10)
+            if (GameManager.instance.gold < 10)
             {
                 GameManager.instance.gold += 6;
             }
@@ -59,6 +55,12 @@ public class Round : MonoBehaviour
                 GameManager.instance.gold += 9;
             }
 
+
+            if (isLock == false)
+            {
+                RandomSprite_Unit.instance.RoundRandomSprite();
+            }
+
             await UniTask.WaitUntil(() => TimeManager.instance.isRoundTime);
             Debug.Log("선택시간 종료");
 
@@ -70,6 +72,6 @@ public class Round : MonoBehaviour
 
     private void Start()
     {
-        WaitRound().Forget();
+        WaitRound();
     }
 }
