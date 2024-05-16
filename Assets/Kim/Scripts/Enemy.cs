@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System.Threading;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -31,6 +32,9 @@ public class Enemy : MonoBehaviour
 
     [SerializeField]
     FirstBoss firstBoss;
+
+    public float maxHp;
+    public Image hpBar;
 
     public void Setup(Transform[] wayPoints)
     {
@@ -419,13 +423,30 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void InitHpBar()
+    {
+        hpBar.rectTransform.localScale = new Vector3(1, 1, 1);
+    }
+    
+    private void ChangeHpBar()
+    {
+        hpBar.rectTransform.localScale = new Vector3((float)hp / (float)maxHp, 1f, 1f).normalized;
+
+        if(hp<=0)
+        {
+            Destroy(hpBar);
+        }
+    }
+
     private void Start()
     {
         animator = GetComponent<Animator>();
+        InitHpBar();
     }
 
     private void Update()
     {
         Die();
+        ChangeHpBar();
     }
 }

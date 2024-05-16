@@ -41,22 +41,18 @@ public class Round : MonoBehaviour
             if (GameManager.instance.gold < 10)
             {
                 GameManager.instance.gold += 6;
-                break;
             }
             else if (GameManager.instance.gold < 20)
             {
                 GameManager.instance.gold += 7;
-                break;
             }
             else if (GameManager.instance.gold < 30)
             {
                 GameManager.instance.gold += 8;
-                break;
             }
             else if (GameManager.instance.gold >= 30)
             {
                 GameManager.instance.gold += 9;
-                break;
             }
 
 
