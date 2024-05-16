@@ -6,12 +6,11 @@ using UnityEngine.EventSystems;
 
 public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
 {
-    [SerializeField]public bool canPlace = false;
+    [SerializeField] public bool canPlace = false;
     public GameObject grid;
     public GameObject Unit;
     BoxCollider2D boxCol;
-
-    Renderer render;
+    public AudioSource setUnit;
 
     private void Start()
     {
@@ -19,8 +18,6 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
         boxCol = GetComponent<BoxCollider2D>();
         boxCol.size = new Vector2(1f, 1f);
         canPlace = true;
-        render = GetComponent<Renderer>();
-        render.material.DisableKeyword("OUTBASE_ON");
 
     }
 
@@ -38,20 +35,16 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Grid" && canPlace || collision.tag == "Wait" && canPlace)
+        if (collision.tag == "Grid" && canPlace)
         {
             grid = collision.gameObject;
-            render = GetComponent<Renderer>();
-            render.material.EnableKeyword("OUTBASE_ON");
         }
-        else if (collision.tag == "Grid" && !canPlace || collision.tag == "Wait" && !canPlace)
+
+        else if (collision.tag == "Wait" && canPlace)
         {
-            if (Input.GetMouseButtonUp(1))
-            {
-                grid = null;
-                transform.localPosition = Vector3.zero;
-            }
+            grid = collision.gameObject;
         }
+
         else
         {
             transform.localPosition = Vector3.zero;
@@ -62,7 +55,6 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         if (collision.tag == "Grid")
         {
-            render.material.DisableKeyword("OUTBASE_ON");
             canPlace = true;
             grid = null;
         }
@@ -81,24 +73,27 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
         //}
         if (canPlace && grid != null)
         {
+            setUnit.Play();
             gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
             transform.SetParent(grid.transform);
-            gameObject.transform.localScale = new Vector3(0.8f,0.8f, 1) ;
+            gameObject.transform.localScale = new Vector3(0.8f, 0.8f, 1);
             transform.localPosition = Vector3.zero;
             boxCol.size = new Vector2(1f, 1f);
         }
         else if (grid == null)
         {
+            setUnit.Play();
             gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
-            gameObject.transform.localScale = new Vector3(0.8f,0.8f, 1) ;
+            gameObject.transform.localScale = new Vector3(0.8f, 0.8f, 1);
             transform.localPosition = Vector3.zero;
             boxCol.size = new Vector2(1f, 1f);
         }
         else
         {
+            setUnit.Play();
             gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
             grid = null;
-            gameObject.transform.localScale = new Vector3(0.8f,0.8f, 1) ;
+            gameObject.transform.localScale = new Vector3(0.8f, 0.8f, 1);
             transform.localPosition = Vector3.zero;
             boxCol.size = new Vector2(1f, 1f);
         }

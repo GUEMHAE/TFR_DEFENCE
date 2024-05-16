@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: 45874059549321420}
   - component: {fileID: 4076368230735184420}
   - component: {fileID: 937393827062228413}
+  - component: {fileID: 7359081262674292484}
   m_Layer: 3
   m_Name: "1\uC131 \uBD80\uB974_\uD669\uD63C1"
   m_TagString: Unit
@@ -350,6 +351,7 @@ MonoBehaviour:
   canPlace: 0
   grid: {fileID: 0}
   Unit: {fileID: 0}
+  setUnit: {fileID: 7359081262674292484}
 --- !u!114 &4143661564512978555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,7 +364,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f8d2e325551524a8d500778482164e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitInfo: {fileID: 11400000, guid: 093a35445da3bf746a8fc098467424a9, type: 2}
   enemy: {fileID: 0}
   shortDis: 0
   tagName: Enemy
@@ -370,18 +371,10 @@ MonoBehaviour:
   dummy: {fileID: 7383394015066688635, guid: 386b6661d87229f4fa7f2a2b8bf9cf22, type: 3}
   skillSound: {fileID: 0}
   skillPrefab: {fileID: 9216630479365947763, guid: 463d8a25ef7764247ad4535d6424a097, type: 3}
-  unitName: 
-  attackSpeed: 0
-  attackRange: 0
-  ad: 0
-  ap: 0
-  cost: 0
-  sellCost: 0
+  attackSpawn: {fileID: 3186481305585711966}
   maxMana: 48
   currentMana: 0
   regenManaRate: 0
-  attackProjectile: {fileID: 1221848744326368856, guid: 50e1ab7f12d1b564cad69705edc14a76, type: 3}
-  attackSpawn: {fileID: 3186481305585711966}
   stunEffect: {fileID: 1936204856907710318, guid: 8c0e17fd5bacca14c8c72f803482bae0, type: 3}
   isStun: 0
 --- !u!82 &45874059549321420
@@ -522,6 +515,102 @@ MonoBehaviour:
   unitType:
   - {fileID: 11400000, guid: 474399af88a3da04e8b97ac5e5947a6e, type: 2}
   - {fileID: 0}
+--- !u!82 &7359081262674292484
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8387455438542987280}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ba2f199091dd01045b3cf0a172e5e851, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8455036857193924283
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,12 +8,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance; // 싱글톤을 할당할 전역 변수
     public bool isGameOver = false; //게임오버 여부 판단
-    public Text scoreText;
     public GameObject gameoverUI;
     public GameObject enemyPool; //적들이 들어 있는 부모 오브젝트를 등록하기 위한 GameObject
     public int gold;
+    public Text Multyply;
 
-    private int score = 0;
 
     bool isTimeMultyply; //시간 배속 여부 
 
@@ -22,11 +21,13 @@ public class GameManager : MonoBehaviour
         if (isTimeMultyply == false)
         {
             Time.timeScale = 2f;
+            Multyply.text = ">>";
             isTimeMultyply = true;
         }
         else if (isTimeMultyply == true)
         {
             Time.timeScale = 1f;
+            Multyply.text = ">";
             isTimeMultyply = false;
         }
     }
@@ -63,13 +64,6 @@ public class GameManager : MonoBehaviour
         {
             gameoverUI.SetActive(true);
             Round.instance.enabled = false;
-        }
-    }
-    public void AddScore(int newScore)
-    {
-        if (isGameOver)
-        {
-            score += newScore;
         }
     }
 
