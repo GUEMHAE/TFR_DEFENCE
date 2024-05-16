@@ -27,6 +27,8 @@ public class GetUnitInfo : MonoBehaviour, IUnit
     public float sellCost; //유닛 판매 가격
     public GameObject attackProjectile; //유닛 공격 프로젝타일
 
+    public UnitType[] unitType;
+
     public string unitNameP
     {
         get => unitName;
@@ -81,7 +83,9 @@ public class GetUnitInfo : MonoBehaviour, IUnit
             costP = unitInfo1.Cost;
             sellCostP = unitInfo1.SellCost;
             attackProjectileP = unitInfo1.attackProjectile;
+            unitType = unitInfo1.type;
         }
+
         if (gameObject.name.Substring(0, 2) == "2성")
         {
             unitBorder1.SetActive(false);
@@ -94,7 +98,9 @@ public class GetUnitInfo : MonoBehaviour, IUnit
             costP = unitInfo2.Cost;
             sellCostP = unitInfo2.SellCost;
             attackProjectileP = unitInfo2.attackProjectile;
+            unitType = unitInfo2.type;
         }
+
         if (gameObject.name.Substring(0, 2) == "3성")
         {
             unitBorder1.SetActive(false);
@@ -108,6 +114,7 @@ public class GetUnitInfo : MonoBehaviour, IUnit
             costP = unitInfo3.Cost;
             sellCostP = unitInfo3.SellCost;
             attackProjectileP = unitInfo3.attackProjectile;
+            unitType = unitInfo3.type;
         }
     }
 }

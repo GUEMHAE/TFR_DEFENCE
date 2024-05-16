@@ -52,7 +52,6 @@ public class SynergyManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(synergies[1].grade);
         CheckSynergy();
     }
 
