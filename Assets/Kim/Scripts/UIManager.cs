@@ -61,9 +61,13 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     TMP_Text SynergyText2;
     [SerializeField]
-    GameObject _SynergyText2;//시너지 이름 표시 UI두번째를 끄고 켜기 위해
+    GameObject _SynergyText2;//시너지 이름 표시 UI두번째를 끄고 켜기 위해    
     [SerializeField]
-    Image[] unitImage;
+    Image unitImage;
+    [SerializeField]
+    Sprite[] unitImageSprite;
+    [SerializeField]
+    GameObject unitfInfoPannel; //유닛 인포 패널 끄고 켜게
 
     async UniTask BossWarning()
     {
@@ -104,7 +108,8 @@ public class UIManager : MonoBehaviour
 
             if (hit.collider != null&&hit.collider.tag=="Unit")
             {
-                UnitName=hit.collider.GetComponent<GetUnitInfo>().unitName;
+                unitfInfoPannel.SetActive(true);
+                UnitName =hit.collider.GetComponent<GetUnitInfo>().unitName;
                 UnitAd = hit.collider.GetComponent<GetUnitInfo>().ad;
                 UnitAp=hit.collider.GetComponent<GetUnitInfo>().ap;
                 UnitAS=hit.collider.GetComponent<GetUnitInfo>().attackSpeed;
@@ -121,7 +126,7 @@ public class UIManager : MonoBehaviour
                 string UnitType2;
 
                 UnitType1 = UnitType[0].ToString().Substring(0, 2);                
-                if (UnitType1 == "천공")
+                if (UnitType1 == "천공") //유닛 시너지 표시
                 {
                     Synergy1.sprite = Synergys[0];
                     SynergyText1.text = "천공";
@@ -196,10 +201,75 @@ public class UIManager : MonoBehaviour
                         SynergyText2.text = "기원";
                     }
                 }
+
+                if (UnitName.Contains("다르밤")) //유닛 이미지 표시
+                {
+                    unitImage.sprite = unitImageSprite[0];
+                }
+                else if(UnitName.Contains("를로르"))
+                {
+                    unitImage.sprite = unitImageSprite[1];
+                }
+                else if (UnitName.Contains("링크"))
+                {
+                    unitImage.sprite = unitImageSprite[2];
+                }
+                else if (UnitName.Contains("바바리안"))
+                {
+                    unitImage.sprite = unitImageSprite[3];
+                }
+                else if (UnitName.Contains("부르"))
+                {
+                    unitImage.sprite = unitImageSprite[4];
+                }
+                else if (UnitName.Contains("스넬"))
+                {
+                    unitImage.sprite = unitImageSprite[5];
+                }
+                else if (UnitName.Contains("아록스"))
+                {
+                    unitImage.sprite = unitImageSprite[6];
+                }
+                else if (UnitName.Contains("아르테"))
+                {
+                    unitImage.sprite = unitImageSprite[7];
+                }
+                else if (UnitName.Contains("아서스"))
+                {
+                    unitImage.sprite = unitImageSprite[8];
+                }
+                else if (UnitName.Contains("애쉬"))
+                {
+                    unitImage.sprite = unitImageSprite[9];
+                }
+                else if (UnitName.Contains("이르시그"))
+                {
+                    unitImage.sprite = unitImageSprite[10];
+                }
+                else if (UnitName.Contains("일렉토"))
+                {
+                    unitImage.sprite = unitImageSprite[11];
+                }
+                else if (UnitName.Contains("카뮴"))
+                {
+                    unitImage.sprite = unitImageSprite[12];
+                }
+                else if (UnitName.Contains("토니르"))
+                {
+                    unitImage.sprite = unitImageSprite[13];
+                }
+                else if (UnitName.Contains("피오나"))
+                {
+                    unitImage.sprite = unitImageSprite[14];
+                }
             }
         }
     }
 
+    public void UnitPannelClose()
+    {
+        unitfInfoPannel.SetActive(false);
+    }
 
     private void Start()
     {
