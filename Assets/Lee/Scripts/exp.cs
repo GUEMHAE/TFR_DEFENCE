@@ -14,6 +14,8 @@ public class Exp : MonoBehaviour
     public Slider ExpBarSlider; // 경험치 슬라이더
     public TMP_Text exping; // 현재 경험치 / 레벨까지 필요한 경험치
 
+    public TMP_Text unitCountText; // 배치된 유닛수 / 배치 가능한 인원수 텍스트
+
     void Start()
     {
         ExpBarSlider.value = 0;// Exp의 값을 현재 경험치 / 레벨까지 필요한 경험치로 시작
@@ -22,6 +24,9 @@ public class Exp : MonoBehaviour
         levelText.text = level.ToString();
         exping.text = exp.ToString() + " / " + expBar.ToString();
         UnitLimitManager.instance.MaxunitCount = 1;
+
+        // 초기에는 텍스트를 비활성화
+        unitCountText.gameObject.SetActive(false);
     }
 
 
@@ -47,13 +52,27 @@ public class Exp : MonoBehaviour
                 exping.enabled = false;
             }
         }
+        // 라운드 대기 중일 때만 텍스트를 활성화하여 배치된 유닛 수를 표시
+        if (!Round.instance.isRound)
+        {
+            unitCountText.gameObject.SetActive(true);
 
+            // 현재 유닛 수와 배치 가능한 인원 수를 가져와 텍스트로 표시
+            int currentUnits = UnitLimitManager.instance.curUnitCount;
+            int maxUnits = UnitLimitManager.instance.MaxunitCount;
+            unitCountText.text = currentUnits.ToString() + " / " + maxUnits.ToString();
+        }
+        else
+        {
+            // 라운드 진행 중이면 텍스트를 비활성화
+            unitCountText.gameObject.SetActive(false);
+        }
     }
 
     // 버튼 클릭 경험치 증가 함수
     public void IncreaseExperience()
     {
-        if (GameManager.instance.gold >= 3&&level!=6)
+        if (GameManager.instance.gold >= 3 && level != 6)
         {
             exp += 3;
             GameManager.instance.gold -= 3;

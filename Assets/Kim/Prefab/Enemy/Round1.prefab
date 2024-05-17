@@ -124,9 +124,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4554003347876681273}
-  - component: {fileID: 3966312631275416452}
-  - component: {fileID: 8668037050792102955}
-  - component: {fileID: 3378968322714387290}
   - component: {fileID: 6247985186654212485}
   - component: {fileID: 472142423881107984}
   - component: {fileID: 1076843045551750697}
@@ -157,58 +154,6 @@ Transform:
   - {fileID: 3329653531651339886}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3966312631275416452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3793844454480497365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62b9a7e211ea2074c83a96a2ab1e590f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Head: {fileID: 8995503975547060055}
-  HeadSprites:
-  - {fileID: -7252215782646672311, guid: 6963ab23d2f045346be871119837e36e, type: 3}
-  - {fileID: 5617316583316421107, guid: 6963ab23d2f045346be871119837e36e, type: 3}
-  - {fileID: -1381065623766834176, guid: 6963ab23d2f045346be871119837e36e, type: 3}
-  Animator: {fileID: 472142423881107984}
-  Variations: 0
---- !u!114 &8668037050792102955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3793844454480497365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81c8ad34430ec104ea8c1856fce3164b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Body: {fileID: 5309162701574112060}
-  Weapon: {fileID: 1028029873911477422}
-  Shield: {fileID: 0}
-  Status: {fileID: 2706576118490607224}
---- !u!114 &3378968322714387290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3793844454480497365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80e7850929f3a324984a5875e3615cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SortingGroup: {fileID: 6247985186654212485}
-  Sprites:
-  - {fileID: 277281629597122708}
-  - {fileID: 6905210585886519282}
-  - {fileID: 8995503975547060055}
 --- !u!210 &6247985186654212485
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -312,6 +257,7 @@ MonoBehaviour:
   AroxAttackEffect: {fileID: 3824282788395934224, guid: 9b71eb1402dcd494f8eeaf9d898c9f32, type: 3}
   IrsigSkillEffect: {fileID: 2434421697330913857, guid: e12b00d341d793c4693b8103f65cfd4a, type: 3}
   RlrorProjectileEffect: {fileID: 7819557312314079244, guid: 640aa043ff50db643aaa09c3adc93974, type: 3}
+  firstBoss: {fileID: 0}
 --- !u!50 &8932932827664185874
 Rigidbody2D:
   serializedVersion: 4
