@@ -751,6 +751,7 @@ GameObject:
   - component: {fileID: 6387570982982734459}
   - component: {fileID: -1335115648885663007}
   - component: {fileID: -3639406953532484646}
+  - component: {fileID: -4710129783400456452}
   m_Layer: 0
   m_Name: Round15(Boss)
   m_TagString: Enemy
@@ -928,7 +929,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 148f9c6354b0ff7408fb639979408168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 23500
+  currentIndex: 0
+  hp: 25000
   damage: 0
   boureSkillEffect: {fileID: 8628003836598575728, guid: 516857e7f212c6241a558eb44eb30525, type: 3}
   babarianSkillEffect: {fileID: 1758473627833946668, guid: cc9a26e71c2049643910ed5ae0d14d28, type: 3}
@@ -936,9 +938,28 @@ MonoBehaviour:
   AroxAttackEffect: {fileID: 3824282788395934224, guid: 9b71eb1402dcd494f8eeaf9d898c9f32, type: 3}
   IrsigSkillEffect: {fileID: 2434421697330913857, guid: e12b00d341d793c4693b8103f65cfd4a, type: 3}
   RlrorProjectileEffect: {fileID: 7819557312314079244, guid: 640aa043ff50db643aaa09c3adc93974, type: 3}
-  firstBoss: {fileID: 0}
+  thirdBoss: {fileID: 0}
   maxHp: 23500
   hpBar: {fileID: 1628800075745457192}
+--- !u!114 &-4710129783400456452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5076370146981105873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fba8574aca4ee54a927bb02f3924452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInvincible: 0
+  coolTime: 0
+  duration: 0
+  shieldParticle: {fileID: 7012694879170368717, guid: 6b6b0023d423fde48b7d3f5e03bcda7b, type: 3}
+  hpShieldParticle: {fileID: 6861660800399629820, guid: a60a8c6fecdd00043a35fd24001a08ad, type: 3}
+  hpRegen: {fileID: 4572841305032841007, guid: 7c5780bdd39d3af4e80e9f2308c04a63, type: 3}
+  enemy: {fileID: -3639406953532484646}
 --- !u!1 &6152868993147139871
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,6 +29,10 @@ public class GetUnitInfo : MonoBehaviour, IUnit
 
     public UnitType[] unitType;
 
+    public float originAD; //유닛의 원래 공격력 저장하는 변수
+    public float originAP; //유닛의 원래 주문력 저장하는 변수
+    public float originAS; //유닛의 원래 공격속도 저장하는 변수
+
     public string unitNameP
     {
         get => unitName;
@@ -84,6 +88,9 @@ public class GetUnitInfo : MonoBehaviour, IUnit
             sellCostP = unitInfo1.SellCost;
             attackProjectileP = unitInfo1.attackProjectile;
             unitType = unitInfo1.type;
+            originAD = unitInfo1.Ad;
+            originAP = unitInfo1.Ap;
+            originAS = unitInfo1.AttackSpeed;
         }
 
         if (gameObject.name.Substring(0, 2) == "2성")
@@ -99,6 +106,9 @@ public class GetUnitInfo : MonoBehaviour, IUnit
             sellCostP = unitInfo2.SellCost;
             attackProjectileP = unitInfo2.attackProjectile;
             unitType = unitInfo2.type;
+            originAD = unitInfo2.Ad;
+            originAP = unitInfo2.Ap;
+            originAS = unitInfo2.AttackSpeed;
         }
 
         if (gameObject.name.Substring(0, 2) == "3성")
@@ -115,6 +125,9 @@ public class GetUnitInfo : MonoBehaviour, IUnit
             sellCostP = unitInfo3.SellCost;
             attackProjectileP = unitInfo3.attackProjectile;
             unitType = unitInfo3.type;
+            originAD = unitInfo3.Ad;
+            originAP = unitInfo3.Ap;
+            originAS = unitInfo3.AttackSpeed;
         }
     }
 }

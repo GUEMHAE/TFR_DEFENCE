@@ -8,15 +8,14 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager instance; // 싱글톤을 할당할 전역 변수
+
     [SerializeField]
     TMP_Text roundTime; //현재 라운드 시간 표시해주는 UI
     [SerializeField]
     TMP_Text _currentRound; //현재 라운드 표시 해주는 UI
 
     float _roundTime; //현재 라운드 시간 받아오는 변수
-
-    [SerializeField]
-    GameObject bossWarning;
 
     [SerializeField]
     Button synergyButton; //시너지 표시 버튼
@@ -37,12 +36,9 @@ public class UIManager : MonoBehaviour
     [Header("-유닛 정보 UI")]
     [SerializeField]
     TMP_Text UnitName_UI;
-    [SerializeField]
-    TMP_Text UnitAd_UI;//공격력 표시
-    [SerializeField]
-    TMP_Text UnitAp_UI;//스킬공격력 표시
-    [SerializeField]
-    TMP_Text UnitAS_UI;//공격속도 표시
+    public TMP_Text UnitAd_UI;//공격력 표시
+    public TMP_Text UnitAp_UI;//스킬공격력 표시
+    public TMP_Text UnitAS_UI;//공격속도 표시
     [SerializeField]
     TMP_Text UnitAR_UI;//공격사거리 표시
 
@@ -69,20 +65,6 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     GameObject unitfInfoPannel; //유닛 인포 패널 끄고 켜게
 
-    async UniTask BossWarning()
-    {
-        while(true)
-        {
-            if (Round.instance.currentRound % 5 == 0)
-            {
-                bossWarning.SetActive(true);
-                await UniTask.Delay(5000);
-                bossWarning.SetActive(false);
-                await UniTask.WaitUntil(() => Round.instance.currentRound % 5 == 0);
-            }
-            await UniTask.WaitUntil(() => Round.instance.currentRound % 5 == 0);
-        }
-    }
 
     public void ActiveSynergyPannel() //시너지 표시 버튼 눌럿을때 시너지 패널 활성화
     {
@@ -102,18 +84,18 @@ public class UIManager : MonoBehaviour
     private void MouseClickDown()
     {
         if (Input.GetMouseButtonDown(1))
-        {            
+        {
             Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
 
-            if (hit.collider != null&&hit.collider.tag=="Unit")
+            if (hit.collider != null && hit.collider.tag == "Unit")
             {
                 unitfInfoPannel.SetActive(true);
-                UnitName =hit.collider.GetComponent<GetUnitInfo>().unitName;
+                UnitName = hit.collider.GetComponent<GetUnitInfo>().unitName;
                 UnitAd = hit.collider.GetComponent<GetUnitInfo>().ad;
-                UnitAp=hit.collider.GetComponent<GetUnitInfo>().ap;
-                UnitAS=hit.collider.GetComponent<GetUnitInfo>().attackSpeed;
-                UnitAR=hit.collider.GetComponent<GetUnitInfo>().attackRange;
+                UnitAp = hit.collider.GetComponent<GetUnitInfo>().ap;
+                UnitAS = hit.collider.GetComponent<GetUnitInfo>().attackSpeed;
+                UnitAR = hit.collider.GetComponent<GetUnitInfo>().attackRange;
                 UnitType = hit.collider.GetComponent<GetUnitInfo>().unitType;
 
                 UnitName_UI.text = UnitName;
@@ -125,7 +107,7 @@ public class UIManager : MonoBehaviour
                 string UnitType1;
                 string UnitType2;
 
-                UnitType1 = UnitType[0].ToString().Substring(0, 2);                
+                UnitType1 = UnitType[0].ToString().Substring(0, 2);
                 if (UnitType1 == "천공") //유닛 시너지 표시
                 {
                     Synergy1.sprite = Synergys[0];
@@ -157,13 +139,13 @@ public class UIManager : MonoBehaviour
                     SynergyText1.text = "기원";
                 }
 
-                if(UnitType.Length<2)//시너지가 두개 이하면 두번째 시너지 표시 UI 끄기
+                if (UnitType.Length < 2)//시너지가 두개 이하면 두번째 시너지 표시 UI 끄기
                 {
                     _Synergy2.SetActive(false);
                     _SynergyText2.SetActive(false);
                 }
 
-                if(UnitType.Length==2)
+                if (UnitType.Length == 2)
                 {
                     _Synergy2.SetActive(true);
                     _SynergyText2.SetActive(true);
@@ -206,7 +188,7 @@ public class UIManager : MonoBehaviour
                 {
                     unitImage.sprite = unitImageSprite[0];
                 }
-                else if(UnitName.Contains("를로르"))
+                else if (UnitName.Contains("를로르"))
                 {
                     unitImage.sprite = unitImageSprite[1];
                 }
@@ -271,18 +253,25 @@ public class UIManager : MonoBehaviour
         unitfInfoPannel.SetActive(false);
     }
 
-    private void Start()
-    {
-        BossWarning();
-    }
-
     void Update()
     {
-        _roundTime = TimeManager.instance.roundTime; 
+        _roundTime = TimeManager.instance.roundTime;
         roundTime.text = _roundTime.ToString("F0");
-        _currentRound.text = Round.instance.currentRound.ToString("F0")+"라운드";
+        _currentRound.text = Round.instance.currentRound.ToString("F0") + "라운드";
         goldText.text = GameManager.instance.gold.ToString();
 
         MouseClickDown();
+    }
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
