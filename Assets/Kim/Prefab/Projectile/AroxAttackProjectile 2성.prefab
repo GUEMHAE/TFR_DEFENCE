@@ -110,4 +110,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackTarget: {fileID: 0}
   speed: 6
-  damage: 110
+  damage: 120

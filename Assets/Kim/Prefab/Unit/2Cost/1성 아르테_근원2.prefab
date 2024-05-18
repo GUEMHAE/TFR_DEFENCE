@@ -492,7 +492,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce2f6c3f7bc1244f8babd4b846882ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitInfo: {fileID: 11400000, guid: 5652c421d1e16fc428c03626dcb2675e, type: 2}
   enemy: {fileID: 7383394015066688635, guid: 386b6661d87229f4fa7f2a2b8bf9cf22, type: 3}
   shortDis: 3.4028235e+38
   tagName: Enemy
@@ -502,14 +501,6 @@ MonoBehaviour:
   maxMana: 20
   currentMana: 0
   regenManaRate: 0
-  unitName: "\uC544\uB974\uD14C"
-  attackSpeed: 1.5
-  attackRange: 3
-  ad: 90
-  ap: 0
-  cost: 2
-  sellCost: 2
-  attackProjectile: {fileID: 1109751858030904874, guid: 66db3ec4e609347489af07ce09c42e7f, type: 3}
   attackSpawn: {fileID: 6447136659609630867}
   stunEffect: {fileID: 1936204856907710318, guid: 8c0e17fd5bacca14c8c72f803482bae0, type: 3}
   isStun: 0
@@ -526,7 +517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitInfo1: {fileID: 11400000, guid: bd56749b6a73bfc419b9d7a53e21d130, type: 2}
-  unitInfo2: {fileID: 11400000, guid: 98579c28d9847a344916c5b79d910358, type: 2}
+  unitInfo2: {fileID: 11400000, guid: cc02517390a61304a95586c55a89f57a, type: 2}
   unitInfo3: {fileID: 11400000, guid: 5652c421d1e16fc428c03626dcb2675e, type: 2}
   unitBorder1: {fileID: 668267372798689203}
   unitBorder2: {fileID: 1429400107237590616}
@@ -539,3 +530,7 @@ MonoBehaviour:
   cost: 0
   sellCost: 0
   attackProjectile: {fileID: 0}
+  unitType: []
+  originAD: 0
+  originAP: 0
+  originAS: 0

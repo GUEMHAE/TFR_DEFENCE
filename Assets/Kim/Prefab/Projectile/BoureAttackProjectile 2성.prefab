@@ -4983,7 +4983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackTarget: {fileID: 0}
   speed: 7
-  damage: 170
+  damage: 160
 --- !u!210 &5391356226884468959
 SortingGroup:
   m_ObjectHideFlags: 0

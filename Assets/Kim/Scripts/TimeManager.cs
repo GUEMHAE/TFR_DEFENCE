@@ -58,6 +58,7 @@ public class TimeManager : MonoBehaviour
             roundTime = 15;
             isRoundTime = false;
         }
+
         else if (isRoundTime == false && Round.instance.isRound == false && roundTime <= 0)
         {
             roundTime = 45;

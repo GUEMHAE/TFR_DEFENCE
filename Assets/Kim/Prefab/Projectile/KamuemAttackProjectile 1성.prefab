@@ -33981,7 +33981,6 @@ GameObject:
   - component: {fileID: 401221228366948065}
   - component: {fileID: -6229025681677993955}
   - component: {fileID: -8646660448386326223}
-  - component: {fileID: 6651399304667182417}
   m_Layer: 0
   m_Name: "KamuemAttackProjectile 1\uC131"
   m_TagString: Projectile
@@ -34213,33 +34212,6 @@ SortingGroup:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_SortAtRoot: 0
---- !u!50 &6651399304667182417
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5789800637667248164}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &6590154885331900738
 GameObject:
   m_ObjectHideFlags: 0

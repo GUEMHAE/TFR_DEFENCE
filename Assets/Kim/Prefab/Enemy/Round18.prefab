@@ -326,6 +326,7 @@ GameObject:
   - component: {fileID: 6416990894288640809}
   - component: {fileID: 3418551115206239277}
   - component: {fileID: 151296825908715432}
+  - component: {fileID: 6047738807504297278}
   m_Layer: 0
   m_Name: Round18
   m_TagString: Enemy
@@ -489,6 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 148f9c6354b0ff7408fb639979408168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentIndex: 0
   hp: 10367
   damage: 0
   boureSkillEffect: {fileID: 8628003836598575728, guid: 516857e7f212c6241a558eb44eb30525, type: 3}
@@ -497,7 +499,7 @@ MonoBehaviour:
   AroxAttackEffect: {fileID: 3824282788395934224, guid: 9b71eb1402dcd494f8eeaf9d898c9f32, type: 3}
   IrsigSkillEffect: {fileID: 2434421697330913857, guid: e12b00d341d793c4693b8103f65cfd4a, type: 3}
   RlrorProjectileEffect: {fileID: 7819557312314079244, guid: 640aa043ff50db643aaa09c3adc93974, type: 3}
-  firstBoss: {fileID: 0}
+  thirdBoss: {fileID: 0}
   maxHp: 10367
   hpBar: {fileID: 6403027964476421350}
 --- !u!114 &151296825908715432
@@ -515,6 +517,33 @@ MonoBehaviour:
   moveSpeed: 1.7
   moveDirection: {x: 0, y: 0, z: 0}
   enemy: {fileID: 3418551115206239277}
+--- !u!50 &6047738807504297278
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3033000677400508946}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &3056829680050657068
 GameObject:
   m_ObjectHideFlags: 0
