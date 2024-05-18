@@ -44,13 +44,13 @@ public class GameManager : MonoBehaviour
         }
         if (gameObject.scene.name == "Tutorial")
         {
-            gold = 7;
+            gold = 5;
         }
         else if (gameObject.scene.name == "Game")
         {
-            gold = 4;
+            gold = 2;
         }
-        RandomSprite_Unit.instance.RandomSprite();
+        RandomSprite_Unit.instance.RoundRandomSprite();
     }
 
     void Update()
