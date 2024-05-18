@@ -1090,7 +1090,7 @@ MonoBehaviour:
   IrsigSkillEffect: {fileID: 2434421697330913857, guid: e12b00d341d793c4693b8103f65cfd4a, type: 3}
   RlrorProjectileEffect: {fileID: 7819557312314079244, guid: 640aa043ff50db643aaa09c3adc93974, type: 3}
   thirdBoss: {fileID: 0}
-  maxHp: 13500
+  maxHp: 23000
   hpBar: {fileID: 781491690804425765}
 --- !u!114 &2234270558676726245
 MonoBehaviour:

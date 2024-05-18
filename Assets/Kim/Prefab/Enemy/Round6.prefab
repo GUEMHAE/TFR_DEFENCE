@@ -979,7 +979,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 148f9c6354b0ff7408fb639979408168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 202
+  currentIndex: 0
+  hp: 300
   damage: 0
   boureSkillEffect: {fileID: 8628003836598575728, guid: 516857e7f212c6241a558eb44eb30525, type: 3}
   babarianSkillEffect: {fileID: 1758473627833946668, guid: cc9a26e71c2049643910ed5ae0d14d28, type: 3}
@@ -987,7 +988,7 @@ MonoBehaviour:
   AroxAttackEffect: {fileID: 3824282788395934224, guid: 9b71eb1402dcd494f8eeaf9d898c9f32, type: 3}
   IrsigSkillEffect: {fileID: 2434421697330913857, guid: e12b00d341d793c4693b8103f65cfd4a, type: 3}
   RlrorProjectileEffect: {fileID: 7819557312314079244, guid: 640aa043ff50db643aaa09c3adc93974, type: 3}
-  firstBoss: {fileID: 0}
+  thirdBoss: {fileID: 0}
   maxHp: 202
   hpBar: {fileID: 4771541172047177126}
 --- !u!50 &-7101836441670072762
