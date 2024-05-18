@@ -99,10 +99,10 @@ public class UIManager : MonoBehaviour
                 UnitType = hit.collider.GetComponent<GetUnitInfo>().unitType;
 
                 UnitName_UI.text = UnitName;
-                UnitAd_UI.text = UnitAd.ToString();
-                UnitAp_UI.text = UnitAp.ToString();
-                UnitAS_UI.text = UnitAS.ToString();
-                UnitAR_UI.text = UnitAR.ToString();
+                UnitAd_UI.text = UnitAd.ToString("F0");
+                UnitAp_UI.text = UnitAp.ToString("F0");
+                UnitAS_UI.text = UnitAS.ToString("F0");
+                UnitAR_UI.text = UnitAR.ToString("F0");
 
                 string UnitType1;
                 string UnitType2;

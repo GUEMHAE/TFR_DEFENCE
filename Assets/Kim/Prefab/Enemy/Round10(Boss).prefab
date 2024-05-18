@@ -1081,7 +1081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentIndex: 0
-  hp: 13500
+  hp: 20000
   damage: 0
   boureSkillEffect: {fileID: 8628003836598575728, guid: 516857e7f212c6241a558eb44eb30525, type: 3}
   babarianSkillEffect: {fileID: 1758473627833946668, guid: cc9a26e71c2049643910ed5ae0d14d28, type: 3}
@@ -1147,9 +1147,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 4468688824873033112}
-  UnitAd_UI: {fileID: 0}
-  UnitAp_UI: {fileID: 70495748533746509, guid: 3944859a6bec0bc408bbbd2c73b965ae, type: 3}
-  UnitAS_UI: {fileID: 0}
 --- !u!1 &9129140389713925879
 GameObject:
   m_ObjectHideFlags: 0
