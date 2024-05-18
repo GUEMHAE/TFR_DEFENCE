@@ -23,4 +23,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9add369b0b0a7ba4c8e70de2c57d9bf1, type: 2}
   - {fileID: 11400000, guid: 58f4074f0c74867468fa04561c087fbd, type: 2}
   attackProjectile: {fileID: 3980409943548741700, guid: 97cf95178389d7f4392e738c2b001695, type: 3}
-  attackRange: 4
+  attackRange: 5

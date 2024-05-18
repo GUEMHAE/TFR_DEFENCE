@@ -18,6 +18,7 @@ public class Grid : MonoBehaviour
             {
                 place.canPlace = false;
             }
+
             else
             {
                 place.canPlace = true;

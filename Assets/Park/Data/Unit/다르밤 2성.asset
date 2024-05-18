@@ -16,10 +16,10 @@ MonoBehaviour:
   cost: 1
   sellCost: 1
   grade: 1
-  ad: 40
+  ad: 100
   ap: 0
-  attackSpeed: 1.1
+  attackSpeed: 1.2
   type:
   - {fileID: 11400000, guid: 4e23f49400bbb9c449804d092fadb4a9, type: 2}
   attackProjectile: {fileID: 1109751858030904874, guid: c5101880f0278df48b54e1e27647c1ce, type: 3}
-  attackRange: 2
+  attackRange: 3
