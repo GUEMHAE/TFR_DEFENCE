@@ -38,21 +38,26 @@ public class Round : MonoBehaviour
             Debug.Log("선택시간");
             isRound = false;
 
-            if (GameManager.instance.gold < 10)
+            bool earnGold = false;
+            if (earnGold == false)
             {
-                GameManager.instance.gold += 6;
-            }
-            else if (GameManager.instance.gold < 20)
-            {
-                GameManager.instance.gold += 7;
-            }
-            else if (GameManager.instance.gold < 30)
-            {
-                GameManager.instance.gold += 8;
-            }
-            else if (GameManager.instance.gold >= 30)
-            {
-                GameManager.instance.gold += 9;
+                if (GameManager.instance.gold < 10)
+                {
+                    GameManager.instance.gold += 6;
+                }
+                else if (GameManager.instance.gold < 20)
+                {
+                    GameManager.instance.gold += 7;
+                }
+                else if (GameManager.instance.gold < 30)
+                {
+                    GameManager.instance.gold += 8;
+                }
+                else if (GameManager.instance.gold >= 30)
+                {
+                    GameManager.instance.gold += 9;
+                }
+                earnGold = true;
             }
 
 
@@ -64,6 +69,7 @@ public class Round : MonoBehaviour
             await UniTask.WaitUntil(() => TimeManager.instance.isRoundTime);
             Debug.Log("선택시간 종료");
 
+            earnGold = false;
             currentRound++;
             EnemySpawnManager.instance.enemyCount = 0; //유닛 재 생성을 위해 EnemySpawnManager의 enemyCount를 0으로 초기화
         }

@@ -4865,7 +4865,7 @@ SortingGroup:
   m_GameObject: {fileID: 29095625787519844}
   m_Enabled: 1
   m_SortingLayerID: -1857298117
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!1 &4292578035825245305
@@ -4885,6 +4885,7 @@ GameObject:
   - component: {fileID: 4506428026359074245}
   - component: {fileID: 8870507157678617923}
   - component: {fileID: 7462889110771331938}
+  - component: {fileID: 2522344423356060192}
   m_Layer: 0
   m_Name: KamuemSkill
   m_TagString: KamuemSkill
@@ -9917,7 +9918,7 @@ SortingGroup:
   m_GameObject: {fileID: 4292578035825245305}
   m_Enabled: 1
   m_SortingLayerID: -1857298117
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!114 &4506428026359074245
@@ -9981,6 +9982,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 700
+--- !u!50 &2522344423356060192
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4292578035825245305}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &4382038848873967625
 GameObject:
   m_ObjectHideFlags: 0
@@ -14891,7 +14919,7 @@ SortingGroup:
   m_GameObject: {fileID: 4382038848873967625}
   m_Enabled: 1
   m_SortingLayerID: -1857298117
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!1 &5200910570757041123
@@ -19746,7 +19774,7 @@ SortingGroup:
   m_GameObject: {fileID: 5200910570757041123}
   m_Enabled: 1
   m_SortingLayerID: -1857298117
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!1 &5966097032834292779
@@ -24601,7 +24629,7 @@ SortingGroup:
   m_GameObject: {fileID: 5966097032834292779}
   m_Enabled: 1
   m_SortingLayerID: -1857298117
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!1 &6793607673057570129
@@ -29474,6 +29502,6 @@ SortingGroup:
   m_GameObject: {fileID: 6793607673057570129}
   m_Enabled: 1
   m_SortingLayerID: -1857298117
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_SortAtRoot: 0

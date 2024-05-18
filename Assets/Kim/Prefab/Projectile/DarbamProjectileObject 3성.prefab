@@ -129,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackTarget: {fileID: 0}
   speed: 12
-  damage: 50
+  damage: 700
 --- !u!96 &1047138515082436417
 TrailRenderer:
   serializedVersion: 3

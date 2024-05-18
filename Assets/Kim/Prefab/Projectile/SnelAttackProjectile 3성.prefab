@@ -14711,7 +14711,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2555603983835192486}
   - component: {fileID: 54582163993385275}
-  - component: {fileID: 5091622411026567940}
   - component: {fileID: 4339199735256237463}
   - component: {fileID: 4886742504483989799}
   - component: {fileID: 3701895848544893736}
@@ -19536,25 +19535,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &5091622411026567940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4519540787519262811}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5e49040cdee09a4fbfb8cd6d0cc243d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 12
-  hitOffset: 0.1
-  UseFirePointRotation: 0
-  rotationOffset: {x: 0, y: 0, z: 0}
-  hit: {fileID: 1029544359644514, guid: aab2daf1fd2b23f4a9bdbbb38fc95704, type: 3}
-  flash: {fileID: 1016717492136352, guid: d9a16b144bb6373498d4374fb5d0d3b2, type: 3}
-  Detached: []
 --- !u!199 &4339199735256237463
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -19705,7 +19685,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackTarget: {fileID: 0}
   speed: 6.5
-  damage: 45
+  damage: 900
 --- !u!114 &1033562983452869975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19728,6 +19708,6 @@ SortingGroup:
   m_GameObject: {fileID: 4519540787519262811}
   m_Enabled: 1
   m_SortingLayerID: -1857298117
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_SortAtRoot: 0

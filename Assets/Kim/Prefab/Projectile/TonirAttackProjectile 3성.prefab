@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackTarget: {fileID: 0}
   speed: 6
-  damage: 120
+  damage: 830
 --- !u!70 &8750103223477682250
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
