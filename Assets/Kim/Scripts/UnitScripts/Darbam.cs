@@ -14,8 +14,6 @@ public class Darbam : MonoBehaviour
     public GameObject attackTarget;
     public GameObject dummy; //멀리 떨어뜨린 더미 오브젝트 
 
-    [SerializeField]
-    AudioClip skillSound;
     public GameObject skillPrefab;
 
     GetUnitInfo getUnitInfo;
@@ -104,16 +102,6 @@ public class Darbam : MonoBehaviour
         }    
     }
 
-    void HitFirstBossSkill()
-    {
-        isStun = true;
-        if (isStun == true)
-        {
-            Instantiate(stunEffect, gameObject.transform.position, Quaternion.identity);
-        }
-
-    }
-
     void Start()
     {
         getUnitInfo = GetComponent<GetUnitInfo>();
@@ -141,9 +129,10 @@ public class Darbam : MonoBehaviour
         {
             if (enemy != null && enemy != dummy)
             {
-                GetComponent<AudioSource>().Play();
-                Debug.Log("다르밤 스킬 소리 출력중");
                 GameObject SkillClone = Instantiate(skillPrefab, enemy.transform.position, Quaternion.identity);
+
+                SoundManager.instance.UnitEffectSound(1);
+
                 currentMana = 0;
             }
         }

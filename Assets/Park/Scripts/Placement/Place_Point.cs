@@ -18,7 +18,6 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
         boxCol = GetComponent<BoxCollider2D>();
         boxCol.size = new Vector2(1f, 1f);
         canPlace = true;
-
     }
 
     private void Update()
@@ -73,7 +72,7 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
         //}
         if (canPlace && grid != null)
         {
-            setUnit.Play();
+            //setUnit.Play();
             gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
             transform.SetParent(grid.transform);
             gameObject.transform.localScale = new Vector3(0.8f, 0.8f, 1);
@@ -82,7 +81,7 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
         }
         else if (grid == null)
         {
-            setUnit.Play();
+            //setUnit.Play();
             gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
             gameObject.transform.localScale = new Vector3(0.8f, 0.8f, 1);
             transform.localPosition = Vector3.zero;
@@ -90,7 +89,7 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
         }
         else
         {
-            setUnit.Play();
+            //setUnit.Play();
             gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
             grid = null;
             gameObject.transform.localScale = new Vector3(0.8f, 0.8f, 1);

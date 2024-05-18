@@ -21,11 +21,13 @@ public class ScenesManager : MonoBehaviour
 
     public void SelectScene()
     {
+        SoundManager.instance.SelectUISound();
         SceneManager.LoadScene("Select");
     }
 
     public void GameScene()
     {
+        SoundManager.instance.SelectUISound();
         SceneManager.LoadScene("Game");
     }
 }

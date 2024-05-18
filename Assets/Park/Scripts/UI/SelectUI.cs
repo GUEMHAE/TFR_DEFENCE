@@ -133,6 +133,7 @@ public class SelectUI : MonoBehaviour
         }
         currentSprite++;
 
+        SoundManager.instance.SelectUISound();
 
         Debug.Log(currentSprite);
         img.sprite = sprites[currentSprite];
@@ -145,6 +146,9 @@ public class SelectUI : MonoBehaviour
             currentSprite = sprites.Length;
         }
         currentSprite--;
+
+        SoundManager.instance.SelectUISound();
+
         Debug.Log(currentSprite);
         img.sprite = sprites[currentSprite];
     }
