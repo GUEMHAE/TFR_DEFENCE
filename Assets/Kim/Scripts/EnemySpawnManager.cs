@@ -12,7 +12,7 @@ public class EnemySpawnManager : MonoBehaviour
     [SerializeField]
     float spawnTime;  //적 생성 주기
     [SerializeField]
-    Transform[] wayPoints;   //현재 스테이지의 이동 경로
+    public Transform[] wayPoints;   //현재 스테이지의 이동 경로
 
     public int enemyCount=0; //라운드 당 유닛 20기 제한 을 위한 변수
     public bool isFullSpawnEnemy;//적이 다 생성됬는지 알기 위한 변수

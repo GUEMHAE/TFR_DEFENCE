@@ -103,16 +103,6 @@ public class Electo : MonoBehaviour
         }
     }
 
-
-    void HitFirstBossSkill()
-    {
-        isStun = true;
-        if (isStun == true)
-        {
-            Instantiate(stunEffect, gameObject.transform.position, Quaternion.identity);
-        }
-    }
-
     void Start()
     {
         getUnitInfo = GetComponent<GetUnitInfo>();
@@ -141,6 +131,7 @@ public class Electo : MonoBehaviour
             if (enemy != null && enemy != dummy)
             {
                 currentMana = 0;
+                SoundManager.instance.UnitEffectSound(12);
                 GameObject SkillClone = Instantiate(skillPrefab, enemy.transform.position, skillRotation);
             }
         }

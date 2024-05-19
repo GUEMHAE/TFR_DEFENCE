@@ -1449,6 +1449,20 @@ MonoBehaviour:
   effectSoundList:
   - {fileID: 8300000, guid: ff47fae83afb5c54c8dfc0f08ce578bd, type: 3}
   - {fileID: 8300000, guid: 7275bd1b22b1e9448b8403d1c4342a9b, type: 3}
+  - {fileID: 8300000, guid: a7a5265fe1cbe544ba23c379bc2cf2e5, type: 3}
+  - {fileID: 8300000, guid: e7bb8040da750b34886ed2ae896225be, type: 3}
+  - {fileID: 8300000, guid: fc4913ff0438cc44495aef74af7f43a3, type: 3}
+  - {fileID: 8300000, guid: b9a88147569c6fd4583687d796f28d36, type: 3}
+  - {fileID: 8300000, guid: 6426e6c61d3002746bf85e3127e3f79a, type: 3}
+  - {fileID: 8300000, guid: 366ccd8d76ea4a841b21bb2494151549, type: 3}
+  - {fileID: 8300000, guid: e1e726728d03be84ea69e22891222de2, type: 3}
+  - {fileID: 8300000, guid: e62eb54b95faab546b973b546512daef, type: 3}
+  - {fileID: 8300000, guid: b790ae82705a44144bd6ef193fd669ed, type: 3}
+  - {fileID: 8300000, guid: 5d7e11e3b62400e4abd56b2c207f31ee, type: 3}
+  - {fileID: 8300000, guid: 993560f5d81560b4298b20ed07393a64, type: 3}
+  - {fileID: 8300000, guid: 13e0ceeef5d3e864785fe13842df02d8, type: 3}
+  - {fileID: 8300000, guid: 136306e3f139f634b81152b9be663108, type: 3}
+  - {fileID: 8300000, guid: b0a1e6255aefae34c908457c0f6499cd, type: 3}
 --- !u!82 &1844267273
 AudioSource:
   m_ObjectHideFlags: 0

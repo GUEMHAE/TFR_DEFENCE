@@ -20,9 +20,6 @@ public class Ash : MonoBehaviour
 
     GetUnitInfo getUnitInfo;
 
-    [SerializeField]
-    AudioClip skillSound;
-
     public float maxMana; //유닛의 최대 마나
     public float currentMana; //유닛의 현재 마나
     public float regenManaRate; //마나 회복량
@@ -121,8 +118,7 @@ public class Ash : MonoBehaviour
         if (currentMana == maxMana) // 마나가 100 이상일 때 스킬 활성화
         {
             isSkillActive = true;
-            GetComponent<AudioSource>().Play();
-            Debug.Log("애쉬 스킬 소리 출력중");
+            SoundManager.instance.UnitEffectSound(6);
             getUnitInfo.attackSpeedP *= 1.4f; // 공격 속도 1.4배 증가
             currentMana = 0;
         }
@@ -133,15 +129,6 @@ public class Ash : MonoBehaviour
         GameObject projectile = isSkillActive ? skillProjectile : getUnitInfo.attackProjectile;
         Instantiate(projectile, transform.position, Quaternion.identity);
         projectile.GetComponent<AttackProjectile>().Targeting(enemy.transform);
-    }
-
-    void HitFirstBossSkill()
-    {
-        isStun = true;
-        if (isStun == true)
-        {
-            Instantiate(stunEffect, gameObject.transform.position, Quaternion.identity);
-        }
     }
 
     void Start()

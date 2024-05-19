@@ -14,8 +14,6 @@ public class Arox : MonoBehaviour
     public GameObject attackTarget;
     public GameObject dummy; //멀리 떨어뜨린 더미 오브젝트 
 
-    [SerializeField]
-    AudioClip skillSound;
     public GameObject skillPrefab;
 
     GetUnitInfo getUnitInfo;
@@ -25,7 +23,6 @@ public class Arox : MonoBehaviour
     public float regenManaRate; //마나 회복량
     public Transform attackSpawn; //유닛 공격 시작 위치
 
-    public GameObject stunEffect;
     [SerializeField]
     bool isStun;
 
@@ -103,16 +100,6 @@ public class Arox : MonoBehaviour
             }
         }
     }
-
-    void HitFirstBossSkill()
-    {
-        isStun = true;
-        if (isStun == true)
-        {
-            Instantiate(stunEffect, gameObject.transform.position, Quaternion.identity);
-        }
-    }
-
     void Start()
     {
         getUnitInfo = GetComponent<GetUnitInfo>();
@@ -141,8 +128,7 @@ public class Arox : MonoBehaviour
             {
                 currentMana = 0;
                 GameObject SkillClone = Instantiate(skillPrefab, enemy.transform.position, Quaternion.identity);
-                GetComponent<AudioSource>().Play();
-                Debug.Log("아룩스 스킬 소리 출력중");
+                SoundManager.instance.UnitEffectSound(4);
             }
         }
     }

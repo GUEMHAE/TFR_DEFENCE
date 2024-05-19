@@ -130,6 +130,13 @@ public class Piona : MonoBehaviour
         cancellationTokenSource.Cancel();
     }
 
+    void DelaySkill()
+    {
+        GameObject SkillClone2 = Instantiate(skillPrefab, enemy.transform.position + spawnPosition, Quaternion.identity);
+        SkillClone2.GetComponent<PionaSkill>().SkillTargeting(enemy.transform);//적을 타게팅함
+        SoundManager.instance.UnitEffectSound(14);
+    }
+
     private void Update()
     {
         CheckEnemies();
@@ -139,6 +146,9 @@ public class Piona : MonoBehaviour
             {
                 currentMana = 0;
                 GameObject SkillClone = Instantiate(skillPrefab, enemy.transform.position+ spawnPosition, Quaternion.identity);
+                SkillClone.GetComponent<PionaSkill>().SkillTargeting(enemy.transform);//적을 타게팅함
+                SoundManager.instance.UnitEffectSound(14);
+                Invoke("DelaySkill", 0.5f);
             }
         }
     }

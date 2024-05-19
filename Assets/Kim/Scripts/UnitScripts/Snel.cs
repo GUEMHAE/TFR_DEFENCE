@@ -14,8 +14,6 @@ public class Snel : MonoBehaviour
     public GameObject attackTarget;
     public GameObject dummy; //멀리 떨어뜨린 더미 오브젝트 
 
-    [SerializeField]
-    AudioClip skillSound;
     public GameObject skillPrefab;
 
     public float maxMana; //유닛의 최대 마나
@@ -142,8 +140,7 @@ public class Snel : MonoBehaviour
             {
                 currentMana = 0;
                 GameObject SkillClone = Instantiate(skillPrefab, attackSpawn.transform.position, Quaternion.identity);
-                GetComponent<AudioSource>().Play();
-                Debug.Log("스넬 스킬 소리 출력중");
+                SoundManager.instance.UnitEffectSound(3);
                 SkillClone.GetComponent<SnelSkill>().SkillTargeting(enemy.transform);//적을 타게팅함
             }
         }

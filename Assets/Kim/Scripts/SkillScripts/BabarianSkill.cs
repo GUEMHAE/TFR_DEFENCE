@@ -23,8 +23,7 @@ public class BabarianSkill : MonoBehaviour
         }
         else //만약 타겟이 사라지면
         {
-            Destroy(GetComponentInParent<Transform>().gameObject);
-            Destroy(gameObject);
+            Destroy(gameObject,3f);
         }
     }
 }

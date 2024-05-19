@@ -14597,6 +14597,7 @@ GameObject:
   - component: {fileID: 5661218082927463671}
   - component: {fileID: 6956727869609503088}
   - component: {fileID: 7090174642906678295}
+  - component: {fileID: -2230528102132693204}
   m_Layer: 0
   m_Name: "ElectoAttackProjectile 3\uC131"
   m_TagString: Projectile
@@ -14803,6 +14804,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.3
+--- !u!210 &-2230528102132693204
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3980409943548741700}
+  m_Enabled: 1
+  m_SortingLayerID: -1857298117
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &5454817735261904377
 GameObject:
   m_ObjectHideFlags: 0

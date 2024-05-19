@@ -102,15 +102,6 @@ public class Asus : MonoBehaviour
         }
     }
 
-    void HitFirstBossSkill()
-    {
-        isStun = true;
-        if (isStun == true)
-        {
-            Instantiate(stunEffect, gameObject.transform.position, Quaternion.identity);
-        }
-    }
-
     void Start()
     {
         getUnitInfo = GetComponent<GetUnitInfo>();
@@ -138,6 +129,7 @@ public class Asus : MonoBehaviour
             if (enemy != null && enemy != dummy)
             {
                 currentMana = 0;
+                SoundManager.instance.UnitEffectSound(9);
                 GameObject SkillClone = Instantiate(skillPrefab, enemy.transform.position, Quaternion.identity);
             }
         }

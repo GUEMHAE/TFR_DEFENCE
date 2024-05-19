@@ -710,6 +710,8 @@ MonoBehaviour:
   AroxAttackEffect: {fileID: 3824282788395934224, guid: 9b71eb1402dcd494f8eeaf9d898c9f32, type: 3}
   IrsigSkillEffect: {fileID: 2434421697330913857, guid: e12b00d341d793c4693b8103f65cfd4a, type: 3}
   RlrorProjectileEffect: {fileID: 7819557312314079244, guid: 640aa043ff50db643aaa09c3adc93974, type: 3}
+  pionaSkillEffect: {fileID: 8927992246171804243, guid: c7507919af282024baa1194795933d5d, type: 3}
+  linkAttackEffect: {fileID: 8439226964987014357, guid: 45d96e2caa245194cb6fb3d526efd1e2, type: 3}
   thirdBoss: {fileID: 0}
   maxHp: 405
   hpBar: {fileID: 7818697802269227899}

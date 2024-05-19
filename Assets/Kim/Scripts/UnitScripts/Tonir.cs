@@ -14,8 +14,6 @@ public class Tonir : MonoBehaviour
     public GameObject attackTarget;
     public GameObject dummy; //멀리 떨어뜨린 더미 오브젝트 
 
-    [SerializeField]
-    AudioClip skillSound;
     public GameObject skillPrefab;
 
     GetUnitInfo getUnitInfo;
@@ -103,15 +101,6 @@ public class Tonir : MonoBehaviour
         }
     }
 
-    void HitFirstBossSkill()
-    {
-        isStun = true;
-        if (isStun == true)
-        {
-            Instantiate(stunEffect, gameObject.transform.position, Quaternion.identity);
-        }
-    }
-
     private void OnEnable()
     {
         regenManaRate = 4f;
@@ -143,8 +132,7 @@ public class Tonir : MonoBehaviour
                 GameObject SkillClone = Instantiate(skillPrefab, attackSpawn.transform.position, Quaternion.identity);
                 SkillClone.transform.SetParent(enemy.transform, false); //스킬 오브젝트를 적의 자식 오브젝트로 생성
                 SkillClone.transform.localPosition = new Vector3(0, 6f, 0); //부모 오브젝트(적)의 y값 3위에 생성
-                GetComponent<AudioSource>().Play();
-                Debug.Log("토니르 스킬 소리 출력중");
+                SoundManager.instance.UnitEffectSound(7);
                 SkillClone.GetComponent<TonirSkill>().SkillTargeting(enemy.transform);//적을 타게팅함
             }
         }

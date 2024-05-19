@@ -104,15 +104,6 @@ public class Kamuem : MonoBehaviour
         }
     }
 
-    void HitFirstBossSkill()
-    {
-        isStun = true;
-        if (isStun == true)
-        {
-            Instantiate(stunEffect, gameObject.transform.position, Quaternion.identity);
-        }
-    }
-
     void Start()
     {
         getUnitInfo = GetComponent<GetUnitInfo>();
@@ -142,6 +133,7 @@ public class Kamuem : MonoBehaviour
             if (enemy != null && enemy != dummy)
             {
                 currentMana = 0;
+                SoundManager.instance.UnitEffectSound(13);
                 GameObject SkillClone = Instantiate(skillEffectPrefab, attackSpawn.transform.position, skillRotation);
             }
         }

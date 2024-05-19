@@ -28,6 +28,8 @@ TagManager:
   - Wait
   - Round
   - tutorial
+  - LinkProjectile
+  - LinkSkill
   layers:
   - Default
   - TransparentFX

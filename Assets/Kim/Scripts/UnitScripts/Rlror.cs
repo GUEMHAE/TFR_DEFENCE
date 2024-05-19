@@ -104,15 +104,6 @@ public class Rlror : MonoBehaviour
         }
     }
 
-    void HitFirstBossSkill()
-    {
-        isStun = true;
-        if (isStun == true)
-        {
-            Instantiate(stunEffect, gameObject.transform.position, Quaternion.identity);
-        }
-    }
-
     private void Start()
     {
         getUnitInfo = GetComponent<GetUnitInfo>();
@@ -142,6 +133,7 @@ public class Rlror : MonoBehaviour
             if (enemy != null && enemy != dummy)
             {
                 currentMana = 0;
+                SoundManager.instance.UnitEffectSound(11);
                 GameObject SkillClone = Instantiate(skillPrefab, enemy.transform.position, skillRotation);
                 SkillClone.GetComponent<RlrorSkill>().SkillTargeting(enemy.transform);//적을 타게팅함
             }

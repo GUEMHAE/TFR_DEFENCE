@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public bool isGameOver = false; //게임오버 여부 판단
     public GameObject gameoverUI;
     public GameObject enemyPool; //적들이 들어 있는 부모 오브젝트를 등록하기 위한 GameObject
+    public GameObject unitinfoUI;
     public int gold;
     public Text Multyply;
 
@@ -63,6 +64,7 @@ public class GameManager : MonoBehaviour
         if (isGameOver)
         {
             gameoverUI.SetActive(true);
+            unitinfoUI.SetActive(false);
             Round.instance.enabled = false;
         }
     }

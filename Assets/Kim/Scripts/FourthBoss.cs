@@ -127,7 +127,7 @@ public class FourthBoss : MonoBehaviour
         }
     }
 
-    private void DestroyRandomUnit()
+    private void DestroyRandomUnit() //À¯´ÖÆÄ±« ÆÐÅÏ
     {
         if (UnitLimitManager.instance.allUnits.Count > 0)
         {
@@ -140,7 +140,7 @@ public class FourthBoss : MonoBehaviour
 
     private void Update()
     {
-        if(roundCount%3==0&&roundCount!=0)
+        if(roundCount%2==0&&roundCount!=0)
         {
             DestroyRandomUnit();
         }

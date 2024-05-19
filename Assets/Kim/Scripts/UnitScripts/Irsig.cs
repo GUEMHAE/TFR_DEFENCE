@@ -139,6 +139,7 @@ public class Irsig : MonoBehaviour
             if (enemy != null && enemy != dummy)
             {
                 currentMana = 0;
+                SoundManager.instance.UnitEffectSound(10);
                 GameObject SkillClone = Instantiate(skillPrefab, enemy.transform.position, Quaternion.identity);
             }
         }

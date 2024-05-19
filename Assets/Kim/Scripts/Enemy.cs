@@ -27,6 +27,10 @@ public class Enemy : MonoBehaviour
     GameObject IrsigSkillEffect;
     [SerializeField]
     GameObject RlrorProjectileEffect;
+    [SerializeField]
+    GameObject pionaSkillEffect;
+    [SerializeField]
+    GameObject linkAttackEffect;
 
     Animator animator;
 
@@ -244,6 +248,30 @@ public class Enemy : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
+        if(collision.tag=="LinkProjectile")
+        {
+            if (gameObject.transform != collision.GetComponent<AttackProjectile>().attackTarget) //적이 여러기 겹쳐 있을때 projectile의 attackTarget만 충돌 처리 되게 하는 코드
+            {
+                return;
+            }
+
+            Instantiate(linkAttackEffect, this.transform.position, Quaternion.identity);
+            Debug.Log("아록스 평타 적중");
+
+            if (thirdBoss == null || thirdBoss.isInvincible == false)
+            {
+                damage = collision.GetComponent<AttackProjectile>().damage; //projectile의 데미지를 받아옴
+                hp -= damage; //적이 데미지를 받는 코드
+            }
+
+            else if (thirdBoss != null && thirdBoss.isInvincible == true)
+            {
+                return;
+            }
+
+            Destroy(collision.gameObject);
+        }
+
         if (collision.tag == "AroxSkill")
         {
             if (thirdBoss == null || thirdBoss.isInvincible == false)
@@ -270,6 +298,7 @@ public class Enemy : MonoBehaviour
             {
                 return;
             }
+            SoundManager.instance.UnitEffectSound(2);
             Instantiate(babarianSkillEffect, this.transform.position, Quaternion.identity);
             Destroy(collision.gameObject);
         }
@@ -280,12 +309,14 @@ public class Enemy : MonoBehaviour
             {
                 damage = collision.GetComponent<PionaSkill>().damage; //projectile의 데미지를 받아옴
                 hp -= damage; //적이 데미지를 받는 코드
+                Debug.Log("피오나 스킬 데미지 적용");
             }
 
             else if (thirdBoss != null && thirdBoss.isInvincible == true)
             {
                 return;
             }
+            Instantiate(pionaSkillEffect, this.transform.position, Quaternion.identity);
 
             Destroy(collision.gameObject);
         }
@@ -339,15 +370,10 @@ public class Enemy : MonoBehaviour
                 return;
             }
 
-            void CallDamage()
-            {
-                hp -= damage;
-            }
-
             if (thirdBoss == null || thirdBoss.isInvincible == false)
             {
-                damage = collision.GetComponent<ArteSkill>().damage; //projectile의 데미지를 받아옴
-                Invoke("CallDamage", 1f);
+                damage = collision.GetComponent<ArteSkill>().damage; //아르테 스킬의 데미지를 받아옴
+                hp -= damage;
             }
 
             else if (thirdBoss != null && thirdBoss.isInvincible == true)
@@ -414,6 +440,21 @@ public class Enemy : MonoBehaviour
             {
                 damage = collision.GetComponent<ElectoSkill>().damage; //projectile의 데미지를 받아옴
                 hp -= damage; //적이 데미지를 받는 코드
+            }
+
+            else if (thirdBoss != null && thirdBoss.isInvincible == true)
+            {
+                return;
+            }
+        }
+
+        if (collision.tag == "LinkSkill")
+        {
+            if (thirdBoss == null || thirdBoss.isInvincible == false)
+            {
+                damage = collision.GetComponent<LinkSkill>().damage; //projectile의 데미지를 받아옴
+                hp -= damage; //적이 데미지를 받는 코드
+                Debug.Log("링크스킬 데미지 받음");
             }
 
             else if (thirdBoss != null && thirdBoss.isInvincible == true)

@@ -36,6 +36,7 @@ public class Arte : MonoBehaviour
     void SpawnSkillEffect()
     {
         GameObject clone = Instantiate(skillEffectPrefab, enemy.transform.position, Quaternion.identity); //프로젝타일은 attackSpawn위치에 생성
+        SoundManager.instance.UnitEffectSound(8);
     }
 
     async UniTask AttackToTarget(CancellationToken cancellationToken)
@@ -107,15 +108,6 @@ public class Arte : MonoBehaviour
                 currentMana += regenManaRate;
                 currentMana = Mathf.Min(currentMana, maxMana);//현재 마나가 최대 마나를 초과하지 않게 하기 위해
             }
-        }
-    }
-    
-    void HitFirstBossSkill()
-    {
-        isStun = true;
-        if (isStun == true)
-        {
-            Instantiate(stunEffect, gameObject.transform.position, Quaternion.identity);
         }
     }
 
