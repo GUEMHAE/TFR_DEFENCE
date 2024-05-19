@@ -17,6 +17,9 @@ public class TutorialScripts : MonoBehaviour, IEndDragHandler
     private bool iswaits = false;
     public GameObject turorial;
 
+    public GameObject NoSkip;
+    private uintscriptfalse uintScript;
+
     private void Awake()
     {
         turorial = GameObject.Find("111");
@@ -48,6 +51,7 @@ public class TutorialScripts : MonoBehaviour, IEndDragHandler
             goGrid.SetActive(false);
             gameObject.transform.SetParent(turorial.transform);
             Round.instance.isRound = true;
+            NoSkip.SetActive(false);
         }
     }
 

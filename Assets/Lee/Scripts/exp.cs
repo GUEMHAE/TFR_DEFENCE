@@ -18,7 +18,7 @@ public class Exp : MonoBehaviour
 
     void Start()
     {
-        ExpBarSlider.value = 0;// Exp의 값을 현재 경험치 / 레벨까지 필요한 경험치로 시작
+        ExpBarSlider.value = exp / expBar;// Exp의 값을 현재 경험치 / 레벨까지 필요한 경험치로 시작
 
         // 레벨 텍스트 업데이트
         levelText.text = level.ToString();
@@ -52,6 +52,10 @@ public class Exp : MonoBehaviour
                 exping.enabled = false;
             }
         }
+
+        ExpBarSlider.value = exp / expBar;
+
+
         // 라운드 대기 중일 때만 텍스트를 활성화하여 배치된 유닛 수를 표시
         if (!Round.instance.isRound)
         {
@@ -76,10 +80,22 @@ public class Exp : MonoBehaviour
         {
             exp += 3;
             GameManager.instance.gold -= 3;
-            ExpBarSlider.value = exp / expBar;
+
+            // 경험치 비율 계산
+            float expRatio = exp / expBar;
+
+            // 슬라이더 값 설정
+            ExpBarSlider.value = expRatio;
+
+            // 만약 1이 남았다면 슬라이더 한 칸을 채웁니다.
+            if (exp >= expBar)
+            {
+                ExpBarSlider.value = 1.0f;
+            }
 
             levelText.text = level.ToString();
             exping.text = exp.ToString() + " / " + expBar.ToString();
+
         }
     }
 

@@ -50,6 +50,9 @@ public class ScriptsP : MonoBehaviour
                 tutorialScript.GridName = "111";
                 tutorialScript.IMG_Grid = GameObject.Find("GridEP");
                 tutorialScript.goGrid = GameObject.Find("goGrid");
+                tutorialScript.NoSkip = GameObject.Find("NoSkip");
+
+
             }
         }
     }
