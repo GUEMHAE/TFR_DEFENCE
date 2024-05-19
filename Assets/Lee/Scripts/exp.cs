@@ -14,14 +14,19 @@ public class Exp : MonoBehaviour
     public Slider ExpBarSlider; // 경험치 슬라이더
     public TMP_Text exping; // 현재 경험치 / 레벨까지 필요한 경험치
 
+    public TMP_Text unitCountText; // 배치된 유닛수 / 배치 가능한 인원수 텍스트
+
     void Start()
     {
-        ExpBarSlider.value = 0;// Exp의 값을 현재 경험치 / 레벨까지 필요한 경험치로 시작
+        ExpBarSlider.value = exp / expBar;// Exp의 값을 현재 경험치 / 레벨까지 필요한 경험치로 시작
 
         // 레벨 텍스트 업데이트
         levelText.text = level.ToString();
         exping.text = exp.ToString() + " / " + expBar.ToString();
         UnitLimitManager.instance.MaxunitCount = 1;
+
+        // 초기에는 텍스트를 비활성화
+        unitCountText.gameObject.SetActive(false);
     }
 
 
@@ -48,46 +53,76 @@ public class Exp : MonoBehaviour
             }
         }
 
+        ExpBarSlider.value = exp / expBar;
+
+
+        // 라운드 대기 중일 때만 텍스트를 활성화하여 배치된 유닛 수를 표시
+        if (!Round.instance.isRound)
+        {
+            unitCountText.gameObject.SetActive(true);
+
+            // 현재 유닛 수와 배치 가능한 인원 수를 가져와 텍스트로 표시
+            int currentUnits = UnitLimitManager.instance.curUnitCount;
+            int maxUnits = UnitLimitManager.instance.MaxunitCount;
+            unitCountText.text = currentUnits.ToString() + " / " + maxUnits.ToString();
+        }
+        else
+        {
+            // 라운드 진행 중이면 텍스트를 비활성화
+            unitCountText.gameObject.SetActive(false);
+        }
     }
 
     // 버튼 클릭 경험치 증가 함수
     public void IncreaseExperience()
     {
-        if (GameManager.instance.gold >= 3&&level!=6)
+        if (GameManager.instance.gold >= 3 && level != 6)
         {
             exp += 3;
             GameManager.instance.gold -= 3;
-            ExpBarSlider.value = exp / expBar;
+
+            // 경험치 비율 계산
+            float expRatio = exp / expBar;
+
+            // 슬라이더 값 설정
+            ExpBarSlider.value = expRatio;
+
+            // 만약 1이 남았다면 슬라이더 한 칸을 채웁니다.
+            if (exp >= expBar)
+            {
+                ExpBarSlider.value = 1.0f;
+            }
 
             levelText.text = level.ToString();
             exping.text = exp.ToString() + " / " + expBar.ToString();
+
         }
     }
 
     // 레벨업에 필요한 경험치 양 반환 함수
     public float Levelup(float currentLevel)
     {
-        //Debug.Log(UnitLimitManager.instance.MaxunitCount);
+        Debug.Log(UnitLimitManager.instance.MaxunitCount + "유닛수 제한 -----------------------");
         // 각 레벨별로 필요한 경험치 양 설정
         switch (currentLevel)
         {
             case 1:
-                UnitLimitManager.instance.MaxunitCount = 2;
+                UnitLimitManager.instance.MaxunitCount = 1;
                 return 2;
             case 2:
-                UnitLimitManager.instance.MaxunitCount = 3;
+                UnitLimitManager.instance.MaxunitCount = 2;
                 return 6;
             case 3:
-                UnitLimitManager.instance.MaxunitCount = 4;
+                UnitLimitManager.instance.MaxunitCount = 3;
                 return 12;
             case 4:
-                UnitLimitManager.instance.MaxunitCount = 5;
+                UnitLimitManager.instance.MaxunitCount = 4;
                 return 24;
             case 5:
-                UnitLimitManager.instance.MaxunitCount = 6;
+                UnitLimitManager.instance.MaxunitCount = 5;
                 return 48;
             case 6:
-                UnitLimitManager.instance.MaxunitCount = 7;
+                UnitLimitManager.instance.MaxunitCount = 6;
                 return 0;
         }
         return exp;
