@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -58,6 +57,7 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         if (canPlace && grid != null)
         {
+            CheckAndSwapParent(); // 변경된 부분: CheckAndSwapParent 함수 호출
             PlaceUnit();
         }
         else
@@ -90,5 +90,22 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
         transform.localPosition = Vector3.zero;
         boxCol.size = DefaultBoxSize;
         spriteRenderer.sortingOrder = 1;
+    }
+
+    private void CheckAndSwapParent()
+    {
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, DefaultBoxSize, 0);
+        foreach (Collider2D col in colliders)
+        {
+            if (col.CompareTag("Unit") && col.transform != transform)
+            {
+                // 다른 유닛이 이미 해당 위치에 있는 경우
+                Unit = col.gameObject;
+                Unit.transform.SetParent(transform.parent); // 다른 유닛의 부모 오브젝트를 현재 위치의 그리드로 변경
+                Unit.GetComponent<Place_Point>().ResetTransform(); // 다른 유닛의 위치 재설정
+                transform.SetParent(grid.transform); // 현재 유닛의 부모 오브젝트를 그리드로 변경
+                return;
+            }
+        }
     }
 }

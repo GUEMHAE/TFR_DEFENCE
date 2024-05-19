@@ -365,6 +365,7 @@ MonoBehaviour:
   canPlace: 0
   grid: {fileID: 0}
   Unit: {fileID: 0}
+  Sell: {fileID: 3875051031900822154, guid: 970be790a6ec94641964435b8fc2f821, type: 3}
 --- !u!114 &7337488990209028056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,7 +378,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d83ef2ee694b49d4b8a57386ef227a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitInfo: {fileID: 11400000, guid: 921da92b40588164e8911c1ceac69047, type: 2}
   enemy: {fileID: 0}
   shortDis: 0
   tagName: Enemy
@@ -387,14 +387,6 @@ MonoBehaviour:
   maxMana: 28
   currentMana: 0
   regenManaRate: 0
-  unitName: 
-  attackSpeed: 0
-  attackRange: 0
-  ad: 0
-  ap: 0
-  cost: 0
-  sellCost: 0
-  attackProjectile: {fileID: 0}
   attackSpawn: {fileID: 8754272233622719918}
   stunEffect: {fileID: 1936204856907710318, guid: 8c0e17fd5bacca14c8c72f803482bae0, type: 3}
   isStun: 0
@@ -424,6 +416,10 @@ MonoBehaviour:
   cost: 0
   sellCost: 0
   attackProjectile: {fileID: 0}
+  unitType: []
+  originAD: 0
+  originAP: 0
+  originAS: 0
 --- !u!1 &8870641801729210366
 GameObject:
   m_ObjectHideFlags: 0

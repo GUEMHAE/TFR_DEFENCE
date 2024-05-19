@@ -12,17 +12,6 @@ public class Grid : MonoBehaviour
         {
             place = collision.GetComponent<Place_Point>();
             Transform parentObject = transform;
-
-            // 자식 오브젝트가 있는지 확인
-            if (parentObject.childCount > 0)
-            {
-                place.canPlace = false;
-            }
-
-            else
-            {
-                place.canPlace = true;
-            }
         }
     }
 }

@@ -198,6 +198,7 @@ MonoBehaviour:
   canPlace: 0
   grid: {fileID: 0}
   Unit: {fileID: 0}
+  Sell: {fileID: 3875051031900822154, guid: 970be790a6ec94641964435b8fc2f821, type: 3}
 --- !u!114 &4507987756199136224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,7 +216,6 @@ MonoBehaviour:
   tagName: Enemy
   attackTarget: {fileID: 0}
   dummy: {fileID: 7383394015066688635, guid: 386b6661d87229f4fa7f2a2b8bf9cf22, type: 3}
-  skillSound: {fileID: 8300000, guid: 813f7bd1c1ff35c4da95407f674d6da7, type: 3}
   skillPrefab: {fileID: 1581168049294705264, guid: 53def9b9b35b64d44aee6951b481153b, type: 3}
   maxMana: 20
   currentMana: 0
@@ -345,6 +345,10 @@ MonoBehaviour:
   cost: 0
   sellCost: 0
   attackProjectile: {fileID: 0}
+  unitType: []
+  originAD: 0
+  originAP: 0
+  originAS: 0
 --- !u!1 &712717449552940677
 GameObject:
   m_ObjectHideFlags: 0

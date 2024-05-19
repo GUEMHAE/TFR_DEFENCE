@@ -2716,6 +2716,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 265843111}
   m_CullTransparentMesh: 1
+--- !u!1 &270193993
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 270193995}
+  - component: {fileID: 270193994}
+  m_Layer: 0
+  m_Name: TutorialManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &270193994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270193993}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e438310ad5d427b4a8e2c922bdcc5e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Lee: {fileID: 0}
+--- !u!4 &270193995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270193993}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &273346849
 GameObject:
   m_ObjectHideFlags: 0
@@ -5668,7 +5713,7 @@ MonoBehaviour:
   wait3: {fileID: 1111978149}
   wait4: {fileID: 324207927}
   wait5: {fileID: 26587643}
-  canBuy: 0
+  canBuy: 1
 --- !u!1 &510248462
 GameObject:
   m_ObjectHideFlags: 0
@@ -5850,6 +5895,8 @@ MonoBehaviour:
   totalRounds: 20
   currentRound: 1
   isRound: 1
+  isLock: 0
+  lockimg: {fileID: 0}
 --- !u!1 &517008967
 GameObject:
   m_ObjectHideFlags: 0
@@ -14512,11 +14559,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roundTime: {fileID: 2031831140}
   _currentRound: {fileID: 767813491}
-  bossWarning: {fileID: 1205451154}
   synergyButton: {fileID: 1260970047}
   synergyPannel: {fileID: 1382465151}
   goldText: {fileID: 538070291}
   isSynergyPannelOn: 0
+  UnitName_UI: {fileID: 0}
+  UnitAd_UI: {fileID: 0}
+  UnitAp_UI: {fileID: 0}
+  UnitAS_UI: {fileID: 0}
+  UnitAR_UI: {fileID: 0}
+  Synergy1: {fileID: 0}
+  Synergy2: {fileID: 0}
+  _Synergy2: {fileID: 0}
+  Synergys: []
+  UnitType: []
+  SynergyText1: {fileID: 0}
+  SynergyText2: {fileID: 0}
+  _SynergyText2: {fileID: 0}
+  unitImage: {fileID: 0}
+  unitImageSprite: []
+  unitfInfoPannel: {fileID: 0}
 --- !u!1 &1260970045
 GameObject:
   m_ObjectHideFlags: 0
@@ -16011,6 +16073,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitName: []
+  onFieldUnit: []
+  air: []
+  light: []
+  fire: []
+  dark: []
+  ground: []
+  water: []
   grid:
   - {fileID: 1149417715}
   - {fileID: 546004005}
@@ -18365,10 +18434,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGameOver: 0
-  scoreText: {fileID: 0}
   gameoverUI: {fileID: 0}
   enemyPool: {fileID: 2117061025}
+  unitinfoUI: {fileID: 0}
   gold: 999
+  Multyply: {fileID: 0}
 --- !u!21 &1699648170
 Material:
   serializedVersion: 8
@@ -23227,3 +23297,4 @@ SceneRoots:
   - {fileID: 1242359534}
   - {fileID: 2117061026}
   - {fileID: 1534960825}
+  - {fileID: 270193995}

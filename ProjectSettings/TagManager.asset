@@ -30,6 +30,7 @@ TagManager:
   - tutorial
   - LinkProjectile
   - LinkSkill
+  - Sell
   layers:
   - Default
   - TransparentFX

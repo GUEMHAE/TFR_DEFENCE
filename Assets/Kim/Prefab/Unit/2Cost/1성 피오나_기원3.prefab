@@ -305,6 +305,7 @@ MonoBehaviour:
   canPlace: 0
   grid: {fileID: 0}
   Unit: {fileID: 0}
+  Sell: {fileID: 3875051031900822154, guid: 970be790a6ec94641964435b8fc2f821, type: 3}
 --- !u!114 &3438472212326055196
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: "\uD53C\uC624\uB098"
   cost: 2
-  sellCost: 2
+  sellCost: 16
   grade: 1
   ad: 0
   ap: 115

@@ -480,6 +480,7 @@ MonoBehaviour:
   canPlace: 0
   grid: {fileID: 0}
   Unit: {fileID: 0}
+  Sell: {fileID: 3875051031900822154, guid: 970be790a6ec94641964435b8fc2f821, type: 3}
 --- !u!114 &781429725087704156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,7 +503,6 @@ MonoBehaviour:
   currentMana: 0
   regenManaRate: 0
   attackSpawn: {fileID: 6470007627055734921}
-  stunEffect: {fileID: 1936204856907710318, guid: 8c0e17fd5bacca14c8c72f803482bae0, type: 3}
   isStun: 0
 --- !u!114 &-7865764667430038551
 MonoBehaviour:

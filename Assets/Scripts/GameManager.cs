@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        RandomSprite_Unit.instance.RoundRandomSprite();
         if (gameObject.scene.name == "Tutorial")
         {
             gold = 5;
@@ -51,7 +52,6 @@ public class GameManager : MonoBehaviour
         {
             gold = 2;
         }
-        RandomSprite_Unit.instance.RoundRandomSprite();
     }
 
     void Update()

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: "\uD1A0\uB2C8\uB974 3\uC131"
   m_EditorClassIdentifier: 
   unitName: "\uD1A0\uB2C8\uB974"
-  cost: 9
-  sellCost: 9
+  cost: 1
+  sellCost: 7
   grade: 3
   ad: 480
   ap: 0
