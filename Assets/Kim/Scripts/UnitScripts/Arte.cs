@@ -31,12 +31,20 @@ public class Arte : MonoBehaviour
     void SpawnProjectile()
     {
         GameObject clone = Instantiate(getUnitInfo.attackProjectile, enemy.transform.position, Quaternion.identity); //프로젝타일은 attackSpawn위치에 생성
+        var projectileScript = clone.GetComponent<AttackProjectile>();
+
+        float damage = getUnitInfo.ad > 0 ? getUnitInfo.ad : getUnitInfo.ap; // ad 또는 ap 값을 사용
+        projectileScript.SetDamage(damage);
     }
 
     void SpawnSkillEffect()
     {
         GameObject clone = Instantiate(skillEffectPrefab, enemy.transform.position, Quaternion.identity); //프로젝타일은 attackSpawn위치에 생성
         SoundManager.instance.UnitEffectSound(8);
+        var projectileScript = clone.GetComponent<ArteSkill>();
+
+        float damage = getUnitInfo.ad > 0 ? getUnitInfo.ad : getUnitInfo.ap; // ad 또는 ap 값을 사용
+        projectileScript.SetDamage(damage);
     }
 
     async UniTask AttackToTarget(CancellationToken cancellationToken)

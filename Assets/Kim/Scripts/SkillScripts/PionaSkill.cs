@@ -9,7 +9,12 @@ public class PionaSkill : MonoBehaviour
     public float speed;
 
     [SerializeField]
-    public float damage = 200f;
+    public float damage;
+
+    public void SetDamage(float damage) // 데미지 설정
+    {
+        this.damage = damage * 2.6f;
+    }
 
     public void SkillTargeting(Transform target) //공격대상 설정
     {

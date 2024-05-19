@@ -33,6 +33,11 @@ public class Piona : MonoBehaviour
     {
         GameObject clone = Instantiate(getUnitInfo.attackProjectile, attackSpawn.position, Quaternion.identity); //프로젝타일은 attackSpawn위치에 생성
         clone.GetComponent<AttackProjectile>().Targeting(enemy.transform);//가장 가까운 적을 타게팅함
+
+        var projectileScript = clone.GetComponent<AttackProjectile>();
+
+        float damage = getUnitInfo.ad > 0 ? getUnitInfo.ad : getUnitInfo.ap; // ad 또는 ap 값을 사용
+        projectileScript.SetDamage(damage);
     }
 
     async UniTask AttackToTarget(CancellationToken cancellationToken)
@@ -102,15 +107,6 @@ public class Piona : MonoBehaviour
         }
     }
 
-    void HitFirstBossSkill()
-    {
-        isStun = true;
-        if (isStun == true)
-        {
-            Instantiate(stunEffect, gameObject.transform.position, Quaternion.identity);
-        }
-    }
-
     void Start()
     {
         getUnitInfo = GetComponent<GetUnitInfo>();
@@ -135,6 +131,10 @@ public class Piona : MonoBehaviour
         GameObject SkillClone2 = Instantiate(skillPrefab, enemy.transform.position + spawnPosition, Quaternion.identity);
         SkillClone2.GetComponent<PionaSkill>().SkillTargeting(enemy.transform);//적을 타게팅함
         SoundManager.instance.UnitEffectSound(14);
+        var projectileScript = SkillClone2.GetComponent<AttackProjectile>();
+
+        float damage = getUnitInfo.ad > 0 ? getUnitInfo.ad : getUnitInfo.ap; // ad 또는 ap 값을 사용
+        projectileScript.SetDamage(damage);
     }
 
     private void Update()
@@ -148,7 +148,13 @@ public class Piona : MonoBehaviour
                 GameObject SkillClone = Instantiate(skillPrefab, enemy.transform.position+ spawnPosition, Quaternion.identity);
                 SkillClone.GetComponent<PionaSkill>().SkillTargeting(enemy.transform);//적을 타게팅함
                 SoundManager.instance.UnitEffectSound(14);
+                var projectileScript = SkillClone.GetComponent<PionaSkill>();
+
+                float damage = getUnitInfo.ad > 0 ? getUnitInfo.ad : getUnitInfo.ap; // ad 또는 ap 값을 사용
+                projectileScript.SetDamage(damage);
+
                 Invoke("DelaySkill", 0.5f);
+
             }
         }
     }

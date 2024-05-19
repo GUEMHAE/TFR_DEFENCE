@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class AsusSkill : MonoBehaviour
 {
-    public float damage = 220f;
+    [SerializeField]
+    public float damage;
+
+    public void SetDamage(float damage) // 데미지 설정
+    {
+        this.damage = damage*2f;
+    }
 
     private void Update()
     {

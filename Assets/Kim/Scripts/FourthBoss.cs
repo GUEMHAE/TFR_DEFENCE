@@ -27,6 +27,8 @@ public class FourthBoss : MonoBehaviour
 
     private bool shieldHasRun; //쉴드 패턴이 이미 실행됬는지 확인
 
+    bool isDestroyUnit;
+
     int roundCount;
 
 
@@ -58,7 +60,6 @@ public class FourthBoss : MonoBehaviour
                     UIManager.instance.UnitAS_UI.text = UnitAS.ToString();
                 }
             }
-
             await UniTask.WaitUntil(() => enemy.currentIndex == 0);
         }
     }
@@ -135,12 +136,14 @@ public class FourthBoss : MonoBehaviour
             GameObject unitToDestroy = UnitLimitManager.instance.allUnits[randomIndex];
             Destroy(unitToDestroy);
             UnitLimitManager.instance.allUnits.RemoveAt(randomIndex);
+
+            isDestroyUnit = true;
         }
     }
 
     private void Update()
     {
-        if(roundCount%2==0&&roundCount!=0)
+        if(roundCount%2==0&&roundCount!=0&&isDestroyUnit==false)
         {
             DestroyRandomUnit();
         }

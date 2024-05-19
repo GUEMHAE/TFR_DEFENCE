@@ -34,6 +34,11 @@ public class Snel : MonoBehaviour
     {
         GameObject clone = Instantiate(getUnitInfo.attackProjectile, attackSpawn.position, Quaternion.identity); //프로젝타일은 attackSpawn위치에 생성
         clone.GetComponent<AttackProjectile>().Targeting(enemy.transform);//가장 가까운 적을 타게팅함
+
+        var projectileScript = clone.GetComponent<AttackProjectile>();
+
+        float damage = getUnitInfo.ad > 0 ? getUnitInfo.ad : getUnitInfo.ap; // ad 또는 ap 값을 사용
+        projectileScript.SetDamage(damage);
     }
 
     async UniTask AttackToTarget(CancellationToken cancellationToken)
@@ -142,6 +147,10 @@ public class Snel : MonoBehaviour
                 GameObject SkillClone = Instantiate(skillPrefab, attackSpawn.transform.position, Quaternion.identity);
                 SoundManager.instance.UnitEffectSound(3);
                 SkillClone.GetComponent<SnelSkill>().SkillTargeting(enemy.transform);//적을 타게팅함
+                var projectileScript = SkillClone.GetComponent<SnelSkill>();
+
+                float damage = getUnitInfo.ad > 0 ? getUnitInfo.ad : getUnitInfo.ap; // ad 또는 ap 값을 사용
+                projectileScript.SetDamage(damage);
             }
         }
     }

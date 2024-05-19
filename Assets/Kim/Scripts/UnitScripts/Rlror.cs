@@ -35,6 +35,11 @@ public class Rlror : MonoBehaviour
     {
         GameObject clone = Instantiate(getUnitInfo.attackProjectile, attackSpawn.position, Quaternion.identity); //프로젝타일은 attackSpawn위치에 생성
         clone.GetComponent<AttackProjectile>().Targeting(enemy.transform);//가장 가까운 적을 타게팅함
+
+        var projectileScript = clone.GetComponent<AttackProjectile>();
+
+        float damage = getUnitInfo.ad > 0 ? getUnitInfo.ad : getUnitInfo.ap; // ad 또는 ap 값을 사용
+        projectileScript.SetDamage(damage);
     }
 
     async UniTask AttackToTarget(CancellationToken cancellationToken)
@@ -136,6 +141,10 @@ public class Rlror : MonoBehaviour
                 SoundManager.instance.UnitEffectSound(11);
                 GameObject SkillClone = Instantiate(skillPrefab, enemy.transform.position, skillRotation);
                 SkillClone.GetComponent<RlrorSkill>().SkillTargeting(enemy.transform);//적을 타게팅함
+                var projectileScript = SkillClone.GetComponent<RlrorSkill>();
+
+                float damage = getUnitInfo.ad > 0 ? getUnitInfo.ad : getUnitInfo.ap; // ad 또는 ap 값을 사용
+                projectileScript.SetDamage(damage);
             }
         }
     }

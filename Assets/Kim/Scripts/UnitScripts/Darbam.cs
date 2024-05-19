@@ -33,6 +33,11 @@ public class Darbam : MonoBehaviour
     {
         GameObject Attackclone = Instantiate(getUnitInfo.attackProjectile, attackSpawn.position, Quaternion.identity); //프로젝타일은 attackSpawn위치에 생성
         Attackclone.GetComponent<AttackProjectile>().Targeting(enemy.transform);//가장 가까운 적을 타게팅함
+
+        var projectileScript = Attackclone.GetComponent<AttackProjectile>();
+
+        float damage = getUnitInfo.ad > 0 ? getUnitInfo.ad : getUnitInfo.ap; // ad 또는 ap 값을 사용
+        projectileScript.SetDamage(damage);
     }
 
     async UniTask AttackToTarget(CancellationToken cancellationToken)
@@ -130,6 +135,11 @@ public class Darbam : MonoBehaviour
             if (enemy != null && enemy != dummy)
             {
                 GameObject SkillClone = Instantiate(skillPrefab, enemy.transform.position, Quaternion.identity);
+
+                var projectileScript = SkillClone.GetComponent<DarbamSkill>();
+
+                float damage = getUnitInfo.ad > 0 ? getUnitInfo.ad : getUnitInfo.ap; // ad 또는 ap 값을 사용
+                projectileScript.SetDamage(damage);
 
                 SoundManager.instance.UnitEffectSound(1);
 

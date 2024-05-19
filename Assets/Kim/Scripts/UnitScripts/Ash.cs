@@ -37,6 +37,11 @@ public class Ash : MonoBehaviour
     {
         GameObject clone = Instantiate(getUnitInfo.attackProjectile, attackSpawn.position, Quaternion.identity); //프로젝타일은 attackSpawn위치에 생성
         clone.GetComponent<AttackProjectile>().Targeting(enemy.transform);//가장 가까운 적을 타게팅함
+
+        var projectileScript = clone.GetComponent<AttackProjectile>();
+
+        float damage = getUnitInfo.ad > 0 ? getUnitInfo.ad : getUnitInfo.ap; // ad 또는 ap 값을 사용
+        projectileScript.SetDamage(damage);
     }
 
     async UniTask AttackToTarget(CancellationToken cancellationToken)
@@ -129,6 +134,11 @@ public class Ash : MonoBehaviour
         GameObject projectile = isSkillActive ? skillProjectile : getUnitInfo.attackProjectile;
         Instantiate(projectile, transform.position, Quaternion.identity);
         projectile.GetComponent<AttackProjectile>().Targeting(enemy.transform);
+
+        var projectileScript = projectile.GetComponent<AttackProjectile>();
+
+        float damage = getUnitInfo.ad > 0 ? getUnitInfo.ad : getUnitInfo.ap; // ad 또는 ap 값을 사용
+        projectileScript.SetDamage(damage);
     }
 
     void Start()

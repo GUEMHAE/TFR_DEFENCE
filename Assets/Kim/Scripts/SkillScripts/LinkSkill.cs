@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class LinkSkill : MonoBehaviour
 {
-    public float damage = 1500f;
+    public float damage;
     public float moveSpeed = 5f;  // Speed of the skill
     private Transform[] wayPoints;
     private int currentWayPointIndex = 0;
+
+    public void SetDamage(float damage) // 데미지 설정
+    {
+        this.damage = damage * 4f;
+    }
 
     private void Start()
     {

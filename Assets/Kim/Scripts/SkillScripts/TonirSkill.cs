@@ -12,6 +12,11 @@ public class TonirSkill : MonoBehaviour
     public float damage;
     private Quaternion targetRotation;
 
+    public void SetDamage(float damage) // 데미지 설정
+    {
+        this.damage = damage * 1.2f;
+    }
+
     public void SkillTargeting(Transform target) //공격대상 설정
     {
         this.attackTarget = target;

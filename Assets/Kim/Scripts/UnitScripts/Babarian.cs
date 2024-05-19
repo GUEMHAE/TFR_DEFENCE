@@ -35,6 +35,10 @@ public class Babarian : MonoBehaviour
     {
         GameObject clone = Instantiate(getUnitInfo.attackProjectile, attackSpawn.position, Quaternion.identity); //프로젝타일은 attackSpawn위치에 생성
         clone.GetComponent<AttackProjectile>().Targeting(enemy.transform);//가장 가까운 적을 타게팅함
+        var projectileScript = clone.GetComponent<AttackProjectile>();
+
+        float damage = getUnitInfo.ad > 0 ? getUnitInfo.ad : getUnitInfo.ap; // ad 또는 ap 값을 사용
+        projectileScript.SetDamage(damage);
     }
 
     async UniTask AttackToTarget(CancellationToken cancellationToken)
@@ -104,15 +108,6 @@ public class Babarian : MonoBehaviour
         }
     }
 
-    void HitFirstBossSkill()
-    {
-        isStun = true;
-        if (isStun == true)
-        {
-            Instantiate(stunEffect, gameObject.transform.position, Quaternion.identity);
-        }
-    }
-
     void Start()
     {
         getUnitInfo = GetComponent<GetUnitInfo>();
@@ -142,9 +137,11 @@ public class Babarian : MonoBehaviour
                 currentMana = 0;
                 GameObject SkillClone = Instantiate(skillPrefab, attackSpawn.transform.position, Quaternion.identity);
                 SkillClone.GetComponent<BabarianSkill>().SkillTargeting(enemy.transform);//적을 타게팅함
-
-                //SoundManager.instance.UnitEffectSound(2);
                 currentMana = 0;
+                var projectileScript = SkillClone.GetComponent<BabarianSkill>();
+
+                float damage = getUnitInfo.ad > 0 ? getUnitInfo.ad : getUnitInfo.ap; // ad 또는 ap 값을 사용
+                projectileScript.SetDamage(damage);
             }
         }
     }

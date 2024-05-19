@@ -14,6 +14,11 @@ public class BoureSkill : MonoBehaviour
         this.attackTarget = target;
     }
 
+    public void SetDamage(float damage) // 데미지 설정
+    {
+        this.damage = damage * 1.15f;
+    }
+
     void Update()
     {
         if (attackTarget != null) //타겟이 존재하면

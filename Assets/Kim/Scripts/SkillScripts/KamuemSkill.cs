@@ -4,5 +4,10 @@ using UnityEngine;
 
 public class KamuemSkill : MonoBehaviour
 {
-    public float damage = 700f;
+    public float damage;
+
+    public void SetDamage(float damage) // 데미지 설정
+    {
+        this.damage = damage * 2.3f;
+    }
 }

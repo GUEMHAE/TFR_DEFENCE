@@ -10,7 +10,12 @@ public class RlrorSkill : MonoBehaviour
     public Transform attackTarget; //공격대상
     public CircleCollider2D circleCollider2D;
 
-    public float damage = 1200f;
+    public float damage;
+
+    public void SetDamage(float damage) // 데미지 설정
+    {
+        this.damage = damage * 2.7f;
+    }
 
     public void SkillTargeting(Transform target) //공격대상 설정
     {
