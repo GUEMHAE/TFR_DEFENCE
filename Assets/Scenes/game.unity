@@ -5044,6 +5044,7 @@ MonoBehaviour:
   expBar: 0
   ExpBarSlider: {fileID: 2126602464}
   exping: {fileID: 158941657}
+  unitCountText: {fileID: 0}
 --- !u!114 &505880357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12734,6 +12735,12 @@ MonoBehaviour:
   UnitAp_UI: {fileID: 1512223050}
   UnitAS_UI: {fileID: 836722847}
   UnitAR_UI: {fileID: 584800291}
+  grade: 0
+  gradeSprite:
+  - {fileID: 21300000, guid: 74c8df1da2d5212458ebfd32bb4a419b, type: 3}
+  - {fileID: 21300000, guid: f7c7cf97b9432f84cae1ab61fc1426b5, type: 3}
+  - {fileID: 21300000, guid: 7214162ee9862c94da7942e36e8ba3a6, type: 3}
+  gradeImage: {fileID: 1697622291}
   Synergy1: {fileID: 68983458}
   Synergy2: {fileID: 476307230}
   _Synergy2: {fileID: 476307228}
@@ -17328,7 +17335,7 @@ MonoBehaviour:
   gameoverUI: {fileID: 1848520480}
   enemyPool: {fileID: 2117061025}
   unitinfoUI: {fileID: 202462654}
-  gold: 4
+  gold: 2
   Multyply: {fileID: 1582924623}
 --- !u!1 &1696624715
 GameObject:
@@ -17496,8 +17503,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 170, y: -30}
-  m_SizeDelta: {x: 30, y: 30}
+  m_AnchoredPosition: {x: 93.6, y: -19.9}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1697622291
 MonoBehaviour:
@@ -17519,7 +17526,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ae032443c5c224a3599fb8927bccb7ab, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 74c8df1da2d5212458ebfd32bb4a419b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

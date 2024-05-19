@@ -15,7 +15,7 @@ MonoBehaviour:
   unitName: "\uB2E4\uB974\uBC24"
   cost: 1
   sellCost: 2
-  grade: 1
+  grade: 2
   ad: 120
   ap: 0
   attackSpeed: 1.2

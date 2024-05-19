@@ -15,7 +15,7 @@ MonoBehaviour:
   unitName: "\uBD80\uB974"
   cost: 1
   sellCost: 2
-  grade: 1
+  grade: 2
   ad: 0
   ap: 160
   attackSpeed: 1.15

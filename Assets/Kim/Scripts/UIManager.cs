@@ -41,6 +41,9 @@ public class UIManager : MonoBehaviour
     public TMP_Text UnitAS_UI;//공격속도 표시
     [SerializeField]
     TMP_Text UnitAR_UI;//공격사거리 표시
+    public int grade;
+    public Sprite[] gradeSprite;
+    public Image gradeImage;
 
     [SerializeField]
     Image Synergy1; //시너지 표시 UI 첫 번째
@@ -97,12 +100,26 @@ public class UIManager : MonoBehaviour
                 UnitAS = hit.collider.GetComponent<GetUnitInfo>().attackSpeed;
                 UnitAR = hit.collider.GetComponent<GetUnitInfo>().attackRange;
                 UnitType = hit.collider.GetComponent<GetUnitInfo>().unitType;
+                grade = hit.collider.GetComponent<GetUnitInfo>().grade;
 
                 UnitName_UI.text = UnitName;
                 UnitAd_UI.text = UnitAd.ToString("F1");
                 UnitAp_UI.text = UnitAp.ToString("F1");
                 UnitAS_UI.text = UnitAS.ToString("F1");
                 UnitAR_UI.text = UnitAR.ToString();
+
+                if(grade==1)
+                {
+                    gradeImage.sprite = gradeSprite[0];
+                }
+                else if(grade==2)
+                {
+                    gradeImage.sprite = gradeSprite[1];
+                }
+                else if(grade==3)
+                {
+                    gradeImage.sprite = gradeSprite[2];
+                }
 
                 string UnitType1;
                 string UnitType2;

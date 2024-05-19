@@ -61,6 +61,11 @@ public class FourthBoss : MonoBehaviour
                 }
             }
             await UniTask.WaitUntil(() => enemy.currentIndex == 0);
+
+            if (roundCount % 2 != 0)
+            {
+                isDestroyUnit = false;
+            }
         }
     }
 
@@ -121,9 +126,9 @@ public class FourthBoss : MonoBehaviour
                 UnitAp = unitInfo.GetComponent<GetUnitInfo>().ap;
                 UnitAS = unitInfo.GetComponent<GetUnitInfo>().attackSpeed;
 
-                UIManager.instance.UnitAd_UI.text = UnitAd.ToString();
-                UIManager.instance.UnitAp_UI.text = UnitAp.ToString();
-                UIManager.instance.UnitAS_UI.text = UnitAS.ToString();
+                UIManager.instance.UnitAd_UI.text = UnitAd.ToString("F1");
+                UIManager.instance.UnitAp_UI.text = UnitAp.ToString("F1");
+                UIManager.instance.UnitAS_UI.text = UnitAS.ToString("F1");
             }
         }
     }

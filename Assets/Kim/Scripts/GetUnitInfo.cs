@@ -29,6 +29,8 @@ public class GetUnitInfo : MonoBehaviour, IUnit
 
     public UnitType[] unitType;
 
+    public int grade;
+
     public float originAD; //유닛의 원래 공격력 저장하는 변수
     public float originAP; //유닛의 원래 주문력 저장하는 변수
     public float originAS; //유닛의 원래 공격속도 저장하는 변수
@@ -91,6 +93,7 @@ public class GetUnitInfo : MonoBehaviour, IUnit
             originAD = unitInfo1.Ad;
             originAP = unitInfo1.Ap;
             originAS = unitInfo1.AttackSpeed;
+            grade = unitInfo1.Grade;
         }
 
         if (gameObject.name.Substring(0, 2) == "2성")
@@ -109,6 +112,7 @@ public class GetUnitInfo : MonoBehaviour, IUnit
             originAD = unitInfo2.Ad;
             originAP = unitInfo2.Ap;
             originAS = unitInfo2.AttackSpeed;
+            grade = unitInfo2.Grade;
         }
 
         if (gameObject.name.Substring(0, 2) == "3성")
@@ -128,6 +132,7 @@ public class GetUnitInfo : MonoBehaviour, IUnit
             originAD = unitInfo3.Ad;
             originAP = unitInfo3.Ap;
             originAS = unitInfo3.AttackSpeed;
+            grade = unitInfo3.Grade;
         }
     }
 }
