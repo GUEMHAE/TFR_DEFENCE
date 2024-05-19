@@ -2745,7 +2745,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e438310ad5d427b4a8e2c922bdcc5e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lee: {fileID: 0}
 --- !u!4 &270193995
 Transform:
   m_ObjectHideFlags: 0
@@ -11328,7 +11327,7 @@ GameObject:
   - component: {fileID: 953639401}
   m_Layer: 6
   m_Name: wait2
-  m_TagString: Untagged
+  m_TagString: Wait
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

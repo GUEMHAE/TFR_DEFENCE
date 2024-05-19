@@ -47,7 +47,6 @@ public class TutorialScripts : MonoBehaviour, IEndDragHandler
             IMG_Grid.SetActive(false);
             goGrid.SetActive(false);
             gameObject.transform.SetParent(turorial.transform);
-            TimeManager.instance.isRoundTime = true;
             Round.instance.isRound = true;
         }
     }
