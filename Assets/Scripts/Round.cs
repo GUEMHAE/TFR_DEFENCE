@@ -59,7 +59,6 @@ public class Round : MonoBehaviour
                     GameManager.instance.gold += 8;
                 }
                 goldGiven = true;
-                Debug.Log(GameManager.instance.gold);
             }
 
             if (isLock == false)
@@ -69,7 +68,7 @@ public class Round : MonoBehaviour
 
             await UniTask.WaitUntil(() => TimeManager.instance.isRoundTime);
             Debug.Log("선택시간 종료");
-
+            Exp.instance.exp += 1;
             currentRound++;
             EnemySpawnManager.instance.enemyCount = 0; //유닛 재 생성을 위해 EnemySpawnManager의 enemyCount를 0으로 초기화
         }

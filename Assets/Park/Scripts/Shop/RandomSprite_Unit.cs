@@ -10,7 +10,6 @@ public class RandomSprite_Unit : MonoBehaviour
 
     public static RandomSprite_Unit instance;
 
-    Exp exp;
     [SerializeField] private int level = 1;
 
     private void Awake()
@@ -23,12 +22,11 @@ public class RandomSprite_Unit : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        exp = GetComponent<Exp>();
     }
 
     private void Update()
     {
-        level = exp.level;
+        level = Exp.instance.level;
     }
 
     public void RandomSprite()

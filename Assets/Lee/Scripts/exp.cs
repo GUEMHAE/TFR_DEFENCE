@@ -15,6 +15,18 @@ public class Exp : MonoBehaviour
     public TMP_Text exping; // 현재 경험치 / 레벨까지 필요한 경험치
 
     public TMP_Text unitCountText; // 배치된 유닛수 / 배치 가능한 인원수 텍스트
+    public static Exp instance;
+    void Awake()
+    {
+        if (instance == null) //싱글톤 패턴
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {

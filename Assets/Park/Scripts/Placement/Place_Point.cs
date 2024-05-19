@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
 {
-    [SerializeField] public bool canPlace = false;
+    [SerializeField] public bool canPlace = true;
     public GameObject grid;
     public GameObject Unit;
     private BoxCollider2D boxCol;
@@ -30,24 +31,11 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             raycaster.enabled = !Round.instance.isRound;
         }
-
-        if (UnitLimitManager.instance.MaxunitCount <= UnitLimitManager.instance.curUnitCount)
-        {
-            canPlace = false;
-        }
-        else
-        {
-            canPlace = true;
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Grid") && canPlace)
-        {
-            grid = collision.gameObject;
-        }
-        else if(collision.CompareTag("Wait"))
+        if (collision.CompareTag("Grid") || collision.CompareTag("Wait"))
         {
             grid = collision.gameObject;
         }
@@ -61,15 +49,15 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         if (collision.CompareTag("Grid"))
         {
+            canPlace = true;
             grid = null;
         }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (canPlace && grid != null)
+        if (canPlace == true && grid != null)
         {
-            CheckAndSwapParent(); // 변경된 부분: CheckAndSwapParent 함수 호출
             PlaceUnit();
         }
         else
@@ -87,6 +75,7 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0f;
         transform.position = mousePos;
+
     }
 
     private void PlaceUnit()

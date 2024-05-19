@@ -15,9 +15,9 @@ public class ScriptsP : MonoBehaviour
     {
         enemyPoolObj = GameObject.Find("EnemyPool");
         unit222 = GameObject.Find("222");
-        TScript();
         Round.instance.isRound = false;
-}
+        TScript();
+    }
 
 
     void OnEnable()
@@ -50,6 +50,9 @@ public class ScriptsP : MonoBehaviour
                 tutorialScript.GridName = "111";
                 tutorialScript.IMG_Grid = GameObject.Find("GridEP");
                 tutorialScript.goGrid = GameObject.Find("goGrid");
+                tutorialScript.NoSkip = GameObject.Find("NoSkip");
+
+
             }
         }
     }
