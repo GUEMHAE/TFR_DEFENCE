@@ -22,13 +22,13 @@ public class GameManager : MonoBehaviour
         if (isTimeMultyply == false)
         {
             Time.timeScale = 2f;
-            Multyply.text = ">>";
+            Multyply.text = "x2";
             isTimeMultyply = true;
         }
         else if (isTimeMultyply == true)
         {
             Time.timeScale = 1f;
-            Multyply.text = ">";
+            Multyply.text = "x1";
             isTimeMultyply = false;
         }
     }

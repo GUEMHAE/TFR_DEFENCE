@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -38,15 +37,13 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
         if (collision.CompareTag("Grid"))
         {
             grid = collision.gameObject;
+            canPlace = true; // 그리드에 진입했을 때는 무조건 이동 가능
         }
+
         if (collision.CompareTag("Wait"))
         {
             canPlace = true;
             grid = collision.gameObject;
-        }
-        else
-        {
-            ResetTransform();
         }
     }
 
@@ -54,14 +51,14 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         if (collision.CompareTag("Grid"))
         {
-            canPlace = true;
             grid = null;
         }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (canPlace == true && grid != null)
+        CheckAndSwapParent(); // 이동 중에 부모 변경을 체크
+        if (canPlace && grid != null)
         {
             PlaceUnit();
         }
@@ -73,6 +70,14 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (UnitLimitManager.instance.MaxunitCount <= UnitLimitManager.instance.curUnitCount)
+        {
+            canPlace = false;
+        }
+        else
+        {
+            canPlace = true;
+        }
         transform.localScale = DragScale;
         boxCol.size = DragBoxSize;
         spriteRenderer.sortingOrder = 4;
@@ -80,7 +85,6 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0f;
         transform.position = mousePos;
-
     }
 
     private void PlaceUnit()
@@ -107,10 +111,23 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
             {
                 // 다른 유닛이 이미 해당 위치에 있는 경우
                 Unit = col.gameObject;
-                Unit.transform.SetParent(transform.parent); // 다른 유닛의 부모 오브젝트를 현재 위치의 그리드로 변경
-                Unit.GetComponent<Place_Point>().ResetTransform(); // 다른 유닛의 위치 재설정
-                transform.SetParent(grid.transform); // 현재 유닛의 부모 오브젝트를 그리드로 변경
+
+                // 현재 유닛과 다른 유닛의 부모 교환
+                Transform tempParent = Unit.transform.parent;
+                Unit.transform.SetParent(transform.parent);
+                transform.SetParent(tempParent);
+
+                // 위치 재설정
+                Unit.GetComponent<Place_Point>().ResetTransform();
+                ResetTransform();
+
                 return;
+            }
+            else if (col.CompareTag("Grid") && col.gameObject != grid)
+            {
+                // 다른 grid에 유닛이 들어가는 경우
+                canPlace = true;
+                grid = col.gameObject;
             }
         }
     }
