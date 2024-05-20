@@ -255,7 +255,7 @@ public class Buy_Unit : MonoBehaviour
             }
 
 
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
             {
                 if (Waits.transform.childCount > 0)
                 {

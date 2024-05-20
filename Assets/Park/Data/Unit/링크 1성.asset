@@ -16,7 +16,7 @@ MonoBehaviour:
   cost: 5
   sellCost: 5
   grade: 1
-  ad: 600
+  ad: 620
   ap: 0
   attackSpeed: 2
   type:

@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameoverUI;
     public GameObject enemyPool; //적들이 들어 있는 부모 오브젝트를 등록하기 위한 GameObject
     public GameObject unitinfoUI;
+    public GameObject WinUI;
     public int gold;
     public Text Multyply;
 
@@ -68,6 +69,15 @@ public class GameManager : MonoBehaviour
             gameoverUI.SetActive(true);
             unitinfoUI.SetActive(false);
             Round.instance.enabled = false;
+        }
+
+        if (Round.instance.currentRound == 20 && Round.instance.isRound == false)
+        {
+            WinUI.SetActive(true);
+        }
+        else
+        {
+            WinUI.SetActive(false);
         }
     }
 
