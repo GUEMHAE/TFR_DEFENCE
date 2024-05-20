@@ -35,8 +35,13 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Grid") || collision.CompareTag("Wait"))
+        if (collision.CompareTag("Grid"))
         {
+            grid = collision.gameObject;
+        }
+        if (collision.CompareTag("Wait"))
+        {
+            canPlace = true;
             grid = collision.gameObject;
         }
         else

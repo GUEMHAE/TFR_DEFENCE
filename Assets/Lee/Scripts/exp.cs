@@ -76,7 +76,7 @@ public class Exp : MonoBehaviour
             // 현재 유닛 수와 배치 가능한 인원 수를 가져와 텍스트로 표시
             int currentUnits = UnitLimitManager.instance.curUnitCount;
             int maxUnits = UnitLimitManager.instance.MaxunitCount;
-            unitCountText.text = currentUnits.ToString() + " / " + maxUnits.ToString();
+            unitCountText.text = "Unit :" +  currentUnits.ToString() + " / " + maxUnits.ToString();
         }
         else
         {

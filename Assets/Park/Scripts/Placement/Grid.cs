@@ -14,11 +14,6 @@ public class Grid : MonoBehaviour
             place = collision.GetComponent<Place_Point>();
             Transform parentObject = transform;
 
-            if (UnitLimitManager.instance.MaxunitCount <= UnitLimitManager.instance.curUnitCount)
-            {
-                place.canPlace = false;
-            }
-
             if (parentObject.childCount > 0)
             {
                 place.canPlace = false;
