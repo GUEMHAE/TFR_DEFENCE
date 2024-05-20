@@ -114,7 +114,7 @@ public class Exp : MonoBehaviour
     // 레벨업에 필요한 경험치 양 반환 함수
     public float Levelup(float currentLevel)
     {
-        Debug.Log(UnitLimitManager.instance.MaxunitCount + "유닛수 제한 -----------------------");
+        //Debug.Log(UnitLimitManager.instance.MaxunitCount + "유닛수 제한 -----------------------");
         // 각 레벨별로 필요한 경험치 양 설정
         switch (currentLevel)
         {

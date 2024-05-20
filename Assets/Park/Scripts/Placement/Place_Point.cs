@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 
 public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
 {
-    [SerializeField] public bool canPlace = true;
     public GameObject grid;
     public GameObject Unit;
     private BoxCollider2D boxCol;
@@ -37,13 +36,6 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
         if (collision.CompareTag("Grid"))
         {
             grid = collision.gameObject;
-            canPlace = true; // 그리드에 진입했을 때는 무조건 이동 가능
-        }
-
-        if (collision.CompareTag("Wait"))
-        {
-            canPlace = true;
-            grid = collision.gameObject;
         }
     }
 
@@ -58,7 +50,7 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
     public void OnEndDrag(PointerEventData eventData)
     {
         CheckAndSwapParent(); // 이동 중에 부모 변경을 체크
-        if (canPlace && grid != null)
+        if (grid != null && !IsUnitLimitReached())
         {
             PlaceUnit();
         }
@@ -70,14 +62,6 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (UnitLimitManager.instance.MaxunitCount <= UnitLimitManager.instance.curUnitCount)
-        {
-            canPlace = false;
-        }
-        else
-        {
-            canPlace = true;
-        }
         transform.localScale = DragScale;
         boxCol.size = DragBoxSize;
         spriteRenderer.sortingOrder = 4;
@@ -123,12 +107,12 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
 
                 return;
             }
-            else if (col.CompareTag("Grid") && col.gameObject != grid)
-            {
-                // 다른 grid에 유닛이 들어가는 경우
-                canPlace = true;
-                grid = col.gameObject;
-            }
         }
+    }
+
+    // 유닛 제한 체크
+    private bool IsUnitLimitReached()
+    {
+        return UnitLimitManager.instance.MaxunitCount <= UnitLimitManager.instance.curUnitCount;
     }
 }

@@ -653,7 +653,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f9013c4ef9c49044b7bb574e8d6b91c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGrid: 0
 --- !u!21 &51469669
 Material:
   serializedVersion: 8
@@ -6461,7 +6460,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f9013c4ef9c49044b7bb574e8d6b91c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGrid: 0
 --- !u!1 &562013253
 GameObject:
   m_ObjectHideFlags: 0
@@ -13333,7 +13331,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f9013c4ef9c49044b7bb574e8d6b91c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGrid: 0
 --- !u!1001 &1165177405
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20228,6 +20225,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6740498585522368654, guid: d3c07f15ebff742aebbb5a259b4fa562, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6740498585522368655, guid: d3c07f15ebff742aebbb5a259b4fa562, type: 3}
+      propertyPath: m_Value
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6740498585522368655, guid: d3c07f15ebff742aebbb5a259b4fa562, type: 3}
