@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
             Round.instance.enabled = false;
         }
 
-        if (Round.instance.currentRound == 20 && Round.instance.isRound == false)
+        if (Round.instance.currentRound == 20 && Round.instance.isRound == false&&enemyPool.transform.childCount==0)
         {
             WinUI.SetActive(true);
         }

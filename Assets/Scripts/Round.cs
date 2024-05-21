@@ -10,6 +10,7 @@ public class Round : MonoBehaviour
 
     public int totalRounds = 20; // 총 라운드 수
     public int currentRound = 1; // 현재 라운드
+    int curGold;
 
     public bool isRound;
     public bool isLock = false;
@@ -40,31 +41,32 @@ public class Round : MonoBehaviour
 
             bool goldGiven = false;
 
-            int curGold=0;
-
             if (!goldGiven)
             {
                 if (GameManager.instance.gold < 10)
                 {
                     curGold = GameManager.instance.gold;
                     GameManager.instance.gold = curGold+5;
+                    goldGiven = true;
                 }
                 else if (GameManager.instance.gold < 20)
                 {
                     curGold = GameManager.instance.gold;
                     GameManager.instance.gold = curGold + 6;
+                    goldGiven = true;
                 }
                 else if (GameManager.instance.gold < 30)
                 {
                     curGold = GameManager.instance.gold;
                     GameManager.instance.gold = curGold + 7;
+                    goldGiven = true;
                 }
                 else if (GameManager.instance.gold >= 30)
                 {
                     curGold = GameManager.instance.gold;
                     GameManager.instance.gold = curGold + 8;
+                    goldGiven = true;
                 }
-                goldGiven = true;
             }
 
             if (isLock == false)

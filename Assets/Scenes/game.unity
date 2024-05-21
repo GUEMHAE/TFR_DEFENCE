@@ -20685,10 +20685,10 @@ RectTransform:
   - {fileID: 1382465154}
   - {fileID: 123262634}
   - {fileID: 1260971644}
-  - {fileID: 1848520481}
   - {fileID: 202462655}
   - {fileID: 1946100222}
   - {fileID: 280560712}
+  - {fileID: 1848520481}
   - {fileID: 973100603}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
