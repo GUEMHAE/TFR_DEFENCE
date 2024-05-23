@@ -68,6 +68,15 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     GameObject unitfInfoPannel; //유닛 인포 패널 끄고 켜게
 
+    [SerializeField]
+    GameObject gameInfo;
+    [SerializeField]
+    GameObject gameInfo1Page;
+    [SerializeField]
+    GameObject gameInfo2Page;
+    [SerializeField]
+    GameObject gameInfo3Page;
+
 
     public void ActiveSynergyPannel() //시너지 표시 버튼 눌럿을때 시너지 패널 활성화
     {
@@ -268,6 +277,43 @@ public class UIManager : MonoBehaviour
     public void UnitPannelClose()
     {
         unitfInfoPannel.SetActive(false);
+    }
+
+    public void OpenGameInfo()
+    {
+        gameInfo.SetActive(true);
+        gameInfo1Page.SetActive(true);
+        gameInfo2Page.SetActive(false);
+        gameInfo3Page.SetActive(false);
+    }
+
+    public void _1to2Page()
+    {
+        gameInfo1Page.SetActive(false);
+        gameInfo2Page.SetActive(true);
+    }
+
+    public void _2to3Page()
+    {
+        gameInfo2Page.SetActive(false);
+        gameInfo3Page.SetActive(true);
+    }
+    
+    public void _3to2Page()
+    {
+        gameInfo3Page.SetActive(false);
+        gameInfo2Page.SetActive(true);
+    }
+
+    public void _2to1Page()
+    {
+        gameInfo2Page.SetActive(false);
+        gameInfo1Page.SetActive(true);
+    }
+
+    public void QuitGameInfo()
+    {
+        gameInfo.SetActive(false);
     }
 
     void Update()
