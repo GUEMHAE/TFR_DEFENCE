@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
+public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHandler
 {
     public GameObject grid;
     public GameObject Unit;
+    public bool canAttack;
+    private string begintag;
     private BoxCollider2D boxCol;
     private SpriteRenderer spriteRenderer;
     private static readonly Vector3 DefaultScale = new Vector3(0.8f, 0.8f, 1);
@@ -14,26 +18,23 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
     private static readonly Vector2 DefaultBoxSize = new Vector2(1f, 1f);
     private static readonly Vector2 DragBoxSize = new Vector2(0.065f, 0.065f);
 
+    bool canSwap;
+    int defaultLayer;
     private void Start()
     {
         transform.localScale = DefaultScale;
         boxCol = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxCol.size = DefaultBoxSize;
+        defaultLayer = 1 << LayerMask.NameToLayer("Default");
     }
-
-    private void Update()
-    {
-        var raycaster = Camera.main.GetComponent<Physics2DRaycaster>();
-        if (raycaster != null)
-        {
-            raycaster.enabled = !Round.instance.isRound;
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Grid"))
+        {
+            grid = collision.gameObject;
+        }
+        if (collision.CompareTag("Wait"))
         {
             grid = collision.gameObject;
         }
@@ -45,12 +46,28 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             grid = null;
         }
+        if (collision.CompareTag("Wait"))
+        {
+            grid = null;
+        }
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        begintag = transform.parent.tag;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        CheckAndSwapParent(); // 이동 중에 부모 변경을 체크
-        if (grid != null && !IsUnitLimitReached())
+        if (!Round.instance.isRound)
+        {
+            CheckAndSwapParent();
+        }
+        if (grid != null && begintag == "Grid")
+        {
+            PlaceUnit();
+        }
+        else if(grid != null && UnitLimitManager.instance.curUnitCount < UnitLimitManager.instance.MaxunitCount && begintag == "Wait" && !Round.instance.isRound)
         {
             PlaceUnit();
         }
@@ -58,10 +75,15 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             ResetTransform();
         }
+        
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (Round.instance.isRound && !transform.parent.CompareTag("Wait"))
+            return;
+        canAttack = false;
+
         transform.localScale = DragScale;
         boxCol.size = DragBoxSize;
         spriteRenderer.sortingOrder = 4;
@@ -73,6 +95,10 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
 
     private void PlaceUnit()
     {
+        if (transform.parent.CompareTag("Grid"))
+            canAttack = true;
+        else
+            canAttack = false;
         spriteRenderer.sortingOrder = 1;
         transform.SetParent(grid.transform);
         ResetTransform();
@@ -108,6 +134,10 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
                 return;
             }
         }
+        if (transform.parent.CompareTag("Grid"))
+            canAttack = true;
+        else
+            canAttack = false;
     }
 
     // 유닛 제한 체크
@@ -115,4 +145,6 @@ public class Place_Point : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         return UnitLimitManager.instance.MaxunitCount <= UnitLimitManager.instance.curUnitCount;
     }
+
+    
 }

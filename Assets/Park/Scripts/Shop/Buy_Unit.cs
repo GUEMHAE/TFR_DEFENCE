@@ -26,6 +26,7 @@ public class Buy_Unit : MonoBehaviour
         Unit = GetComponent<RandomSprite_Unit>();
         GameObject instance = Instantiate(units[PlayerPrefs.GetInt("Character")]);
         instance.transform.SetParent(grid.transform);
+        instance.GetComponent<Place_Point>().canAttack = true;
         instance.name = instance.name.Substring(0,instance.name.Length-7);
         instance.transform.localPosition = Vector3.zero;
         canBuy = true;

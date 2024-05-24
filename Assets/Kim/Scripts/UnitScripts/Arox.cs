@@ -23,6 +23,7 @@ public class Arox : MonoBehaviour
     public float regenManaRate; //마나 회복량
     public Transform attackSpawn; //유닛 공격 시작 위치
 
+
     [SerializeField]
     bool isStun;
 
@@ -149,7 +150,7 @@ public class Arox : MonoBehaviour
         {
             enabled = false;
         }
-        else if (other.tag == "Grid" && isStun == false)
+        else if (other.tag == "Grid" && isStun == false && gameObject.GetComponent<Place_Point>().canAttack)
         {
             enabled = true;
         }

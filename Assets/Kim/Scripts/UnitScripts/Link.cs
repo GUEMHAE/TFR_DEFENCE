@@ -152,7 +152,7 @@ public class Link : MonoBehaviour
         {
             enabled = false;
         }
-        else if (other.tag == "Grid" && isStun == false)
+        else if (other.tag == "Grid" && isStun == false && gameObject.GetComponent<Place_Point>().canAttack)
         {
             enabled = true;
         }

@@ -146,13 +146,14 @@ public class Tonir : MonoBehaviour
             }
         }
     }
+
     private void OnTriggerStay2D(Collider2D other)
     {
         if (isStun == true || other.tag == "Wait")
         {
             enabled = false;
         }
-        else if (other.tag == "Grid" && isStun == false)
+        else if (other.tag == "Grid" && isStun == false && gameObject.GetComponent<Place_Point>().canAttack)
         {
             enabled = true;
         }

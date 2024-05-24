@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -14,6 +15,9 @@ public class GameManager : MonoBehaviour
     public GameObject WinUI;
     public int gold;
     public Text Multyply;
+
+        public Physics2DRaycaster physics2DRaycaster1;
+    public Physics2DRaycaster physics2DRaycaster2;
 
 
     bool isTimeMultyply; //시간 배속 여부 
@@ -54,6 +58,7 @@ public class GameManager : MonoBehaviour
         {
             gold = 2;
         }
+
     }
 
 
@@ -78,6 +83,12 @@ public class GameManager : MonoBehaviour
         else
         {
             WinUI.SetActive(false);
+        }
+
+        if (physics2DRaycaster1 != null)
+        {
+            physics2DRaycaster1.enabled = !Round.instance.isRound;
+            physics2DRaycaster2.enabled = Round.instance.isRound;
         }
     }
 
